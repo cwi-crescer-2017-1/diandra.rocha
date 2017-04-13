@@ -1,2 +1,1 @@
 # diandra.rocha
-*olá
