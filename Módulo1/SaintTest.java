@@ -33,4 +33,21 @@ public class SaintTest{
         
         assertEquals(Genero.NAO_INFORMADO, shaka.getGenero());
     }
+    
+    @Test
+    public void aoCriarSaintStatusEVivo(){
+        Saint camus = new Saint ("Camus", new Armadura("Aquario", Categoria.OURO));
+        
+        assertEquals(Status.VIVO, camus.getStatus());
+    }
+    @Test
+    public void SubtrairVidaSubtraiDezDeVida(){
+        
+        Saint aphrodite = new Saint("Aphrodite", new Armadura("Peixes", Categoria.OURO));
+        
+        aphrodite.perderVida(10);
+        
+        assertEquals(90 ,aphrodite.getVida(), 0.5);
+        
+    }
 }
