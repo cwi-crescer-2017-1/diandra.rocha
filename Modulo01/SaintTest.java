@@ -35,7 +35,7 @@ public class SaintTest{
         assertEquals(Status.VIVO, camus.getStatus());
     }
 	
-	@Test
+    @Test
     public void verificarCategoriaSaint() {
         Saint saintTest = new Saint("Shaina", new Armadura ("Sepentário", Categoria.PRATA));
         
@@ -43,7 +43,7 @@ public class SaintTest{
         Categoria categoriaArmaduraSaint = saintTest.getCategoriaArmadura();
         
         assertEquals(2, nivelArmaduraSaint);
-		assertEquals(Categoria.PRATA, categoriaArmaduraSaint);
+	assertEquals(Categoria.PRATA, categoriaArmaduraSaint);
     }
 	
     @Test
@@ -55,8 +55,8 @@ public class SaintTest{
         assertEquals(90 , saintTest.getVida(), 0.5);    
     }
 	
-	@Test
-	public void aoPerderVidaSubtraiVidaCorretamenteMesmoAPerdaSendoComVirgula() {
+    @Test
+    public void aoPerderVidaSubtraiVidaCorretamenteMesmoAPerdaSendoComVirgula() {
         Saint saintTest = new Saint("Aphrodite", new Armadura("Peixes", Categoria.OURO));
         
         saintTest.perderVida(15.5);
@@ -64,8 +64,8 @@ public class SaintTest{
         assertEquals(84.5 , saintTest.getVida(), 0.5);
     }
 	
-	@Test
-	public void aoPerderVidaSubtraiVidaCorretamenteMesmoAPerdaSendoComVirgulaEMargemDeArredondamentoMenor() {
+    @Test
+    public void aoPerderVidaSubtraiVidaCorretamenteMesmoAPerdaSendoComVirgulaEMargemDeArredondamentoMenor() {
         Saint saintTest = new Saint("Aphrodite", new Armadura("Peixes", Categoria.OURO));
         
         saintTest.perderVida(23.7);
