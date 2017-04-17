@@ -4,7 +4,7 @@ import org.junit.Test;
 public class BatalhaTest {
     
     @Test
-    public void iniciarRetiraVidaDoSaintCorreto() {
+    public void iniciarRetiraVidaCorretamenteQuandoSaint1CategoriaMaiorDoQueOSaint2() {
 	Saint mu = new Saint("Mu", new Armadura ("Áries", Categoria.OURO));
 	Saint dante = new Saint ("Dante", new Armadura("Cérbero", Categoria.PRATA));
 	Batalha battle = new Batalha(mu, dante);
@@ -13,8 +13,8 @@ public class BatalhaTest {
 	double vidaMu = mu.getVida();
 	double vidaDante = dante.getVida();
            
-	assertEquals(100, vidaMu, 0.5);
-	assertEquals(90, vidaDante, 0.5);             
+	assertEquals(100, vidaMu, 0.1);
+	assertEquals(90, vidaDante, 0.1);             
     }
 	
     @Test
@@ -30,5 +30,18 @@ public class BatalhaTest {
         assertEquals(100, vidaShiryu, 0.5);
         assertEquals (90, vidaShun, 0.5);     
     }   
+    
+    @Test
+    public void  iniciarRetiraVidaCorretamenteQuandoSaint2CategoriaMaiorDoQueOSaint1() {
+        
+        Saint ikki = new Saint("Ikki", new Armadura("Fênix", Categoria.BRONZE));
+        Saint mascaraMorte = new Saint("Máscara da Morte", new Armadura("Câncer", Categoria.OURO));
+        Batalha batalha = new Batalha(ikki, mascaraMorte);
+        
+        batalha.iniciar();
+        
+        assertEquals(90, ikki.getVida(), 0.01);
+        assertEquals(100, mascaraMorte.getVida(), 0.01);
+    }
     
 }
