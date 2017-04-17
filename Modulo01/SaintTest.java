@@ -1,7 +1,7 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class SaintTest{
+public class SaintTest {
 	
     @Test
     public void vestirArmaduraDeixaArmaduraVestida() throws Exception {
@@ -30,7 +30,7 @@ public class SaintTest{
     
     @Test
     public void aoCriarSaintStatusEVivo() throws Exception {
-        Saint camus = new Saint ("Camus", new Armadura("Touro", Categoria.OURO));
+        Saint camus = new Saint ("Camus", new Armadura("Áquario", Categoria.OURO));
         
         assertEquals(Status.VIVO, camus.getStatus());
     }
@@ -61,6 +61,15 @@ public class SaintTest{
         assertEquals(90 , saintTest.getVida(), 0.1);    
     }
 	
+     @Test
+    public void perderDanoComValor100() throws Exception {
+        Saint shiryu = new Saint("Shiryu", new Armadura("Dragão", Categoria.BRONZE));
+
+        shiryu.perderVida(100);
+   
+        assertEquals(0, shiryu.getVida(), 0.01);
+    }
+    
     @Test
     public void aoPerderVidaSubtraiVidaCorretamenteComPerdaDe1000() throws Exception {
         Saint saintTest = new Saint("Aphrodite", new Armadura("Peixes", Categoria.OURO));
