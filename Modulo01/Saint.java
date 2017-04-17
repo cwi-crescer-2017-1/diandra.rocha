@@ -6,11 +6,14 @@ public class Saint {
     private Genero genero = Genero.NAO_INFORMADO;
     private Status status = Status.VIVO;
     private double vida = 100.0;
-    private int qtdSentidosDespertados = 5;
+    protected int qtdSentidosDespertados;
 
-    public Saint(String nome, Armadura armadura) {
+    public Saint(String nome, Armadura armadura) throws Exception {
         this.nome = nome;
         this.armadura = armadura;
+
+        /*int valorCategoria = this.armadura.getCategoria().getValor();
+        this.qtdSentidosDespertados += valorCategoria;*/
     }
 
     public void vestirArmadura() {
@@ -48,7 +51,7 @@ public class Saint {
     public double getVida() {
         return this.vida;
     }
-    
+
     public int getQtdSentidosDespertados() {
         return this.qtdSentidosDespertados;
     }
