@@ -27,8 +27,8 @@ public class BatalhaTest {
         double vidaShiryu = shiryu.getVida();
         double vidaShun = shun.getVida();
         
-        assertEquals(100, vidaShiryu, 0.5);
-        assertEquals (90, vidaShun, 0.5);     
+        assertEquals(100, vidaShiryu, 0.1);
+        assertEquals (90, vidaShun, 0.1);     
     }   
     
     @Test
