@@ -10,11 +10,10 @@ public class Batalha {
     }
 	
     public void iniciar() {
-        if (saint1.getNivelArmadura() == saint2.getNivelArmadura() || 
-	    saint1.getNivelArmadura() > saint2.getNivelArmadura()) {
-            saint2.perderVida(dano);
+        if (saint1.getNivelArmadura() >= saint2.getNivelArmadura()) {
+            this.saint2.perderVida(dano);
         } else {
-            saint1.perderVida(dano);	
+            this.saint1.perderVida(dano);	
         }
     }
 	
