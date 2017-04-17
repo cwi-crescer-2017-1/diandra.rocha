@@ -44,6 +44,12 @@ public class SaintTest{
         
         assertEquals(2, nivelArmaduraSaint);
 	assertEquals(Categoria.PRATA, categoriaArmaduraSaint);
+    } 
+    
+    @Test
+    public void vidaInicialDeveSer100() {
+        Saint shiryu = new Saint("Shiryu", new Armadura("Dragão", Categoria.BRONZE));
+        assertEquals(100.0, shiryu.getVida(), 0.01);
     }
 	
     @Test
@@ -52,25 +58,41 @@ public class SaintTest{
         
         saintTest.perderVida(10);
         
-        assertEquals(90 , saintTest.getVida(), 0.5);    
+        assertEquals(90 , saintTest.getVida(), 0.1);    
     }
 	
     @Test
-    public void aoPerderVidaSubtraiVidaCorretamenteMesmoAPerdaSendoComVirgula() {
+    public void aoPerderVidaSubtraiVidaCorretamenteComPerdaDe1000() {
         Saint saintTest = new Saint("Aphrodite", new Armadura("Peixes", Categoria.OURO));
         
-        saintTest.perderVida(15.5);
+        saintTest.perderVida(1000);
         
-        assertEquals(84.5 , saintTest.getVida(), 0.5);
+        assertEquals(-900 , saintTest.getVida(), 0.1);
     }
 	
     @Test
-    public void aoPerderVidaSubtraiVidaCorretamenteMesmoAPerdaSendoComVirgulaEMargemDeArredondamentoMenor() {
+    public void aoPerderVidaSubtraiVidaCorretamenteComPerdaDeMenos1000() {
         Saint saintTest = new Saint("Aphrodite", new Armadura("Peixes", Categoria.OURO));
         
-        saintTest.perderVida(23.7);
+        saintTest.perderVida(-1000);
         
-        assertEquals(76.3 , saintTest.getVida(), 0.2);    
+        assertEquals(1100 , saintTest.getVida(), 0.1);    
+    }
+    
+    @Test
+    public void deveSerPossivelAlterarOGenero() {
+        Saint jabu = new Saint("Jabu", new Armadura("Unicórnio", Categoria.BRONZE));
+        jabu.setGenero(Genero.MASCULINO);
+        assertEquals(Genero.MASCULINO, jabu.getGenero());
+        jabu.setGenero(Genero.FEMININO);
+        assertEquals(Genero.FEMININO, jabu.getGenero());
+    }
+    
+    @Test
+    public void criarSaintNasceCom5SentidosDespertados() {
+        Saint seiya = new Saint("Seiya", new Armadura("Pégaso", Categoria.BRONZE));
+        
+        assertEquals(5, seiya.getQtdSentidosDespertados());
     }
 	
 }
