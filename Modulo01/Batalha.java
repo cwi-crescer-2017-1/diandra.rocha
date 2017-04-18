@@ -9,7 +9,7 @@ public class Batalha {
         this.saint2 = saint2;
     }
 	
-    public void iniciar() {
+    public void iniciar()  throws Exception{
         if (saint1.getNivelArmadura() >= saint2.getNivelArmadura()) {
             this.saint2.perderVida(dano);
         } else {
