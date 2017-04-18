@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.security.InvalidParameterException; 
+
 public class Saint {
 
     private String nome;
@@ -7,6 +10,7 @@ public class Saint {
     private Status status = Status.VIVO;
     private double vida = 100.0;
     protected int qtdSentidosDespertados;
+    private int acumuladorProximoGolpe = 0;
 
     public Saint(String nome, Armadura armadura) throws Exception {
         this.nome = nome;
@@ -55,36 +59,35 @@ public class Saint {
 
     public void perderVida(double perda) throws Exception {
         if(perda < 0) {
-            throw new Exception("InvalidParameterException");
+            throw new InvalidParameterException();
         }
         if(this.vida<1 || perda>=this.vida) {
             this.status = Status.MORTO;
             this.vida = 0;
-        }else{
+        }
+        if(this.status != Status.MORTO){
             this.vida-=perda;
         }
     }
 
-    public void getGolpes() {
-        Golpe [] golpesArmaduraSaint = this.getArmadura().getConstelacao().getGolpes();
-        for(int i = 0; i<3; i++){
-            System.out.println(golpesArmaduraSaint[i]);
-        }
+    private Constelacao getConstelacao() {
+        return this.armadura.getConstelacao();
+    }
+    
+    public ArrayList <Golpe> getGolpes() {
+        return this.getConstelacao().getGolpes();
     }
 
     public void aprenderGolpe(Golpe golpe) {
-        Constelacao constelacaoSaint = this.getArmadura().getConstelacao();
+        Constelacao constelacaoSaint = this.getConstelacao();
         constelacaoSaint.adicionarGolpe(golpe);
     }
 
-    public void getProximoGolpe() {
-        int i = 0;
-        Golpe [] golpesArmaduraSaint = this.getArmadura().getConstelacao().getGolpes();
-        System.out.println(golpesArmaduraSaint[i].getNome());
-        if(i == 2) {
-            i = 0;
-        }
-        i++;
+     public Golpe getProximoGolpe() {
+        ArrayList <Golpe> golpes = getGolpes();
+        int posicao = this.acumuladorProximoGolpe % golpes.size();
+        this.acumuladorProximoGolpe++;
+        return golpes.get(posicao);
     }
 
 }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import java.security.InvalidParameterException; 
@@ -132,10 +133,10 @@ public class SaintTest {
         Saint saga = new Saint("Saga", new Armadura(new Constelacao("Gêmeos"), Categoria.OURO));
         Golpe outraDimensao = new Golpe("Outra dimensão", 10);
         saga.aprenderGolpe(new Golpe("Outra dimensão", 10));
-        Golpe[] golpes = saga.getGolpes();
-        assertEquals(outraDimensao, golpes[0]);
-        assertNull(golpes[1]);
-        assertNull(golpes[2]);
+        ArrayList <Golpe> golpes = saga.getGolpes();
+        assertEquals(outraDimensao, golpes.get(0));
+        assertNull(golpes.get(1));
+        assertNull(golpes.get(2));
         // TODO: assert null
     }
 
@@ -146,10 +147,10 @@ public class SaintTest {
         Golpe explosaoGalatica = new Golpe("Explosão Galáctica", 11);
         saga.aprenderGolpe(outraDimensao);
         saga.aprenderGolpe(explosaoGalatica);
-        Golpe[] golpes = saga.getGolpes();
-        assertEquals(outraDimensao, golpes[0]);
-        assertEquals(explosaoGalatica, golpes[1]);
-        assertNull(golpes[2]);
+        ArrayList <Golpe> golpes = saga.getGolpes();
+        assertEquals(outraDimensao, golpes.get(0));
+        assertEquals(explosaoGalatica, golpes.get(1));
+        assertNull(golpes.get(2));
     }
 
     @Test
@@ -161,10 +162,10 @@ public class SaintTest {
         saga.aprenderGolpe(outraDimensao);
         saga.aprenderGolpe(explosaoGalatica);
         saga.aprenderGolpe(sataImperial);
-        Golpe[] golpes = saga.getGolpes();
-        assertEquals(outraDimensao, golpes[0]);
-        assertEquals(explosaoGalatica, golpes[1]);
-        assertEquals(sataImperial, golpes[2]);
+        ArrayList <Golpe> golpes = saga.getGolpes();
+        assertEquals(outraDimensao, golpes.get(0));
+        assertEquals(explosaoGalatica, golpes.get(1));
+        assertEquals(sataImperial, golpes.get(2));
     }
 
     @Test(expected=ArrayIndexOutOfBoundsException.class)
