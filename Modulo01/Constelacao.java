@@ -1,7 +1,7 @@
 public class Constelacao {
     
     private String nome;
-    private Golpe [] golpes = new Golpe[5];
+    private Golpe [] golpes = new Golpe[3];
     
     public Constelacao(String nome) {
         this.nome = nome;
@@ -21,7 +21,7 @@ public class Constelacao {
     }
     
     public void adicionarGolpe(Golpe golpe) {
-        golpes[4] = golpe;
+        golpes[2] = golpe;
     }
     
     public Golpe [] getGolpes() {
