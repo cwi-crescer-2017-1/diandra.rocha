@@ -11,9 +11,6 @@ public class Saint {
     public Saint(String nome, Armadura armadura) throws Exception {
         this.nome = nome;
         this.armadura = armadura;
-
-        /*int valorCategoria = this.armadura.getCategoria().getValor();
-        this.qtdSentidosDespertados += valorCategoria;*/
     }
 
     public void vestirArmadura() {
@@ -56,8 +53,37 @@ public class Saint {
         return this.qtdSentidosDespertados;
     }
 
-    public void perderVida(double perda) {
-        this.vida = this.vida - perda;
+    public void perderVida(double perda) throws Exception {
+        if(perda < 0) {
+            throw new Exception("InvalidParameterException");
+        }
+        if(this.vida<1 || perda>=this.vida) {
+            this.status = Status.MORTO;
+            this.vida = 0;
+        }else{
+            this.vida-=perda;
+        }
     }
-
+    
+    public void getGolpes() {
+        Golpe [] golpesArmaduraSaint = this.getArmadura().getConstelacao().getGolpes();
+        for(int i = 0; i<5; i++){
+            System.out.println(golpesArmaduraSaint[i]);
+        }
+    }
+    
+    public void aprenderGolpe(Golpe golpe) {
+        Constelacao constelacaoSaint = this.getArmadura().getConstelacao();
+        constelacaoSaint.adicionarGolpe(golpe);
+    }
+    
+    public void getProximoGolpe() {
+        for(int i = 0; i<5; i++){
+            Golpe [] golpesArmaduraSaint = this.getArmadura().getConstelacao().getGolpes();
+            System.out.println(golpesArmaduraSaint[i]);
+            if(i==4) {
+                i = 0;
+            }
+        }
+    }
 }
