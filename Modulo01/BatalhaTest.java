@@ -5,8 +5,8 @@ public class BatalhaTest {
     
     @Test
     public void iniciarRetiraVidaCorretamenteQuandoSaint1CategoriaMaiorDoQueOSaint2() throws Exception {
-	Saint mu = new Saint("Mu", new Armadura ("Áries", Categoria.OURO));
-	Saint dante = new Saint ("Dante", new Armadura("Cérbero", Categoria.PRATA));
+	Saint mu = new Saint("Mu", new Armadura (new Constelacao("Áries"), Categoria.OURO));
+	Saint dante = new Saint ("Dante", new Armadura(new Constelacao("Cérbero"), Categoria.PRATA));
 	Batalha battle = new Batalha(mu, dante);
 		
 	battle.iniciar();    
@@ -19,8 +19,8 @@ public class BatalhaTest {
 	
     @Test
     public void iniciarRetiraVidaDoSaintCorretoQuandoSaoDeMesmaCategoria() throws Exception{
-        Saint shiryu = new Saint ("Shiryu", new Armadura("Draco", Categoria.BRONZE));
-        Saint shun = new Saint ("Shun", new Armadura("Andromêda", Categoria.BRONZE));
+        Saint shiryu = new Saint ("Shiryu", new Armadura(new Constelacao("Draco"), Categoria.BRONZE));
+        Saint shun = new Saint ("Shun", new Armadura(new Constelacao("Andromêda"), Categoria.BRONZE));
         Batalha battle = new Batalha(shiryu, shun);
         
         battle.iniciar();
@@ -34,8 +34,8 @@ public class BatalhaTest {
     @Test
     public void  iniciarRetiraVidaCorretamenteQuandoSaint2CategoriaMaiorDoQueOSaint1() throws Exception{
         
-        Saint ikki = new Saint("Ikki", new Armadura("Fênix", Categoria.BRONZE));
-        Saint mascaraMorte = new Saint("Máscara da Morte", new Armadura("Câncer", Categoria.OURO));
+        Saint ikki = new Saint("Ikki", new Armadura(new Constelacao("Fênix"), Categoria.BRONZE));
+        Saint mascaraMorte = new Saint("Máscara da Morte", new Armadura(new Constelacao("Câncer"), Categoria.OURO));
         Batalha batalha = new Batalha(ikki, mascaraMorte);
         
         batalha.iniciar();
