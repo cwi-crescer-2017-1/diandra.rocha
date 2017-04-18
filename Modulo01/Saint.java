@@ -64,26 +64,27 @@ public class Saint {
             this.vida-=perda;
         }
     }
-    
+
     public void getGolpes() {
         Golpe [] golpesArmaduraSaint = this.getArmadura().getConstelacao().getGolpes();
-        for(int i = 0; i<5; i++){
+        for(int i = 0; i<3; i++){
             System.out.println(golpesArmaduraSaint[i]);
         }
     }
-    
+
     public void aprenderGolpe(Golpe golpe) {
         Constelacao constelacaoSaint = this.getArmadura().getConstelacao();
         constelacaoSaint.adicionarGolpe(golpe);
     }
-    
+
     public void getProximoGolpe() {
-        for(int i = 0; i<5; i++){
-            Golpe [] golpesArmaduraSaint = this.getArmadura().getConstelacao().getGolpes();
-            System.out.println(golpesArmaduraSaint[i]);
-            if(i==4) {
-                i = 0;
-            }
+        int i = 0;
+        Golpe [] golpesArmaduraSaint = this.getArmadura().getConstelacao().getGolpes();
+        System.out.println(golpesArmaduraSaint[i]);
+        if(i == 2) {
+            i = 0;
         }
+        i++;
     }
+
 }
