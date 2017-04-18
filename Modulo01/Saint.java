@@ -80,7 +80,7 @@ public class Saint {
     public void getProximoGolpe() {
         int i = 0;
         Golpe [] golpesArmaduraSaint = this.getArmadura().getConstelacao().getGolpes();
-        System.out.println(golpesArmaduraSaint[i]);
+        System.out.println(golpesArmaduraSaint[i].getNome());
         if(i == 2) {
             i = 0;
         }
