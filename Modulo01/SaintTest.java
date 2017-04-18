@@ -127,4 +127,26 @@ public class SaintTest {
         new GoldSaint("Bernardo", new Armadura(new Constelacao("Café"), Categoria.OURO));
     }
     
+    @Test
+    public void getGolpesRetornaCorretamenteOArrayDeGolpesDaConstelacao() throws Exception {
+        Saint saintTest = new Saint("Aldebaran", new Armadura(new Constelacao("Touro"), Categoria.OURO));
+        Golpe [] golpesArmaduraSaint = saintTest.getArmadura().getConstelacao().getGolpes();
+        Golpe [] golpeTest = new Golpe[3];
+        Constelacao constelacaoTest = new Constelacao("Teste", golpeTest);
+        
+        assertEquals(golpeTest, golpesArmaduraSaint);
+    }
+    
+    @Test
+    public void aprenderGolpeAdicionaGolpeAoArrayDEGolpesDaConstelacao() throws Exception {
+        Saint saintTest = new Saint("Aldebaran", new Armadura(new Constelacao("Touro"), Categoria.OURO));
+        Constelacao constelacaoSaint = saintTest.getArmadura().getConstelacao();
+        Golpe [] arrayGolpeTest = saintTest.getArmadura().getConstelacao().getGolpes();
+        Golpe golpeTest = new Golpe("Test" , 24);
+        
+        constelacaoSaint.adicionarGolpe(golpeTest);
+        
+        assertEquals(golpeTest,arrayGolpeTest[2]); 
+    } 
+    
 }
