@@ -8,9 +8,10 @@ public class ConstelacaoTest {
     public void adicionarUmGolpe() {
         Constelacao gemeos = new Constelacao("Gêmeos");
         Golpe outraDimensao = new Golpe("Outra dimensão", 10);
-        gemeos.adicionarGolpe(new Golpe("Outra dimensão", 10));
         ArrayList <Golpe> golpes = gemeos.getGolpes();
-
+        
+        gemeos.adicionarGolpe(new Golpe("Outra dimensão", 10));
+       
         assertEquals(outraDimensao, golpes.get(0));
     }
 
@@ -19,11 +20,10 @@ public class ConstelacaoTest {
         Constelacao gemeos = new Constelacao("Gêmeos");
         Golpe outraDimensao = new Golpe("Outra dimensão", 10);
         Golpe explosaoGalatica = new Golpe("Explosão Galáctica", 11);
-
+        ArrayList <Golpe> golpes = gemeos.getGolpes();
+        
         gemeos.adicionarGolpe(outraDimensao);
         gemeos.adicionarGolpe(explosaoGalatica);
-
-        ArrayList <Golpe> golpes = gemeos.getGolpes();
 
         assertEquals(outraDimensao, golpes.get(0));
         assertEquals(explosaoGalatica, golpes.get(1));
@@ -35,14 +35,16 @@ public class ConstelacaoTest {
         Golpe outraDimensao = new Golpe("Outra dimensão", 10);
         Golpe explosaoGalatica = new Golpe("Explosão Galáctica", 11);
         Golpe sataImperial = new Golpe("Satã Imperial", 60);
+        ArrayList <Golpe> golpes = gemeos.getGolpes();
+        
         gemeos.adicionarGolpe(outraDimensao);
         gemeos.adicionarGolpe(explosaoGalatica);
         gemeos.adicionarGolpe(sataImperial);
-        ArrayList <Golpe> golpes = gemeos.getGolpes();
+        
+        
         assertEquals(outraDimensao, golpes.get(0));
         assertEquals(explosaoGalatica, golpes.get(1));
         assertEquals(sataImperial, golpes.get(2));
     }
-
 
 }

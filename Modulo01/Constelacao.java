@@ -22,14 +22,14 @@ public class Constelacao {
     public String getNomeConstelacao(){
         return this.nome;
     }
+    
+    public ArrayList <Golpe> getGolpes() {
+        return this.golpes;
+    }
 
     public void adicionarGolpe(Golpe golpe) {
         this.golpes.add(ultimaPosicaoPreenchida, golpe);
         ultimaPosicaoPreenchida ++;
-    }
-
-    public ArrayList <Golpe> getGolpes() {
-        return this.golpes;
     }
 
 }
