@@ -80,18 +80,26 @@ public class ListaSaintsTest {
         Saint kanon = new Saint("Kanon", new Armadura(new Constelacao("Gêmeos"), Categoria.OURO));
 
         ListaSaints lista = new ListaSaints();
+        
+        algol.perderVida(20);
+        babel.perderVida(40);
+        aiolia.perderVida(60);
+        kanon.perderVida(80);
 
         lista.adicionarSaint(algol);
         lista.adicionarSaint(babel);
         lista.adicionarSaint(aiolia);
         lista.adicionarSaint(kanon);
         
+        ArrayList <Saint> ordenado = new ArrayList<>();
+        ordenado.add(algol);
+        ordenado.add(babel);
+        ordenado.add(aiolia);
+        ordenado.add(kanon);
+        
         lista.ordenarLista();
 
-        assertEquals(lista.getSaint(0), aiolia);
-        assertEquals(lista.getSaint(1), algol);
-        assertEquals(lista.getSaint(2), babel);
-        assertEquals(lista.getSaint(3), kanon);
+        assertEquals(ordenado, lista.getExercitoDeAthena());
     }
 
 }

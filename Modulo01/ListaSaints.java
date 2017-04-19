@@ -95,7 +95,7 @@ public class ListaSaints {
                 Saint posicaoA = this.exercitoDeAthena.get(p);
                 Saint posicaoP = this.exercitoDeAthena.get(p++);
                 
-                if(posicaoA.getVida() <= posicaoP.getVida()){
+                if(posicaoA.getVida() > posicaoP.getVida()){
                     aux = this.exercitoDeAthena.get(p++);
                     this.exercitoDeAthena.set(p++, this.exercitoDeAthena.get(p));
                     this.exercitoDeAthena.set(p, aux);
