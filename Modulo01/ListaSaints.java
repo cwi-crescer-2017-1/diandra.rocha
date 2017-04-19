@@ -85,4 +85,23 @@ public class ListaSaints {
         }
         return saintMenorVida;
     }
+
+    public void ordenarLista(){
+        Saint aux = new Saint();
+
+        for(int i = 0; i < this.exercitoDeAthena.size(); i++){
+            for(int p = 0; p < this.exercitoDeAthena.size() -1 ; p ++){
+
+                Saint posicaoA = this.exercitoDeAthena.get(p);
+                Saint posicaoP = this.exercitoDeAthena.get(p++);
+                
+                if(posicaoA.getVida() <= posicaoP.getVida()){
+                    aux = this.exercitoDeAthena.get(p++);
+                    this.exercitoDeAthena.set(p++, this.exercitoDeAthena.get(p));
+                    this.exercitoDeAthena.set(p, aux);
+                }          
+            }
+        }
+    }
+
 }
