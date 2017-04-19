@@ -138,6 +138,7 @@ public class SaintTest {
         saga.aprenderGolpe(new Golpe("Outra dimensão", 10));
        
         assertEquals(outraDimensao, golpes.get(0));
+        assertEquals(1, golpes.size());
     }
 
     @Test
@@ -152,6 +153,7 @@ public class SaintTest {
         
         assertEquals(outraDimensao, golpes.get(0));
         assertEquals(explosaoGalatica, golpes.get(1));
+        assertEquals(2, golpes.size());
     }
 
     @Test
