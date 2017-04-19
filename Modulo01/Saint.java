@@ -11,10 +11,17 @@ public class Saint {
     private double vida = 100.0;
     protected int qtdSentidosDespertados;
     private int acumuladorProximoGolpe = 0;
+    
+    public Saint() {
+        
+    }
 
     public Saint(String nome, Armadura armadura) throws Exception {
         this.nome = nome;
         this.armadura = armadura;
+    }
+    public String getNome() {
+        return this.nome;
     }
 
     public void vestirArmadura() {
@@ -84,7 +91,7 @@ public class Saint {
     }
 
      public Golpe getProximoGolpe() {
-        ArrayList <Golpe> golpes = getGolpes();
+        ArrayList <Golpe> golpes = this.getGolpes();
         int posicao = this.acumuladorProximoGolpe % golpes.size();
         this.acumuladorProximoGolpe++;
         return golpes.get(posicao);
