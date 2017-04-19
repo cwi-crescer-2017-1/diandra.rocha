@@ -4,7 +4,6 @@ public class Constelacao {
 
     private String nome;
     private ArrayList <Golpe> golpes= new ArrayList<>();
-    private int ultimaPosicaoPreenchida = 0;
 
     public Constelacao(String nome) {
         this.nome = nome;
@@ -28,8 +27,7 @@ public class Constelacao {
     }
 
     public void adicionarGolpe(Golpe golpe) {
-        this.golpes.add(ultimaPosicaoPreenchida, golpe);
-        ultimaPosicaoPreenchida ++;
+        this.golpes.add(golpe);
     }
 
 }
