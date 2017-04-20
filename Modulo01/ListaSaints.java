@@ -124,6 +124,7 @@ public class ListaSaints {
     }
 
     public void ordenarLista(TipoOrdenacao tipo) {
+        
         if(tipo == TipoOrdenacao.ASCENDENTE) {
             this.ordenarLista();
         } else {
@@ -151,8 +152,7 @@ public class ListaSaints {
     public String getCSV() {
         String CSV = new String();
         for(Saint s : this.exercitoDeAthena) {
-            CSV += s.getNome() + "," + s.getVida() + "," + s.getNomeConstelacaoArmadura() + "," + s.getCategoriaArmadura()
-            + "," + s.getStatus() + "," + s.getGenero() + "," + s.getArmaduraVestida() + "\n";
+            CSV += s.getCSV() + "\n";
         }
         return CSV;
     }

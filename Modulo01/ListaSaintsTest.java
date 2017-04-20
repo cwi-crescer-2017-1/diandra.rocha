@@ -253,50 +253,39 @@ public class ListaSaintsTest {
     }
 
     @Test
-    public void retornoDaStringDeSaints() throws Exception {
-        ListaSaints listaSaints = new ListaSaints();
+    public void retornaOCSVDeSaint() throws Exception {
         Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
-        Saint misty = new SilverSaint("Misty", new Armadura(new Constelacao("Lagarto"), Categoria.PRATA));
-        Saint shun = new Saint("Shun", new Armadura(new Constelacao("Andrômeda"), Categoria.BRONZE));
 
-        listaSaints.adicionarSaint(shun);
+        String CSVresultado = june.getCSV();
 
-        String CSVresultado = listaSaints.getCSV();
-
-        String CSV = "";
-        CSV += shun.getNome() + "," + shun.getVida() + "," + shun.getNomeConstelacaoArmadura() + "," + shun.getCategoriaArmadura()
-        + "," + shun.getStatus() + "," + shun.getGenero() + "," + shun.getArmaduraVestida() + "\n";
+        String CSV = "June,100.0,Camaleão,BRONZE,VIVO,NAO_INFORMADO,false";
 
         assertEquals(CSV, CSVresultado);
     }
 
-    @Test
+    /*@Test
     public void retornoDaStringDeSaintsComMaisDeUmSaint() throws Exception {
         ListaSaints listaSaints = new ListaSaints();
-        Saint misty = new SilverSaint("Misty", new Armadura(new Constelacao("Lagarto"), Categoria.PRATA));
-        Saint shun = new Saint("Shun", new Armadura(new Constelacao("Andrômeda"), Categoria.BRONZE));
+        Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+        Saint dohko = new Saint("Dohko", new Armadura(new Constelacao("A"), Categoria.OURO));
 
-        listaSaints.adicionarSaint(shun);
-        listaSaints.adicionarSaint(misty);
+        listaSaints.adicionarSaint(june);
+        listaSaints.adicionarSaint(dohko);
 
         String CSVresultado = listaSaints.getCSV();
 
-        String CSV = "";
-        CSV += shun.getNome() + "," + shun.getVida() + "," + shun.getNomeConstelacaoArmadura() + "," + shun.getCategoriaArmadura()
-        + "," + shun.getStatus() + "," + shun.getGenero() + "," + shun.getArmaduraVestida() + "\n"
-        +  misty.getNome() + "," + misty.getVida() + "," + misty.getNomeConstelacaoArmadura() + "," + misty.getCategoriaArmadura()
-        + "," + misty.getStatus() + "," + misty.getGenero() + "," + misty.getArmaduraVestida() + "\n";
+        String CSV = "June,100.0,Camaleão,BRONZE,VIVO,NAO_INFORMADO,false\nDohko,100.0,,OURO,VIVO,NAO_INFORMADO,false";
 
         assertEquals(CSV, CSVresultado);
-    }
-    
+    }*/
+
     @Test
     public void retornoDaStringDeSaintsComListaVazia() throws Exception {
         ListaSaints listaSaints = new ListaSaints();
-        
+
         String CSVresultado = listaSaints.getCSV();
         String CSV = "";
-        
+
         assertEquals(CSV, CSVresultado);
     }
 

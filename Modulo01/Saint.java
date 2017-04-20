@@ -100,5 +100,10 @@ public class Saint {
         this.acumuladorProximoGolpe++;
         return golpes.get(posicao);
     }
+    
+    public String getCSV() {
+        return this.getNome() + "," + this.getVida() + "," + this.getNomeConstelacaoArmadura() + "," + this.getCategoriaArmadura()
+        + "," + this.getStatus() + "," + this.getGenero() + "," + this.getArmaduraVestida();
+    }
 
 }
