@@ -77,7 +77,6 @@ public class ListaSaints {
     }
 
     public Saint getSaintMaiorVida() {
-
         if(this.exercitoDeAthena.isEmpty()) {
             return null;
         }
@@ -92,6 +91,9 @@ public class ListaSaints {
     }
 
     public Saint getSaintMenorVida() {
+        if(this.exercitoDeAthena.isEmpty()) {
+            return null;
+        }
         Saint saintMenorVida = new Saint();
         for(Saint s : this.exercitoDeAthena) {
             if(s.getVida() < menor){
@@ -122,19 +124,21 @@ public class ListaSaints {
     }
 
     public void ordenarLista(TipoOrdenacao tipo) {
-        if(tipo == TipoOrdenacao.DESCENDENTE) {
+        if(tipo == TipoOrdenacao.ASCENDENTE) {
             this.ordenarLista();
         } else {
             boolean posicoesSendoTrocadas;
             do{
                 posicoesSendoTrocadas = false;
+                Saint auxiliar = new Saint();
                 for(int p = 0; p < this.exercitoDeAthena.size() -1 ; p ++){
                     Saint posicaoA = this.exercitoDeAthena.get(p);
                     Saint posicaoP = this.exercitoDeAthena.get(p+1);
 
                     if(posicaoA.getVida() < posicaoP.getVida()){
+                        auxiliar = this.exercitoDeAthena.get(p);
                         this.exercitoDeAthena.set(p, this.exercitoDeAthena.get(p+1));
-                        this.exercitoDeAthena.set(p+1, this.exercitoDeAthena.get(p));
+                        this.exercitoDeAthena.set(p+1, auxiliar);
                         posicoesSendoTrocadas = true;
                     }          
 
@@ -143,5 +147,4 @@ public class ListaSaints {
 
         }
     }
-
 }
