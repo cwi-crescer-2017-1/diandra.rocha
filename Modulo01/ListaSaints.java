@@ -147,4 +147,13 @@ public class ListaSaints {
 
         }
     }
+    
+    public String getCSV() {
+        String CSV = new String();
+        for(Saint s : this.exercitoDeAthena) {
+            CSV += s.getNome() + "," + s.getVida() + "," + s.getNomeConstelacaoArmadura() + "," + s.getCategoriaArmadura()
+            + "," + s.getStatus() + "," + s.getGenero() + "," + s.getArmaduraVestida() + "\n";
+        }
+        return CSV;
+    }
 }
