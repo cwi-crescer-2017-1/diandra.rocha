@@ -43,6 +43,10 @@ public class Saint {
     public int getNivelArmadura() {
         return this.getArmadura().getCategoria().getValor();
     }
+    
+    public String getNomeConstelacaoArmadura() {
+        return this.getArmadura().getConstelacao().getNomeConstelacao();
+    }
 
     public Genero getGenero() {
         return this.genero;
