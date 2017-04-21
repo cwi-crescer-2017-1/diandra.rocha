@@ -9,10 +9,6 @@ public class Constelacao {
         this.nome = nome;
     }
 
-    public Constelacao (ArrayList <Golpe> golpes) {
-        this.golpes = golpes;
-    }
-
     public Constelacao(String nome, ArrayList <Golpe> golpes) {
         this.nome = nome;
         this.golpes = golpes;
@@ -21,7 +17,7 @@ public class Constelacao {
     public String getNomeConstelacao(){
         return this.nome;
     }
-    
+
     public ArrayList <Golpe> getGolpes() {
         return this.golpes;
     }
