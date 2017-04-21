@@ -10,10 +10,6 @@ public class ListaSaints {
     public ListaSaints() {
     }
 
-    public ListaSaints (ArrayList<Saint> exercitoDeAthena){
-        this.exercitoDeAthena = exercitoDeAthena;
-    }
-
     public ArrayList<Saint> getExercitoDeAthena() {
         return this.exercitoDeAthena;
     }
@@ -50,27 +46,12 @@ public class ListaSaints {
     }
 
     public ArrayList<Saint> buscarPorCategoria(Categoria categoria) {
-        /* ArrayList <Saint> sublistaCategoria = new ArrayList<>();
-        for(Saint s : this.exercitoDeAthena) {
-        if(s.getCategoriaArmadura() == categoria) {
-        sublistaCategoria.add(s);
-        }
-        }
-        return sublistaCategoria;*/
-
         return (ArrayList<Saint>) this.exercitoDeAthena.stream()
         .filter (s -> s.getCategoriaArmadura().equals(categoria))
         .collect(Collectors.toList());
     }
 
     public ArrayList<Saint> buscarPorStatus(Status status) {
-        /* ArrayList <Saint> sublistaStatus = new ArrayList<>();
-        for(Saint s : this.exercitoDeAthena) {
-        if(s.getStatus() == status) {
-        sublistaStatus.add(s);
-        }
-        }
-        return sublistaStatus;*/
         return (ArrayList<Saint>) this.exercitoDeAthena.stream()
         .filter (s ->  s.getStatus().equals(status))
         .collect(Collectors.toList());
@@ -104,56 +85,42 @@ public class ListaSaints {
         return saintMenorVida;
     }
 
-    public void ordenarLista(){
+    public void ordenarLista(TipoOrdenacao tipo) {
+        boolean ascendente = TipoOrdenacao.ASCENDENTE == tipo;
         boolean posicoesSendoTrocadas;
-
         do{
             posicoesSendoTrocadas = false;
+            Saint auxiliar = new Saint();
             for(int p = 0; p < this.exercitoDeAthena.size() -1 ; p ++){
                 Saint posicaoA = this.exercitoDeAthena.get(p);
                 Saint posicaoP = this.exercitoDeAthena.get(p+1);
+                boolean tipoTroca = ascendente ? posicaoA.getVida() > posicaoP.getVida(): posicaoA.getVida() < posicaoP.getVida();
 
-                if(posicaoA.getVida() > posicaoP.getVida()){
+                if(tipoTroca){
+                    auxiliar = this.exercitoDeAthena.get(p);
                     this.exercitoDeAthena.set(p, this.exercitoDeAthena.get(p+1));
-                    this.exercitoDeAthena.set(p+1, this.exercitoDeAthena.get(p));
+                    this.exercitoDeAthena.set(p+1, auxiliar);
                     posicoesSendoTrocadas = true;
                 }          
-
             }
         }while(posicoesSendoTrocadas);
+
     }
 
-    public void ordenarLista(TipoOrdenacao tipo) {
-        
-        if(tipo == TipoOrdenacao.ASCENDENTE) {
-            this.ordenarLista();
-        } else {
-            boolean posicoesSendoTrocadas;
-            do{
-                posicoesSendoTrocadas = false;
-                Saint auxiliar = new Saint();
-                for(int p = 0; p < this.exercitoDeAthena.size() -1 ; p ++){
-                    Saint posicaoA = this.exercitoDeAthena.get(p);
-                    Saint posicaoP = this.exercitoDeAthena.get(p+1);
-
-                    if(posicaoA.getVida() < posicaoP.getVida()){
-                        auxiliar = this.exercitoDeAthena.get(p);
-                        this.exercitoDeAthena.set(p, this.exercitoDeAthena.get(p+1));
-                        this.exercitoDeAthena.set(p+1, auxiliar);
-                        posicoesSendoTrocadas = true;
-                    }          
-
-                }
-            }while(posicoesSendoTrocadas);
-
-        }
+    public void ordenarLista() {
+        this.ordenarLista(TipoOrdenacao.ASCENDENTE);
     }
-    
+
     public String getCSV() {
-        String CSV = new String();
-        for(Saint s : this.exercitoDeAthena) {
-            CSV += s.getCSV() + "\n";
+        if(this.exercitoDeAthena.isEmpty()) {
+            return "";
         }
-        return CSV;
+        StringBuilder CSV = new StringBuilder(512);
+
+        for(Saint s: this.exercitoDeAthena) {
+            CSV.append(s.getCSV());
+            CSV.append("\n");
+        }
+        return CSV.toString();
     }
 }
