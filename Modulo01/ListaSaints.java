@@ -61,7 +61,7 @@ public class ListaSaints {
         if(this.exercitoDeAthena.isEmpty()) {
             return null;
         }
-        Saint saintMaiorVida = new Saint();
+        Saint saintMaiorVida = null;
         for(Saint s : this.exercitoDeAthena) {
             if(s.getVida() > maior){
                 maior = s.getVida();
@@ -75,7 +75,7 @@ public class ListaSaints {
         if(this.exercitoDeAthena.isEmpty()) {
             return null;
         }
-        Saint saintMenorVida = new Saint();
+        Saint saintMenorVida = null;
         for(Saint s : this.exercitoDeAthena) {
             if(s.getVida() < menor){
                 menor = s.getVida();
@@ -90,7 +90,7 @@ public class ListaSaints {
         boolean posicoesSendoTrocadas;
         do{
             posicoesSendoTrocadas = false;
-            Saint auxiliar = new Saint();
+            Saint auxiliar = null;
             for(int p = 0; p < this.exercitoDeAthena.size() -1 ; p ++){
                 Saint posicaoA = this.exercitoDeAthena.get(p);
                 Saint posicaoP = this.exercitoDeAthena.get(p+1);
@@ -122,5 +122,20 @@ public class ListaSaints {
             CSV.append("\n");
         }
         return CSV.toString();
+    }
+
+    public ArrayList<Saint> unir(ArrayList<Saint> paraUnir) {
+        ArrayList <Saint> listaFinal = new ArrayList<>();
+
+        for(Saint s: this.exercitoDeAthena) {
+            listaFinal.add(s);
+        }
+        int index = this.exercitoDeAthena.size();
+        int ii = 0;
+        for(int i = index; i < index + paraUnir.size(); i++) {
+            listaFinal.add(i, paraUnir.get(ii));
+            ii++;
+        }
+        return listaFinal;
     }
 }
