@@ -10,16 +10,18 @@ public abstract class Saint {
     private Status status = Status.VIVO;
     private double vida = 100.0;
     protected int qtdSentidosDespertados;
-    private int acumuladorProximoGolpe = 0;
-    
+    private int acumuladorProximo = 0;
+    private ArrayList <Movimento> movimentos;
+
     public Saint() {
-        
+
     }
 
     public Saint(String nome, Armadura armadura) throws Exception {
         this.nome = nome;
         this.armadura = armadura;
     }
+
     public String getNome() {
         return this.nome;
     }
@@ -43,7 +45,7 @@ public abstract class Saint {
     public int getNivelArmadura() {
         return this.getArmadura().getCategoria().getValor();
     }
-    
+
     public String getNomeConstelacaoArmadura() {
         return this.getArmadura().getConstelacao().getNomeConstelacao();
     }
@@ -68,6 +70,10 @@ public abstract class Saint {
         return this.qtdSentidosDespertados;
     }
 
+    public ArrayList <Movimento> getMovimentos () {
+        return this.movimentos;
+    }
+
     public void perderVida(double perda) throws Exception {
         if(perda < 0) {
             throw new InvalidParameterException();
@@ -81,10 +87,10 @@ public abstract class Saint {
         }
     }
 
-    private Constelacao getConstelacao() {
+    public Constelacao getConstelacao() {
         return this.armadura.getConstelacao();
     }
-    
+
     public ArrayList <Golpe> getGolpes() {
         return this.getConstelacao().getGolpes();
     }
@@ -94,13 +100,23 @@ public abstract class Saint {
         constelacaoSaint.adicionarGolpe(golpe);
     }
 
-     public Golpe getProximoGolpe() {
+    public Golpe getProximoGolpe() {
         ArrayList <Golpe> golpes = this.getGolpes();
-        int posicao = this.acumuladorProximoGolpe % golpes.size();
-        this.acumuladorProximoGolpe++;
+        int posicao = this.acumuladorProximo % golpes.size();
+        this.acumuladorProximo++;
         return golpes.get(posicao);
     }
-    
+
+    public void adicionarMovimento(Movimento move) { 
+        movimentos.add(move);
+    }
+
+    public Movimento getProximoMovimento() {
+        int posicao = this.acumuladorProximo % this.movimentos.size();
+        this.acumuladorProximo++;
+        return this.movimentos.get(posicao);
+    }
+
     public String getCSV() {
         return this.getNome() + "," + this.getVida() + "," + this.getNomeConstelacaoArmadura() + "," + this.getCategoriaArmadura()
         + "," + this.getStatus() + "," + this.getGenero() + "," + this.getArmaduraVestida();
