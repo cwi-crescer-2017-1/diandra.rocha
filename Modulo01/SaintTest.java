@@ -6,7 +6,7 @@ import java.security.InvalidParameterException;
 public class SaintTest {
 
     //vestirArmadura
-    
+
     @Test
     public void vestirArmaduraDeixaArmaduraVestida() throws Exception {
         GoldSaint milo = new GoldSaint ("Milo", "Escorpião");
@@ -31,7 +31,7 @@ public class SaintTest {
 
         assertEquals(Genero.NAO_INFORMADO, shaka.getGenero());
     }
-    
+
     @Test
     public void deveSerPossivelAlterarOGenero() throws Exception {
         BronzeSaint jabu = new BronzeSaint("Jabu", "Unicórnio");
@@ -72,7 +72,7 @@ public class SaintTest {
     }
 
     //perderVida
-    
+
     @Test
     public void aoPerderVidaSubtraiDezDeVida() throws Exception {
         GoldSaint saintTest = new GoldSaint("Aphrodite", "Peixes");
@@ -110,7 +110,7 @@ public class SaintTest {
     }
 
     //sentidosDespertados
-    
+
     @Test
     public void criarSaintNasceCom5SentidosDespertados() throws Exception {
         BronzeSaint seiya = new BronzeSaint("Seiya", "Pégasu");
@@ -140,7 +140,7 @@ public class SaintTest {
     }
 
     //aprenderGolpe
-    
+
     @Test
     public void aprenderUmGolpe() throws Exception {
         GoldSaint saga = new GoldSaint("Saga", "Gêmeos");
@@ -169,7 +169,7 @@ public class SaintTest {
     }
 
     //getProximoGolpe
-    
+
     @Test
     public void getProximoGolpeComUm() throws Exception {
         GoldSaint saga = new GoldSaint("Saga", "Gêmeos");
@@ -208,7 +208,7 @@ public class SaintTest {
     }
 
     //getCSVSaint
-    
+
     @Test
     public void retornaOCSVDeSaint() throws Exception {
         BronzeSaint june = new BronzeSaint("June", "Camaleão");
@@ -251,5 +251,15 @@ public class SaintTest {
         String esperado = "null,0.0,,BRONZE,MORTO,FEMININO,false";
 
         assertEquals(esperado, june.getCSV());
+    }
+
+    @Test
+    public void vestirArmaduraUtilizandoClasse() throws Exception {
+        BronzeSaint june = new BronzeSaint("June", "Camaleão");
+        Movimento vestir = new VestirArmadura(june);
+
+        vestir.executar();
+
+        assertEquals(true, june.getArmaduraVestida());
     }
 }
