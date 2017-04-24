@@ -9,14 +9,20 @@ public class Golpear implements Movimento{
     }
 
     public void executar() throws Exception {
+        double dano = this.golpeador.getProximoGolpe().getFatorDano();
 
-        if(golpeador.getArmaduraVestida() == true){
-            int nivelGolpeador = this.golpeador.getNivelArmadura() +1;
-            double dano = this.golpeador.getProximoGolpe().getFatorDano() * nivelGolpeador;
+        if(golpeador.getArmaduraVestida()){
+            dano *= this.golpeador.getNivelArmadura() +1;
             this.golpeado.perderVida(dano);
         }else{
-            double dano = this.golpeador.getProximoGolpe().getFatorDano();
             this.golpeado.perderVida(dano);
         }
+    }
+    
+    public boolean equals(Object object) {
+        Golpear outroGolpear = (Golpear)object;        
+
+        return 
+        this.golpeador.equals(outroGolpear.golpeador) && this.golpeado.equals(outroGolpear.golpeado);
     }
 }

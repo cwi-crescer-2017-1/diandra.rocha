@@ -253,13 +253,6 @@ public class SaintTest {
         assertEquals(esperado, june.getCSV());
     }
 
-    @Test
-    public void vestirArmaduraUtilizandoClasse() throws Exception {
-        BronzeSaint june = new BronzeSaint("June", "Camaleão");
-        Movimento vestir = new VestirArmadura(june);
 
-        vestir.executar();
 
-        assertEquals(true, june.getArmaduraVestida());
-    }
 }

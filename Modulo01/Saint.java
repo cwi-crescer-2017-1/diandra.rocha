@@ -10,16 +10,18 @@ public abstract class Saint {
     private Status status = Status.VIVO;
     private double vida = 100.0;
     protected int qtdSentidosDespertados;
-    private int acumuladorProximo = 0;
+    private int acumuladorProximoGolpe = 0,acumuladorProximoMovimento = 0;
     private ArrayList <Movimento> movimentos;
+    private static int qtdSaints = 0;
 
-    public Saint() {
-
-    }
-
-    public Saint(String nome, Armadura armadura) throws Exception {
+    protected Saint(String nome, Armadura armadura) throws Exception {
         this.nome = nome;
         this.armadura = armadura;
+        Saint.qtdSaints++;
+    }
+
+    public static int getQtdSaints () {
+        return Saint.qtdSaints;
     }
 
     public String getNome() {
@@ -102,8 +104,8 @@ public abstract class Saint {
 
     public Golpe getProximoGolpe() {
         ArrayList <Golpe> golpes = this.getGolpes();
-        int posicao = this.acumuladorProximo % golpes.size();
-        this.acumuladorProximo++;
+        int posicao = this.acumuladorProximoGolpe % golpes.size();
+        this.acumuladorProximoGolpe++;
         return golpes.get(posicao);
     }
 
@@ -112,8 +114,8 @@ public abstract class Saint {
     }
 
     public Movimento getProximoMovimento() {
-        int posicao = this.acumuladorProximo % this.movimentos.size();
-        this.acumuladorProximo++;
+        int posicao = this.acumuladorProximoMovimento % this.movimentos.size();
+        this.acumuladorProximoMovimento++;
         return this.movimentos.get(posicao);
     }
 
