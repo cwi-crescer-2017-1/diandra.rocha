@@ -10,10 +10,10 @@ public class GolpearTest {
         Movimento armaduraVestida = new VestirArmadura(algol);
         armaduraVestida.executar();
 
-        Golpear test = new Golpear (algol, babel);
-        algol.aprenderGolpe(new Golpe("Teste", 40));
+        Golpear golpe = new Golpear (algol, babel);
+        algol.aprenderGolpe(new Golpe("Teste", 1100));
 
-        test.executar();
+        golpe.executar();
 
         assertEquals(0, babel.getVida(), 0.1);
     }
@@ -23,10 +23,10 @@ public class GolpearTest {
         SilverSaint algol = new SilverSaint("Algol", "Perseu");
         SilverSaint babel = new SilverSaint("Babel", "Centauro");
 
-        Golpear test = new Golpear (algol, babel);
-        algol.aprenderGolpe(new Golpe("Teste", 100));
+        Golpear golpe = new Golpear (algol, babel);
+        algol.aprenderGolpe(new Golpe("Teste", 1100));
 
-        test.executar();
+        golpe.executar();
 
         assertEquals(0, babel.getVida(), 0.1);
     }
@@ -38,10 +38,10 @@ public class GolpearTest {
         Movimento armaduraVestida = new VestirArmadura(algol);
         armaduraVestida.executar();
 
-        Golpear test = new Golpear (algol, babel);
+        Golpear golpe = new Golpear (algol, babel);
         algol.aprenderGolpe(new Golpe("Teste", 10));
 
-        test.executar();
+        golpe.executar();
 
         assertEquals(70, babel.getVida(), 0.1);
     }
@@ -51,10 +51,10 @@ public class GolpearTest {
         SilverSaint algol = new SilverSaint("Algol", "Perseu");
         SilverSaint babel = new SilverSaint("Babel", "Centauro");
 
-        Golpear test = new Golpear (algol, babel);
+        Golpear golpe = new Golpear (algol, babel);
         algol.aprenderGolpe(new Golpe("Teste", 10));
 
-        test.executar();
+        golpe.executar();
 
         assertEquals(90, babel.getVida(), 0.1);
     }
@@ -66,10 +66,10 @@ public class GolpearTest {
         Movimento armaduraVestida = new VestirArmadura(june);
         armaduraVestida.executar();
 
-        Golpear test = new Golpear (june, shun);
+        Golpear golpe = new Golpear (june, shun);
         june.aprenderGolpe(new Golpe("Teste", 40));
 
-        test.executar();
+        golpe.executar();
 
         assertEquals(20, shun.getVida(), 0.1);
 
@@ -80,10 +80,10 @@ public class GolpearTest {
         BronzeSaint june = new BronzeSaint("June", "Camaleão");
         BronzeSaint shun = new BronzeSaint("Shun", "Andrômeda");
 
-        Golpear test = new Golpear (june, shun);
+        Golpear golpe = new Golpear (june, shun);
         june.aprenderGolpe(new Golpe("Teste", 40));
 
-        test.executar();
+        golpe.executar();
 
         assertEquals(60, shun.getVida(), 0.1);
     }
@@ -92,14 +92,13 @@ public class GolpearTest {
     public void golpearOuroComArmadura() throws Exception {
         GoldSaint saga = new GoldSaint("Saga", "Gêmeos");
         GoldSaint aphrodite = new GoldSaint("Aphrodite", "Peixes");
-
         Movimento armaduraVestida = new VestirArmadura(saga);
         armaduraVestida.executar();
 
-        Golpear test = new Golpear (saga, aphrodite);
+        Golpear golpe = new Golpear (saga, aphrodite);
         saga.aprenderGolpe(new Golpe("Teste", 10));
 
-        test.executar();
+        golpe.executar();
 
         assertEquals(60, aphrodite.getVida(), 0.1);
 
@@ -110,12 +109,21 @@ public class GolpearTest {
         GoldSaint saga = new GoldSaint("Saga", "Gêmeos");
         GoldSaint aphrodite = new GoldSaint("Aphrodite", "Peixes");
 
-        Golpear test = new Golpear (saga, aphrodite);
+        Golpear golpe = new Golpear (saga, aphrodite);
         saga.aprenderGolpe(new Golpe("Teste", 80));
 
-        test.executar();
+        golpe.executar();
 
         assertEquals(20, aphrodite.getVida(), 0.1);
     }
 
+    @Test(expected=ArithmeticException.class)
+    public void naoGolpear() throws Exception {
+        Saint seiya = new BronzeSaint("Seiya", "Pégaso");
+        Saint aldebaran = new GoldSaint("Aldebaran", "Touro");
+
+        Movimento golpear = new Golpear(aldebaran, seiya);
+
+        golpear.executar();
+    }
 }
