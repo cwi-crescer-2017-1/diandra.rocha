@@ -1,4 +1,4 @@
-public class Golpear implements Movimento{
+public class Golpear implements Movimento {
 
     private Saint golpeador;
     private Saint golpeado;
@@ -9,16 +9,15 @@ public class Golpear implements Movimento{
     }
 
     public void executar() throws Exception {
-        double dano = this.golpeador.getProximoGolpe().getFatorDano();
+        int dano = this.golpeador.getProximoGolpe().getFatorDano();
 
-        if(golpeador.getArmaduraVestida()){
+        if(golpeador.getArmaduraVestida()) {
             dano *= this.golpeador.getNivelArmadura() +1;
-            this.golpeado.perderVida(dano);
-        }else{
-            this.golpeado.perderVida(dano);
         }
+
+        this.golpeado.perderVida(dano);
     }
-    
+
     public boolean equals(Object object) {
         Golpear outroGolpear = (Golpear)object;        
 
