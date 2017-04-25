@@ -10,7 +10,7 @@ public class ListaSaints {
     public ListaSaints() {
     }
 
-    public ArrayList<Saint> getExercitoDeAthena() {
+    public ArrayList<Saint> getTodos() {
         return this.exercitoDeAthena;
     }
 
@@ -20,12 +20,6 @@ public class ListaSaints {
 
     public Saint getSaint(int indice) {
         return this.exercitoDeAthena.get(indice);
-    }
-
-    public void todos() {
-        for(Saint s : this.exercitoDeAthena) {
-            System.out.println(s.getNome());
-        }
     }
 
     public void remover(Saint saint) {
@@ -88,6 +82,7 @@ public class ListaSaints {
     public void ordenarLista(TipoOrdenacao tipo) {
         boolean ascendente = TipoOrdenacao.ASCENDENTE == tipo;
         boolean posicoesSendoTrocadas;
+        
         do{
             posicoesSendoTrocadas = false;
             Saint auxiliar = null;
@@ -104,7 +99,6 @@ public class ListaSaints {
                 }          
             }
         }while(posicoesSendoTrocadas);
-
     }
 
     public void ordenarLista() {
@@ -124,17 +118,58 @@ public class ListaSaints {
         return CSV.toString();
     }
 
-    public ArrayList<Saint> unir(ArrayList<Saint> paraUnir) {
-        ArrayList <Saint> listaFinal = new ArrayList<>();
+    public ListaSaints unir(ListaSaints paraUnir) {
+        ListaSaints listaFinal = new ListaSaints();
+        ArrayList <Saint> arrayParaUnir = paraUnir.getTodos();
 
         for(Saint s: this.exercitoDeAthena) {
-            listaFinal.add(s);
+            listaFinal.adicionarSaint(s);
         }
         int index = this.exercitoDeAthena.size();
         int ii = 0;
-        for(int i = index; i < index + paraUnir.size(); i++) {
-            listaFinal.add(i, paraUnir.get(ii));
+        for(int i = index; i < index + arrayParaUnir.size(); i++) {
+            listaFinal.adicionarSaint(arrayParaUnir.get(ii));
             ii++;
+        }
+        return listaFinal;
+    }
+
+    public ListaSaints diff (ListaSaints paraDiff) {
+        ListaSaints listaFinal = new ListaSaints(); 
+        ArrayList<Saint> arrayParaDiff = paraDiff.getTodos();
+        boolean possuiNaLista = false;
+
+        for(Saint saint1 : this.exercitoDeAthena) {
+            for(Saint saint2 : arrayParaDiff) {
+                if(saint1.equals(saint2)) {
+                    possuiNaLista = true;
+                    break;
+                }
+            }
+            if(!possuiNaLista) { 
+                listaFinal.adicionarSaint(saint1);
+            }
+            possuiNaLista = false;
+        }
+        return listaFinal;
+    }
+
+    public ListaSaints intersec (ListaSaints paraIntersec) {
+        ListaSaints listaFinal = new ListaSaints(); 
+        ArrayList<Saint> arrayParaIntersec = paraIntersec.getTodos();
+        boolean possuiNaLista = false;
+
+        for(Saint saint1 : this.exercitoDeAthena) { 
+            for(Saint saint2 : arrayParaIntersec) { 
+                if(saint1.equals(saint2)) {
+                    possuiNaLista = true;
+                    break;
+                }
+            }
+            if(possuiNaLista) { 
+                listaFinal.adicionarSaint(saint1);
+            }
+            possuiNaLista = false;
         }
         return listaFinal;
     }
