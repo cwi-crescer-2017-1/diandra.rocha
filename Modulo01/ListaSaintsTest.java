@@ -51,7 +51,7 @@ public class ListaSaintsTest {
         ListaSaints lista = new ListaSaints();
 
         ArrayList <Saint> busca = lista.buscarPorCategoria(Categoria.BRONZE);
-        ArrayList <Saint> list = lista.getExercitoDeAthena();
+        ArrayList <Saint> list = lista.getTodos();
 
         assertEquals(busca, list);
     }
@@ -232,7 +232,7 @@ public class ListaSaintsTest {
         june.perderVida(45);
 
         listaSaints.ordenarLista();
-        ArrayList<Saint> resultado = listaSaints.getExercitoDeAthena();
+        ArrayList<Saint> resultado = listaSaints.getTodos();
 
         assertEquals(misty, resultado.get(0));
         assertEquals(june, resultado.get(1));
@@ -255,7 +255,7 @@ public class ListaSaintsTest {
         june.perderVida(15);
 
         listaSaints.ordenarLista(TipoOrdenacao.ASCENDENTE);
-        ArrayList<Saint> resultado = listaSaints.getExercitoDeAthena();
+        ArrayList<Saint> resultado = listaSaints.getTodos();
         ArrayList<Saint> ordenado = new ArrayList<>();
         ordenado.add(shun);
         ordenado.add(misty);
@@ -269,7 +269,7 @@ public class ListaSaintsTest {
         ListaSaints lista = new ListaSaints();
         lista.ordenarLista();
 
-        ArrayList<Saint> resultado = lista.getExercitoDeAthena();
+        ArrayList<Saint> resultado = lista.getTodos();
 
         assertEquals(new ArrayList<Saint>(), resultado);
     }
@@ -283,7 +283,7 @@ public class ListaSaintsTest {
         shun.perderVida(30);
         listaSaints.ordenarLista();
 
-        ArrayList<Saint> resultado = listaSaints.getExercitoDeAthena();
+        ArrayList<Saint> resultado = listaSaints.getTodos();
         assertEquals(shun, resultado.get(0));
         assertEquals(1, resultado.size());
     }
@@ -300,7 +300,7 @@ public class ListaSaintsTest {
         listaSaints.adicionarSaint(june);
         listaSaints.ordenarLista();
 
-        ArrayList<Saint> resultado = listaSaints.getExercitoDeAthena();
+        ArrayList<Saint> resultado = listaSaints.getTodos();
 
         assertEquals(shun, resultado.get(0));
         assertEquals(misty, resultado.get(1));
@@ -325,7 +325,7 @@ public class ListaSaintsTest {
         june.perderVida(45);
 
         listaSaints.ordenarLista(TipoOrdenacao.DESCENDENTE);
-        ArrayList<Saint> resultado = listaSaints.getExercitoDeAthena();
+        ArrayList<Saint> resultado = listaSaints.getTodos();
 
         assertEquals(misty, resultado.get(2));
         assertEquals(june, resultado.get(1));
@@ -348,7 +348,7 @@ public class ListaSaintsTest {
         june.perderVida(15);
 
         listaSaints.ordenarLista(TipoOrdenacao.DESCENDENTE);
-        ArrayList<Saint> resultado = listaSaints.getExercitoDeAthena();
+        ArrayList<Saint> resultado = listaSaints.getTodos();
         ArrayList<Saint> ordenado = new ArrayList<>();
         ordenado.add(june);
         ordenado.add(misty);
@@ -362,7 +362,7 @@ public class ListaSaintsTest {
         ListaSaints lista = new ListaSaints();
         lista.ordenarLista();
 
-        ArrayList<Saint> resultado = lista.getExercitoDeAthena();
+        ArrayList<Saint> resultado = lista.getTodos();
 
         assertEquals(new ArrayList<Saint>(), resultado);
     }
@@ -376,7 +376,7 @@ public class ListaSaintsTest {
         shun.perderVida(30);
         listaSaints.ordenarLista();
 
-        ArrayList<Saint> resultado = listaSaints.getExercitoDeAthena();
+        ArrayList<Saint> resultado = listaSaints.getTodos();
         assertEquals(shun, resultado.get(0));
         assertEquals(1, resultado.size());
     }
@@ -393,7 +393,7 @@ public class ListaSaintsTest {
         listaSaints.adicionarSaint(june);
         listaSaints.ordenarLista();
 
-        ArrayList<Saint> resultado = listaSaints.getExercitoDeAthena();
+        ArrayList<Saint> resultado = listaSaints.getTodos();
 
         assertEquals(shun, resultado.get(0));
         assertEquals(misty, resultado.get(1));
@@ -455,15 +455,15 @@ public class ListaSaintsTest {
         lista.adicionarSaint(june);
         lista.adicionarSaint(misty);
 
-        ArrayList <Saint> listaUnir = new ArrayList <>();
-        listaUnir.add(shun);
+        ListaSaints listaUnir = new ListaSaints();
+        listaUnir.adicionarSaint(shun);
 
-        ArrayList listaFinal = lista.unir(listaUnir);
+        ListaSaints resultado = lista.unir(listaUnir);
 
-        assertEquals(june, listaFinal.get(0));
-        assertEquals(misty, listaFinal.get(1));
-        assertEquals(shun, listaFinal.get(2));
-        assertEquals(3, listaFinal.size());
+        assertEquals(june, resultado.getSaint(0));
+        assertEquals(misty, resultado.getSaint(1));
+        assertEquals(shun, resultado.getSaint(2));
+        assertEquals(3, resultado.getTodos().size());
     }
 
     @Test
@@ -475,16 +475,16 @@ public class ListaSaintsTest {
         ListaSaints lista = new ListaSaints();
         lista.adicionarSaint(june);
 
-        ArrayList <Saint> listaUnir = new ArrayList <>();
-        listaUnir.add(shun);
-        listaUnir.add(misty);
+        ListaSaints listaUnir = new ListaSaints();
+        listaUnir.adicionarSaint(shun);
+        listaUnir.adicionarSaint(misty);
 
-        ArrayList listaFinal = lista.unir(listaUnir);
+        ListaSaints resultado = lista.unir(listaUnir);
 
-        assertEquals(june, listaFinal.get(0));
-        assertEquals(shun, listaFinal.get(1));
-        assertEquals(misty, listaFinal.get(2));
-        assertEquals(3, listaFinal.size());
+        assertEquals(june, resultado.getSaint(0));
+        assertEquals(shun, resultado.getSaint(1));
+        assertEquals(misty, resultado.getSaint(2));
+        assertEquals(3, resultado.getTodos().size());
     }
 
     @Test
@@ -495,15 +495,139 @@ public class ListaSaintsTest {
 
         ListaSaints lista = new ListaSaints();
 
-        ArrayList <Saint> listaUnir = new ArrayList <>();
-        listaUnir.add(shun);
-        listaUnir.add(misty);
+        ListaSaints listaUnir = new ListaSaints();
+        listaUnir.adicionarSaint(shun);
+        listaUnir.adicionarSaint(misty);
 
-        ArrayList listaFinal = lista.unir(listaUnir);
+        ListaSaints resultado = lista.unir(listaUnir);
 
-        assertEquals(shun, listaFinal.get(0));
-        assertEquals(misty, listaFinal.get(1));
-        assertEquals(2, listaFinal.size());
+        assertEquals(shun, resultado.getSaint(0));
+        assertEquals(misty, resultado.getSaint(1));
+        assertEquals(2, resultado.getTodos().size());
+    }
+
+    //Diff
+    @Test
+    public void diffListasComAprimeiraListaMaiorDoQueASegunda() throws Exception {
+        BronzeSaint june = new BronzeSaint("June", "Camaleão");
+        SilverSaint misty = new SilverSaint("Misty", "Lagarto");
+        BronzeSaint shun = new BronzeSaint("Shun", "Andrômeda");
+
+        ListaSaints lista = new ListaSaints();
+        lista.adicionarSaint(misty);
+        lista.adicionarSaint(shun);
+        lista.adicionarSaint(june);
+
+        ListaSaints listaDiff = new ListaSaints();
+        listaDiff.adicionarSaint(misty);
+        listaDiff.adicionarSaint(shun);
+
+        ListaSaints resultado = lista.diff(listaDiff);
+
+        assertEquals(june, resultado.getSaint(0));
+        assertEquals(1, resultado.getTodos().size());
+    }
+
+    @Test
+    public void diffListasComAprimeiraListaMenorDoQueASegunda() throws Exception {
+        BronzeSaint june = new BronzeSaint("June", "Camaleão");
+        SilverSaint misty = new SilverSaint("Misty", "Lagarto");
+        BronzeSaint shun = new BronzeSaint("Shun", "Andrômeda");
+        SilverSaint jamian = new SilverSaint("Jamian","Corvo");
+
+        ListaSaints lista = new ListaSaints();
+        lista.adicionarSaint(jamian);
+        lista.adicionarSaint(june);
+
+        ListaSaints listaDiff = new ListaSaints();
+        listaDiff.adicionarSaint(june);
+        listaDiff.adicionarSaint(misty);
+        listaDiff.adicionarSaint(shun);
+
+        ListaSaints resultado = lista.diff(listaDiff);
+
+        assertEquals(jamian, resultado.getSaint(0));
+        assertEquals(1, resultado.getTodos().size());
+    }
+
+    @Test
+    public void diffListasComListaInicialVazia() throws Exception {
+        BronzeSaint june = new BronzeSaint("June", "Camaleão");
+        SilverSaint misty = new SilverSaint("Misty", "Lagarto");
+        BronzeSaint shun = new BronzeSaint("Shun", "Andrômeda");
+
+        ListaSaints lista = new ListaSaints();
+
+        ListaSaints listaDiff = new ListaSaints();
+        listaDiff.adicionarSaint(shun);
+        listaDiff.adicionarSaint(misty);
+
+        ListaSaints listaFinal = lista.diff(listaDiff);
+
+        assertEquals(0, listaFinal.getTodos().size());
+    }
+
+    //Intersec
+
+    @Test
+    public void interecListasComAprimeiraListaMaiorDoQueASegunda() throws Exception {
+        BronzeSaint june = new BronzeSaint("June", "Camaleão");
+        SilverSaint misty = new SilverSaint("Misty", "Lagarto");
+        BronzeSaint shun = new BronzeSaint("Shun", "Andrômeda");
+
+        ListaSaints lista = new ListaSaints();
+        lista.adicionarSaint(misty);
+        lista.adicionarSaint(shun);
+        lista.adicionarSaint(june);
+
+        ListaSaints listaIntersec = new ListaSaints();
+        listaIntersec.adicionarSaint(misty);
+        listaIntersec.adicionarSaint(shun);
+
+        ListaSaints resultado = lista.intersec(listaIntersec);
+
+        assertEquals(misty, resultado.getSaint(0));
+        assertEquals(shun, resultado.getSaint(1));
+        assertEquals(2, resultado.getTodos().size());
+    }
+
+    @Test
+    public void intersecListasComAprimeiraListaMenorDoQueASegunda() throws Exception {
+        BronzeSaint june = new BronzeSaint("June", "Camaleão");
+        SilverSaint misty = new SilverSaint("Misty", "Lagarto");
+        BronzeSaint shun = new BronzeSaint("Shun", "Andrômeda");
+        SilverSaint jamian = new SilverSaint("Jamian","Corvo");
+
+        ListaSaints lista = new ListaSaints();
+        lista.adicionarSaint(jamian);
+        lista.adicionarSaint(june);
+
+        ListaSaints listaIntersec = new ListaSaints();
+        listaIntersec.adicionarSaint(june);
+        listaIntersec.adicionarSaint(misty);
+        listaIntersec.adicionarSaint(shun);
+
+        ListaSaints resultado = lista.intersec(listaIntersec);
+
+        assertEquals(june, resultado.getSaint(0));
+        assertEquals(1, resultado.getTodos().size());
+    }
+
+    @Test
+    public void intersecListasComListaInicialVazia() throws Exception {
+        BronzeSaint june = new BronzeSaint("June", "Camaleão");
+        SilverSaint misty = new SilverSaint("Misty", "Lagarto");
+        BronzeSaint shun = new BronzeSaint("Shun", "Andrômeda");
+
+        ListaSaints lista = new ListaSaints();
+
+        ListaSaints listaIntersec = new ListaSaints();
+        listaIntersec.adicionarSaint(shun);
+        listaIntersec.adicionarSaint(misty);
+
+        ListaSaints listaFinal = lista.intersec(listaIntersec);
+
+        assertEquals(0, listaFinal.getTodos().size());
     }
 
 }
