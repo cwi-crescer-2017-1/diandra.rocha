@@ -1,4 +1,4 @@
-public class VestirArmadura implements Movimento{
+public class VestirArmadura implements Movimento {
 
     private Saint saint;
 
