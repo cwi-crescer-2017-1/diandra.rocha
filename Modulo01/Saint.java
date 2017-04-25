@@ -11,13 +11,19 @@ public abstract class Saint {
     private double vida = 100.0;
     protected int qtdSentidosDespertados;
     private int acumuladorProximoGolpe = 0,acumuladorProximoMovimento = 0;
-    private ArrayList <Movimento> movimentos;
+    private ArrayList <Movimento> movimentos = new ArrayList<> ();
     private static int qtdSaints = 0;
+    private static int id;
 
     protected Saint(String nome, Armadura armadura) throws Exception {
         this.nome = nome;
         this.armadura = armadura;
         Saint.qtdSaints++;
+        Saint.id ++;
+    }
+    
+    public static int getId() {
+        return Saint.id;
     }
 
     public static int getQtdSaints () {
@@ -110,7 +116,7 @@ public abstract class Saint {
     }
 
     public void adicionarMovimento(Movimento move) { 
-        movimentos.add(move);
+        this.movimentos.add(move);
     }
 
     public Movimento getProximoMovimento() {
@@ -118,10 +124,19 @@ public abstract class Saint {
         this.acumuladorProximoMovimento++;
         return this.movimentos.get(posicao);
     }
+    
+    public boolean equals(Object object) {
+        Saint outroSaint = (Saint)object;        
+
+        return this.nome.equals(outroSaint.nome);
+    }
 
     public String getCSV() {
         return this.getNome() + "," + this.getVida() + "," + this.getNomeConstelacaoArmadura() + "," + this.getCategoriaArmadura()
         + "," + this.getStatus() + "," + this.getGenero() + "," + this.getArmaduraVestida();
     }
-
+    
+    public void golpear(Saint golpeado) {
+        this.adicionarMovimento(new Golpear(this, golpeado));
+    }
 }
