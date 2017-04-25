@@ -12,18 +12,28 @@ public abstract class Saint {
     protected int qtdSentidosDespertados;
     private int acumuladorProximoGolpe = 0,acumuladorProximoMovimento = 0;
     private ArrayList <Movimento> movimentos = new ArrayList<> ();
+    private int id;
+
     private static int qtdSaints = 0;
-    private static int id;
+    private static int acumuladorId = 0;
 
     protected Saint(String nome, Armadura armadura) throws Exception {
         this.nome = nome;
         this.armadura = armadura;
         Saint.qtdSaints++;
-        Saint.id ++;
+        this.id = ++Saint.acumuladorId;
     }
-    
-    public static int getId() {
-        return Saint.id;
+
+    protected void finalize() throws Throwable {
+        Saint.qtdSaints --;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public static int getAcumuladorId() {
+        return Saint.acumuladorId;
     }
 
     public static int getQtdSaints () {
@@ -124,7 +134,7 @@ public abstract class Saint {
         this.acumuladorProximoMovimento++;
         return this.movimentos.get(posicao);
     }
-    
+
     public boolean equals(Object object) {
         Saint outroSaint = (Saint)object;        
 
@@ -135,7 +145,7 @@ public abstract class Saint {
         return this.getNome() + "," + this.getVida() + "," + this.getNomeConstelacaoArmadura() + "," + this.getCategoriaArmadura()
         + "," + this.getStatus() + "," + this.getGenero() + "," + this.getArmaduraVestida();
     }
-    
+
     public void golpear(Saint golpeado) {
         this.adicionarMovimento(new Golpear(this, golpeado));
     }

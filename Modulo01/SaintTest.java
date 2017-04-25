@@ -1,12 +1,17 @@
 import java.util.ArrayList;
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.junit.After;
 import java.security.InvalidParameterException; 
 
 public class SaintTest {
 
+    @After
+    public void tearDown() {
+        System.gc();
+    }
     //vestirArmadura
-	
+
     @Test
     public void vestirArmaduraDeixaArmaduraVestida() throws Exception {
         GoldSaint milo = new GoldSaint ("Milo", "Escorpião");
@@ -290,9 +295,54 @@ public class SaintTest {
 
     //Static qtdSaints
 
-	@Test
-	public void verificandoDadosDoStaticGetSaint() {
-	assertEquals(true, Saint.getQtdSaints() >0);
-	assertNotNull (Saint.getQtdSaints());
-	}
+    @Test
+    public void verificandoDadosDoStaticGetSaintAposGC() {
+        assertEquals(true, Saint.getQtdSaints() == 0);
+    }
+
+    @Test
+    public void verificandoGetQtdSaintsCom200Saints() throws Exception  {
+        int saints = Saint.getQtdSaints();
+        final int saintsCriados = 200;
+
+        for(int i = 0; i<saintsCriados; i++ ) {
+            Saint saga = new GoldSaint("Saga", "Gêmeos");
+        }
+
+        assertEquals(200, Saint.getQtdSaints());
+    }
+
+    //Static Id
+
+    @Test
+    public void criarUmSaintIncrementaIdTodosMaisUm() throws Exception {
+        int idAnterior = Saint.getAcumuladorId();
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
+
+        assertEquals(idAnterior + 1, hyoga.getId());
+    }
+
+    @Test
+    public void criarDoisSaintIncrementaIdTodosMaisDois() throws Exception {
+        int idAnterior = Saint.getAcumuladorId();
+
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
+        BronzeSaint june = new BronzeSaint("June", "Camaleão"); 
+
+        assertEquals(idAnterior + 1, hyoga.getId());
+        assertEquals(idAnterior + 2, june.getId());
+    }
+
+    @Test
+    public void criarSaintIncrementaCorretamenteAposGC() throws Exception {
+        int idAnterior = Saint.getAcumuladorId();
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
+        BronzeSaint june = new BronzeSaint("June", "Camaleão");
+
+        hyoga = null;
+        System.gc();
+
+        GoldSaint saga = new GoldSaint("Saga", "Gêmeos");
+        assertEquals(idAnterior + 2, june.getId());
+    }
 }
