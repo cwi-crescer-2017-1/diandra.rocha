@@ -1,9 +1,9 @@
-public class Golpe{
+public class Golpe {
 
     private String nome;
-    private double fatorDano;
+    private int fatorDano;
 
-    public Golpe(String nome, double fatorDano) {
+    public Golpe(String nome, int fatorDano) {
         this.nome = nome;
         this.fatorDano = fatorDano;
     }
@@ -12,15 +12,13 @@ public class Golpe{
         return this.nome;
     }
 
-    public double getFatorDano() {
+    public int getFatorDano() {
         return this.fatorDano;
     }
 
     public boolean equals(Object object) {
         Golpe outroGolpe = (Golpe)object;        
 
-        return 
-        this.nome.equals(outroGolpe.nome)
-        && this.fatorDano == outroGolpe.fatorDano;
+        return this.nome.equals(outroGolpe.nome) && this.fatorDano == outroGolpe.fatorDano;
     }
 }
