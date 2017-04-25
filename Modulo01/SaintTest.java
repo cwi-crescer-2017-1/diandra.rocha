@@ -253,6 +253,45 @@ public class SaintTest {
         assertEquals(esperado, june.getCSV());
     }
 
+    //ProximoMovimento
 
+    @Test(expected=ArithmeticException.class)
+    public void getProximoMovimentoComListaVazia() throws Exception {
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
+        Movimento movimento = hyoga.getProximoMovimento();
+    }
 
+    @Test
+    public void getProximoMovimentoComUmMovimento() throws Exception {
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
+        Movimento vestirArmadura = new VestirArmadura(hyoga);
+        hyoga.adicionarMovimento(vestirArmadura);
+        assertEquals(vestirArmadura, hyoga.getProximoMovimento());
+    }
+
+    @Test
+    public void getProximoMovimentoDuasVezesComUmMovimento() throws Exception {
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
+        Movimento vestirArmadura = new VestirArmadura(hyoga);
+        hyoga.adicionarMovimento(vestirArmadura);
+        hyoga.getProximoMovimento();
+        assertEquals(vestirArmadura, hyoga.getProximoMovimento());
+    }
+
+    @Test
+    public void golpearDeveAdicionarMovimentoGolpear() throws Exception {
+        Saint saga = new GoldSaint("Saga", "Gêmeos");
+        saga.aprenderGolpe(new Golpe("Outra dimensão", 10));
+        Saint seiya = new BronzeSaint("Seiya", "Pégaso");
+        saga.golpear(seiya);
+        Golpear golpear = new Golpear(saga, seiya);
+        assertEquals(golpear, saga.getProximoMovimento());
+    }
+
+    //Static qtdSaints
+    
+    @Test
+    public void qtdSaintsRetornaCorretamenteComSaintsAteOMomentoDoTeste() {
+        assertEquals(45, Saint.getQtdSaints());
+    }
 }
