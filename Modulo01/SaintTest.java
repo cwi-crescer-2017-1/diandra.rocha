@@ -6,7 +6,7 @@ import java.security.InvalidParameterException;
 public class SaintTest {
 
     //vestirArmadura
-
+	
     @Test
     public void vestirArmaduraDeixaArmaduraVestida() throws Exception {
         GoldSaint milo = new GoldSaint ("Milo", "Escorpião");
@@ -289,8 +289,10 @@ public class SaintTest {
     }
 
     //Static qtdSaints
-    /*@Test
-    public void qtdSaintsRetornaCorretamenteComSaintsAteOMomentoDoTeste() {
-    assertEquals(45, Saint.getQtdSaints());
-    }*/
+
+	@Test
+	public void verificandoDadosDoStaticGetSaint() {
+	assertEquals(true, Saint.getQtdSaints() >0);
+	assertNotNull (Saint.getQtdSaints());
+	}
 }
