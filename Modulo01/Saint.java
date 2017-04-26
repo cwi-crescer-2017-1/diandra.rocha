@@ -96,7 +96,7 @@ public abstract class Saint {
         if(perda < 0) {
             throw new InvalidParameterException();
         }
-        if(this.vida<1 || perda>=this.vida) {
+        if(this.vida < 1 || perda>=this.vida) {
             this.status = Status.MORTO;
             this.vida = 0;
         }

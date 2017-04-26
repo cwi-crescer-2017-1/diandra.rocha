@@ -32,7 +32,7 @@ public class Batalha {
             Movimento proximoMovimento = saintEmAcao.getProximoMovimento();
             proximoMovimento.executar();
 
-            nenhumMorto = this.saint1.getStatus() != Status.MORTO && this.saint1.getVida() >0 &&
+            nenhumMorto = this.saint1.getStatus() != Status.MORTO && this.saint1.getVida()>0 &&
             this.saint2.getStatus() != Status.MORTO && this.saint2.getVida()>0;
         }
     }
