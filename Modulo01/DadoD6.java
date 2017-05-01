@@ -12,7 +12,7 @@ public class DadoD6 implements Sorteador {
     }
     
     public boolean chances30PorCento() {
-        int resultado = this.sortear() % 3;
-        return resultado == 33.3;
+        double resultado = (this.sortear()/6) * 100;
+        return resultado <= 33.3;
     }
 }
