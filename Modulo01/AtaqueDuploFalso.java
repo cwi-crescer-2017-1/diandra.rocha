@@ -1,10 +1,12 @@
-public class AtaqueDuplo implements Movimento{
+public class AtaqueDuploFalso implements Movimento{ 
     Saint golpeador;
     Saint golpeado;
+    DadoFalso dadoFalso;
     
-    public AtaqueDuplo(Saint golpeador, Saint golpeado) {
+    public AtaqueDuploFalso (Saint golpeador, Saint golpeado, DadoFalso dadoFalso) {
         this.golpeador = golpeador;
         this.golpeado = golpeado;
+        this.dadoFalso = dadoFalso;
     }
 
     private double preGolpe() throws Exception {
@@ -19,14 +21,13 @@ public class AtaqueDuplo implements Movimento{
     }
 
     public void executar() throws Exception {
-
-        DadoD6 random = new DadoD6();
-
+        
         double dano = this.preGolpe();
-        if(random.chances30PorCento()){
+
+        if(this.dadoFalso.chances30PorCento()){
             dano *= 2;
             this.golpeado.perderVida(dano);
-        }else{
+         }else{
             this.golpeado.perderVida(dano);
 			double perdaGolpeador = (this.golpeador.getVida() * 0.05);
 			this.golpeador.perderVida(perdaGolpeador);
