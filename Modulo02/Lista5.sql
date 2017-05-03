@@ -20,8 +20,11 @@ COMMIT
 
 --4
 SELECT a.IDCidade, a.Nome, a.UF FROM Cidade a WHERE EXISTS
-(SELECT b.Nome , b.UF FROM Cidade b WHERE b.Nome = a.Nome AND b.UF = a.UF GROUP BY Nome, UF HAVING COUNT(*) > 1);
+(SELECT b.Nome , b.UF FROM Cidade b WHERE b.Nome = a.Nome AND b.UF = a.UF GROUP BY Nome, UF HAVING COUNT(*) > 1)
+ORDER BY a.IDCidade;
 
 --5
 BEGIN TRANSACTION
-
+UPDATE Cidade SET Nome = Nome + '*'  WHERE Nome+UF IN (SELECT Nome+UF FROM Cidade GROUP BY Nome , UF HAVING COUNT(*) > 1) AND IDCidade IN
+(SELECT MAX(IDCidade) FROM Cidade GROUP BY Nome, UF HAVING COUNT(*) > 1);
+COMMIT
