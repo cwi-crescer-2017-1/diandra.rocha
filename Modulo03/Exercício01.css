@@ -1,0 +1,30 @@
+body {
+background-image: url("http://br.web.img3.acsta.net/videothumbnails/185/352/18535298_20131018001823493.jpg");
+background-size: cover;
+}
+
+.parag{
+font-family: "Source Sans Pro", "Arial", sans-serif;
+font-size: 30px;
+font-variant: small-caps;
+text-align: center;
+font-style: oblique;
+color: red;
+}
+
+.subtitulo {
+  font-style: bold;
+  color:white;
+}
+.subtitulo > span {
+  color: blue;
+}
+
+#strike {
+  font-size: 40px;
+}
+
+#logo{
+  align-content: center;
+  text-align: center;
+}
