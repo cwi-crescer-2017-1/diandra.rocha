@@ -1,8 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="ExercicioAula0305" id="D3C6B59C-F5CC-FDD4-2BA8-1AD8FA408DE5" version="3.5">
-<createdBy>diandra.rocha</createdBy>
-<createdTime>2017-05-03 16:50:15 UTC</createdTime>
-<ownerDesignName>ExercicioAula0305</ownerDesignName>
-<capitalNames>false</capitalNames>
-<designId>D3C6B59C-F5CC-FDD4-2BA8-1AD8FA408DE5</designId>
-</OSDM_Design>
