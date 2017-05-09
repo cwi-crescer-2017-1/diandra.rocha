@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+}
+
+.container{
+    position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.dentro {
+    position: absolute;
+    width: 100%;
+    background: rgba(255, 0, 0, 0.38);
+    bottom: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+p{
+    display: none;
+}
+
+.dentro:hover > p{
+    display: block;
+    margin-bottom: 15px; 
+}
