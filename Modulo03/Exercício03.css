@@ -34,7 +34,6 @@ header{
 .secao01 {
     margin: 40px 10px 10px 110px;
     float: left;
-    
 }
 
 .secao02 {
@@ -47,12 +46,13 @@ header{
 }
 
 .primeiro:first-letter{
+    margin-top: 15px;
     color: #c4170c;
     font-size: 60px;
     float: left;
 }
 
-figure{
+img{
     float: right;
 }
 
