@@ -8,7 +8,6 @@ body{
     font-family: "Open Sans", sans-serif;
     margin: 0 auto;
     background: #fafafa;
-    
 }
 
 header{
@@ -21,26 +20,29 @@ header{
     padding: 15px;
 }
 
-secao01{
-    margin: 40px 80px;
-    padding: 40px;
-    width: 50%;
+.secao {
+    padding: 20px 40px;
+    width: 40%;
     border-style: groove;
     line-height: 35px;
     font-weight: 600;
     color:#333;
-    background:  #fff;
-    float: left;
+    background: #fff;
+    border: 2px solid whitesmoke;
 }
-secao02{
-    margin: 40px 80px;
-    padding: 40px;
-    width: 50%;
-    border-style: groove;
-    line-height: 35px;
-    font-weight: 600;
-    color:#333;
-    background:  #fff;
+
+.secao01 {
+    margin: 40px 10px 10px 110px;
+    float: left;
+    
+}
+
+.secao02 {
+    margin: 40px 110px 10px 0px;
+    float: right;
+}
+.secao03{
+    margin: 40px 110px 10px 0px;
     float: right;
 }
 
@@ -52,15 +54,21 @@ secao02{
 
 figure{
     float: right;
-    display: inline-block;
+}
+
+h3{
+    color: #bbb;
+    font-weight: 900;
+    font-size: 15px;
 }
 
 h1{
     color: #c4170c;
-     font-weight: 900;
-     font-size: 30px;
+    font-weight: 900;
+    font-size: 30px;
 }
 
-footer{
+.secao > footer{
+    color: #bbb;
     float: right;
 }
