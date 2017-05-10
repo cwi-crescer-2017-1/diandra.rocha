@@ -1,0 +1,96 @@
+<!DOCTYPE html> 
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/bootstrap.min.css"  type="text/css">
+
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <div class="container-fluid">
+
+    <form>
+
+      <h1 class="form-group">Formulário de Cadastro</h1>
+
+      <hr>
+
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="nome">Nome Completo</label>
+          <input type="text" class="form-control" id="nome" placeholder="Ex: Diandra Rocha">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class=" col-md-6">
+          <label for="email">E-mail</label>
+          <input type="email" class="form-control" id="email" placeholder="Ex: diandra.rocha@cwi.com.br">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class=" col-md-6">
+          <label for="data">Data</label>
+          <input type="date" class="form-control" id="data">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="estado">Estado</label>
+          <select class="form-control" required id="estado">
+			      <option disabled hidden selected value="">Selecione o Estado</option>
+			      <option value="1">Rio Grande do Sul</option>
+			      <option value="2">Bahia</option>
+			      <option value="3">Rio de Janeiro</option>
+	      	</select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="cidade">Cidade</label>
+          <input type="text" class="form-control" id="cidade">
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <div class="col-md-6">
+          <label for="sexo">Sexo</label>
+          <select class="form-control" required id="sexo">
+			      <option disabled hidden selected value="">Selecione o Sexo</option>
+			      <option value="1">Masculino</option>
+			      <option value="2">Feminino</option>
+	      	</select>
+        </div>
+      </div>
+
+
+      <div class="form-group" >
+        <div class="col-md-12" style="margin-top: 30px;">
+          <input class="btn btn-default btn-primary pull-right" style="margin-left: 15px;" type="submit" value="Enviar">
+          <input class="btn btn-default pull-right" type="reset" value="Limpar">
+        </div>
+      </div>
+
+
+    </form>
+
+  </div>
+
+
+</body>
+
+</html>
