@@ -4,19 +4,24 @@
 
 body{
     margin: 0;
+    margin-bottom: 30px; 
     background: url("background.jpg");
     background-position: center top;
     background-repeat: no-repeat;
+    background-size: 100%;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .container-menu{
-	margin: 350px auto 0;
+	margin: 18% auto 0;
 	display: table;
-	border-radius: 300px;
-    background: rgba(90, 85, 85, 0.7);
+	border-radius: 10px;
+    border: 1px solid silver;
+    background: rgba(140, 140, 140, .6);
     text-decoration: none;
-    padding: 20px;
+    padding: 15px;
 }
+
 .menu > .item {
     margin: 25px;
 }
@@ -24,11 +29,50 @@ body{
 .menu > .item > a {
     color: #fff;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500;
+    font-size:18px;
 }
 
 .container{
-    width: 800px;
-    margin: 10px auto 0;
-    background: gray;
+    width: 50%;
+    margin: -22px auto;
+    height: auto;
+    background: #E8E8E8;
+    padding:20px 30px 30px;
+}
+
+.titulo{
+   width: 50%; 
+   margin:5% auto 0;
+   background: #363636;
+   color: white; 
+   padding: 5px;
+   padding-left: 30px;
+   padding-bottom: 30px;
+   font-size: 13px;
+   font-weight: bold;
+   color: #BEBEBE;
+}
+
+ul{
+    list-style-type: square;
+}
+
+li > a {
+    text-decoration: none;
+    color: black;
+}
+
+.image{
+    float: left;
+    padding-right: 25px; 
+}
+
+.clearfix:before, .clearfix:after {
+    content: "";    
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
 }
