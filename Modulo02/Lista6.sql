@@ -28,7 +28,8 @@ SELECT * FROM Produto pro WHERE NOT EXISTS (SELECT * FROM PedidoItem pedit WHERE
 
 --6
 SELECT TOP(30) temp.Total, temp.Código FROM 
-(SELECT (pro.PrecoVenda * pedit.Quantidade) AS Total, pro.IDProduto AS Código
- FROM PedidoItem pedit INNER JOIN Produto pro ON pedit.IDProduto = pro.IDProduto) AS temp
- ORDER BY temp.Total DESC;
+(SELECT ((pro.PrecoVenda - pro.PrecoCusto)* pedit.Quantidade) AS Total, pro.IDProduto AS Código
+FROM PedidoItem pedit INNER JOIN Produto pro ON pedit.IDProduto = pro.IDProduto INNER JOIN 
+Pedido ped ON pedit.IDPedido = ped.IDPedido WHERE YEAR(ped.DataPedido) = 2016) AS temp
+ORDER BY temp.Total DESC;
 
