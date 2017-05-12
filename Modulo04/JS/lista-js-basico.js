@@ -2,24 +2,39 @@
 function daisyGame(a) {
     return a % 2 === 0 ? "Love Me Not" : "Love Me";
 }
+
+function daisyGameDiferentona(a) {
+    return `Love Me${ a % 2 !== 0 ? '' : ' Not'}`;
+}
+
 console.log(daisyGame(4));
+console.log(daisyGameDiferentona(1));
 
 //2
 var nomes = ["Cersei", "Joffrey", "Ilyn", "Maryn", "Beric", "Melisandre", "Sandor"];
+var outroNomes = [];
 
 function maiorTexto(nomes) {
     var maiorQtdChar = 0;
     var maiorPalavra;
-    for (var i = 0; i < nomes.length; i++) {
-        if (nomes[i].length > maiorQtdChar) {
-            maiorQtdChar = nomes[i].length;
-            maiorPalavra = nomes[i];
+
+    if (nomes.length !== 0) {
+        for (var i = 0; i < nomes.length; i++) {
+            if (nomes[i].length > maiorQtdChar) {
+                maiorQtdChar = nomes[i].length;
+                maiorPalavra = nomes[i];
+            }
         }
+        return maiorPalavra;
+
+    } else {
+        return maiorPalavra = "Array Vazio";
     }
-    return maiorPalavra;
 }
 
 console.log(maiorTexto(nomes));
+console.log(maiorTexto(outroNomes));
+
 
 //3
 
@@ -41,24 +56,35 @@ for (var i = 0; i < nomesInst.length; i++) {
 }
 
 //4
-function somar(a, b) {
-    return a + b;
+function somar(a) {
+    return function (b) {
+        return a + b;
+    }
 }
 
-console.log(somar(2));
-console.log(somar(3));
+var soma = somar(2)(3);
+console.log(soma);
 
 //5
-function fib1(n) {
-    if (n < 2) {
-        return n
+
+function fib(n) {
+    var a = 1;
+    var b = 1;
+    var temp;
+    var final = 0;
+    var nn = n;
+
+    while (nn > n) {
+        temp = b;
+        b = a + b;
+        a = temp;
+        n--;
+        final = b + a;
     }
-       var a = fib1(n - 1) + fib1(n - 2);
-    
-     return a;
+    return final;
 }
 
-console.log(fib1(7));
+console.log(fib(7));
 
 
 //6
@@ -67,23 +93,22 @@ var listaPrecos = [5.16, 2.12, 1.15, 3.11, 17.5];
 var mascada = 3.14;
 
 function ordenar(listaPrecos) {
-    for (var i = 0; i < listaPrecos.length; i++) {
-        if (listaPrecos[i] > listaPrecos[i + 1]) {
-            var aux = listaPrecos[i];
-            listaPrecos[i] = listaPrecos[i + 1];
-            listaPrecos[i + 1] = aux;
-        }
-    }
-    return listaPrecos;
+    listaPrecos = listaPrecos.sort(function (a, b) {
+        return a - b;
+    });
 }
 
 function queroCafe(mascada, listaPrecos, ordenar) {
     ordenar(listaPrecos);
-    if (listaPrecos[i] < mascada) {
-        var result = listaPrecos[i] + ", ";
-    }
 
+    var result = "";
+    for (var i = 0; i < listaPrecos.length; i++) {
+        if (listaPrecos[i] < mascada) {
+            result += "," + listaPrecos[i];
+        }
+    }
     return result;
 }
 
-console.log(queroCafe(mascada, listaPrecos));
+var resultado = queroCafe(mascada, listaPrecos, ordenar);
+console.log(resultado);
