@@ -1,4 +1,5 @@
 //1
+console.log("Nº1");
 function daisyGame(a) {
     return a % 2 === 0 ? "Love Me Not" : "Love Me";
 }
@@ -11,6 +12,7 @@ console.log(daisyGame(4));
 console.log(daisyGameDiferentona(1));
 
 //2
+console.log("Nº2");
 var nomes = ["Cersei", "Joffrey", "Ilyn", "Maryn", "Beric", "Melisandre", "Sandor"];
 var outroNomes = [];
 
@@ -37,7 +39,7 @@ console.log(maiorTexto(outroNomes));
 
 
 //3
-
+console.log("Nº3");
 var nomesInst = ["Bernardo", "André", "PHP", "Fabrício", "Ben-Hur", 5];
 
 function funcao(nome) {
@@ -56,6 +58,7 @@ for (var i = 0; i < nomesInst.length; i++) {
 }
 
 //4
+console.log("Nº4");
 function somar(a) {
     return function (b) {
         return a + b;
@@ -64,31 +67,40 @@ function somar(a) {
 
 var soma = somar(2)(3);
 console.log(soma);
+console.log(somar(4)(4));
 
 //5
-
-function fib(n) {
-    var a = 1;
-    var b = 1;
-    var temp;
-    var final = 0;
-    var nn = n;
-
-    while (nn > n) {
-        temp = b;
-        b = a + b;
-        a = temp;
-        n--;
-        final = b + a;
+console.log("Nº5");
+var fibonacciSoma = function(n) {
+    var a = 0, b = 1, final = 0;
+    for (var i = 0; i <= n; i++) {
+        var f = a;
+        a = b;
+        b += f;
+        final = a + f;
     }
-    return final;
+    return final -1;
+};
+
+function fiboSequence(n) {
+    if(n === 1 || n === 2){
+        return 1;
+    }
+    return fiboSequence(n-1) + fiboSequence(n-2);
 }
 
-console.log(fib(7));
+console.log("Soma");
+console.log(fibonacciSoma(3));
+console.log(fibonacciSoma(7));
+console.log(fibonacciSoma(1));
+console.log("Sequencia");
+console.log(fiboSequence(3));
+console.log(fiboSequence(7));
+console.log(fiboSequence(1));
 
 
 //6
-
+console.log("Nº6");
 var listaPrecos = [5.16, 2.12, 1.15, 3.11, 17.5];
 var mascada = 3.14;
 
