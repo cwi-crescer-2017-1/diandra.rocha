@@ -25,10 +25,8 @@ var verificarCampos = function (series) {
 
 
 var invalidos = series.filter(verificarAno, serie => verificarCampos(series));
+invalidos.forEach(serie => console.log(serie.titulo));
 
-
-
-console.log(invalidos);
 
 //2
 console.log("Nº2");
@@ -79,7 +77,43 @@ var salarios = function (series) {
     qtdElenco += series.elenco.length;
     qtdDiretores += series.diretor.length;
 
-    return (qtdDiretores * 100.00) + (qtdElenco * 40.000);
+    return (qtdDiretores * 100.000) + (qtdElenco * 40.000);
 }
 
 console.log(salarios(series[0]) + ".000");
+
+//6
+console.log("Nº6");
+
+console.log("Busca por gênero");
+
+function buscarPorGenero(series, genero) {
+    return resultado = series.filter(serie => serie.genero.includes(genero));
+}
+
+var resultado = buscarPorGenero(series, "Drama");
+
+resultado.forEach(serie => console.log(serie.titulo));
+
+
+console.log("Busca por Título");
+
+function buscarPorTitulo(series, titulo) {
+    return resultado = series.filter(serie => serie.titulo.includes(titulo));
+}
+
+var resultado2 = buscarPorTitulo(series, "The");
+
+resultado2.forEach(serie => console.log(serie.titulo));
+
+//7
+console.log("Nº7");
+
+
+
+function creditosIlluminati(serie){
+    
+}
+
+
+
