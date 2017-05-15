@@ -1,40 +1,10 @@
-'use strict';
-
 console.log("Nº1");
-
-var verificarAno = function (series) {
-    var retorno = false;
-    for (let anoEstreia in series) {
-        if (series[anoEstreia] >= 2017 || typeof series[anoEstreia] === undefined ||
-            series[anoEstreia] === null) {
-            retorno = true;
-            break;
-        }
-    }
-    return retorno;
-}
-
-var verificarCampos = function (series) {
-    var retorno = false;
-    for (let prop in series) {
-        if (typeof series[prop] === undefined || series[prop] === null) {
-            retorno = true;
-            break;
-        }
-    }
-    return retorno;
-}
-
-
-var invalidos = series.filter(verificarAno, serie => verificarCampos(series));
-invalidos.forEach(serie => console.log(serie.titulo));
-
 
 //2
 console.log("Nº2");
 
 function buscarPorAno(series, ano) {
-    return resultado = series.filter(serie => serie.anoEstreia > ano);
+    return series.filter(serie => serie.anoEstreia >= ano).map(s => s.titulo);
 }
 console.log(buscarPorAno(series, 2014));
 
@@ -42,13 +12,8 @@ console.log(buscarPorAno(series, 2014));
 console.log("Nº3");
 
 var mediaDeEpisodios = function (series) {
-    series.map()
-    var qtdEps = 0;
-    for (let i = 0; i < series.length; i++) {
-        qtdEps += series[i].numeroEpisodios;
-    }
-    var qtdSeries = series.length;
-    return qtdEps / qtdSeries;
+    var qtdEps = series.map(e => e.numeroEpisodios).reduce((a, b) => a + b, 0);
+    return qtdEps / series.length;
 }
 
 console.log(mediaDeEpisodios(series));
@@ -57,33 +22,20 @@ console.log(mediaDeEpisodios(series));
 console.log("Nº4");
 
 function buscarPorNome(series, nome) {
-    var retorno = false;
-    for (let i = 0; i < series.length; i++) {
-        if (series[i].elenco.includes(nome)) {
-            retorno = true;
-            break;
-        }
-    }
-    return retorno;
+    return series.some(s => s.elenco.some(s => s.includes(nome)));
 }
 
-console.log(buscarPorNome(series, 'Diandra Rocha'));
+console.log(buscarPorNome(series, "Diandra Rocha"));
 
 //5
 
 console.log("Nº5");
 
-var salarios = function (series) {
-    var qtdDiretores = 0;
-    var qtdElenco = 0;
-
-    qtdElenco += series.elenco.length;
-    qtdDiretores += series.diretor.length;
-
-    return (qtdDiretores * 100.000) + (qtdElenco * 40.000);
+var salarios = function (serie) {
+    return ((serie.diretor.length * 100000) + (serie.elenco.length * 40000));
 }
 
-console.log(salarios(series[0]) + ".000");
+console.log(salarios(series[0]));
 
 //6
 console.log("Nº6");
@@ -91,47 +43,42 @@ console.log("Nº6");
 console.log("Busca por gênero");
 
 function buscarPorGenero(series, genero) {
-    return resultado = series.filter(serie => serie.genero.includes(genero));
+    return series.filter(serie => serie.genero.includes(genero)).map(s => s.titulo);
 }
-
-var resultado = buscarPorGenero(series, "Drama");
-
-resultado.forEach(serie => console.log(serie.titulo));
-
+console.log(buscarPorGenero(series, "Drama"));
 
 console.log("Busca por Título");
 
 function buscarPorTitulo(series, titulo) {
-    return resultado = series.filter(serie => serie.titulo.includes(titulo));
+    return series.filter(serie => serie.titulo.includes(titulo)).map(s => s.titulo);
 }
+console.log(buscarPorTitulo(series, "The"));
 
-var resultado2 = buscarPorTitulo(series, "The");
-
-resultado2.forEach(serie => console.log(serie.titulo));
 
 //7
 console.log("Nº7");
 
+function ordenarDentro(pessoa) {
+    let nomes = pessoa.trim().split(" ");
+    return nomes[nomes.length - 1].join(', ');
+}
+
 var ordenacaoDiretores = series.forEach(serie => {
-    serie.diretor.sort(pessoa => {
-        let nomes = pessoa.split(" ");
-        return nomes[nomes.length - 1];
-    }).join(', ');
+    serie.diretor.sort(pessoa => ordenarDentro(pessoa))
 });
+
+
 var ordenacaoElenco = series.forEach(serie => {
-    serie.elenco.sort(pessoa => {
-        let nomes = pessoa.split(" ");
-        return nomes[nomes.length - 1];
-    }).join(', ');
+    serie.elenco.sort(pessoa => ordenarDentro(pessoa))
 });
 
 
 console.log("Titulo:");
-console.log(series.sort(ordenacao).join("\n"));
+console.log(series.titulo.join("\n"));
 console.log("Diretores:");
-console.log(series.sort(ordenacaoDiretores).join("\n"));
+console.log(series.sort(ordenacaoDiretores).diretor.join("\n"));
 console.log("Elenco");
-console.log(series.sort(ordenacaoElenco).join("\n"));
+console.log(series.sort(ordenacaoElenco).elenco.join("\n"));
 
 
 //8
