@@ -1,3 +1,5 @@
+'use strict';
+
 console.log("Nº1");
 
 var verificarAno = function (series) {
@@ -40,6 +42,7 @@ console.log(buscarPorAno(series, 2014));
 console.log("Nº3");
 
 var mediaDeEpisodios = function (series) {
+    series.map()
     var qtdEps = 0;
     for (let i = 0; i < series.length; i++) {
         qtdEps += series[i].numeroEpisodios;
@@ -109,11 +112,44 @@ resultado2.forEach(serie => console.log(serie.titulo));
 //7
 console.log("Nº7");
 
+var ordenacaoDiretores = series.forEach(serie => {
+    serie.diretor.sort(pessoa => {
+        let nomes = pessoa.split(" ");
+        return nomes[nomes.length - 1];
+    }).join(', ');
+});
+var ordenacaoElenco = series.forEach(serie => {
+    serie.elenco.sort(pessoa => {
+        let nomes = pessoa.split(" ");
+        return nomes[nomes.length - 1];
+    }).join(', ');
+});
 
 
-function creditosIlluminati(serie){
-    
+console.log("Titulo:");
+console.log(series.sort(ordenacao).join("\n"));
+console.log("Diretores:");
+console.log(series.sort(ordenacaoDiretores).join("\n"));
+console.log("Elenco");
+console.log(series.sort(ordenacaoElenco).join("\n"));
+
+
+//8
+console.log("Nº8");
+
+function contaAbreviacoes(serie) {
+    var elenco = serie.elenco;
+    var contador = 0;
+    elenco.forEach(ator => {
+        if (ator.includes(".")) {
+            contador++
+        }
+    });
+
+    return contador;
 }
 
+var serieEasterEgg = series.filter(serie => serie.elenco.length === contaAbreviacoes(serie));
+serieEasterEgg.forEach(serie => console.log(serie.elenco));
 
-
+console.log(serieEasterEgg.titulo.join(","));
