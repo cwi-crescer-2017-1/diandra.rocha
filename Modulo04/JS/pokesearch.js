@@ -1,12 +1,14 @@
-var pokeid = document.addEventListener('DOMContentLoaded', function () {
-    let btnPesquisar = document.getElementById('btnPesquisar');
+var urlpoke = document.addEventListener('DOMContentLoaded', function () {
+    let btnPesquisar = document.getElementById('btnPesquisar').value;
+    let campoPesquisar = document.getElementById('pesquisa');
     btnPesquisar.onclick = function () {
-        return btnPesquisar.value + "/";
+        return "https://pokeapi.co/api/v2/pokemon/" + campoPesquisar.value;
     }
 })
 
-fetch("http://pokeapi.co/api/v2/pokemon/" + pokeid()).then(response => response.json())
+fetch(urlpoke).then(response => response.json())
     .then(json => {
+        console.log(json);
         let div = document.getElementById('detalhesPokemon');
         let h1 = document.createElement("h1");
         h1.innerText = json.name;
