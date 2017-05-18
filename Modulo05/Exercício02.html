@@ -1,0 +1,27 @@
+<html ng-app="Exercício02">
+<head>
+
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+    <script src="JS/Exercício02.js"></script>
+
+    <title>Exercício02</title>
+
+</head>
+
+<body>
+
+    <div ng-controller="Controller">
+
+        <label for="data">Digite a data:</label>
+        <input type="text" id="data" ng-model="data" placeholder="dd.mm.yyyy">
+
+        <button id="botao" ng-click="click()">  Converter  </button>
+
+        <span>  {{ dataObj | date : 'shortDate'}}</span>
+
+    </div>
+
+</body>
+
+</html>
