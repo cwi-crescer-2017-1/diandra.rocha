@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vh;
+    height: 100%;
+    font-family: "Open Sans", sans-serif;
+    margin: 0 auto;
+    background-image: url(pokemon.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#detalhesPokemon {
+    width: 50%;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    background: rgb(163, 146, 175);
+    padding: 20px 30px 30px;
+    border: 2px solid black;
+    text-transform: capitalize;
+}
+
+.pesquisa {
+    margin: 18% auto 0;
+    display: table;
+    border-radius: 10px;
+    border: 2px solid black;
+    background: rgb(163, 146, 175);
+    padding: 15px;
+}
+
+#pesquisa {
+    color: black;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+#btnPesquisar {
+    color: black;
+    font-weight: 500;
+    font-size: 20px;
+}
