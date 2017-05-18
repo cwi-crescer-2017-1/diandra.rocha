@@ -20,6 +20,10 @@
 
         <span>  {{ dataObj | date : 'shortDate'}}</span>
 
+        <ul>
+            <li ng-repeat="instrutor in instrutores"> {{ instrutor.nome | mascada }}</li>
+        </ul>
+
     </div>
 
 </body>

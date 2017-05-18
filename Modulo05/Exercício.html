@@ -21,7 +21,7 @@
         <input type="text" id="nome" ng-model="pokemon.nome">
 
         <ul>
-            <li ng-repeat=" pokemon in pokemons | filter : pokemon.nome"> {{ pokemon.nome }}</li>
+            <li ng-repeat=" pokemon in pokemons | filter : pokemon.nome"> {{ pokemon.nome }} - {{ pokemon.tipo }}</li>
         </ul>
 
     </div>
