@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vh;
+    height: 100%;
+    font-family: "Open Sans", sans-serif;
+    margin: 0 auto;
+    background-image: url(pokemon.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+div {
+    width: 50%;
+    margin: 300px auto;
+    height: auto;
+    background: rgb(163, 146, 175);
+    padding: 20px 30px 30px;
+    border: 2px solid black;
+}

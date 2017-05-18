@@ -1,60 +1,31 @@
 <html ng-app="myApp">
 
 <head>
-    
-    <meta charset="UTF-8">  
+
+    <meta charset="UTF-8">
 
     <title>Exercício01</title>
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
     <script src="JS/Exercício.js"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="Exercício.css">
+
 </head>
 
 <body>
 
-<div ng-controller="Controller">
+    <div ng-controller="Controller">
 
-    <table  class="table table-condensed" style="margin-right: 50px;">
-  <tr>
-    <th>
-         <label for="nome"> Nome </label>
-    </th>
-    <th>
-         <label for="tipo"> Tipo </label>
-    </th> 
-  </tr>
+        <label for="nome">Digite o Nome a ser buscado:</label>
+        <input type="text" id="nome" ng-model="pokemon.nome">
 
-  <tr>
-    <td>
-        <input type="text" id = "nome" ng-model="pokemon.nome">  
-       
-    </td>
+        <ul>
+            <li ng-repeat=" pokemon in pokemons | filter : pokemon.nome"> {{ pokemon.nome }}</li>
+        </ul>
 
-    <td>
-          <input type="text" id="tipo" ng-model="pokemon.tipo">
-    </td>
-  </tr>
+    </div>
 
-  <tr>
-      <td>
-          <h1>  Pokemon : {{pokemon.nome}}  </h1>
-
-      </td>    
-<td>
-
-<h1>  Pokemon : {{pokemon.tipo}}  </h1>
-</td>
-       
-  </tr>
-
-    </table>
-         
-</div>
-    
 </body>
 
 </html>
