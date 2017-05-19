@@ -1,0 +1,28 @@
+<html ng-app="Exercício03">
+
+<head>
+
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+    <script src="JS/Exercício03.js"></script>
+
+    <title>Exercício03</title>
+
+</head>
+
+<body>
+    <div ng-controller="Controller">
+
+        <ul>
+            <li ng-repeat="instrutor in instrutores  | orderBy: 'numero'"> {{ instrutor.nome | mascada }}</li>
+        </ul>
+        <ul>
+            <li ng-repeat="instrutor in instrutores | orderBy: 'numero' "> {{instrutor.aula | formata }}</li>
+        </ul>
+
+    </div>
+
+
+</body>
+
+</html>
