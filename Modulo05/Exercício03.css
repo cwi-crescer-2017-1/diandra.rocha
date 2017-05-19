@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(exercício03.jpg);
+}
+
+.container {
+    margin: 200px auto;
+    width: 500px;
+    border: 2px solid black;
+    background: whitesmoke;
+}
+
+.ul1 {
+    list-style-type: none;
+    margin-left: -40px;
+}
+
+.ul2 {
+    list-style-type: none;
+    margin-left: -40px;
+}

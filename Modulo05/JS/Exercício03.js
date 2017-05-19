@@ -1,5 +1,18 @@
 var modulo = angular.module("Exercício03", []);
 
+modulo.filter('mascada', function () {
+    return function (nome) {
+        return nome.replace(/(nunes)/i, '$ $1 $');
+    }
+});
+modulo.filter('formata', function () {
+    return function (numero, aula) {
+        var numberstring = numero + ""; //gambiarra
+        return numberstring.padStart(3, "0");
+    }
+});
+
+
 modulo.controller("Controller", function ($scope) {
 
     let instrutores = [{
@@ -29,17 +42,6 @@ modulo.controller("Controller", function ($scope) {
             numero: 2,
         }
     ];
-
-    modulo.filter('mascada', function () {
-        return function (nome) {
-            return nome.replace(/(nunes)/i, '$ $1 $');
-        }
-    });
-    modulo.filter('formata', function () {
-        return function (numero, aula) {
-            return "00" + numero + "  -  " + aula.toUpperCase();
-        }
-    });
 
     $scope.instrutores = instrutores;
 });
