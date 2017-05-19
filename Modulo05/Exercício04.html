@@ -1,0 +1,79 @@
+<html ng-app="Exercício04">
+
+<head>
+
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+    <script src="JS/Exercício04.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    <link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet">
+
+
+    <title>Exercício04</title>
+
+</head>
+
+<body>
+
+<div ng-controller="Controller">
+
+    <ul>
+      <li ng-repeat=" instrutor in instrutores"> {{ instrutor.nome }} - {{instrutor.sobrenome}}
+           - {{instrutor.idade}} - {{instrutor.email}} - {{instrutor.jalecionou}} - {{instrutor.aula}}
+      </li>
+    </ul>
+
+    <form novalidate name="Formulario" ng-submit="novoInstrutor(instrutor)">
+
+
+      <label for="nome"> Nome: </label>
+      <input type="text" name="nome" ng-model="instrutor.nome" required ng-minlength="3" ng-maxlength="20"/>
+      <span ng-show="validarRequired()">
+        Campo obrigatório. </span>
+      <span ng-show="Formulario.nome.$error.minlength || Formulario.nome.$error.maxlength">
+        Deve ter no mínimo 3 letras e no máximo 20 letras. </span>
+      
+      <label for="sobrenome"> Sobrenome: </label>
+      <input type="text" name="sobrenome" ng-model="instrutor.sobrenome" required ng-maxlength="30"/>
+      <span ng-show="Formulario.sobrenome.$error.required">
+        Campor obrigatório. </span>
+       <span ng-show="Formulario.sobrenome.$error.maxlength">
+        Deve ter no máximo 30 letras. </span>
+
+      <label for="idade"> Idade: </label>
+      <input type="number" name="idade" ng-model="instrutor.idade" required/>
+      <span ng-show="Formulario.idade.$error.required">
+        Campo obrigatório. </span>
+
+      <label for="email"> Email: </label>
+      <input type="email" name="email" ng-model="instrutor.email" required placeholder="exemplo@exemplo.com"/>
+      <span ng-show="Formulario.email.$error.pattern || Formulario.email.$error.required">
+        Necessário ser preenchido e no padrão correto. </span>
+
+      <label for="jálecionou"> Já deu aula: </label>
+      <input type="checkbox" ng-model="instrutor.jalecionou" required>
+      <span ng-show="Formulario.jalecionou.$error.required">
+        Campo obrigatório. </span>
+      
+      <select name="aula" ng-model="instrutor.aula" required>
+      <option value="OO"> Orientação a Objetos Java</option>
+      <option value="Banco de Dados I"> Banco de Dados I</option>
+      <option value="HTML/CSS"> HTML/CSS</option>
+      <option value="JavaScript"> JavaScript</option>
+      <option value="AngularJS"> AngularJS</option>
+      </select>
+      <span ng-show="Formulario.aula.$error.required">
+        Campo obrigatório. </span>
+
+        <h4>{{Formulario.$error}}</h4>
+
+      <button type="submit">Adicionar!</button>
+
+    </form>
+
+</div>
+
+
+</body>
+
+</html>
