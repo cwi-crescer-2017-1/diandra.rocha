@@ -51,9 +51,7 @@
         Necessário ser preenchido e no padrão correto. </span>
 
       <label for="jálecionou"> Já deu aula: </label>
-      <input type="checkbox" ng-model="instrutor.jalecionou" required>
-      <span ng-show="Formulario.jalecionou.$error.required">
-        Campo obrigatório. </span>
+      <input type="checkbox" ng-model="instrutor.jalecionou" >
       
       <select name="aula" ng-model="instrutor.aula" required>
       <option value="OO"> Orientação a Objetos Java</option>
