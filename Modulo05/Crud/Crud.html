@@ -8,11 +8,14 @@
     <script src="Crud.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
 
 
 </head>
 
-<body>
+<body style="font-family: 'Indie Flower', cursive; background:  rgba(112, 6, 249, 0.31);">
 
     <div ng-controller="Controller">
 
@@ -51,7 +54,6 @@
             <ul>
                 <li ng-repeat="instrutor in instrutores | orderBy: 'nome' "> {{instrutor.nome}} {{instrutor.sobrenome}} - {{instrutor.email}} - {{instrutor.idade}} - {{instrutor.dandoAula}}
                     <img ng-src="instrutor.fotoUrl" |>
-                    <li ng-repeat="aulas in instrutor"> {{aula.nomeAula}} </li>
                 </li>
             </ul>
         </div>
@@ -196,7 +198,7 @@
 
                 <div class="form-group checkbox">
                     <label for="checkbox">
-                <input type="checkbox" ng-model="novaOp" ng-init="false">
+                <input type="checkbox"name="novaOp" ng-model="novaOp" ng-init="false">
                  Dando aula? </label>
                 </div>
 

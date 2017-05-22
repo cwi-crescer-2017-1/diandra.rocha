@@ -34,11 +34,11 @@ modulo.controller("Controller", function ($scope) {
     }
 
     $scope.verificarInstrutor = function (nome) {
-        var nomes = $scope.instrutor.map(a => a.nomeAula);
+        var nomes = $scope.instrutores.map(a => a.nomeAula);
         return nomes.includes(nome);
     }
     $scope.verificarEmail = function (email) {
-        var emails = $scope.instrutor.map(a => a.email);
+        var emails = $scope.instrutores.map(a => a.email);
         return emails.includes(email);
     }
 
@@ -48,7 +48,7 @@ modulo.controller("Controller", function ($scope) {
             var aulaCopia = angular.copy(aula);
             aulaCopia.id = $scope.geradorAula();
             $scope.aulas.push(aulaCopia);
-            alert("Adicionado com sucesso!");
+            swal("Adicionado!", "Aula adicionada com Sucesso!", "success");
         }
 
         $scope.add = {};
@@ -62,7 +62,7 @@ modulo.controller("Controller", function ($scope) {
             instrutorCopia.id = $scope.geradorInstrutor();
             instrutor.fotoUrl = "http://images.complex.com/complex/image/upload/c_limit,w_680/fl_lossy,pg_1,q_auto/t5vj46jc2ecyp2ptmcfo.jpg";
             $scope.instrutores.push(instrutorCopia);
-            alert("Adicionado com sucesso! ");
+            swal("Adicionado!", "Instrutor adicionado com Sucesso!", "success");
         }
         $scope.add = {};
 
@@ -74,7 +74,7 @@ modulo.controller("Controller", function ($scope) {
             id: idPesquisa,
             nomeAula: novoNomeAula,
         }
-        alert("Alterado com sucesso! ");
+        swal("Alterado!", "Aula alterada com Sucesso!", "success");
     }
 
     $scope.alterarInstrutor = function (idPesquisa, novoNome, novoSobrenome, novaIdade, novoEmail) {
@@ -89,27 +89,32 @@ modulo.controller("Controller", function ($scope) {
             aulas: novasAulas,
             urlFoto: novaFoto
         }
-        alert("Alterado com sucesso! ");
+        swal("Alterado!", "Instrutor alterado com Sucesso!", "success")
+    }
+
+    $scope.verificarDandoAula = function (instrutor) {
+        return instrutor.dandoAula;
     }
 
     $scope.removerInstrutor = function (idExcluirInst) {
         let index = $scope.encontrarIdInstrutores(idExcluirInst);
-        if ($scope.instrutor[index].dandoAula === true) {
-            let invalido = "Dando aula, impossivel excluir!";
-            $scope.invalido;
-        } else {
+        $scope.RemoverAula.dandoAula.$setValidity("InstrutorDandoAula", !$scope.verificarDandoAula($scope.instrutor[index]));
+        if (!verificarDandoAula(instrutores[index])) {
             $scope.instrutores = $scope.instrutores.filter(a => a.id !== idExcluirInst);
-            alert("Excluido com sucesso");
+            swal("Removido!", "Instrutor removido com Sucesso!", "success")
+        } else {
+            sweetAlert("Oops...", "Instrutor Dando Aula!", "error");
         }
     }
+
+
     $scope.removerAula = function (idExcluirAula) {
         let index = $scope.encontrarIdAulas(idExcluirAula);
-        if ($scope.instrutores.some(idExcluirAula)) {
-            let invalido = "Aula pertence a instrutor, impossivel excluir!";
-            $scope.invalido;
+        if ($scope.instrutores.aulas.some(idExcluirAula)) {
+            sweetAlert("Oops...", "Aula sendo ministrada por instrutor!", "error");
         } else {
             $scope.aulas = $scope.aulas.filter(a => a.id !== idExcluirAula);
-            alert("Excluido com sucesso");
+            swal("Removido!", "Instrutor removido com Sucesso!", "success")
         }
     }
 
