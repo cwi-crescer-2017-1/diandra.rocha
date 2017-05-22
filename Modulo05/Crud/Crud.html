@@ -1,0 +1,259 @@
+<html ng-app="Crud">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>CRUD</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+    <script src="Crud.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+    <div ng-controller="Controller">
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <ul>
+                    <li ng-repeat="aula in aulas | orderBy:'nome' "> {{aula.nomeAula}} - {{aula.id}}</li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <form novalidate name="Formulario1" ng-submit="novaAula(aula)">
+
+                <div class="form-group">
+                    <h2>Adicionar Aula:</h2>
+
+                    <label for="nomeAula"> Nome: </label>
+                    <span class="help is-danger" ng-show="Formulario1.$error.required">Campo Obrigatório</span>
+                    <span class="help is-danger" ng-show="Formulario1.nomeAula.$error.NomeDuplicado"> Nome Duplicado!</span>
+                    <input type="text" class="form-control" name="nomeAula" ng-model="aula.nomeAula" required ng-minlength="3" ng-maxlength="20"
+                    />
+                    <span class="help-block" ng-show="Formulario1.nomeAula.$error.minlength || Formulario1.nomeAula.$error.maxlength">
+        Deve ter no mínimo 3 letras e no máximo 20 letras. </span>
+
+
+                </div>
+                <button type="submit" class="btn btn-primary">Adicionar!</button>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <ul>
+                <li ng-repeat="instrutor in instrutores | orderBy: 'nome' "> {{instrutor.nome}} {{instrutor.sobrenome}} - {{instrutor.email}} - {{instrutor.idade}} - {{instrutor.dandoAula}}
+                    <img ng-src="instrutor.fotoUrl" |>
+                    <li ng-repeat="aulas in instrutor"> {{aula.nomeAula}} </li>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="col-md-6">
+            <form name="Formulario2" novalidate ng-submit="novoInstrutor(instrutor)">
+
+                <div class="form-group">
+                    <h2> Adicionar Instrutor:</h2>
+
+                    <label for="nomeInstrutor"> Nome: </label>
+                    <span class="help is-danger" ng-show="Formulario2.$error.required">Campo Obrigatório</span>
+                    <span class="help is-danger" ng-show="Formulario2.nomeInstrutor.$error.NomeDuplicado"> Nome Duplicado!</span>
+                    <input type="text" class="form-control" name="nomeInstrutor" ng-model="instrutor.nome" required ng-minlength="3" ng-maxlength="20"
+                    />
+                    <span class="help-block" ng-show="Formulario2.nomeInstrutor.$error.minlength || Formulario2.nomeInstrutor.$error.maxlength">
+        Deve ter no mínimo 3 letras e no máximo 20 letras. </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="sobrenome"> Sobrenome: </label>
+                    <span class="help is-danger" ng-show="Formulario2.$error.required">Campo Obrigatório</span>
+                    <input type="text" name="sobrenome" class="form-control" ng-model="instrutor.sobrenome" required ng-maxlength="30" />
+                    <span class="help-block" ng-show="Formulario2.sobrenome.$error.maxlength">
+        Deve ter no máximo 30 letras. </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="idade"> Idade: </label>
+                    <span class="help is-danger" ng-show="Formulario2.$error.required">Campo Obrigatório</span>
+                    <input type="number" name="idade" class="form-control" ng-model="instrutor.idade" required min="0" max="90" />
+                </div>
+
+                <div class="form-group">
+                    <label for="email"> Email: </label>
+                    <span class="help is-danger" ng-show="Formulario2.$error.required">Campo Obrigatório</span>
+                    <input type="email" name="email" class="form-control" ng-model="instrutor.email" required placeholder="exemplo@exemplo.com"
+                    />
+                    <span class="help-block" ng-show="Formulario.email.$error.pattern">
+        Necessário ser preenchido e no padrão correto. </span>
+                </div>
+
+                <div class="form-group checkbox">
+                    <label for="checkbox">
+                <input type="checkbox" ng-model="instrutor.dandoAula" ng-init="false">
+                 Dando aula? </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="aulas">Quais aulas: </label>
+                    <select name="aulas" multiple class="form-control" ng-model="instrutor.aulasministradas">
+      <option ng-repeat="aula in aulas" ng-value="{{aula.id}}" >{{aula.nomeAula}}</option>
+    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="fotoUrl"> Foto: </label>
+                    <input type="text" class="form-control" ng-model="instrutor.fotoUrl">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Adicionar!</button>
+
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <form name="Alterar" novalidate ng-submit="alterarAula(novoNomeAula, idPesquisa)">
+
+                <div class="form-group">
+                    <h2> Alterar Nome de Aula: </h2>
+                    <label for="idPesquisa"> Informe id</label>
+                    <span class="help is-danger" ng-show="Alterar.$error.required">Campo Obrigatório</span>
+                    <input type="number" class="form-control" name="idPesquisa" ng-model="idPesquisa" required />
+
+                </div>
+
+                <div class="form-group">
+                    <label for="novoNomeAula">Informe novo nome</label>
+                    <span class="help is-danger" ng-show="Alterar.$error.required">Campo Obrigatório</span>
+                    <input type="text" class="form-control" name="novoNomeAula" ng-model="novoNomeAula" required ng-minlength="3" ng-maxlength="20"
+                    />
+
+                    <span class="help-block" ng-show="Alterar.novoNomeAula.$error.minlength || Alterar.novoNomeAula.$error.maxlength">
+        Deve ter no mínimo 3 letras e no máximo 20 letras. </span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Alterar!</button>
+
+            </form>
+        </div>
+
+        <div class="col-md-6">
+
+            <form name="AlterarInst" novalidate ng-submit="alterarInstrutor(idPesquisa, novoNome, novoSobrenome,
+        novaOp, novasAulas, novaFoto)">
+
+                <h2> Alterar Instrutor:</h2>
+
+                <div class="form-group">
+                    <label for="idPesquisa"> Informe id</label>
+                    <span class="help is-danger" ng-show="AlterarInst.$error.required">Campo Obrigatório</span>
+                    <input type="number" class="form-control" name="idPesquisa" ng-model="idPesquisa" required />
+
+                </div>
+
+                <div class="form-group">
+                    <label for="novoNome"> Nome: </label>
+                    <span class="help is-danger" ng-show="AlterarInst.$error.required">Campo Obrigatório</span>
+                    <input type="text" class="form-control" name="novoNome" ng-model="novoNome" required ng-minlength="3" ng-maxlength="20" />
+
+                    <span class="help-block" ng-show="AlterarInst.novoNome.$error.minlength || AlterarInst.novoNome.$error.maxlength">
+        Deve ter no mínimo 3 letras e no máximo 20 letras. </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="novoSobrenome"> Sobrenome: </label>
+                    <span class="help is-danger" ng-show="AlterarInst.$error.required">Campo Obrigatório</span>
+                    <input type="text" class="form-control" name="novoSobrenome" ng-model="novoSobrenome" required ng-maxlength="30" />
+
+                    <span class="help-block" ng-show="AlterarInst.novoSobrenome.$error.maxlength">
+        Deve ter no máximo 30 letras. </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="novaIdade"> Idade: </label>
+                    <span class="help is-danger" ng-show="AlterarInst.$error.required">Campo Obrigatório</span>
+                    <input type="number" class="form-control" name="novaIdade" ng-model="novaIdade" required min="0" max="90" />
+
+                    <span class="help-block" ng-show="Formulario2.novaIdade.$error.max"> Idade máxima de 90 anos.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="novoEmail"> Email: </label>
+                    <span class="help is-danger" ng-show="AlterarInst.$error.required">Campo Obrigatório</span>
+                    <input type="novoEmail" class="form-control" name="novoEmail" ng-model="novoEmail" required placeholder="exemplo@exemplo.com"
+                    />
+
+                    <span class="help-block" ng-show="Formulario.email.$error.pattern">
+        Necessário ser preenchido e no padrão correto. </span>
+                </div>
+
+                <div class="form-group checkbox">
+                    <label for="checkbox">
+                <input type="checkbox" ng-model="novaOp" ng-init="false">
+                 Dando aula? </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="novasAulas"> Quais aulas: </label>
+                    <select name="novasAulas" multiple class="form-control" ng-model="novasAulas">
+      <option ng-repeat="aula in aulas" ng-value="{{aula.id}}" >{{aula.nomeAula}}</option>
+    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="novaFoto"> Foto: </label>
+                    <input type="text" class="form-control" ng-model="novaFoto">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Alterar!</button>
+
+            </form>
+        </div>
+
+        <div class="col-md-6">
+
+            <h2> Remover Aula</h2>
+
+            <form name="RemoverAula" novalidate ng-submit="removerAula(idExcluirAula)">
+
+                <div class="form-group">
+                    <label for="idExcluirAula"> Informe id</label>
+                    <input type="number" class="form-control" name="idExcluirAula" ng-model="idExcluirAula" required />
+                </div>
+
+                <span ng-show="RemoverAula.$error.$invalid">Formulario inválido</span>
+
+                <button type="submit" class="btn btn-primary">Remover!</button>
+
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <h2> Remover Instrutor </h2>
+
+            <form name="RemoverInst" novalidate ng-submit="removerInstrutor(idExcluirInst)">
+
+                <div class="form-group">
+                    <label for="idExcluirInst"> Informe id</label>
+                    <input type="number" class="form-control" name="idExcluirInst" ng-model="idExcluirInst" required />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Remover!</button>
+
+            </form>
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
