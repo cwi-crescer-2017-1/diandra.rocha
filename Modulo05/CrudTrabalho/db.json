@@ -1,0 +1,71 @@
+{
+  "aula": [
+    {
+      "id": 0,
+      "nome": "OO"
+    },
+    {
+      "id": 1,
+      "nome": "HTML e CSS"
+    },
+    {
+      "id": 2,
+      "nome": "Javascript"
+    },
+    {
+      "nome": "AngularJs",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "nome": "Banco de Dados I"
+    },
+    {
+      "nomeAula": "Diandra",
+      "id": 8
+    },
+    {
+      "nomeAula": "Diandra",
+      "id": 9
+    },
+    {
+      "nomeAula": "Diandra",
+      "id": 10
+    },
+    {
+      "nomeAula": "Diandra",
+      "id": 11
+    },
+    {
+      "nomeAula": "teste",
+      "id": 12
+    },
+    {
+      "nomeAula": "teeeste",
+      "id": 13
+    },
+    {
+      "id": 14,
+      "nomeAula": "TESTE"
+    },
+    {
+      "nomeAula": "TESTE",
+      "id": 15
+    }
+  ],
+  "instrutor": [
+    {
+      "id": 0,
+      "nome": "Nome",
+      "sobrenome": "Sobrenome",
+      "idade": 25,
+      "email": "email@cwi.com.br",
+      "dandoAula": true,
+      "aula": [
+        1,
+        4
+      ],
+      "urlFoto": "http://foto.com/3.png"
+    }
+  ]
+}

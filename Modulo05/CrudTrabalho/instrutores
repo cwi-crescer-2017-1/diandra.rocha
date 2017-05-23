@@ -3,23 +3,7 @@ $scope.instrutores = [];
  $scope.encontrarIdInstrutores = function (id) {
             return $scope.instrutores.indexOf($scope.instrutores.find(a => a.id === id));
         }
-
-  $scope.geradorInstrutor = function () {
-        if ($scope.instrutores.length !== 0) {
-            return $scope.instrutores[$scope.instrutores.length - 1].id + 1;
-        } else {
-            return 1;
-        }
-    }
-        $scope.verificarInstrutor = function (nome) {
-        var nomes = $scope.instrutores.map(a => a.nomeAula);
-        return nomes.includes(nome);
-    }
-    $scope.verificarEmail = function (email) {
-        var emails = $scope.instrutores.map(a => a.email);
-        return emails.includes(email);
-    }
-
+        
         $scope.novoInstrutor = function (instrutor) {
         $scope.Formulario2.nomeInstrutor.$setValidity("NomeDuplicado", !$scope.verificarInstrutor(instrutor.nomeInstrutor));
         $scope.Formulario2.email.$setValidity("EmailDuplicado", !$scope.verificarEmail(instrutor.email));

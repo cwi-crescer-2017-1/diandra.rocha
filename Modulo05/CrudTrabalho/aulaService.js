@@ -1,25 +1,24 @@
-app.factory('aulaServices', function ($http) {
-    let urlBase = "http://localhost:3000";
+modulo.factory('aulaService', function ($http) {
+    let urlBase = "http://localhost:3000/aula/";
 
     function getTodasAsAulas() {
-        return $http.get(urlBase + '/aula');
+        return $http.get(urlBase);
     };
 
     function getAulaPorId(id) {
-        return $http.get(urlBase + '/aula' + '/' + id);
+        return $http.get(urlBase + id);
     };
 
     function atualizar(aula) {
-        return $http.put(urlBase + '/aula' + '/' + aula.id, aula);
+        return $http.put(urlBase + "" + aula.id, aula);
     };
 
     function criar(aula) {
-        aula.id = ++idAtual;
-        aulas.push(angular.copy(aula));
+       return $http.post(urlBase, aula);
     };
 
     function remover(aula) {
-        return $http.delete(urlBase + '/aula/' + aula.id);
+        return $http.delete(urlBase + aula.id);
     }
 
     return {

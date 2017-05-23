@@ -1,6 +1,6 @@
-var app = angular.module('app', ['ngRoute']);
+var modulo = angular.module('app', ['ngRoute']);
 
-app.config(function ($routeProvider) {
+modulo.config(function ($routeProvider) {
 
     $routeProvider
         .when('/aulas', {
@@ -8,7 +8,7 @@ app.config(function ($routeProvider) {
             templateUrl: 'aulas.html'
         })
         .when('/instrutores', {
-            controller: 'instrutoresController',
+            controller: 'InstrutoresController',
             templateUrl: 'instrutores.html'
         })
         .otherwise({
@@ -16,29 +16,61 @@ app.config(function ($routeProvider) {
         });
 });
 
-app.controller("AulasController", function ($scope, $routeParams, aulaService) {
+//Controller aula
 
-    $scope.id = $routeParams.idUrl;
+modulo.controller("AulasController", function ($scope, aulaService) {
+
     $scope.create = create;
     $scope.update = update;
+    $scope.erase = erase;
 
-    findById($scope.id);
+
     list();
-
-    //funções locais de verificação
-    function verificarAula(nome) {
-        var nomes = $scope.aulas.map(a => a.nomeAula);
-        return nomes.includes(nome);
-    }
-
-    function verificarInstrutorUsaAula(aula) {
-        let aulasinst = $scope.instrutores.aulas;
-        return aulasinst.includes(aula.id);
-    }
 
     //funções internas
     function create(aula) {
-        $scope.Formulario1.nomeAula.$setValidity("NomeDuplicado", !verificarAula(aula.nomeAula));
+            aulaService.create(aula);
+            swal("Adicionado!", "Aula adicionada com Sucesso!", "success");
+            list();
+    };
+
+    function update(aula) {
+        aulaService.update(aula)
+            swal("Alterado!", "Aula alterada com Sucesso!", "success");
+            list();
+    };
+
+    function erase(aula) {
+            aulaService.erase(aula).then(function () {
+                swal("Apagado!", "Aula excluida com Sucesso!", "success");
+                list();
+            })
+    }
+
+    //Ao iniciar controller
+    function findById(id) {
+        aulaService.findById(id).then(function (response) {
+            $scope.aula = response.data;
+        });
+    };
+
+    function list() {
+        aulaService.list().then(function (response) {
+            console.log(response.data);
+        });
+    }
+});
+
+
+//Controller Instrutor
+modulo.controller("InstrutoresController", function ($scope, aulaService) {
+
+    $scope.create = create;
+    $scope.update = update;
+
+
+    list();
+    function create(aula) {
         if ($scope.Formulario1.$valid) {
             aulaService.create(aula);
             swal("Adicionado!", "Aula adicionada com Sucesso!", "success");
@@ -53,14 +85,10 @@ app.controller("AulasController", function ($scope, $routeParams, aulaService) {
     };
 
     function erase(aula) {
-        if (!verificarInstrutorUsaAula(aula)) {
             aulaService.erase(aula).then(function () {
                 swal("Apagado!", "Aula excluida com Sucesso!", "success");
                 list();
             })
-        } else {
-            sweetAlert("Oops...", "Aula sendo ministrada por instrutor!", "error");
-        }
     }
 
     //Ao iniciar controller
