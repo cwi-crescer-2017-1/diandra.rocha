@@ -1,0 +1,41 @@
+<div class="col-md-6">
+    <form novalidate name="Formulario1" ng-submit="create(aulaNova)">
+
+        <div class="form-group">
+            <h2>Adicionar Aula:</h2>
+
+            <label for="nomeAula"> Nome: </label>
+            <span class="help is-danger" ng-show="Formulario1.$error.required">Campo Obrigatório</span>
+            <span class="help is-danger" ng-show="Formulario1.nomeAula.$error.NomeDuplicado"> Nome Duplicado!</span>
+            <input type="text" class="form-control" name="nomeAula" ng-model="aulaNova.nomeAula" required ng-minlength="3" ng-maxlength="20"
+            />
+            <span class="help-block" ng-show="Formulario1.nomeAula.$error.minlength || Formulario1.nomeAula.$error.maxlength">
+        Deve ter no mínimo 3 letras e no máximo 20 letras. </span>
+
+            <button type="submit" class="btn btn-primary">Adicionar!</button>
+
+        </div>
+    </form>
+</div>
+
+<div class="col-md-6">
+
+    <form novalidate name="Formulario1" ng-submit="update(aula)">
+
+        <div class="form-group">
+            <h2>Alterar Aula:</h2>
+
+            <label for="nomeAula"> Nome: </label>
+            <span class="help is-danger" ng-show="Formulario1.$error.required">Campo Obrigatório</span>
+            <span class="help is-danger" ng-show="Formulario1.nomeAula.$error.NomeDuplicado"> Nome Duplicado!</span>
+            <input type="text" class="form-control" name="nomeAula" ng-model="aula.nomeAula" required ng-minlength="3" ng-maxlength="20"
+            />
+            <span class="help-block" ng-show="Formulario1.nomeAula.$error.minlength || Formulario1.nomeAula.$error.maxlength">
+        Deve ter no mínimo 3 letras e no máximo 20 letras. </span>
+
+            <button type="submit" class="btn btn-primary">Alterar!</button>
+        </div>
+
+
+    </form>
+</div>
