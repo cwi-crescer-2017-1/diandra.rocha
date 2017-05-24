@@ -39,7 +39,7 @@
 
         <div class="form-group checkbox">
             <label for="checkbox">
-                <input type="checkbox" ng-model="novoInstrutor.dandoAula" ng-init="false">
+                <input type="checkbox" ng-model="novoInstrutor.dandoAula"  >
                  Dando aula? </label>
         </div>
 
@@ -59,37 +59,44 @@
         <button type="submit" class="btn btn-primary">Salvar!</button>
 
     </form>
-</div>
 
 
-<table class="table table-bordered" style="margin-top: 30px;">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Imagem</th>
-            <th>Nome Completo</th>
-            <th>Idade</th>
-            <th>Email</th>
-            <th>Dando aula?</th>
-            <th>Editar</th>
-            <th>Excluir</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="instrutor in instrutores">
-            <th scope="row">{{instrutor.id}}</th>
-            <th>
-                <img ng-src="{{instrutor.urlFoto}}" height="40px" width="60px">
-            </th>
-            <td>{{instrutor.nome}} {{instrutor.sobrenome}}</td>
-            <td>{{instrutor.idade}}</td>
-            <td>{{instrutor.email}}</td>
-            <td>{{instrutor.dandoAula}}</td>
-            <td><button class="btn btn-primary" ng-click="atualizaInst(instrutor)">Editar</button></td>
-            <td><button class="btn btn-primary" ng-click="eraseInst(instrutor)">Excluir</button></td>
-        </tr>
-    </tbody>
-</table>
 
+    <div style="margin-top: 80px;">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Imagem</th>
+                    <th>Nome Completo</th>
+                    <th>Idade</th>
+                    <th>Email</th>
+                    <th>Dando aula?</th>
+                    <th>Aulas</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="instrutor in instrutores | orderBy:'nome'">
+                    <th scope="row">{{instrutor.id}}</th>
+                    <th>
+                        <img ng-src="{{instrutor.urlFoto}}" height="40px" width="60px">
+                    </th>
+                    <td>{{instrutor.nome}} {{instrutor.sobrenome}}</td>
+                    <td>{{instrutor.idade}}</td>
+                    <td>{{instrutor.email}}</td>
+                    <td>{{instrutor.dandoAula}}</td>
+                    <td>
+                        <ul>
+                            <li ng-repeat="a in instrutor.aula | orderBy: 'nome' "> {{geraNomeAula(a)}} </li>
+                        </ul>
+                    </td>
+                    <td><button class="btn btn-primary" ng-click="atualizaInst(instrutor)">Editar</button></td>
+                    <td><button class="btn btn-primary" ng-click="eraseInst(instrutor)">Excluir</button></td>
+                </tr>
+            </tbody>
+        </table>
 
+    </div>
 </div>

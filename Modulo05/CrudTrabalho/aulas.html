@@ -12,29 +12,29 @@
 
             <input ng-model="novaAula.nome" type="text" class="form-control" placeholder="Ex: AngularJs" required ng-minlength="3" ng-maxlength="20">
 
-            <button type="submit" class="btn btn-primary">Salvar!</button>
-
         </div>
+        <button type="submit" class="btn btn-primary">Salvar!</button>
 
     </form>
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Editar</th>
-                <th>Excluir</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="aula in aulas">
-                <th scope="row">{{aula.id}}</th>
-                <td>{{aula.nome}}</td>
-                <td><button class="btn btn-primary" ng-click="atualiza(aula)">Editar</button></td>
-                <td><button class="btn btn-primary" ng-click="erase(aula)">Excluir</button></td>
-            </tr>
-        </tbody>
-    </table>
-
+    <div style="margin-top: 50px;">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="aula in aulas | orderBy:'nome'">
+                    <th scope="row">{{aula.id}}</th>
+                    <td>{{aula.nome}}</td>
+                    <td><button class="btn btn-primary" ng-click="atualiza(aula)">Editar</button></td>
+                    <td><button class="btn btn-primary" ng-click="erase(aula)">Excluir</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

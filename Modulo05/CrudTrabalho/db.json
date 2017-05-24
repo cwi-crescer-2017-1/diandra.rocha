@@ -27,25 +27,29 @@
   ],
   "instrutor": [
     {
-      "id": 0,
-      "nome": "Nome",
-      "sobrenome": "Sobrenome",
-      "idade": 25,
-      "email": "email@cwi.com.br",
+      "urlFoto": "https://media.licdn.com/media/AAEAAQAAAAAAAAOyAAAAJDJmYzQ3MTU2LTcyNTctNDAzMS05NjY2LTRlNDg5NDFkNjk0MQ.png",
+      "nome": "André",
+      "sobrenome": "Nunes",
+      "idade": 32,
+      "email": "andre.nunes@cwi.com",
       "dandoAula": true,
       "aula": [
-        1,
-        4
+        "4",
+        "8"
       ],
-      "urlFoto": ""
+      "id": 2
     },
     {
-      "nome": "Zanatta",
-      "sobrenome": "Everton",
-      "idade": 23,
-      "email": "exemplo@exemplo.com",
+      "urlFoto": "https://media.licdn.com/media/AAEAAQAAAAAAAAOyAAAAJDJmYzQ3MTU2LTcyNTctNDAzMS05NjY2LTRlNDg5NDFkNjk0MQ.png",
+      "nome": "Pedro",
+      "sobrenome": "PHP",
+      "idade": 21,
+      "email": "pedro@cwi.com",
       "dandoAula": true,
-      "id": 2
+      "aula": [
+        "9"
+      ],
+      "id": 3
     }
   ]
 }

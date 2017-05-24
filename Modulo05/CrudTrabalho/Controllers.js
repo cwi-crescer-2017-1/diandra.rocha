@@ -78,6 +78,7 @@ app.controller("InstrutoresController", function ($scope, instrutorService, aula
     $scope.atualizaInst = atualizaInst;
 
     listInst();
+    pegarDados();
 
     //funções internas
 
@@ -89,6 +90,16 @@ app.controller("InstrutoresController", function ($scope, instrutorService, aula
             $scope.aulas = res.data;
         });
     }
+
+    $scope.geraNomeAula = function (numeroAula) {
+        if (angular.isDefined(numeroAula)) {
+            numberaula = parseInt(numeroAula);
+            var obj = $scope.aulas.find(e => e.id === numberaula);
+            return obj.nome;
+        } else {
+            return "Nenhuma aula sendo lecionada";
+        }
+    };
 
     function atualizaInst(instrutor) {
         $scope.novoInstrutor = angular.copy(instrutor);
