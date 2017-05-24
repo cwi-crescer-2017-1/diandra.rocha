@@ -1,56 +1,28 @@
 {
   "aula": [
     {
-      "id": 0,
-      "nome": "OO"
-    },
-    {
-      "id": 1,
-      "nome": "HTML e CSS"
-    },
-    {
       "id": 2,
-      "nome": "Javascript"
-    },
-    {
-      "nome": "AngularJs",
-      "id": 3
+      "nome": "Java Avançado"
     },
     {
       "id": 4,
       "nome": "Banco de Dados I"
     },
     {
-      "nomeAula": "Diandra",
+      "nome": ".NET API",
+      "id": 7
+    },
+    {
+      "nome": "Banco de Dados II",
       "id": 8
     },
     {
-      "nomeAula": "Diandra",
+      "nome": "HTML/CSS",
       "id": 9
     },
     {
-      "nomeAula": "Diandra",
+      "nome": "AngularJs",
       "id": 10
-    },
-    {
-      "nomeAula": "Diandra",
-      "id": 11
-    },
-    {
-      "nomeAula": "teste",
-      "id": 12
-    },
-    {
-      "nomeAula": "teeeste",
-      "id": 13
-    },
-    {
-      "id": 14,
-      "nomeAula": "TESTE"
-    },
-    {
-      "nomeAula": "TESTE",
-      "id": 15
     }
   ],
   "instrutor": [
@@ -65,7 +37,15 @@
         1,
         4
       ],
-      "urlFoto": "http://foto.com/3.png"
+      "urlFoto": ""
+    },
+    {
+      "nome": "Zanatta",
+      "sobrenome": "Everton",
+      "idade": 23,
+      "email": "exemplo@exemplo.com",
+      "dandoAula": true,
+      "id": 2
     }
   ]
 }

@@ -1,41 +1,40 @@
-<div class="col-md-6">
-    <form novalidate name="Formulario1" ng-submit="create(aulaNova)">
+<div class="col-md-12">
+    <form novalidate name="Formulario1" ng-submit="save(novaAula)">
+
+        <legend>Adicionar/Editar Aula</legend>
 
         <div class="form-group">
+            <label for="nome">Nome:</label>
 
-            <h2>Adicionar Aula:</h2>
-
-            <label for="nomeAula"> Nome: </label>
-            <input type="text" class="form-control" name="nomeAula" ng-model="aulaNova.nomeAula" required ng-minlength="3" ng-maxlength="20"
-            />
             <span class="help is-danger" ng-show="Formulario1.$error.required">Campo Obrigatório</span>
-            <span class="help-block" ng-show="Formulario1.nomeAula.$error.minlength || Formulario1.nomeAula.$error.maxlength">
+            <span class="help is-danger" ng-show="Formulario1.$error.minlength || Formulario1.$error.maxlength">
         Deve ter no mínimo 3 letras e no máximo 20 letras. </span>
 
-        </div>   
+            <input ng-model="novaAula.nome" type="text" class="form-control" placeholder="Ex: AngularJs" required ng-minlength="3" ng-maxlength="20">
 
-        <button type="submit" class="btn btn-primary">Adicionar!</button>
+            <button type="submit" class="btn btn-primary">Salvar!</button>
+
+        </div>
+
     </form>
 
-
-    <form novalidate name="Formulario1" ng-submit="update(aulaNova)">
-
-        <div class="form-group">
-
-            <h2>Adicionar Aula:</h2>
-
-<label for="nomeAula"> Id: </label>
-            <input type="number" class="form-control" name="nomeAula" ng-model="aulaNova.id" />
-            <label for="nomeAula"> Novo Nome: </label>
-            <input type="text" class="form-control" name="nomeAula" ng-model="aulaNova.nomeAula" required ng-minlength="3" ng-maxlength="20"
-            />
-            <span class="help is-danger" ng-show="Formulario1.$error.required">Campo Obrigatório</span>
-            <span class="help-block" ng-show="Formulario1.nomeAula.$error.minlength || Formulario1.nomeAula.$error.maxlength">
-        Deve ter no mínimo 3 letras e no máximo 20 letras. </span>
-
-        </div>   
-
-        <button type="submit" class="btn btn-primary">Adicionar!</button>
-    </form>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="aula in aulas">
+                <th scope="row">{{aula.id}}</th>
+                <td>{{aula.nome}}</td>
+                <td><button class="btn btn-primary" ng-click="atualiza(aula)">Editar</button></td>
+                <td><button class="btn btn-primary" ng-click="erase(aula)">Excluir</button></td>
+            </tr>
+        </tbody>
+    </table>
 
 </div>

@@ -1,33 +1,27 @@
-modulo.factory('instrutorService', function ($http) {
-    let urlBase = "http://localhost:3000";
+app.factory('instrutorService', function ($http) {
+    let urlBase = "http://localhost:3000/instrutor";
 
     function getTodosOsInstrutores() {
-        return $http.get(urlBase + '/instrutor');
-    };
-
-    function getInstrutorPorId(id) {
-        return $http.get(urlBase + '/instrutor' + '/' + id);
+        return $http.get(urlBase);
     };
 
     function atualizar(instrutor) {
-        return $http.put(urlBase + '/instrutor' + '/' + instrutor.id, instrutor);
+        return $http.put(urlBase + "/" + instrutor.id, instrutor);
     };
 
     function criar(instrutor) {
-        instrutor.id = ++idAtual;
-        instrutores.push(angular.copy(instrutor));
+        return $http.post(urlBase, instrutor);
     };
 
     function remover(instrutor) {
-        return $http.delete(urlBase + '/instrutor/' + instrutor.id);
+        return $http.delete(urlBase + "/" + instrutor.id);
     }
 
     return {
-        list: getTodosOsInstrutores,
-        findById: getInstrutorPorId,
-        update: atualizar,
-        create: criar,
-        erase: remover
+        listInst: getTodosOsInstrutores,
+        updateInst: atualizar,
+        createInst: criar,
+        eraseInst: remover
     };
 
 })
