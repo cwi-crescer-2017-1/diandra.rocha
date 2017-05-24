@@ -23,33 +23,15 @@
     {
       "nome": "AngularJs",
       "id": 10
-    }
-  ],
-  "instrutor": [
-    {
-      "urlFoto": "https://media.licdn.com/media/AAEAAQAAAAAAAAOyAAAAJDJmYzQ3MTU2LTcyNTctNDAzMS05NjY2LTRlNDg5NDFkNjk0MQ.png",
-      "nome": "André",
-      "sobrenome": "Nunes",
-      "idade": 32,
-      "email": "andre.nunes@cwi.com",
-      "dandoAula": true,
-      "aula": [
-        "4",
-        "8"
-      ],
-      "id": 2
     },
     {
-      "urlFoto": "https://media.licdn.com/media/AAEAAQAAAAAAAAOyAAAAJDJmYzQ3MTU2LTcyNTctNDAzMS05NjY2LTRlNDg5NDFkNjk0MQ.png",
-      "nome": "Pedro",
-      "sobrenome": "PHP",
-      "idade": 21,
-      "email": "pedro@cwi.com",
-      "dandoAula": true,
-      "aula": [
-        "9"
-      ],
-      "id": 3
+      "nome": "JavaScript",
+      "id": 11
+    },
+    {
+      "nome": "Java OO",
+      "id": 12
     }
-  ]
+  ],
+  "instrutor": []
 }
