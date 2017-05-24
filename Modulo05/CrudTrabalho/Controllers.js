@@ -76,6 +76,7 @@ app.controller("InstrutoresController", function ($scope, instrutorService, aula
     $scope.saveInst = saveInst;
     $scope.eraseInst = eraseInst;
     $scope.atualizaInst = atualizaInst;
+    var defaultImagem = "https://media.licdn.com/media/AAEAAQAAAAAAAAOyAAAAJDJmYzQ3MTU2LTcyNTctNDAzMS05NjY2LTRlNDg5NDFkNjk0MQ.png";
 
     listInst();
     pegarDados();
@@ -110,6 +111,10 @@ app.controller("InstrutoresController", function ($scope, instrutorService, aula
             return;
         }
         let promessa = {};
+
+        instrutor.urlFoto = instrutor.urlFoto || defaultImagem;
+        instrutor.aula = instrutor.aula || [];
+        instrutor.dandoAula = instrutor.dandoAula || false;
 
         if (angular.isDefined(instrutor.id)) {
             promessa = instrutorService.updateInst(instrutor);
