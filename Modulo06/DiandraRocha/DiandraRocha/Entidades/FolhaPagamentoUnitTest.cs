@@ -254,5 +254,46 @@ namespace DiandraRocha
             Assert.AreEqual(demonstrativo.Fgts.Aliquota, fgtsAliquotaEsperado);
             Assert.AreEqual(demonstrativo.Fgts.CalculoTotal(), fgtsValorEsperado);
         }
+
+        [TestMethod]
+        public void Validar_Demonstrativo_Comercio_Salario_5000_HrE50_HrD10()
+        {
+            int horasCategoria = 170;
+            double salarioBase = 3000;
+            double horasExtras = 200;
+            double horasDescontadas = 8;
+
+            var folhaPagamento = new FolhaPagamento();
+            var demonstrativo = folhaPagamento.GerarDemonstrativo(horasCategoria, salarioBase, horasExtras, horasDescontadas);
+
+            var quantidadeHorasExtrasEsperado = 200;
+            var valorTotalHorasExtrasEsperado = 3529.41;
+            var quantidadeHorasDescontadasEsperado = 8;
+            var valorTotalHorasDescontadasEsperado = 141.18;
+            var totalProventosEsperado = 6388.23;
+            var inssAliquotaEsperado = 10;
+            var inssValorEsperado = 638.82;
+            var irrfAliquotaEsperado = 27.5;
+            var irrfValorEsperado = 1581.09 ;
+            var totalDescontosEsperado = 2219.91;
+            var totalLiquidoEsperado = 4168.32;
+            var fgtsAliquotaEsperado = 11;
+            var fgtsValorEsperado = 330;
+
+            Assert.AreEqual(demonstrativo.SalarioBase, salarioBase);
+            Assert.AreEqual(demonstrativo.HorasExtras.QtdHoras, quantidadeHorasExtrasEsperado);
+            Assert.AreEqual(demonstrativo.HorasExtras.CalculoTotalHoras(), valorTotalHorasExtrasEsperado);
+            Assert.AreEqual(demonstrativo.HorasDescontadas.QtdHoras, quantidadeHorasDescontadasEsperado);
+            Assert.AreEqual(demonstrativo.HorasDescontadas.CalculoTotalHoras(), valorTotalHorasDescontadasEsperado);
+            Assert.AreEqual(demonstrativo.TotalProventos, totalProventosEsperado);
+            Assert.AreEqual(demonstrativo.Inss.Aliquota, inssAliquotaEsperado);
+            Assert.AreEqual(demonstrativo.Inss.CalculoTotal(), inssValorEsperado);
+            Assert.AreEqual(demonstrativo.Irrf.Aliquota, irrfAliquotaEsperado);
+            Assert.AreEqual(demonstrativo.Irrf.CalculoTotal(), irrfValorEsperado);
+            Assert.AreEqual(demonstrativo.TotalDescontos, totalDescontosEsperado);
+            Assert.AreEqual(demonstrativo.TotalLiquido, totalLiquidoEsperado);
+            Assert.AreEqual(demonstrativo.Fgts.Aliquota, fgtsAliquotaEsperado);
+            Assert.AreEqual(demonstrativo.Fgts.CalculoTotal(), fgtsValorEsperado);
+        }
     }
 }
