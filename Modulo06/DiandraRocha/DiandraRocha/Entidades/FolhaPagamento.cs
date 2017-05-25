@@ -16,8 +16,8 @@ namespace DiandraRocha.Entidades
             HorasCalculadas HorasDescontadas = new HorasCalculadas(horasDescontadas, (salarioBase/horasCategoria));
             HorasCalculadas HorasExtra = new HorasCalculadas(horasExtras, (salarioBase / horasCategoria));
 
-            var HorasDescontadasValor = HorasDescontadas.CalculoTotalHoras();
-            var HorasExtrasValor = HorasExtra.CalculoTotalHoras();
+            var HorasDescontadasValor = HorasDescontadas.CalculoTotal();
+            var HorasExtrasValor = HorasExtra.CalculoTotal();
 
             double TotalProventos = salarioBase + HorasExtrasValor - HorasDescontadasValor;
 

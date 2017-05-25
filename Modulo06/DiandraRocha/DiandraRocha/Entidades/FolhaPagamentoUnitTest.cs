@@ -34,9 +34,9 @@ namespace DiandraRocha
 
             Assert.AreEqual(demonstrativo.SalarioBase, salarioBase);
             Assert.AreEqual(demonstrativo.HorasExtras.QtdHoras, quantidadeHorasExtrasEsperado);
-            Assert.AreEqual(demonstrativo.HorasExtras.CalculoTotalHoras(), valorTotalHorasExtrasEsperado);
+            Assert.AreEqual(demonstrativo.HorasExtras.CalculoTotal(), valorTotalHorasExtrasEsperado);
             Assert.AreEqual(demonstrativo.HorasDescontadas.QtdHoras, quantidadeHorasDescontadasEsperado);
-            Assert.AreEqual(demonstrativo.HorasDescontadas.CalculoTotalHoras(), valorTotalHorasDescontadasEsperado);
+            Assert.AreEqual(demonstrativo.HorasDescontadas.CalculoTotal(), valorTotalHorasDescontadasEsperado);
             Assert.AreEqual(demonstrativo.TotalProventos, totalProventosEsperado);
             Assert.AreEqual(demonstrativo.Inss.Aliquota, inssAliquotaEsperado);
             Assert.AreEqual(demonstrativo.Inss.CalculoTotal(), inssValorEsperado);
@@ -75,9 +75,9 @@ namespace DiandraRocha
 
             Assert.AreEqual(demonstrativo.SalarioBase, salarioBase);
             Assert.AreEqual(demonstrativo.HorasExtras.QtdHoras, quantidadeHorasExtrasEsperado);
-            Assert.AreEqual(demonstrativo.HorasExtras.CalculoTotalHoras(), valorTotalHorasExtrasEsperado);
+            Assert.AreEqual(demonstrativo.HorasExtras.CalculoTotal(), valorTotalHorasExtrasEsperado);
             Assert.AreEqual(demonstrativo.HorasDescontadas.QtdHoras, quantidadeHorasDescontadasEsperado);
-            Assert.AreEqual(demonstrativo.HorasDescontadas.CalculoTotalHoras(), valorTotalHorasDescontadasEsperado);
+            Assert.AreEqual(demonstrativo.HorasDescontadas.CalculoTotal(), valorTotalHorasDescontadasEsperado);
             Assert.AreEqual(demonstrativo.TotalProventos, totalProventosEsperado);
             Assert.AreEqual(demonstrativo.Inss.Aliquota, inssAliquotaEsperado);
             Assert.AreEqual(demonstrativo.Inss.CalculoTotal(), inssValorEsperado);
@@ -116,9 +116,9 @@ namespace DiandraRocha
 
             Assert.AreEqual(demonstrativo.SalarioBase, salarioBase);
             Assert.AreEqual(demonstrativo.HorasExtras.QtdHoras, quantidadeHorasExtrasEsperado);
-            Assert.AreEqual(demonstrativo.HorasExtras.CalculoTotalHoras(), valorTotalHorasExtrasEsperado);
+            Assert.AreEqual(demonstrativo.HorasExtras.CalculoTotal(), valorTotalHorasExtrasEsperado);
             Assert.AreEqual(demonstrativo.HorasDescontadas.QtdHoras, quantidadeHorasDescontadasEsperado);
-            Assert.AreEqual(demonstrativo.HorasDescontadas.CalculoTotalHoras(), valorTotalHorasDescontadasEsperado);
+            Assert.AreEqual(demonstrativo.HorasDescontadas.CalculoTotal(), valorTotalHorasDescontadasEsperado);
             Assert.AreEqual(demonstrativo.TotalProventos, totalProventosEsperado);
             Assert.AreEqual(demonstrativo.Inss.Aliquota, inssAliquotaEsperado);
             Assert.AreEqual(demonstrativo.Inss.CalculoTotal(), inssValorEsperado);
@@ -157,9 +157,9 @@ namespace DiandraRocha
 
             Assert.AreEqual(demonstrativo.SalarioBase, salarioBase);
             Assert.AreEqual(demonstrativo.HorasExtras.QtdHoras, quantidadeHorasExtrasEsperado);
-            Assert.AreEqual(demonstrativo.HorasExtras.CalculoTotalHoras(), valorTotalHorasExtrasEsperado);
+            Assert.AreEqual(demonstrativo.HorasExtras.CalculoTotal(), valorTotalHorasExtrasEsperado);
             Assert.AreEqual(demonstrativo.HorasDescontadas.QtdHoras, quantidadeHorasDescontadasEsperado);
-            Assert.AreEqual(demonstrativo.HorasDescontadas.CalculoTotalHoras(), valorTotalHorasDescontadasEsperado);
+            Assert.AreEqual(demonstrativo.HorasDescontadas.CalculoTotal(), valorTotalHorasDescontadasEsperado);
             Assert.AreEqual(demonstrativo.TotalProventos, totalProventosEsperado);
             Assert.AreEqual(demonstrativo.Inss.Aliquota, inssAliquotaEsperado);
             Assert.AreEqual(demonstrativo.Inss.CalculoTotal(), inssValorEsperado);
@@ -200,9 +200,9 @@ namespace DiandraRocha
 
             Assert.AreEqual(demonstrativo.SalarioBase, salarioBase);
             Assert.AreEqual(demonstrativo.HorasExtras.QtdHoras, quantidadeHorasExtrasEsperado);
-            Assert.AreEqual(demonstrativo.HorasExtras.CalculoTotalHoras(), valorTotalHorasExtrasEsperado);
+            Assert.AreEqual(demonstrativo.HorasExtras.CalculoTotal(), valorTotalHorasExtrasEsperado);
             Assert.AreEqual(demonstrativo.HorasDescontadas.QtdHoras, quantidadeHorasDescontadasEsperado);
-            Assert.AreEqual(demonstrativo.HorasDescontadas.CalculoTotalHoras(), valorTotalHorasDescontadasEsperado);
+            Assert.AreEqual(demonstrativo.HorasDescontadas.CalculoTotal(), valorTotalHorasDescontadasEsperado);
             Assert.AreEqual(demonstrativo.TotalProventos, totalProventosEsperado);
             Assert.AreEqual(demonstrativo.Inss.Aliquota, inssAliquotaEsperado);
             Assert.AreEqual(demonstrativo.Inss.CalculoTotal(), inssValorEsperado);
@@ -241,9 +241,9 @@ namespace DiandraRocha
 
             Assert.AreEqual(demonstrativo.SalarioBase, salarioBase);
             Assert.AreEqual(demonstrativo.HorasExtras.QtdHoras, quantidadeHorasExtrasEsperado);
-            Assert.AreEqual(demonstrativo.HorasExtras.CalculoTotalHoras(), valorTotalHorasExtrasEsperado);
+            Assert.AreEqual(demonstrativo.HorasExtras.CalculoTotal(), valorTotalHorasExtrasEsperado);
             Assert.AreEqual(demonstrativo.HorasDescontadas.QtdHoras, quantidadeHorasDescontadasEsperado);
-            Assert.AreEqual(demonstrativo.HorasDescontadas.CalculoTotalHoras(), valorTotalHorasDescontadasEsperado);
+            Assert.AreEqual(demonstrativo.HorasDescontadas.CalculoTotal(), valorTotalHorasDescontadasEsperado);
             Assert.AreEqual(demonstrativo.TotalProventos, totalProventosEsperado);
             Assert.AreEqual(demonstrativo.Inss.Aliquota, inssAliquotaEsperado);
             Assert.AreEqual(demonstrativo.Inss.CalculoTotal(), inssValorEsperado);
@@ -256,7 +256,7 @@ namespace DiandraRocha
         }
 
         [TestMethod]
-        public void Validar_Demonstrativo_Comercio_Salario_5000_HrE50_HrD10()
+        public void Validar_Demonstrativo_Comercio_Salario_3000_HrE200_HrD8()
         {
             int horasCategoria = 170;
             double salarioBase = 3000;
@@ -274,7 +274,7 @@ namespace DiandraRocha
             var inssAliquotaEsperado = 10;
             var inssValorEsperado = 638.82;
             var irrfAliquotaEsperado = 27.5;
-            var irrfValorEsperado = 1581.09 ;
+            var irrfValorEsperado = 1581.09;
             var totalDescontosEsperado = 2219.91;
             var totalLiquidoEsperado = 4168.32;
             var fgtsAliquotaEsperado = 11;
@@ -282,9 +282,9 @@ namespace DiandraRocha
 
             Assert.AreEqual(demonstrativo.SalarioBase, salarioBase);
             Assert.AreEqual(demonstrativo.HorasExtras.QtdHoras, quantidadeHorasExtrasEsperado);
-            Assert.AreEqual(demonstrativo.HorasExtras.CalculoTotalHoras(), valorTotalHorasExtrasEsperado);
+            Assert.AreEqual(demonstrativo.HorasExtras.CalculoTotal(), valorTotalHorasExtrasEsperado);
             Assert.AreEqual(demonstrativo.HorasDescontadas.QtdHoras, quantidadeHorasDescontadasEsperado);
-            Assert.AreEqual(demonstrativo.HorasDescontadas.CalculoTotalHoras(), valorTotalHorasDescontadasEsperado);
+            Assert.AreEqual(demonstrativo.HorasDescontadas.CalculoTotal(), valorTotalHorasDescontadasEsperado);
             Assert.AreEqual(demonstrativo.TotalProventos, totalProventosEsperado);
             Assert.AreEqual(demonstrativo.Inss.Aliquota, inssAliquotaEsperado);
             Assert.AreEqual(demonstrativo.Inss.CalculoTotal(), inssValorEsperado);
@@ -295,5 +295,34 @@ namespace DiandraRocha
             Assert.AreEqual(demonstrativo.Fgts.Aliquota, fgtsAliquotaEsperado);
             Assert.AreEqual(demonstrativo.Fgts.CalculoTotal(), fgtsValorEsperado);
         }
+
+
+        [TestMethod]
+        public void Validar_Demonstrativo_Comercio_Atributos_Nullos()
+        {
+            int horasCategoria = 170;
+            double salarioBase = 3000;
+            double horasExtras = 200;
+            double horasDescontadas = 8;
+
+            var folhaPagamento = new FolhaPagamento();
+            var demonstrativo = folhaPagamento.GerarDemonstrativo(horasCategoria, salarioBase, horasExtras, horasDescontadas);
+
+            Assert.IsNotNull(demonstrativo.SalarioBase);
+            Assert.IsNotNull(demonstrativo.HorasExtras.QtdHoras);
+            Assert.IsNotNull(demonstrativo.HorasExtras.CalculoTotal());
+            Assert.IsNotNull(demonstrativo.HorasDescontadas.QtdHoras);
+            Assert.IsNotNull(demonstrativo.HorasDescontadas.CalculoTotal());
+            Assert.IsNotNull(demonstrativo.TotalProventos);
+            Assert.IsNotNull(demonstrativo.Inss.Aliquota);
+            Assert.IsNotNull(demonstrativo.Inss.CalculoTotal());
+            Assert.IsNotNull(demonstrativo.Irrf.Aliquota);
+            Assert.IsNotNull(demonstrativo.Irrf.CalculoTotal());
+            Assert.IsNotNull(demonstrativo.TotalDescontos);
+            Assert.IsNotNull(demonstrativo.TotalLiquido);
+            Assert.IsNotNull(demonstrativo.Fgts.Aliquota);
+            Assert.IsNotNull(demonstrativo.Fgts.CalculoTotal());
+        }
+
     }
 }

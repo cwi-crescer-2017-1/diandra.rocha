@@ -35,11 +35,11 @@ namespace DiandraRocha.Entidades
         public void printarDemo()
         {
             Console.WriteLine("+---------------------------------------------------+");
-            Console.WriteLine("-DEMONSTRATIVO DE FOLHA DE PAGAMENTO(CONTRA - CHEQUE)");
+            Console.WriteLine("-DEMONSTRATIVO DE FOLHA DE PAGAMENTO(CONTRA - CHEQUE)-");
             Console.WriteLine("+---------------------------------------------------+"); 
             Console.WriteLine("Salário mensalista: (" + HrsConvencao + ")" + "        " + SalarioBase);
-            Console.WriteLine("Horas extra: (" + HorasExtras.QtdHoras + ")" + "        " + HorasExtras.CalculoTotalHoras());
-            Console.WriteLine("Horas extra: (" + HorasDescontadas.QtdHoras + ")" + "        " + HorasDescontadas.CalculoTotalHoras());
+            Console.WriteLine("Horas extra: (" + HorasExtras.QtdHoras + ")" + "        " + HorasExtras.CalculoTotal());
+            Console.WriteLine("Horas extra: (" + HorasDescontadas.QtdHoras + ")" + "        " + HorasDescontadas.CalculoTotal());
             Console.WriteLine("Total de proventos: " + "        " + TotalProventos);
             Console.WriteLine("INSS: (" + Inss.Aliquota + "%)"+ "        " + Inss.CalculoTotal());
             Console.WriteLine("IRRF: (" + Irrf.Aliquota + "%)" + "        " + Irrf.CalculoTotal());

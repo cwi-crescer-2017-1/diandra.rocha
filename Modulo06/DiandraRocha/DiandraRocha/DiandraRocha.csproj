@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entidades\Calculo.cs" />
     <Compile Include="Entidades\Demonstrativo.cs" />
     <Compile Include="Entidades\Desconto.cs" />
     <Compile Include="Entidades\FolhaPagamento.cs" />

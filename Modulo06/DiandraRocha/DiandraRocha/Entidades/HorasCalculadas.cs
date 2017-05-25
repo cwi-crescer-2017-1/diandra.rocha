@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiandraRocha.Entidades
 {
-    public class HorasCalculadas
+    public class HorasCalculadas : Calculo
     {
         public HorasCalculadas(double qtdHoras, double valorTotalHoras)
         {
@@ -14,7 +14,7 @@ namespace DiandraRocha.Entidades
             ValorTotalHoras = valorTotalHoras;
         }
 
-        public double CalculoTotalHoras()
+        public double CalculoTotal()
         {
             if(QtdHoras!=0 && ValorTotalHoras != 0)
             {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiandraRocha.Entidades
 {
-    public class Desconto
+    public class Desconto : Calculo
     {
         public Desconto(double valor, double aliquota)
         {
