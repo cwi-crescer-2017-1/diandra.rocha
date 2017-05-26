@@ -1,0 +1,6 @@
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo06\Aula01\Aula01\bin\Debug\Aula01.exe.config
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo06\Aula01\Aula01\bin\Debug\Aula01.exe
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo06\Aula01\Aula01\bin\Debug\Aula01.pdb
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo06\Aula01\Aula01\obj\Debug\Aula01.csprojResolveAssemblyReference.cache
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo06\Aula01\Aula01\obj\Debug\Aula01.exe
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo06\Aula01\Aula01\obj\Debug\Aula01.pdb
