@@ -54,10 +54,11 @@ modulo.controller('MensagemController', function($scope, mensagemService) {
     }
 
     function postMensagem(mensagem) {
-        mensagem.Usuario = $window.localStorage.getItem(usuario);
         mensagemService
+        mensagem.Texto.replace("André Nunes", "$$$$$ $$$$$")
             .postMensagem(mensagem)
             .then(mensagens => {
+                $window.localStorage.setItem(response.data);
                 getMensagem();
             })
     }
