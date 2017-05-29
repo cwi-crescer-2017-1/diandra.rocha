@@ -1,5 +1,5 @@
 modulo.factory("mensagemService", function($http) {
-    urlBase = "http://localhost:62270/api/Mensagem";
+    urlBase = "http://localhost:50807/api/Mensagem";
 
     function obterMensagem() {
         return $http.get(urlBase);

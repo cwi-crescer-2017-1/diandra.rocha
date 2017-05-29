@@ -1,5 +1,5 @@
 modulo.factory("usuarioService", function($http) {
-    urlBase = "http://localhost:62270/api/Usuario";
+    urlBase = "http://localhost:50807/api/Usuario";
 
     function obterUsuario() {
         return $http.get(urlBase);

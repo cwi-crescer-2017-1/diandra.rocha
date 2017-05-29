@@ -29,8 +29,8 @@ modulo.controller('UsuarioController', function($scope, usuarioService, $locatio
             })
     }
 
-    function postUsuario(usuario) {
-        $window.localStorage.setItem(usuario);
+    function postUsuario(usuario) {;
+        localStorage.setItem("usuario", JSON.stringify(usuario));
         usuarioService
             .postUsuario(usuario)
             .then(usuarios => {
@@ -54,11 +54,11 @@ modulo.controller('MensagemController', function($scope, mensagemService) {
     }
 
     function postMensagem(mensagem) {
+        mensagem.Texto.replace("André Nunes", "$$$$$ $$$$$");
         mensagemService
-        mensagem.Texto.replace("André Nunes", "$$$$$ $$$$$")
             .postMensagem(mensagem)
             .then(mensagens => {
-                $window.localStorage.setItem(response.data);
+                mensagem.usuario = JSON.parse(localStorage.getItem("usuario"));
                 getMensagem();
             })
     }
