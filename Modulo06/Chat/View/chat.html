@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row " style="padding-top:40px;">
+        <h3 class="text-center">Chat</h3>
+        <br /><br />
+        <div class="col-md-8">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    RECENT CHAT HISTORY
+                </div>
+                <div class="panel-body">
+                    <ul class="media-list">
+
+                        <li class="media" ng-repeat="mensagem in mensagens">
+
+                            <div class="media-body">
+
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle " ng-src="mensagem.Usuario.URLFoto" />
+                                    </a>
+                                    <div class="media-body">
+                                        {{mensagem.Texto}}
+                                        <br />
+                                        <small class="text-muted">{{mensagem.Usuario.Nome}} | {{mensagem.Horario}}</small>
+                                        <hr />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Enter Message" ng-model="mensagem.Texto" />
+                        <span class="input-group-btn">
+                                        <button class="btn btn-info" ng-click="postMensagem(Mensagem)" type="button">Enviar</button>
+                                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    ONLINE USERS
+                </div>
+                <div class="panel-body">
+                    <ul class="media-list">
+
+                        <li class="media" ng-repeat="usuarios in usuarios">
+
+                            <div class="media-body">
+
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle" style="max-height:40px;" ng-src="usuario.URLFoto" />
+                                    </a>
+                                    <div class="media-body">
+                                        <h5>{{usuario.Nome}} | User </h5>
+
+                                        <small class="text-muted">Active</small>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
