@@ -1,0 +1,5 @@
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo06\Demo01\Demo01\bin\Debug\Demo01.exe.config
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo06\Demo01\Demo01\bin\Debug\Demo01.exe
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo06\Demo01\Demo01\bin\Debug\Demo01.pdb
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo06\Demo01\Demo01\obj\Debug\Demo01.exe
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo06\Demo01\Demo01\obj\Debug\Demo01.pdb
