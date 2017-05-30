@@ -33,7 +33,7 @@ namespace Dia04Exercício.Infraestrutura.Repositorios
                     using (var comando = conexao.CreateCommand())
                     {
                         comando.CommandText =
-                        @"INSERT INTO ITemPedido (PedidoId, ProdutoId, Quantidade) 
+                        @"INSERT INTO ItemPedido (PedidoId, ProdutoId, Quantidade) 
                                 VALUES (@PedidoId, @ProdutoId, @Quantidade)";
 
                         comando.Parameters.AddWithValue("@PedidoId", pedido.Id);
