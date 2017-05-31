@@ -1,16 +1,15 @@
-﻿using EditoraCrescer.Infraestrutura.Entidades;
-using EditoraCrescer.Infraestrutura.Mappings;
+﻿using Aula05.Infraestrutura.Entidades;
+using Aula05.Infraestrutura.Mappings;
 using System.Data.Entity;
 
-namespace EditoraCrescer.Infraestrutura
+namespace Aula05.Infraestrutura
 {
     public class Contexto : DbContext
     {
-        public Contexto() : base("name=MyString") { }
+        public Contexto() : base("name=ExemploEFSP"){ }
 
         public DbSet<Autor> Autores { get; set; }
         public DbSet<Livro> Livros { get; set; }
-        public DbSet<Revisor> Revisores { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

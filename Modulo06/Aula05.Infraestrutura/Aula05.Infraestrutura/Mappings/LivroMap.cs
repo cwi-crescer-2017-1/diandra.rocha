@@ -1,7 +1,7 @@
-﻿using EditoraCrescer.Infraestrutura.Entidades;
+﻿using Aula05.Infraestrutura.Entidades;
 using System.Data.Entity.ModelConfiguration;
 
-namespace EditoraCrescer.Infraestrutura.Mappings
+namespace Aula05.Infraestrutura.Mappings
 {
     class LivroMap : EntityTypeConfiguration<Livro>
     {
@@ -14,11 +14,7 @@ namespace EditoraCrescer.Infraestrutura.Mappings
             HasRequired(x => x.Autor)
                 .WithMany()
                 .HasForeignKey(x => x.IdAutor);
-
-            HasRequired(x => x.Revisor)
-               .WithMany()
-               .HasForeignKey(x => x.IdRevisor);
         }
-
+       
     }
 }

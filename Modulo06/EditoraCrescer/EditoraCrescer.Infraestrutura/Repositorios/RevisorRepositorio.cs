@@ -4,29 +4,29 @@ using System.Linq;
 
 namespace EditoraCrescer.Infraestrutura.Repositorios
 {
-    public class LivroRepositorio
+    public class RevisorRepositorio
     {
         private Contexto contexto = new Contexto();
 
-        public LivroRepositorio()
+        public RevisorRepositorio()
         {
 
         }
-        public List<Livro> Obter()
+        public List<Revisor> Obter()
         {
-            return contexto.Livros.ToList();
+            return contexto.Revisores.ToList();
         }
-        public void Adicionar(Livro livro)
+        public void Adicionar(Revisor revisor)
         {
-            contexto.Livros.Add(livro);
+            contexto.Revisores.Add(revisor);
             contexto.SaveChanges();
         }
-        public void Deletar(int Isbn)
+        public void Deletar(int Id)
         {
-            var itemToRemove = contexto.Livros.SingleOrDefault(x => x.Isbn == Isbn);
+            var itemToRemove = contexto.Revisores.SingleOrDefault(x => x.Id == Id);
             if (itemToRemove != null)
             {
-                contexto.Livros.Remove(itemToRemove);
+                contexto.Revisores.Remove(itemToRemove);
                 contexto.SaveChanges();
             }
 

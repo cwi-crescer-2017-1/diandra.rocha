@@ -8,13 +8,13 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BDAD26C9-146D-4A15-ADDB-31E44767141D}</ProjectGuid>
+    <ProjectGuid>{CF71B393-5A1F-4AB5-8AF2-00386F27B2B2}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EditoraCrescer.WebApi</RootNamespace>
-    <AssemblyName>EditoraCrescer.WebApi</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <RootNamespace>EditoraCrescer.Api</RootNamespace>
+    <AssemblyName>EditoraCrescer.Api</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -91,9 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AutoresController.cs" />
     <Compile Include="Controllers\LivrosController.cs" />
-    <Compile Include="Controllers\RevisoresController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -113,8 +111,8 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EditoraCrescer.Infraestrutura\EditoraCrescer.Infraestrutura.csproj">
-      <Project>{EA71E5BF-64B6-405D-A663-8F67BC566599}</Project>
+    <ProjectReference Include="..\Aula05.Infraestrutura\EditoraCrescer.Infraestrutura.csproj">
+      <Project>{74A5A77B-3DA4-4C7A-9510-3803C4811204}</Project>
       <Name>EditoraCrescer.Infraestrutura</Name>
     </ProjectReference>
   </ItemGroup>
@@ -131,9 +129,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51144</DevelopmentServerPort>
+          <DevelopmentServerPort>50556</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51144/</IISUrl>
+          <IISUrl>http://localhost:50556/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

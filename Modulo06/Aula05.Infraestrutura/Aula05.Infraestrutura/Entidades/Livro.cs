@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EditoraCrescer.Infraestrutura.Entidades
+namespace Aula05.Infraestrutura.Entidades
 {
     public class Livro
     {
@@ -11,10 +11,6 @@ namespace EditoraCrescer.Infraestrutura.Entidades
         public DateTime DataPublicacao { get; set; }
         public int IdAutor { get; set; }
         public Autor Autor { get; set; }
-        public int IdRevisor { get; set; }
-        public Revisor Revisor { get; set; }
-        public DateTime DataRevisao { get; set; }
-
     }
 
 }

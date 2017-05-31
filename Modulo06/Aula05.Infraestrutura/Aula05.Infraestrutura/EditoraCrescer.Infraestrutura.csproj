@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EA71E5BF-64B6-405D-A663-8F67BC566599}</ProjectGuid>
+    <ProjectGuid>{74A5A77B-3DA4-4C7A-9510-3803C4811204}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EditoraCrescer.Infraestrutura</RootNamespace>
-    <AssemblyName>EditoraCrescer.Infraestrutura</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <RootNamespace>Aula05.Infraestrutura</RootNamespace>
+    <AssemblyName>Aula05.Infraestrutura</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -50,35 +50,23 @@
     <Compile Include="Contexto.cs" />
     <Compile Include="Entidades\Autor.cs" />
     <Compile Include="Entidades\Livro.cs" />
-    <Compile Include="Entidades\Revisor.cs" />
     <Compile Include="Mappings\AutorMap.cs" />
     <Compile Include="Mappings\LivroMap.cs" />
-    <Compile Include="Mappings\RevisorMap.cs" />
-    <Compile Include="Migrations\201705310629490_AlteracaoDoBanco.cs" />
-    <Compile Include="Migrations\201705310629490_AlteracaoDoBanco.Designer.cs">
-      <DependentUpon>201705310629490_AlteracaoDoBanco.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705310635152_AlteracaoDaTabelaRevisors.cs" />
-    <Compile Include="Migrations\201705310635152_AlteracaoDaTabelaRevisors.Designer.cs">
-      <DependentUpon>201705310635152_AlteracaoDaTabelaRevisors.cs</DependentUpon>
+    <Compile Include="Migrations\201705301938399_CriacaoDoBanco.cs" />
+    <Compile Include="Migrations\201705301938399_CriacaoDoBanco.Designer.cs">
+      <DependentUpon>201705301938399_CriacaoDoBanco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositorios\AutorRepositorio.cs" />
-    <Compile Include="Repositorios\LivroRepositorio.cs" />
-    <Compile Include="Repositorios\RevisorRepositorio.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705310629490_AlteracaoDoBanco.resx">
-      <DependentUpon>201705310629490_AlteracaoDoBanco.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705310635152_AlteracaoDaTabelaRevisors.resx">
-      <DependentUpon>201705310635152_AlteracaoDaTabelaRevisors.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201705301938399_CriacaoDoBanco.resx">
+      <DependentUpon>201705301938399_CriacaoDoBanco.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
