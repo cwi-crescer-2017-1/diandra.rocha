@@ -8,36 +8,75 @@ namespace EditoraCrescer.WebApi.Controllers
 
     namespace EditoraCrescer.Api.Controllers
     {
+        [RoutePrefix("api/Livros")]
         public class LivrosController : ApiController
         {
             LivroRepositorio repositorio = new LivroRepositorio();
 
-            public IHttpActionResult Get()
+            [HttpGet]
+            [Route("{isbn:int}")]
+            public IHttpActionResult ObterPorId(int isbn)
+            {
+                    var livro = repositorio.ObterPorIsbn(isbn);
+             
+                return Ok(livro);
+            }
+
+            [HttpGet]
+            [Route("{genero}")]
+            public IHttpActionResult ObterPorGenero(string genero)
+            {
+                var livro = repositorio.ObterPorGenero(genero);
+
+                return Ok(livro);
+            }
+
+            [HttpGet]
+            public IHttpActionResult ObterTodos()
             {
                 var livros = repositorio.Obter().ToList();
 
                 return Ok(livros);
             }
 
-            public IHttpActionResult Post(Livro livro)
+            [HttpPost]
+            public IHttpActionResult Incluir(Livro livro)
             {
-                if(livro == null)
+                if (livro == null)
                 {
                     return BadRequest("Livro nulo");
                 }
 
                 repositorio.Adicionar(livro);
-                
+
                 return Ok(livro);
             }
 
-            public IHttpActionResult Delete(int Isbn)
-            { 
+            [HttpDelete]
+            [Route("{isbn:int}")]
+            public IHttpActionResult Remover(int Isbn)
+            {
                 repositorio.Deletar(Isbn);
 
                 return Ok();
             }
 
+            [HttpPut]
+            [Route("{isbn:int}")]
+            public IHttpActionResult Alterar(int isbn, Livro livro)
+            {
+                
+                repositorio.Atualizar(isbn, livro);
+
+                return Ok(livro);
+            }
+
+            protected override void Dispose(bool disposing)
+            {
+                repositorio.Dispose();
+            }
+
         }
+
     }
 }
