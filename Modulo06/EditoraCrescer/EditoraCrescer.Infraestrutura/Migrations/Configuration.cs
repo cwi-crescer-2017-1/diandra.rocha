@@ -1,18 +1,18 @@
-namespace Aula05.Infraestrutura.Migrations
+namespace EditoraCrescer.Infraestrutura.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Aula05.Infraestrutura.Contexto>
+    internal sealed class Configuration : DbMigrationsConfiguration<EditoraCrescer.Infraestrutura.Contexto>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Aula05.Infraestrutura.Contexto context)
+        protected override void Seed(EditoraCrescer.Infraestrutura.Contexto context)
         {
             //  This method will be called after migrating to the latest version.
 

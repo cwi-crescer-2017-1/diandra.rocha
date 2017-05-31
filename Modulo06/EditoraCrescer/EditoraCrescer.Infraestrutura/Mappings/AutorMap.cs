@@ -1,9 +1,9 @@
-﻿using Aula05.Infraestrutura.Entidades;
+﻿using EditoraCrescer.Infraestrutura.Entidades;
 using System.Data.Entity.ModelConfiguration;
 
-namespace Aula05.Infraestrutura.Mappings
+namespace EditoraCrescer.Infraestrutura.Mappings
 {
-    public class AutorMap: EntityTypeConfiguration<Autor>
+    public class AutorMap : EntityTypeConfiguration<Autor>
     {
 
         public AutorMap()
@@ -11,10 +11,6 @@ namespace Aula05.Infraestrutura.Mappings
             ToTable("Autores");
 
             HasKey(x => x.Id);
-
-
         }
-
-
     }
 }

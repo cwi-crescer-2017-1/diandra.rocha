@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Aula05.Infraestrutura.Entidades
+namespace EditoraCrescer.Infraestrutura.Entidades
 {
     public class Livro
     {

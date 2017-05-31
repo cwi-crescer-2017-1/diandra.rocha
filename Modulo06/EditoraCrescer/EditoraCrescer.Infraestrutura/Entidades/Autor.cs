@@ -1,4 +1,4 @@
-﻿namespace Aula05.Infraestrutura.Entidades
+﻿namespace EditoraCrescer.Infraestrutura.Entidades
 {
     public class Autor
     {

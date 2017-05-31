@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // As Informações Gerais sobre um assembly são controladas por meio do 
 // conjunto de atributos a seguir. Altere esses valores de atributo para modificar as informações
 // associadas a um assembly.
-[assembly: AssemblyTitle("EditoraCrescer.Api")]
+[assembly: AssemblyTitle("EditoraCrescer.WebApi")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EditoraCrescer.Api")]
+[assembly: AssemblyProduct("EditoraCrescer.WebApi")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // A GUID a seguir será referente à ID do typelib se este projeto for exposto ao COM
-[assembly: Guid("cf71b393-5a1f-4ab5-8af2-00386f27b2b2")]
+[assembly: Guid("bdad26c9-146d-4a15-addb-31e44767141d")]
 
 // As informações de versão de um assembly consistem nos quatro valores a seguir:
 //

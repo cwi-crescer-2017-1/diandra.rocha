@@ -1,11 +1,8 @@
-﻿using Aula05.Infraestrutura.Entidades;
-using System;
+﻿using EditoraCrescer.Infraestrutura.Entidades;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Aula05.Infraestrutura.Repositorios
+namespace EditoraCrescer.Infraestrutura.Repositorios
 {
     class LivroRepositorio
     {
@@ -14,7 +11,6 @@ namespace Aula05.Infraestrutura.Repositorios
         {
 
         }
-
         public List<Livro> Obter()
         {
             return contexto.Livros.ToList();

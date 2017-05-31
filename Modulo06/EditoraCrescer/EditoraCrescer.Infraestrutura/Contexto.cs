@@ -1,12 +1,12 @@
-﻿using Aula05.Infraestrutura.Entidades;
-using Aula05.Infraestrutura.Mappings;
+﻿using EditoraCrescer.Infraestrutura.Entidades;
+using EditoraCrescer.Infraestrutura.Mappings;
 using System.Data.Entity;
 
-namespace Aula05.Infraestrutura
+namespace EditoraCrescer.Infraestrutura
 {
     public class Contexto : DbContext
     {
-        public Contexto() : base("name=ExemploEFSP"){ }
+        public Contexto() : base("name=MyString") { }
 
         public DbSet<Autor> Autores { get; set; }
         public DbSet<Livro> Livros { get; set; }

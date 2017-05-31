@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
 
-namespace EditoraCrescer.Api
+namespace EditoraCrescer.WebApi
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
