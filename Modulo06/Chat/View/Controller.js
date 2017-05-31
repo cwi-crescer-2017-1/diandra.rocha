@@ -3,7 +3,7 @@ var modulo = angular.module('app', ['ngRoute']);
 modulo.config(function($routeProvider) {
 
     $routeProvider
-        .when('/chat', {
+        .when('/chat/:nome', {
             controller: 'MensagemController',
             templateUrl: 'chat.html'
         })
@@ -12,11 +12,12 @@ modulo.config(function($routeProvider) {
             templateUrl: 'usuario.html'
         })
         .otherwise({
-            redirectTo: '/index'
+            redirectTo: '/usuario'
         });
 });
 
 modulo.controller('UsuarioController', function($scope, usuarioService, $location) {
+
     $scope.usuarios = {};
     $scope.postUsuario = postUsuario;
     getUsuario();
@@ -34,8 +35,7 @@ modulo.controller('UsuarioController', function($scope, usuarioService, $locatio
         usuarioService
             .postUsuario(usuario)
             .then(usuarios => {
-                getUsuario()
-                $location.url("/chat");
+                $location.path("/chat/" + usuario.nome);
             })
     }
 });
