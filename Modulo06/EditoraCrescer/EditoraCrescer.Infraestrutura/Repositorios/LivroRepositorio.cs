@@ -39,10 +39,9 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
 
         public List<dynamic> ObterPorData()
         {
-            var livros = contexto.Livros.ToList();
-            DateTime intervalo = Convert.ToDateTime(System.Data.Entity.DbFunctions.AddDays(DateTime.Now, -7));
+            var livros = contexto.Livros.ToList();    
 
-            return livros.Where(x => x.DataPublicacao>=intervalo).Select(x =>
+            return livros.Where(x => ((DateTime.Now - x.DataPublicacao).TotalDays) >= 7).Select(x =>
             new { Isbn = x.Isbn, Titulo = x.Titulo, Capa = x.Capa, NomeAutor = x.Autor.Nome, Genero = x.Genero })
             .ToList<dynamic>();
         }

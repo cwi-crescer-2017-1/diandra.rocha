@@ -29,6 +29,16 @@ namespace EditoraCrescer.WebApi.Controllers
             return Ok(new { dados = autor });
         }
 
+        [HttpGet]
+        [Route("{id:int}/Livros")]
+        public IHttpActionResult ObterPorIdComTodosOsLivros(int id)
+        {
+            var livros = repositorio.ObterPorIdComTodosOsLivros(id);
+
+            return Ok(new { dados = livros });
+        }
+
+
         [HttpPost]
         public HttpResponseMessage Incluir(Autor autor)
         {

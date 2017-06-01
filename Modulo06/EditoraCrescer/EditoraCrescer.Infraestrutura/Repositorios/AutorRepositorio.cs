@@ -25,6 +25,12 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             return contexto.Autores.SingleOrDefault(x => x.Id == id);
         }
 
+        public List<Livro> ObterPorIdComTodosOsLivros(int id)
+        {
+            return contexto.Livros.Where(x => x.IdAutor == id).ToList();
+
+        }
+
         public bool VerificarAutor(Autor autor)
         {
             return contexto.Autores.Count(x => x.Id == autor.Id) != 0;
