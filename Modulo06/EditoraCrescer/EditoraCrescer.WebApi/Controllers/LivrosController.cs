@@ -31,7 +31,7 @@ namespace EditoraCrescer.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("Lancamento")]
+        [Route("Obter/Lancamento")]
         public IHttpActionResult ObterPorData()
         {
             var livros = repositorio.ObterPorData();
