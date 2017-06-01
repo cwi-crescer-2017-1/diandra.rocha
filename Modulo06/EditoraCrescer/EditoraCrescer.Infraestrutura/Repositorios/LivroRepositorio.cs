@@ -13,9 +13,14 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
         {
 
         }
-        public List<Livro> Obter()
+
+        public List<dynamic> Obter()
         {
-            return contexto.Livros.ToList();
+            var livros = contexto.Livros.ToList();
+
+            return contexto.Livros.Select(x =>
+            new { Isbn = x.Isbn, Titulo = x.Titulo, Capa = x.Capa, NomeAutor = x.Autor.Nome, Genero = x.Genero })
+            .ToList<dynamic>();
         }
 
         public Livro ObterPorIsbn(int isbn)
@@ -23,16 +28,37 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             return contexto.Livros.SingleOrDefault(x => x.Isbn == isbn);
         }
 
-        public List<Livro> ObterPorGenero(string genero)
+        public List<dynamic> ObterPorGenero(string genero)
         {
-            return contexto.Livros.Where(x => x.Genero.Contains(genero)).ToList();
+            var lista =  contexto.Livros.Where(x => x.Genero.Contains(genero)).ToList();
+
+            return lista.Select(x =>
+            new { Isbn = x.Isbn, Titulo = x.Titulo, Capa = x.Capa, NomeAutor = x.Autor.Nome, Genero = x.Genero })
+            .ToList<dynamic>();
         }
+
+        public List<dynamic> ObterPorData()
+        {
+            var livros = contexto.Livros.ToList();
+            DateTime intervalo = Convert.ToDateTime(System.Data.Entity.DbFunctions.AddDays(DateTime.Now, -7));
+
+            return livros.Where(x => x.DataPublicacao>=intervalo).Select(x =>
+            new { Isbn = x.Isbn, Titulo = x.Titulo, Capa = x.Capa, NomeAutor = x.Autor.Nome, Genero = x.Genero })
+            .ToList<dynamic>();
+        }
+
+        public bool VerificarLivro(Livro livro)
+        {
+            return contexto.Livros.Count(x => x.Isbn == livro.Isbn) != 0;
+        }
+
 
         public void Adicionar(Livro livro)
         {
             contexto.Livros.Add(livro);
             contexto.SaveChanges();
         }
+
         public void Deletar(int Isbn)
         {
             var itemToRemove = contexto.Livros.SingleOrDefault(x => x.Isbn == Isbn);
@@ -43,6 +69,7 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             }
 
         }
+
         public Livro Atualizar(int isbn, Livro livro)
         {
 

@@ -1,38 +1,84 @@
 ﻿using EditoraCrescer.Infraestrutura.Entidades;
 using EditoraCrescer.Infraestrutura.Repositorios;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace EditoraCrescer.WebApi.Controllers
 {
+    [RoutePrefix("api/Revisores")]
     public class RevisoresController : ApiController
     {
-        RevisorRepositorio repositorio = new RevisorRepositorio();
+        private RevisorRepositorio repositorio = new RevisorRepositorio();
 
-        public IHttpActionResult Get()
+        [HttpGet]
+        public IHttpActionResult Obter()
         {
             var revisores = repositorio.Obter().ToList();
 
-            return Ok(revisores);
+            return Ok(new { dados = revisores });
         }
 
-        public IHttpActionResult Post(Revisor revisor)
+        [HttpGet]
+        [Route("{id:int}")]
+        public IHttpActionResult ObterPorId(int id)
         {
-            if (revisor == null)
+            var revisor = repositorio.ObterPorId(id);
+
+            return Ok(new { dados = revisor });
+        }
+
+        [HttpPost]
+        public HttpResponseMessage Incluir(Revisor revisor)
+        {
+            if (repositorio.VerificarRevisor(revisor))
             {
-                return BadRequest("Revisor nulo");
+                return Request.CreateResponse(HttpStatusCode.BadRequest,
+                    new { mensagens = new string[] { "Revisor já existente" } });
             }
 
             repositorio.Adicionar(revisor);
 
-            return Ok(revisor);
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        public IHttpActionResult Delete(int Id)
+        [HttpDelete]
+        [Route("{id:int}")]
+        public HttpResponseMessage Remover(int id)
         {
-            repositorio.Deletar(Id);
+            var revisor = repositorio.ObterPorId(id);
+            if (revisor == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest,
+                    new { mensagens = new string[] { "Revisor não encontrado" } });
+            }
 
-            return Ok();
+            repositorio.Deletar(id);
+
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
+
+        [HttpPut]
+        [Route("{id:int}")]
+        public HttpResponseMessage Alterar(int id, Revisor revisor)
+        {
+
+            if (id != revisor.Id)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest,
+                    new { mensagens = new string[] { "Ids não conferem" } });
+
+            }
+            repositorio.Atualizar(id, revisor);
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            repositorio.Dispose();
+        }
+
     }
 }
