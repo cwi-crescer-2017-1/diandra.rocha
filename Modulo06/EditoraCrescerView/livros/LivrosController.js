@@ -2,6 +2,20 @@ app.controller("LivrosController", function($scope, LivrosService) {
 
     $scope.salvar = salvar;
     $scope.remover = remover;
+    obterTodosOsLivros();
+
+    //Paginação
+
+    function paginacao() {
+        $http({
+                url: urlBase,
+                method: 'GET',
+                params: parametros
+            })
+            .then(function(response) {
+                $scope.livros = response.data.dados;
+            });
+    }
 
     //Salvar e Editar
     function salvar(livro) {
@@ -36,25 +50,35 @@ app.controller("LivrosController", function($scope, LivrosService) {
     //Listagens
 
     //ListarTodos
-    LivrosService.obterTodosOsLivros().then(function(response) {
-        $scope.livros = response.data.dados;
-    });
+    function obterTodosOsLivros() {
+        LivrosService.obterTodosOsLivros().then(function(response) {
+            console.log(response);
+            $scope.livros = response.data.dados;
+        });
+    }
 
     //Lançamento
-    LivrosService.obterLivroLancamentos().then(function(response) {
-        console.log(response);
-        $scope.lancamentos = response.data.dados;
-    });
+    function obterLivroLancamentos() {
+        LivrosService.obterLivroLancamentos().then(function(response) {
+            console.log(response);
+            $scope.lancamentos = response.data.dados;
+        });
+    }
 
     //Por Isbn
-    LivrosService.obterLivroPorIsbn(Isbn).then(function(response) {
-        console.log(response);
-        $scope.livroPorIsbn = response.data.dados;
-    });
+    function obterLivroPorIsbn(Isbn) {
+        LivrosService.obterLivroPorIsbn(Isbn).then(function(response) {
+            console.log(response);
+            $scope.livroPorIsbn = response.data.dados;
+        });
+    }
 
     //Por Genero
-    LivrosService.obterLivroPorGenero(genero).then(function(response) {
-        console.log(response);
-        $scope.livroPorGenero = response.data.dados;
-    });
+    function obterLivroPorGenero(genero) {
+        LivrosService.obterLivroPorGenero(genero).then(function(response) {
+            console.log(response);
+            $scope.livroPorGenero = response.data.dados;
+        });
+    }
+
 })

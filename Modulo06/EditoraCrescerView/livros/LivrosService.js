@@ -14,7 +14,7 @@ app.factory("LivrosService", function($http) {
     };
 
     function obterLivroLancamentos() {
-        return $http.get(urlBase + "Obter/Lancamento");
+        return $http.get(urlBase + "/Lancamento");
     };
 
     function atualizar(livro) {
