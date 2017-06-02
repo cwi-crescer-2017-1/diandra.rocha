@@ -1,6 +1,15 @@
 app.factory("LivrosService", function($http) {
     let urlBase = "http://localhost:51144/api/Livros";
 
+    function paginacao(paginacao) {
+        $http({
+            url: urlBase,
+            method: 'GET',
+            params: paginacao
+        })
+    };
+
+
     function obterTodosOsLivros() {
         return $http.get(urlBase);
     };
@@ -37,6 +46,7 @@ app.factory("LivrosService", function($http) {
         atualizar: atualizar,
         criar: criar,
         remover: remover,
+        paginacao: paginacao
     };
 
 })

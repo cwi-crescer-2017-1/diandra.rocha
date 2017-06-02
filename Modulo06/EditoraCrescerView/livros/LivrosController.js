@@ -1,20 +1,26 @@
-app.controller("LivrosController", function($scope, LivrosService) {
+app.controller("LivrosController", function($scope, LivrosService, $http) {
 
     $scope.salvar = salvar;
     $scope.remover = remover;
-    obterTodosOsLivros();
 
-    //Paginação
+    $scope.livros = [];
+
+    $scope.parametros = {
+        qtdTrazer: 10,
+        qtdPular: 0
+    };
+
+    //Executa quando iniciar a controller
+    iniciar();
+
+    function iniciar(); {
+        paginacao();
+    }
 
     function paginacao() {
-        $http({
-                url: urlBase,
-                method: 'GET',
-                params: parametros
-            })
-            .then(function(response) {
-                $scope.livros = response.data.dados;
-            });
+        LivrosService.paginacao($scope.parametros).then(function(response) {
+            $scope.livros = response.data.dados;
+        });
     }
 
     //Salvar e Editar
@@ -36,7 +42,7 @@ app.controller("LivrosController", function($scope, LivrosService) {
         }
 
         $scope.novoLivro = {};
-    }
+    };
 
     //Remover
     function remover(livro) {
@@ -45,7 +51,7 @@ app.controller("LivrosController", function($scope, LivrosService) {
             obterTodosOsLivros();
         })
         sweetAlert("Oops...", "Alguma falha ocorreu!", "error");
-    }
+    };
 
     //Listagens
 
@@ -55,7 +61,7 @@ app.controller("LivrosController", function($scope, LivrosService) {
             console.log(response);
             $scope.livros = response.data.dados;
         });
-    }
+    };
 
     //Lançamento
     function obterLivroLancamentos() {
@@ -63,7 +69,7 @@ app.controller("LivrosController", function($scope, LivrosService) {
             console.log(response);
             $scope.lancamentos = response.data.dados;
         });
-    }
+    };
 
     //Por Isbn
     function obterLivroPorIsbn(Isbn) {
@@ -71,7 +77,7 @@ app.controller("LivrosController", function($scope, LivrosService) {
             console.log(response);
             $scope.livroPorIsbn = response.data.dados;
         });
-    }
+    };
 
     //Por Genero
     function obterLivroPorGenero(genero) {
@@ -79,6 +85,6 @@ app.controller("LivrosController", function($scope, LivrosService) {
             console.log(response);
             $scope.livroPorGenero = response.data.dados;
         });
-    }
+    };
 
-})
+});
