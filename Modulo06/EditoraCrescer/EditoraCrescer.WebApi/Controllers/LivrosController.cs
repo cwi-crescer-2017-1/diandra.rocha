@@ -47,6 +47,14 @@ namespace EditoraCrescer.WebApi.Controllers
             return Ok(new { dados = livros });
         }
 
+        [HttpGet]
+        public IHttpActionResult ObterPaginacao(int qtdTrazer, int qtdPular)
+        {
+            var livros = repositorio.ObterParaPaginação(qtdTrazer, qtdPular);
+            var qtd = repositorio.ContadorTodosLivros();
+            return Ok(new { dados = livros, qtd = qtd });
+        }
+
         [HttpPost]
         public HttpResponseMessage Incluir(Livro livro)
         {

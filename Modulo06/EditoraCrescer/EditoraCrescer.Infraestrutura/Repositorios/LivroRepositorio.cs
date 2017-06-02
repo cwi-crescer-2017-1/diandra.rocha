@@ -8,7 +8,6 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
     public class LivroRepositorio : IDisposable
     {
         private Contexto contexto = new Contexto();
-        private static int qtdPular =0 ;
 
         public LivroRepositorio()
         {
@@ -47,18 +46,20 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             .ToList<dynamic>();
         }
 
-        public List<dynamic> ObterParaPaginação(int qtdTrazer)
+        public List<dynamic> ObterParaPaginação(int qtdTrazer, int qtdPular)
         {
-            qtdTrazer = 10;
-
             return contexto.Livros.Select(x =>
             new { Titulo = x.Titulo, Capa = x.Capa, Genero = x.Genero, NomeAutor = x.Autor.Nome })
+            .OrderBy(p => p.Titulo)
             .Take(qtdTrazer)
             .Skip(qtdPular)
             .ToList<dynamic>();
 
-            qtdPular =+ 10;
+        }
 
+        public int ContadorTodosLivros()
+        {
+            return contexto.Livros.Count();
         }
 
         public bool VerificarLivro(Livro livro)
