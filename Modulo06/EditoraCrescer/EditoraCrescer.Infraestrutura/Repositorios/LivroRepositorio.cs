@@ -8,6 +8,7 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
     public class LivroRepositorio : IDisposable
     {
         private Contexto contexto = new Contexto();
+        private static int qtdPular =0 ;
 
         public LivroRepositorio()
         {
@@ -44,6 +45,20 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             return livros.Where(x => ((DateTime.Now - x.DataPublicacao).TotalDays) >= 7).Select(x =>
             new { Isbn = x.Isbn, Titulo = x.Titulo, Capa = x.Capa, NomeAutor = x.Autor.Nome, Genero = x.Genero })
             .ToList<dynamic>();
+        }
+
+        public List<dynamic> ObterParaPaginação(int qtdTrazer)
+        {
+            qtdTrazer = 10;
+
+            return contexto.Livros.Select(x =>
+            new { Titulo = x.Titulo, Capa = x.Capa, Genero = x.Genero, NomeAutor = x.Autor.Nome })
+            .Take(qtdTrazer)
+            .Skip(qtdPular)
+            .ToList<dynamic>();
+
+            qtdPular =+ 10;
+
         }
 
         public bool VerificarLivro(Livro livro)

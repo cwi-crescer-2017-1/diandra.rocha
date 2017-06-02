@@ -14,7 +14,7 @@ namespace EditoraCrescer.WebApi.Controllers
 
         [HttpGet]
         [Route("{isbn:int}")]
-        public IHttpActionResult ObterPorId(int isbn)
+        public IHttpActionResult ObterPorIsbn(int isbn)
         {
             var livro = repositorio.ObterPorIsbn(isbn);
 
@@ -31,7 +31,7 @@ namespace EditoraCrescer.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("Obter/Lancamento")]
+        [Route("Lancamento")]
         public IHttpActionResult ObterPorData()
         {
             var livros = repositorio.ObterPorData();
