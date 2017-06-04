@@ -1,4 +1,4 @@
-app.controller("LivrosController", function($scope, LivrosService, $http) {
+app.controller("LivrosController", function($scope, LivrosService, $http, authService) {
 
     $scope.salvar = salvar;
     $scope.remover = remover;
@@ -41,7 +41,7 @@ app.controller("LivrosController", function($scope, LivrosService, $http) {
             });
         }
 
-        $scope.novoLivro = {};
+        $scope.livro = {};
     };
 
     //Remover
@@ -68,22 +68,6 @@ app.controller("LivrosController", function($scope, LivrosService, $http) {
         LivrosService.obterLivroLancamentos().then(function(response) {
             console.log(response);
             $scope.lancamentos = response.data.dados;
-        });
-    };
-
-    //Por Isbn
-    function obterLivroPorIsbn(Isbn) {
-        LivrosService.obterLivroPorIsbn(Isbn).then(function(response) {
-            console.log(response);
-            $scope.livroPorIsbn = response.data.dados;
-        });
-    };
-
-    //Por Genero
-    function obterLivroPorGenero(genero) {
-        LivrosService.obterLivroPorGenero(genero).then(function(response) {
-            console.log(response);
-            $scope.livroPorGenero = response.data.dados;
         });
     };
 

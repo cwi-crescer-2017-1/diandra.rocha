@@ -9,7 +9,7 @@ using System.Web.Http;
 namespace EditoraCrescer.WebApi.Controllers
 {
     [AllowAnonymous]
-    [RoutePrefix("api/Acessos")]
+    [RoutePrefix("api/acessos")]
     public class UsuarioController : BasicaController
     {
         UsuarioRepositorio repo = new UsuarioRepositorio();
@@ -62,6 +62,7 @@ namespace EditoraCrescer.WebApi.Controllers
         }
 
         [BasicAuthorization]
+        [Route("usuario")]
         public HttpResponseMessage Obter()
         {
             var usuario = repo.ObterPorEmail(Thread.CurrentPrincipal.Identity.Name);

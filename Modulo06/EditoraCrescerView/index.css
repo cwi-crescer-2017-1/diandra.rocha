@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+    font-family: 'El Messiri', sans-serif;
+}
+
+.header {
+    background: #B5B5B5;
+    text-align: center;
+    color: black;
+    font-weight: 700;
+    font-size: 22px;
+    height: 100px;
+    width: 100%;
+    position: fixed;
+}
+
+.logo {
+    float: left;
+    margin: 0;
+}
+
+.menu {
+    float: right;
+    text-decoration: none;
+}
