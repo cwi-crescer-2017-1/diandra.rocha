@@ -95,15 +95,17 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\MeuAtributoAutorizacao.cs" />
+    <Compile Include="App_Start\ErrosGlobaisFilterAttribute.cs" />
+    <Compile Include="App_Start\BasicAuthorization.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AutoresController.cs" />
+    <Compile Include="Controllers\BasicaController.cs" />
     <Compile Include="Controllers\LivrosController.cs" />
-    <Compile Include="Controllers\RevisoresController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\RegistrarUsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

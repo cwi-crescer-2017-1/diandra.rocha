@@ -70,8 +70,13 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
 
         public void Adicionar(Livro livro)
         {
+            livro.Autor = contexto.Autores.FirstOrDefault(x => x.Id == livro.Autor.Id);
             contexto.Livros.Add(livro);
             contexto.SaveChanges();
+        }
+        public bool VerificarAdicionarLivro(Livro livro)
+        {
+            return livro.Autor == null;
         }
 
         public void Deletar(int Isbn)

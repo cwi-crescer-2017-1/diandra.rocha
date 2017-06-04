@@ -2,7 +2,7 @@
 {
     public class Autor
     {
-        public int Id { get; set; }
-        public string Nome { get; set; }
+        public int Id { get; private set; }
+        public string Nome { get; private set; }
     }
 }

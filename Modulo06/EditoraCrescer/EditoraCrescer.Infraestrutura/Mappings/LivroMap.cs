@@ -15,9 +15,9 @@ namespace EditoraCrescer.Infraestrutura.Mappings
                 .WithMany()
                 .HasForeignKey(x => x.IdAutor);
 
-            HasRequired(x => x.Revisor)
+            HasRequired(x => x.UsuarioRevisor)
                .WithMany()
-               .HasForeignKey(x => x.IdRevisor);
+               .HasForeignKey(x => x.IdUsuarioRevisor);
         }
 
     }

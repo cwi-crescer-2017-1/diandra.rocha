@@ -65,11 +65,14 @@
   <ItemGroup>
     <Compile Include="Contexto.cs" />
     <Compile Include="Entidades\Autor.cs" />
+    <Compile Include="Entidades\EntidadeBasica.cs" />
     <Compile Include="Entidades\Livro.cs" />
-    <Compile Include="Entidades\Revisor.cs" />
+    <Compile Include="Entidades\Permissao.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Mappings\AutorMap.cs" />
     <Compile Include="Mappings\LivroMap.cs" />
-    <Compile Include="Mappings\RevisorMap.cs" />
+    <Compile Include="Mappings\PermissaoMap.cs" />
+    <Compile Include="Mappings\UsuarioMap.cs" />
     <Compile Include="Migrations\201705310629490_AlteracaoDoBanco.cs" />
     <Compile Include="Migrations\201705310629490_AlteracaoDoBanco.Designer.cs">
       <DependentUpon>201705310629490_AlteracaoDoBanco.cs</DependentUpon>
@@ -86,11 +89,39 @@
     <Compile Include="Migrations\201706010157427_AlteracaoCapa.Designer.cs">
       <DependentUpon>201706010157427_AlteracaoCapa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706031947005_AdicionarTabelaUsuario.cs" />
+    <Compile Include="Migrations\201706031947005_AdicionarTabelaUsuario.Designer.cs">
+      <DependentUpon>201706031947005_AdicionarTabelaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706031950153_AdicionarTabelaUsuario1.cs" />
+    <Compile Include="Migrations\201706031950153_AdicionarTabelaUsuario1.Designer.cs">
+      <DependentUpon>201706031950153_AdicionarTabelaUsuario1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706031953044_AdicionarTabelaUsuario2.cs" />
+    <Compile Include="Migrations\201706031953044_AdicionarTabelaUsuario2.Designer.cs">
+      <DependentUpon>201706031953044_AdicionarTabelaUsuario2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706032006263_AdicionarTabelaUsuarioAgoraVAI.cs" />
+    <Compile Include="Migrations\201706032006263_AdicionarTabelaUsuarioAgoraVAI.Designer.cs">
+      <DependentUpon>201706032006263_AdicionarTabelaUsuarioAgoraVAI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706032055543_RemoverTabelaRevisores.cs" />
+    <Compile Include="Migrations\201706032055543_RemoverTabelaRevisores.Designer.cs">
+      <DependentUpon>201706032055543_RemoverTabelaRevisores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706032110192_RemoverTabelaRevisoresAgoraVai.cs" />
+    <Compile Include="Migrations\201706032110192_RemoverTabelaRevisoresAgoraVai.Designer.cs">
+      <DependentUpon>201706032110192_RemoverTabelaRevisoresAgoraVai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706032138184_RemoverTabelaRevisoresEAjustarTabelaLivros.cs" />
+    <Compile Include="Migrations\201706032138184_RemoverTabelaRevisoresEAjustarTabelaLivros.Designer.cs">
+      <DependentUpon>201706032138184_RemoverTabelaRevisoresEAjustarTabelaLivros.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\AutorRepositorio.cs" />
     <Compile Include="Repositorios\LivroRepositorio.cs" />
-    <Compile Include="Repositorios\RevisorRepositorio.cs" />
+    <Compile Include="Repositorios\UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705310629490_AlteracaoDoBanco.resx">
@@ -104,6 +135,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706010157427_AlteracaoCapa.resx">
       <DependentUpon>201706010157427_AlteracaoCapa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706031947005_AdicionarTabelaUsuario.resx">
+      <DependentUpon>201706031947005_AdicionarTabelaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706031950153_AdicionarTabelaUsuario1.resx">
+      <DependentUpon>201706031950153_AdicionarTabelaUsuario1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706031953044_AdicionarTabelaUsuario2.resx">
+      <DependentUpon>201706031953044_AdicionarTabelaUsuario2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706032006263_AdicionarTabelaUsuarioAgoraVAI.resx">
+      <DependentUpon>201706032006263_AdicionarTabelaUsuarioAgoraVAI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706032055543_RemoverTabelaRevisores.resx">
+      <DependentUpon>201706032055543_RemoverTabelaRevisores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706032110192_RemoverTabelaRevisoresAgoraVai.resx">
+      <DependentUpon>201706032110192_RemoverTabelaRevisoresAgoraVai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706032138184_RemoverTabelaRevisoresEAjustarTabelaLivros.resx">
+      <DependentUpon>201706032138184_RemoverTabelaRevisoresEAjustarTabelaLivros.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

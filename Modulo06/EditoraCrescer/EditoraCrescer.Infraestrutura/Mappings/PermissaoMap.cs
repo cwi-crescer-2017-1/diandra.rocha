@@ -3,14 +3,13 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace EditoraCrescer.Infraestrutura.Mappings
 {
-    public class RevisorMap : EntityTypeConfiguration<Revisor>
+    public class PermissaoMap : EntityTypeConfiguration<Permissao>
     {
-        public RevisorMap()
+        public PermissaoMap()
         {
-            ToTable("Revisores");
+            ToTable("Permissoes");
+        }
 
-            HasKey(x => x.Id);
-
-        } 
     }
+
 }
