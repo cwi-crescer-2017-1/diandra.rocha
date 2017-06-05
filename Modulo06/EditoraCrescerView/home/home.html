@@ -4,7 +4,42 @@
 
     <div class="row">
 
-        <div ng-repeat="livro in lancamentos"></div>
+        <div ng-repeat="livro in lancamentos">
+            <div>
+                <img ng-src="{{livro.Capa}}" alt="Capa">
+            </div>
+            <div>
+                <ul>
+                    <li>{{livro.Titulo}}</li>
+                    <li>{{livro.Genero}}</li>
+                    <li>{{Livro.Autor.Nome}}</li>
+                    <li>
+                        <a href="/#/detalhes/livro.id">
+                            Detalhes
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
     </div>
+
+    <hr>
+
+    <div class="row">
+        <div ng-repeat="livro in livros">
+            <div>
+                <img ng-src="{{livro.Capa}}" alt="Capa">
+            </div>
+            <div>
+                <ul>
+                    <li>{{livro.Titulo}}</li>
+                    <li>{{livro.Genero}}</li>
+                    <li>{{Livro.Autor.Nome}}</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
 </div>
