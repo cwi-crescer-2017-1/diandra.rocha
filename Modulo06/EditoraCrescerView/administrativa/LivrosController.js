@@ -3,26 +3,6 @@ app.controller("LivrosController", function($scope, LivrosService, $http, authSe
     $scope.salvar = salvar;
     $scope.remover = remover;
 
-    $scope.livros = [];
-
-    $scope.parametros = {
-        qtdTrazer: 10,
-        qtdPular: 0
-    };
-
-    //Executa quando iniciar a controller
-    iniciar();
-
-    function iniciar(); {
-        paginacao();
-    }
-
-    function paginacao() {
-        LivrosService.paginacao($scope.parametros).then(function(response) {
-            $scope.livros = response.data.dados;
-        });
-    }
-
     //Salvar e Editar
     function salvar(livro) {
         let promise = {};
@@ -51,24 +31,6 @@ app.controller("LivrosController", function($scope, LivrosService, $http, authSe
             obterTodosOsLivros();
         })
         sweetAlert("Oops...", "Alguma falha ocorreu!", "error");
-    };
-
-    //Listagens
-
-    //ListarTodos
-    function obterTodosOsLivros() {
-        LivrosService.obterTodosOsLivros().then(function(response) {
-            console.log(response);
-            $scope.livros = response.data.dados;
-        });
-    };
-
-    //Lançamento
-    function obterLivroLancamentos() {
-        LivrosService.obterLivroLancamentos().then(function(response) {
-            console.log(response);
-            $scope.lancamentos = response.data.dados;
-        });
     };
 
 });

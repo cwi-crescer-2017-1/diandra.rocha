@@ -17,8 +17,12 @@ namespace EditoraCrescer.Infraestrutura.Entidades
         public string Senha { get; private set; }
         public List<Permissao> Permissoes { get; private set; }
 
-        protected Usuario()
+        public Usuario(string nome, string email, string senha, List<Permissao> permissoes)
         {
+            Nome = nome;
+            Email = email;
+            Senha = senha;
+            Permissoes = permissoes;
         }
 
         public Usuario(string nome, string email, string senha)

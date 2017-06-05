@@ -1,25 +1,21 @@
-<h1 class="page-header">Login</h1>
+<div class="col-md-4 col-md-offset-4" style="margin-top: 200px;">
 
-<div class="row">
+    <form novalidate name="formLogin" ng-submit="login(usuario)">
 
-    <div class="col-sm-4">
+        <legend> Login </legend>
 
-        <form novalidate name="formLogin" ng-submit="login(usuario)">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input ng-model="usuario.email" type="email" class="form-control" name="email" placeholder="exemplo@exemplo.com">
+        </div>
 
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input ng-model="usuario.email" type="email" class="form-control" name="email" placeholder="exemplo@exemplo.com">
-            </div>
+        <div class="form-group">
+            <label for="senha">Senha</label>
+            <input ng-model="usuario.senha" type="password" class="form-control" name="senha">
+        </div>
 
-            <div class="form-group">
-                <label for="senha">Senha</label>
-                <input ng-model="usuario.senha" type="password" class="form-control" name="senha">
-            </div>
+        <button class="btn btn-default">Buscar</button>
 
-            <button class="btn btn-default">Buscar</button>
-
-        </form>
-
-    </div>
+    </form>
 
 </div>

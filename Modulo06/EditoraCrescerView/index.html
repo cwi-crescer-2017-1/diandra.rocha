@@ -13,15 +13,26 @@
 
 <body>
 
-    <div class="header">
-        <h1 class="logo">Editora Crescer</h1>
-        <nav class="menu">
-            <a href="#!/login">Login</a>
-            <li><button ng-click="logout()">Logout</button></li>
-        </nav>
-    </div>
+    <div class="container-fluid" style="font-size: 20px">
 
-    <ng-view></ng-view>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <h1 style="text-align: center"> Editora Crescer </h1>
+
+                <nav style="text-align: center;">
+                    <a class="btn btn-default" href="/#/home" role="button"> Home </a>
+                    <a class="btn btn-default" href="/#/login" role="button"> Login </a>
+                    <a class="btn btn-default" href="/#/administrativa" role="button"> administrativa </a>
+                    <button class="btn btn-default" ng-click="logout()">Logout</button>
+                </nav>
+            </div>
+
+        </div>
+
+
+        <ng-view></ng-view>
+
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
@@ -33,6 +44,11 @@
     <script src="app.js"></script>
     <script src="app.module.js"></script>
     <script src="app.route.js"></script>
+
+    <script src="/administrativa/LivrosController.js"></script>
+    <script src="/administrativa/LivrosService.js"></script>
+    <script src="/login/LoginController.js"></script>
+    <script src="/home/HomeController.js"></script>
 
 
 </body>

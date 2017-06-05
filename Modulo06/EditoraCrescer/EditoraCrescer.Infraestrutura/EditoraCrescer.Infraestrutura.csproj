@@ -117,6 +117,10 @@
     <Compile Include="Migrations\201706032138184_RemoverTabelaRevisoresEAjustarTabelaLivros.Designer.cs">
       <DependentUpon>201706032138184_RemoverTabelaRevisoresEAjustarTabelaLivros.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706050203039_CorrigirPKPermissao.cs" />
+    <Compile Include="Migrations\201706050203039_CorrigirPKPermissao.Designer.cs">
+      <DependentUpon>201706050203039_CorrigirPKPermissao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\AutorRepositorio.cs" />
@@ -156,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706032138184_RemoverTabelaRevisoresEAjustarTabelaLivros.resx">
       <DependentUpon>201706032138184_RemoverTabelaRevisoresEAjustarTabelaLivros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706050203039_CorrigirPKPermissao.resx">
+      <DependentUpon>201706050203039_CorrigirPKPermissao.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,8 @@ namespace EditoraCrescer.Infraestrutura.Mappings
         public PermissaoMap()
         {
             ToTable("Permissoes");
+
+            HasKey(x => x.Id);
         }
 
     }
