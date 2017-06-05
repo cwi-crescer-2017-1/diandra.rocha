@@ -29,6 +29,13 @@ app.controller("HomeController", function($scope, LivrosService, $http, authServ
         });
     }
 
+    function anteriorPage() {
+        qtdPular = qtdPular - 10;
+        LivrosService.paginacao($scope.parametros).then(function(response) {
+            $scope.livros = response.data.dados;
+        });
+    }
+
     //ListarTodos
     function obterTodosOsLivros() {
         LivrosService.obterTodosOsLivros().then(function(response) {

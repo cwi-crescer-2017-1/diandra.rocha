@@ -2,6 +2,15 @@ app.controller("LivrosController", function($scope, LivrosService, $http, authSe
 
     $scope.salvar = salvar;
     $scope.remover = remover;
+    $scope.publicar = publicar;
+
+    function publicar(livro) {
+        promise = LivrosService.publicar(livro);
+        promise.then(function(response) {
+            obterTodosOsLivros();
+            swal("Sucesso!", "Livro publicado com sucesso!", "success")
+        });
+    }
 
     //Salvar e Editar
     function salvar(livro) {

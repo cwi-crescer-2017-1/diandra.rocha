@@ -64,6 +64,15 @@ namespace EditoraCrescer.Infraestrutura.Repositorios
             return contexto.Livros.Count();
         }
 
+        public Livro publicar(Livro livro)
+        {
+            livro.DataPublicacao = DateTime.Now;
+            contexto.Entry(livro).State = System.Data.Entity.EntityState.Modified;
+
+            contexto.SaveChanges();
+            return livro;
+        }
+
         public bool VerificarLivro(Livro livro)
         {
             return contexto.Livros.Count(x => x.Isbn == livro.Isbn) != 0;

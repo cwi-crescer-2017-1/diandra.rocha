@@ -86,6 +86,22 @@ namespace EditoraCrescer.WebApi.Controllers
         }
 
         [HttpPut]
+        [Route("publicar")]
+        public HttpResponseMessage Publicar(Livro livro)
+        {
+            if (isbn != livro.Isbn)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest,
+                    new { mensagens = new string[] { "Ids não conferem" } });
+
+            }
+            repositorio.Atualizar(isbn, livro);
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+        
+
+        [HttpPut]
         [Route("{isbn:int}")]
         public HttpResponseMessage Alterar(int isbn, Livro livro)
         {

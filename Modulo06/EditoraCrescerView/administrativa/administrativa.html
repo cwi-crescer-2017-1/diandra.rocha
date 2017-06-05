@@ -65,8 +65,8 @@
                     <td>{{instrutor.DataRevisao}}</td>
                     <td><button class="btn btn-default" ng-click="salvar(livro)">Editar</button></td>
                     <td><button class="btn btn-default" ng-click="remover(livro)">Excluir</button></td>
-                    <td><button ng-if="auth.possuiPermissao('Revisor')" class="btn btn-default" ng-click="remover(livro)">Revisar</button></td>
-                    <td><button ng-if="auth.possuiPermissao('Administrador')" class="btn btn-default" ng-click="remover(livro)">Publicar</button></td>
+                    <td><button ng-if="auth.possuiPermissao('Revisor')" class="btn btn-default" ng-click="revisar(livro)">Revisar</button></td>
+                    <td><button ng-if="auth.possuiPermissao('Administrador')" class="btn btn-default" ng-click="publicar(livro)">Publicar</button></td>
                 </tr>
             </tbody>
         </table>

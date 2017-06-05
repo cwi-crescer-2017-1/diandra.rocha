@@ -14,9 +14,17 @@ app.factory("LivrosService", function($http) {
         return $http.get(urlBase);
     };
 
+    function publicar(livro) {
+        return $http.put(urlBase + "/publicar", livro);
+    }
+
     function obterLivroLancamentos() {
         return $http.get(urlBase + "/Lancamento");
     };
+
+    function obterPorIsbn(Isbn) {
+        return $http.get(urlBase + Isbn);
+    }
 
     function atualizar(livro) {
         return $http.put(urlBase + "/" + livro.Isbn, livro);
@@ -33,7 +41,9 @@ app.factory("LivrosService", function($http) {
     return {
         obterTodosOsLivros: obterTodosOsLivros,
         obterLivroLancamentos: obterLivroLancamentos,
+        obterPorIsbn: obterPorIsbn,
         atualizar: atualizar,
+        publicar: publicar,
         criar: criar,
         remover: remover,
         paginacao: paginacao

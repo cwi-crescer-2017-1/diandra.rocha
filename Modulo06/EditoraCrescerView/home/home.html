@@ -14,7 +14,7 @@
                     <li>{{livro.Genero}}</li>
                     <li>{{Livro.Autor.Nome}}</li>
                     <li>
-                        <a href="/#/detalhes/livro.id">
+                        <a href="/#/detalhes/livro.Isbn">
                             Detalhes
                         </a>
                     </li>
@@ -40,6 +40,8 @@
             </div>
         </div>
 
+        <button class="btn btn-default" ng-click="proximaPage()">Próximo</button>
+        <button class="btn btn-default" ng-click="anteriorPage()">Anterior</button>
     </div>
 
 </div>
