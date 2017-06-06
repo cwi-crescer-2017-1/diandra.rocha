@@ -10,5 +10,10 @@ namespace LocadoraCrescer.Dominio.Entidades
         public string CPF { get; private set; }
         public DateTime DataNascimento { get; private set; }
         public Genero Genero { get; private set; }
+
+        protected Cliente()
+        {
+
+        }
     }
 }

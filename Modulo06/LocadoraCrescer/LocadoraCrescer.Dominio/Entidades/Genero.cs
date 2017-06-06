@@ -1,8 +1,7 @@
 ﻿namespace LocadoraCrescer.Dominio.Entidades
 {
-    public class Genero
+    public enum Genero
     {
-        public int Id { get; private set; }
-        public string Tipo { get; private set; }
+        FEMININO, MASCULINO, NÃO_INFORMADO
     }
 }

@@ -13,11 +13,13 @@ namespace LocadoraCrescer.Dominio.Entidades
         public decimal? ValorFinal { get; private set; }
         public char Status { get; private set; }
         public Cliente Cliente { get; private set; }
-        public int IDCliente { get; private set; }
         public Pacote Pacote { get; private set; }
-        public int? IdPacote { get; private set; }
         public Produto Produto { get; private set; }
-        public int IdProduto { get; private set; }
         public List<ReservaOpcional> Opcionais { get; private set; }
+
+        protected Reserva()
+        {
+
+        }
     }
 }

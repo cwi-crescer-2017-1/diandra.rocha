@@ -7,5 +7,10 @@
         public string Descricao { get; private set; }
         public decimal ValorDiaria { get; private set; }
         public int QuantidadeDisponivel { get; private set; }
+
+        protected Opcional()
+        {
+
+        }
     }
 }
