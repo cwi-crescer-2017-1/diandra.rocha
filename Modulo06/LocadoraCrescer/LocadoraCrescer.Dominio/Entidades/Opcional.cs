@@ -12,5 +12,13 @@
         {
 
         }
+
+        public Opcional(string nome, string descricao, decimal valordiaria, int quantidadedisponivel)
+        {
+            Nome = nome;
+            Descricao = descricao;
+            ValorDiaria = valordiaria;
+            QuantidadeDisponivel = quantidadedisponivel;
+        }
     }
 }

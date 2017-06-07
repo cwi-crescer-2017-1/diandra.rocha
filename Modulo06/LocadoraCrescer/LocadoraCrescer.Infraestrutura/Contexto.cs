@@ -10,13 +10,14 @@ namespace LocadoraCrescer.Infraestrutura
         { }
 
         public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<Cliente> Enderecos { get; set; }
-        public DbSet<Cliente> Funcionarios { get; set; }
-        public DbSet<Cliente> Opcionais { get; set; }
-        public DbSet<Cliente> Pacotes { get; set; }
-        public DbSet<Cliente> Produtos { get; set; }
-        public DbSet<Cliente> Reservas { get; set; }
-        public DbSet<Cliente> ReservaOpcionais { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
+        public DbSet<Funcionario> Funcionarios { get; set; }
+        public DbSet<Opcional> Opcionais { get; set; }
+        public DbSet<Pacote> Pacotes { get; set; }
+        public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Reserva> Reservas { get; set; }
+        public DbSet<ReservaOpcional> ReservaOpcionais { get; set; }
+        public DbSet<Permissao> Permissoes { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -29,6 +30,7 @@ namespace LocadoraCrescer.Infraestrutura
             modelBuilder.Configurations.Add(new ProdutoMap());
             modelBuilder.Configurations.Add(new ReservaMap());
             modelBuilder.Configurations.Add(new ReservaOpcionalMap());
+            modelBuilder.Configurations.Add(new PermissaoMap());
 
         }
     }

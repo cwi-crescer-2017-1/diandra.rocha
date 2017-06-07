@@ -15,5 +15,14 @@ namespace LocadoraCrescer.Dominio.Entidades
         {
 
         }
+
+        public Cliente(string nome, string sobrenome, string cpf, DateTime datanascimento, Genero genero)
+        {
+            Nome = nome;
+            Sobrenome = sobrenome;
+            CPF = cpf;
+            DataNascimento = datanascimento;
+            Genero = Genero;
+        }
     }
 }

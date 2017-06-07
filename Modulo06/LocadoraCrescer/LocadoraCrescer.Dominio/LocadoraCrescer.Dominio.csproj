@@ -50,11 +50,11 @@
   <ItemGroup>
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\Endereco.cs" />
-    <Compile Include="Entidades\EntidadeBasica.cs" />
     <Compile Include="Entidades\Funcionario.cs" />
     <Compile Include="Entidades\Genero.cs" />
     <Compile Include="Entidades\Opcional.cs" />
     <Compile Include="Entidades\Pacote.cs" />
+    <Compile Include="Entidades\Permissao.cs" />
     <Compile Include="Entidades\Produto.cs" />
     <Compile Include="Entidades\Reserva.cs" />
     <Compile Include="Entidades\ReservaOpcional.cs" />

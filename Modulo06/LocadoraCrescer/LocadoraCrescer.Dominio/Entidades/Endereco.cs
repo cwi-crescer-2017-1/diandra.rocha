@@ -14,5 +14,16 @@
         {
 
         }
+
+        public Endereco(string cep, string rua, int numero, string cidade, string uf, Cliente cliente)
+        {
+            Cep = cep;
+            Rua = rua;
+            Numero = numero;
+            Cidade = cidade;
+            Uf = uf;
+            Cliente = cliente;
+        }
+
     }
 }

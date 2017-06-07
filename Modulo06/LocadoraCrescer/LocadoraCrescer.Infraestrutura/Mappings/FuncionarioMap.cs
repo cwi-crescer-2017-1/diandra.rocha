@@ -14,7 +14,6 @@ namespace LocadoraCrescer.Infraestrutura.Mappings
             Property(p => p.Nome).HasMaxLength(300).IsRequired();
             Property(p => p.Email).HasMaxLength(300).IsRequired();
             Property(p => p.Senha).IsRequired();
-            Property(p => p.Permissao).HasMaxLength(30).IsRequired();
         }
 
     }

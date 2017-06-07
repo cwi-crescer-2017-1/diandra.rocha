@@ -1,8 +1,9 @@
-﻿using System;
+﻿using LocadoraCrescer.Dominio.Entidades;
+using LocadoraCrescer.Infraestrutura.Repositorios;
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Security.Principal;
 using System.Text;
 using System.Threading;
@@ -14,19 +15,17 @@ namespace AutDemo.WebApi
 {
     public class BasicAuthorization : AuthorizeAttribute
     {
-        readonly UsuarioRepositorio _usuarioRepositorio;
+        readonly FuncionarioRepositorio repo;
 
         public BasicAuthorization()
         {
-            _usuarioRepositorio = new UsuarioRepositorio();
+            repo = new FuncionarioRepositorio();
         }
 
         public override void OnAuthorization(HttpActionContext actionContext)
         {
-            // validar se foi informado no cabeçalho da mensagem o parâmetro de autenticação.
             if (actionContext.Request.Headers.Authorization == null)
             {
-                // responde para o cliente como não autorizado
                 var dnsHost = actionContext.Request.RequestUri.DnsSafeHost;
                 actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized);
                 actionContext.Response.Headers.Add("WWW-Authenticate", string.Format("Basic realm=\"{0}\"", dnsHost));
@@ -34,29 +33,23 @@ namespace AutDemo.WebApi
             }
             else
             {
-                //obtém o parâmetro (token de autenticação)
                 string tokenAutenticacao =
                     actionContext.Request.Headers.Authorization.Parameter;
 
-                // decodifica o parâmetro, pois ele deve vir codificado em base 64
                 string decodedTokenAutenticacao =
                     Encoding.Default.GetString(Convert.FromBase64String(tokenAutenticacao));
 
-                // obtém o login e senha (usuario:senha)
                 string[] userNameAndPassword = decodedTokenAutenticacao.Split(':');
 
-                // validar as credenciais obtidas com as cadastradas no sistema
-                Usuario usuario = null;
-                if (ValidarUsuario(userNameAndPassword[0], userNameAndPassword[1], out usuario))
+                Funcionario funcionario = null;
+                if (ValidarFuncionario(userNameAndPassword[0], userNameAndPassword[1], out funcionario))
                 {
-                    string[] papeis = usuario.Permissoes.Select(papel => papel.Nome).ToArray();
-                    var identidade = new GenericIdentity(usuario.Email);
+                    string[] papeis = funcionario.Permissoes.Select(papel => papel.Nome).ToArray();
+                    var identidade = new GenericIdentity(funcionario.Email);
                     var genericUser = new GenericPrincipal(identidade, papeis);
 
-                    // confere o perfil da action com os do usuário
                     if (string.IsNullOrEmpty(Roles))
                     {
-                        // atribui o usuário informado no contexto da requisição atual
                         Thread.CurrentPrincipal = genericUser;
                         if (HttpContext.Current != null)
                             HttpContext.Current.User = genericUser;
@@ -70,7 +63,6 @@ namespace AutDemo.WebApi
                         {
                             if (genericUser.IsInRole(currentRole))
                             {
-                                // atribui o usuário informado no contexto da requisição atual
                                 Thread.CurrentPrincipal = genericUser;
                                 if (HttpContext.Current != null)
                                     HttpContext.Current.User = genericUser;
@@ -86,18 +78,18 @@ namespace AutDemo.WebApi
                 actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized, new { mensagens = new string[] { "Usuário ou senha inválidos." } });
         }
 
-        private bool ValidarUsuario(string login, string senha, out Usuario usuarioRetorno)
+        private bool ValidarFuncionario(string email, string senha, out Funcionario FuncionarioRetorno)
         {
-            usuarioRetorno = null;
+            FuncionarioRetorno = null;
 
-            var usuario = _usuarioRepositorio.Obter(login);
+            var funcionario = repo.Obter(email);
 
-            if (usuario != null && usuario.ValidarSenha(senha))
-                usuarioRetorno = usuario;
+            if (funcionario != null && funcionario.ValidarSenha(senha))
+                FuncionarioRetorno = funcionario;
             else
-                usuario = null;
+                funcionario = null;
 
-            return usuario != null;
+            return funcionario != null;
         }
     }
 }

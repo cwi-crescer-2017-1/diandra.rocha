@@ -14,7 +14,7 @@ namespace LocadoraCrescer.Infraestrutura.Mappings
 
             Property(p => p.DataReserva).IsRequired();
             Property(p => p.DataDevolucaoPrevista).IsRequired();
-            Property(p => p.DataDevolucaoReal).IsRequired();
+            Property(p => p.DataDevolucaoReal);
             Property(p => p.ValorPrevisto).IsRequired();
             Property(p => p.ValorFinal);
             Property(p => p.Status).IsRequired();

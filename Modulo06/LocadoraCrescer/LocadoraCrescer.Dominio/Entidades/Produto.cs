@@ -13,5 +13,14 @@
         {
 
         }
+
+        public Produto(string nome, string descricao,string urlfoto, decimal valordiaria, int quantidadedisponivel)
+        {
+            Nome = nome;
+            Descricao = descricao;
+            URLFoto = urlfoto;
+            ValorDiaria = valordiaria;
+            QuantidadeDisponivel = quantidadedisponivel;
+        }
     }
 }

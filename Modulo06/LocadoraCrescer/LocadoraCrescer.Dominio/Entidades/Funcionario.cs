@@ -1,28 +1,35 @@
-﻿using System.Security.Cryptography;
+﻿using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace LocadoraCrescer.Dominio.Entidades
 {
-    public class Funcionario : EntidadeBasica
+    public class Funcionario
     {
         public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Email { get; private set; }
         public string Senha { get; private set; }
-        public string Permissao { get; private set; }
+        public List<Permissao> Permissoes { get; private set; }
 
         protected Funcionario()
         {
 
         }
 
-        public Funcionario(string nome, string email, string senha, string permissao)
+        public Funcionario(string nome, string email, string senha)
         {
             Nome = nome;
             Email = email;
             if (!string.IsNullOrWhiteSpace(senha))
                 Senha = CriptografarSenha(senha);
-            Permissao = permissao;
+            Permissoes = new List<Permissao>();
+        }
+
+        public void AtribuirPermissoes(params string[] nomes)
+        {
+            foreach (var nome in nomes)
+                Permissoes.Add(new Permissao(nome));
         }
 
         private string CriptografarSenha(string senha)
@@ -40,22 +47,6 @@ namespace LocadoraCrescer.Dominio.Entidades
         public bool ValidarSenha(string senha)
         {
             return CriptografarSenha(senha) == Senha;
-        }
-
-        public override bool Validar()
-        {
-            Mensagens.Clear();
-
-            if (string.IsNullOrWhiteSpace(Nome))
-                Mensagens.Add("Nome é inválido.");
-
-            if (string.IsNullOrWhiteSpace(Email))
-                Mensagens.Add("Email é inválido.");
-
-            if (string.IsNullOrWhiteSpace(Senha))
-                Mensagens.Add("Senha é inválido.");
-
-            return Mensagens.Count == 0;
         }
     }
 }

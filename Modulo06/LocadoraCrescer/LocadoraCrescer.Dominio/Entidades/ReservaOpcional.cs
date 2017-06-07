@@ -12,5 +12,12 @@
 
         }
 
+        public ReservaOpcional(Opcional opcional, Reserva reserva, int quantidadeopcionais)
+        {
+            Opcional = opcional;
+            Reserva = reserva;
+            QuantidadeOpcionais = quantidadeopcionais;
+        }
+
     }
 }

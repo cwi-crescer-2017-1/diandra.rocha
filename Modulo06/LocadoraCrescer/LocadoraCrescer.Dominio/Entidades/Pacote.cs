@@ -11,5 +11,12 @@
         {
 
         }
+
+        public Pacote(string nome, string descricao, decimal valordiaria)
+        {
+            Nome = nome;
+            Descricao = descricao;
+            ValorDiaria = valordiaria;
+        }
     }
 }

@@ -2,6 +2,6 @@
 {
     public enum Genero
     {
-        FEMININO, MASCULINO, NÃO_INFORMADO
+        FEMININO, MASCULINO, NAO_INFORMADO
     }
 }

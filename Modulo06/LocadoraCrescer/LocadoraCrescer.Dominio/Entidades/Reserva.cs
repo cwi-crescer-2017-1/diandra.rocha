@@ -11,7 +11,7 @@ namespace LocadoraCrescer.Dominio.Entidades
         public DateTime? DataDevolucaoReal { get; private set; }
         public decimal ValorPrevisto { get; private set; }
         public decimal? ValorFinal { get; private set; }
-        public char Status { get; private set; }
+        public string Status { get; private set; }
         public Cliente Cliente { get; private set; }
         public Pacote Pacote { get; private set; }
         public Produto Produto { get; private set; }
@@ -20,6 +20,16 @@ namespace LocadoraCrescer.Dominio.Entidades
         protected Reserva()
         {
 
+        }
+
+        public Reserva(DateTime datareserva, DateTime datadevolucaoprevista, decimal valorprevisto, string status, Cliente cliente, Produto produto)
+        {
+            DataReserva = datareserva;
+            DataDevolucaoPrevista = datadevolucaoprevista;
+            ValorPrevisto = valorprevisto;
+            Status = status;
+            Cliente = cliente;
+            Produto = produto;
         }
     }
 }
