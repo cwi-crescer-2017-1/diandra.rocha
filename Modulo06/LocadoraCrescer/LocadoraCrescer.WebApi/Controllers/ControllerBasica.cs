@@ -3,9 +3,9 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace AutDemo.WebApi.Controllers
+namespace LocadoraCrescer.WebApi.Controllers
 {
-    public class ControllerBasica : ApiController
+    public class ControllerBasico : ApiController
     {
 
         public HttpResponseMessage ResponderOK(object dados = null)

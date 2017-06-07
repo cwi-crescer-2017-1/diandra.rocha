@@ -18,11 +18,6 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
             contexto.SaveChanges();
         }
 
-        public List<Endereco> ObterTodos()
-        {
-            return contexto.Enderecos.ToList();
-        }
-
         public Endereco ObterPorCep(string cep)
         {
             return contexto.Enderecos.FirstOrDefault(x => x.Cep == cep);

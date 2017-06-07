@@ -1,5 +1,5 @@
-﻿using AutDemo.WebApi;
-using AutDemo.WebApi.Controllers;
+﻿using LocadoraCrescer.WebApi;
+using LocadoraCrescer.WebApi.Controllers;
 using LocadoraCrescer.Dominio.Entidades;
 using LocadoraCrescer.Infraestrutura.Repositorios;
 using System.Net.Http;
@@ -10,7 +10,7 @@ namespace LocadoraCrescer.WebApi.Controllers
 {
     [AllowAnonymous]
     [RoutePrefix("api/acessos")]
-    public class UsuarioController : ControllerBasica
+    public class UsuarioController : ControllerBasico
     {
         readonly FuncionarioRepositorio repo;
 

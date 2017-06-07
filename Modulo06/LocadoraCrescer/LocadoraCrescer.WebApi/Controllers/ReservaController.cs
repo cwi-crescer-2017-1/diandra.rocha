@@ -1,4 +1,4 @@
-﻿using AutDemo.WebApi.Controllers;
+﻿using LocadoraCrescer.WebApi.Controllers;
 using LocadoraCrescer.Dominio.Entidades;
 using LocadoraCrescer.Infraestrutura.Repositorios;
 using System;
@@ -12,7 +12,7 @@ namespace LocadoraCrescer.WebApi.Controllers
 {
     [BasicAuthorization]
     [RoutePrefix("api/reserva")]
-    public class ReservaController : ControllerBasica
+    public class ReservaController : ControllerBasico
     {
         readonly ReservaRepositorio repo;
 

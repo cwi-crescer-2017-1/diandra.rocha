@@ -1,4 +1,4 @@
-﻿using AutDemo.WebApi.Controllers;
+﻿using LocadoraCrescer.WebApi.Controllers;
 using LocadoraCrescer.Dominio.Entidades;
 using LocadoraCrescer.Infraestrutura.Repositorios;
 using System;
@@ -12,7 +12,7 @@ namespace LocadoraCrescer.WebApi.Controllers
 {
     [BasicAuthorization]
     [RoutePrefix("api/cliente")]
-    public class ClienteController : ControllerBasica
+    public class ClienteController : ControllerBasico
     {
         readonly ClienteRespositorio repoCliente;
         readonly EnderecoRepositorio repoEndereco;
@@ -69,6 +69,18 @@ namespace LocadoraCrescer.WebApi.Controllers
             repoEndereco.Criar(endereco);
             return ResponderOK(endereco);
 
+        }
+
+        [HttpGet, Route("cep")]
+        public HttpResponseMessage ObterPorCep(string cep)
+        {
+            if(cep == null)
+            {
+                return ResponderErro("Cep inexistente!");
+            }
+
+            var endereco = repoEndereco.ObterPorCep(cep);
+            return ResponderOK(endereco);
         }
     }
 }
