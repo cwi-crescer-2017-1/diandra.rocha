@@ -68,6 +68,8 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\ClienteRespositorio.cs" />
+    <Compile Include="Repositorios\EnderecoRepositorio.cs" />
     <Compile Include="Repositorios\FuncionarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
