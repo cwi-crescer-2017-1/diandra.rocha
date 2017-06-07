@@ -11,7 +11,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 
-namespace AutDemo.WebApi
+namespace LocadoraCrescer.WebApi
 {
     public class BasicAuthorization : AuthorizeAttribute
     {

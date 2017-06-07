@@ -1,5 +1,6 @@
 ﻿using AutDemo.WebApi;
 using AutDemo.WebApi.Controllers;
+using LocadoraCrescer.Dominio.Entidades;
 using LocadoraCrescer.Infraestrutura.Repositorios;
 using System.Net.Http;
 using System.Threading;
@@ -16,6 +17,19 @@ namespace LocadoraCrescer.WebApi.Controllers
         public UsuarioController()
         {
             repo = new FuncionarioRepositorio();
+        }
+
+        [HttpPost]
+        [Route("")]
+        public HttpResponseMessage Criar(Funcionario funcionario)
+        {
+            if(funcionario == null)
+            {
+                return ResponderErro("Funcionário inválido!");
+            }
+
+            repo.Criar(funcionario);
+            return ResponderOK(funcionario);
         }
 
         [BasicAuthorization]

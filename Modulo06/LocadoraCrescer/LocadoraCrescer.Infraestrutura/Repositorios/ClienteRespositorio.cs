@@ -18,13 +18,7 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
             contexto.SaveChanges();
         }
 
-        public void Excluir(Cliente cliente)
-        {
-            contexto.Clientes.Remove(cliente);
-            contexto.SaveChanges();
-        }
-
-        public IList<Cliente> Listar()
+        public List<Cliente> ObterTodos()
         {
             return contexto.Clientes.ToList();
         }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -17,17 +18,18 @@ namespace LocadoraCrescer.Dominio.Entidades
 
         }
 
-        public Funcionario(string nome, string email, string senha)
+        public Funcionario(string nome, string email, string senha, string [] permissoes)
         {
             Nome = nome;
             Email = email;
             if (!string.IsNullOrWhiteSpace(senha))
                 Senha = CriptografarSenha(senha);
-            Permissoes = new List<Permissao>();
+            AtribuirPermissoes(permissoes);
         }
 
-        public void AtribuirPermissoes(params string[] nomes)
+        public void AtribuirPermissoes(string[] nomes)
         {
+            Permissoes = new List<Permissao>();
             foreach (var nome in nomes)
                 Permissoes.Add(new Permissao(nome));
         }

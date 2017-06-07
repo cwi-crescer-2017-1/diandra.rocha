@@ -8,33 +8,13 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
     {
         Contexto contexto = new Contexto();
 
-        public void PopularBanco()
-        {
-            var FuncionarioAtendente = new Funcionario("Arianne Martell", "atendente@atendente.com.br", "123456");
-            FuncionarioAtendente.AtribuirPermissoes("Atendente");
-
-            var FuncionarioGerente = new Funcionario("Elia Martell", "gerente@gerente.com.br", "123456");
-            FuncionarioGerente.AtribuirPermissoes("Gerente");
-
-            Criar(FuncionarioAtendente);
-            Criar(FuncionarioGerente);
-
-        }
-
         public FuncionarioRepositorio()
         {
-            PopularBanco();
         }
 
         public void Criar(Funcionario funcionario)
         {
             contexto.Funcionarios.Add(funcionario);
-            contexto.SaveChanges();
-        }
-
-        public void Excluir(Funcionario funcionario)
-        {
-            contexto.Funcionarios.Remove(funcionario);
             contexto.SaveChanges();
         }
 
@@ -45,7 +25,18 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
 
         public Funcionario Obter(string email)
         {
-            return contexto.Funcionarios.SingleOrDefault(x => x.Email == email);
+            var funcionario =  contexto.Funcionarios.SingleOrDefault(x => x.Email == email);
+
+            var permissoes = contexto.Funcionarios
+                .Where(x => x.Email == funcionario.Email)
+                .SelectMany(x => x.Permissoes)
+                .Select(x => x.Nome).ToArray();
+
+            string[] roles = permissoes;
+
+            funcionario.AtribuirPermissoes(roles);
+
+            return funcionario;
         }
     }
 }

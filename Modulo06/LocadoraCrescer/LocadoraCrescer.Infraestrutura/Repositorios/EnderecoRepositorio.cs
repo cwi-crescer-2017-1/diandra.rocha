@@ -18,13 +18,7 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
             contexto.SaveChanges();
         }
 
-        public void Excluir(Endereco endereco)
-        {
-            contexto.Enderecos.Remove(endereco);
-            contexto.SaveChanges();
-        }
-
-        public IList<Endereco> Listar()
+        public List<Endereco> ObterTodos()
         {
             return contexto.Enderecos.ToList();
         }

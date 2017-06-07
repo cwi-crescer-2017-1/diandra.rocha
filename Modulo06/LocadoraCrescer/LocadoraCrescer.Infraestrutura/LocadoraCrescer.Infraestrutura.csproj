@@ -71,6 +71,10 @@
     <Compile Include="Repositorios\ClienteRespositorio.cs" />
     <Compile Include="Repositorios\EnderecoRepositorio.cs" />
     <Compile Include="Repositorios\FuncionarioRepositorio.cs" />
+    <Compile Include="Repositorios\OpcionalRepositorio.cs" />
+    <Compile Include="Repositorios\PacoteRepositorio.cs" />
+    <Compile Include="Repositorios\ProdutoRepositorio.cs" />
+    <Compile Include="Repositorios\ReservaRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LocadoraCrescer.Dominio\LocadoraCrescer.Dominio.csproj">
