@@ -1,5 +1,5 @@
 app.constant('authConfig', {
-    urlUsuario: 'http://localhost:49456/api/acessos/usuario',
+    urlUsuario: 'http://localhost:49456/api/acessos/login',
 
     // Obrigatória - URL da aplicação que possui o formulário de login
     urlLogin: '/login',

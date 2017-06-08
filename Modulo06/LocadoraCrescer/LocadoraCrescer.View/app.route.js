@@ -7,7 +7,7 @@ app.config(function($routeProvider) {
         })
         .when("/login", {
             controller: "LoginController",
-            templateUrl: "/login/login.html"
+            templateUrl: "/Login/login.html"
         })
         .when("/administrativa", {
             controller: "AdministrativaController",
@@ -19,6 +19,6 @@ app.config(function($routeProvider) {
             }
         })
         .otherwise({
-            redirectTo: "/home"
+            redirectTo: "/login"
         });
 });

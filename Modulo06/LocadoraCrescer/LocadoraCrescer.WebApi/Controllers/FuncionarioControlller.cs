@@ -10,11 +10,11 @@ namespace LocadoraCrescer.WebApi.Controllers
 {
     [AllowAnonymous]
     [RoutePrefix("api/acessos")]
-    public class UsuarioController : ControllerBasico
+    public class FuncionarioController : ControllerBasico
     {
         readonly FuncionarioRepositorio repo;
 
-        public UsuarioController()
+        public FuncionarioController()
         {
             repo = new FuncionarioRepositorio();
         }
@@ -41,7 +41,7 @@ namespace LocadoraCrescer.WebApi.Controllers
             if (funcionario == null)
                 return ResponderErro("Funcionário não encontrado.");
 
-            return ResponderOK(new { funcionario.Nome, funcionario.Permissoes, funcionario.Email });
+            return ResponderOK(new { funcionario.Nome,funcionario.Email, funcionario.Permissoes });
         }
     }
 }
