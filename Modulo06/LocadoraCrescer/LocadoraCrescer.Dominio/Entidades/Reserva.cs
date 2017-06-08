@@ -17,7 +17,7 @@ namespace LocadoraCrescer.Dominio.Entidades
         public Cliente Cliente { get; private set; }
         public Pacote Pacote { get; private set; }
         public Produto Produto { get; private set; }
-        public List<ReservaOpcional> Opcionais { get; private set; }
+        public List<Opcional> Opcionais { get; private set; }
 
         protected Reserva()
         {
@@ -29,9 +29,12 @@ namespace LocadoraCrescer.Dominio.Entidades
             Produto = produto;
         }
 
-        public void AtribuirOpcionais(List<ReservaOpcional> opcionais)
+        public void AtribuirOpcionais(List<int> opcionais)
         {
-            Opcionais = opcionais;
+            foreach(int id in opcionais)
+            {
+
+            }
         }
 
         public void AtribuitPacote(Pacote pacote)
@@ -68,9 +71,9 @@ namespace LocadoraCrescer.Dominio.Entidades
                 ValorTotal = ValorTotal + Reserva.Pacote.ValorDiaria;
             }
 
-            if(Reserva.Opcionais != null)
+            if(Reserva.IdOpcionais != null)
             {
-                foreach(ReservaOpcional opcional in Opcionais)
+                foreach(int opcional in IdOpcionais)
                 {
                     
                 }

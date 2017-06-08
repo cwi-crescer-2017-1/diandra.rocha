@@ -21,6 +21,11 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
             contexto.SaveChanges();
         }
 
+        public void AtribuirAdicionais()
+        {
+
+        }
+
         public List<Reserva> ObterTodos()
         {
             return contexto.Reservas.ToList();

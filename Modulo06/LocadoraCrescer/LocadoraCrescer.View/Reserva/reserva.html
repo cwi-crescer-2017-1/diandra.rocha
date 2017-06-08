@@ -1,0 +1,34 @@
+<div class="col-md-8">
+
+    <form name="LivroForm" novalidate ng-submit="salvar(livro)">
+
+        <legend>Adicionar/Editar Livro</legend>
+
+        <div class="form-group">
+            <label for="titulo"> Titulo: </label>
+            <input type="text" class="form-control" name="titulo" ng-model="livro.Titulo" />
+        </div>
+
+        <div class="form-group">
+            <label for="descricao"> Descrição: </label>
+            <input type="text" name="descricao" class="form-control" ng-model="livro.Descricao" />
+        </div>
+
+        <div class="form-group">
+            <label for="genero"> Gênero: </label>
+            <input type="text" name="genero" class="form-control" ng-model="livro.Genero" />
+        </div>
+
+        <div class="form-group">
+            <label for="idAutor"> Id do Autor: </label>
+            <input type="number" name="idAutor" class="form-control" ng-model="livro.IdAutor" />
+        </div>
+
+        <div class="form-group">
+            <label for="capa"> URL de Capa: </label>
+            <input type="text" name="capa" class="form-control" ng-model="livro.Capa">
+        </div>
+
+        <button type="submit" class="btn btn-default">Salvar!</button>
+
+    </form>
