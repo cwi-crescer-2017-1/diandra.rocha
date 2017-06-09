@@ -17,12 +17,14 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
         public void Criar(Reserva reserva, int IdProduto, int IdPacote, List<int> opcionais)
         {
             var produto = contexto.Produtos.FirstOrDefault(x => x.Id == IdProduto);
+            produto.DiminuirEstoque(produto);
 
             reserva.AtribuirProduto(reserva, produto);
             if (IdPacote >= 0)
             {
                 var pacote = contexto.Pacotes.FirstOrDefault(x => x.Id == IdPacote);
                 reserva.AtribuirPacote(reserva, pacote);
+
             }
             if (opcionais.Count > 0)
             {
@@ -30,8 +32,11 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
 
                 foreach (int op in opcionais)
                 {
-                    lista = contexto.Opcionais.Where(x => x.Id == op).ToList();
+                    var opcional = contexto.Opcionais.SingleOrDefault(x => x.Id == op);
+                    opcional.DiminuirEstoque(opcional);
+                    lista.Add(opcional);
                 }
+
                 reserva.AtribuirOpcionais(reserva, lista);
 
             }

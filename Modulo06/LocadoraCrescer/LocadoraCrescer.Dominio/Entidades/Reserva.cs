@@ -36,6 +36,21 @@ namespace LocadoraCrescer.Dominio.Entidades
         }
         public void AtribuirOpcionais(Reserva reserva, List<Opcional> opcionais)
         {
+            foreach(Opcional op in opcionais)
+            {
+                if (op.Nome.Equals("Reboque") && reserva.Produto.Nome.Equals("Fiat Mobi"))
+                {
+                    return;
+                }
+                if (op.Nome.Equals("Rack") && reserva.Produto.Nome.Equals("Toyota Hilux"))
+                {
+                    return;
+                }
+                if(op.Nome.Equals("Cabo Bateria") && reserva.Produto.Nome != ("Volkswagem Kombi"))
+                {
+                    return;
+                }
+            }
             reserva.Opcionais = opcionais;
         }
 

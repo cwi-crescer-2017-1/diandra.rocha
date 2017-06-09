@@ -65,6 +65,10 @@
     <Compile Include="Migrations\201706070627168_AlterarTabelaPermissoes.Designer.cs">
       <DependentUpon>201706070627168_AlterarTabelaPermissoes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706090519438_AlterarRelacionamento.cs" />
+    <Compile Include="Migrations\201706090519438_AlterarRelacionamento.Designer.cs">
+      <DependentUpon>201706090519438_AlterarRelacionamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\ClienteRespositorio.cs" />
@@ -91,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706070627168_AlterarTabelaPermissoes.resx">
       <DependentUpon>201706070627168_AlterarTabelaPermissoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706090519438_AlterarRelacionamento.resx">
+      <DependentUpon>201706090519438_AlterarRelacionamento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

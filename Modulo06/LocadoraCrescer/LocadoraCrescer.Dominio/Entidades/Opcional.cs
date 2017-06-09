@@ -20,5 +20,10 @@
             ValorDiaria = valordiaria;
             QuantidadeDisponivel = quantidadedisponivel;
         }
+
+        public void DiminuirEstoque(Opcional opcional)
+        {
+            opcional.QuantidadeDisponivel = QuantidadeDisponivel - 1;
+        }
     }
 }
