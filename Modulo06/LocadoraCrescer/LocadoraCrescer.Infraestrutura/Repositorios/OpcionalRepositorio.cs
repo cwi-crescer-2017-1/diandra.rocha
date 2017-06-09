@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LocadoraCrescer.Infraestrutura.repoClientesitorios
+namespace LocadoraCrescer.Infraestrutura.Repositorios
 {
-    public class OpcionalrepoClientesitorio
+    public class OpcionalRepositorio
     {
         Contexto contexto = new Contexto();
 
-        public OpcionalrepoClientesitorio()
+        public OpcionalRepositorio()
         {
 
         }
 
-        public List<Opcional> Obter()
+        public List<Opcional> ObterTodos()
         {
             return contexto.Opcionais.ToList();
         }

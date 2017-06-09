@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using LocadoraCrescer.Infraestrutura.Repositorios;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -11,28 +8,36 @@ namespace LocadoraCrescer.WebApi.Controllers
     [RoutePrefix("produto")]
     public class ProdutoController : ControllerBasico
     {
-        [HttpGet, Route("")]
-        public HttpResponseMessage Obter()
-        {
-            var clientes = repoCliente.ObterTodos();
-            if (clientes.Count == 0)
-            {
-                return ResponderErro("Lista de clientes vazia!");
-            }
+        readonly ProdutoRepositorio repo;
 
-            return ResponderOK(clientes);
+        public ProdutoController()
+        {
+            repo = new ProdutoRepositorio();
         }
 
-        [HttpGet, Route("{cpf}")]
-        public HttpResponseMessage ObterPorCPF(string cpf)
+
+        [HttpGet, Route("")]
+        public HttpResponseMessage ObterTodos()
         {
-            var cliente = repoCliente.ObterPorCPF(cpf);
-            if (cliente == null)
+            var produtos = repo.ObterTodos();
+            if (produtos.Count == 0)
             {
-                return ResponderErro("Cliente Inexistente!");
+                return ResponderErro("Lista de produtos vazia!");
             }
 
-            return ResponderOK(cliente);
+            return ResponderOK(produtos);
+        }
+
+        [HttpGet, Route("{id}")]
+        public HttpResponseMessage ObterPorId(int id)
+        {
+            var pacote = repo.ObterPorId(id);
+            if (pacote == null)
+            {
+                return ResponderErro("Pacote Inexistente!");
+            }
+
+            return ResponderOK(pacote);
         }
     }
 }

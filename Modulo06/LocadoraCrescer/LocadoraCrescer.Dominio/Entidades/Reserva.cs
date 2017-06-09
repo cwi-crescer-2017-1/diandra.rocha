@@ -57,7 +57,7 @@ namespace LocadoraCrescer.Dominio.Entidades
             reserva.Status = Status.Finalizado;
         }
 
-        public decimal CalcularValorPrevisto(Reserva reserva)
+        public void CalcularValorPrevisto(Reserva reserva)
         {
             decimal ValorTotal = 0;
 
@@ -75,11 +75,11 @@ namespace LocadoraCrescer.Dominio.Entidades
                 }
             }
 
-            return ValorTotal;
+             reserva.ValorPrevisto = ValorTotal;
 
         }
 
-        public decimal CalcularValorFinal(Reserva reserva)
+        public void CalcularValorFinal(Reserva reserva)
         {
             decimal ValorFinal = 0;
 
@@ -96,13 +96,13 @@ namespace LocadoraCrescer.Dominio.Entidades
                 ValorFinal = reserva.ValorPrevisto;
             }
 
-            return ValorFinal;
+            reserva.ValorFinal = ValorFinal;
         }
 
 
-        public int CalcularDiasDeLocacao(Reserva reserva)
+        public void CalcularDiasDeLocacao(Reserva reserva)
         {
-            return (int)(reserva.DataDevolucaoReal.Value - reserva.DataReserva).TotalDays;
+            reserva.DiasDeReserva = (int)(reserva.DataDevolucaoReal.Value - reserva.DataReserva).TotalDays;
         }
     }
 }

@@ -98,6 +98,8 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ControllerBasica.cs" />
     <Compile Include="Controllers\FuncionarioControlller.cs" />
+    <Compile Include="Controllers\OpcionalController.cs" />
+    <Compile Include="Controllers\PacoteController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\ReservaController.cs" />
     <Compile Include="Global.asax.cs">

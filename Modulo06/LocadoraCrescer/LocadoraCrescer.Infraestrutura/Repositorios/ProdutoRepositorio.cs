@@ -5,17 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraCrescer.Infraestrutura.repoClientesitorios
+namespace LocadoraCrescer.Infraestrutura.Repositorios
 {
-    public class ProdutorepoClientesitorio
+    public class ProdutoRepositorio
     {
         Contexto contexto = new Contexto();
-        public ProdutorepoClientesitorio()
+        public ProdutoRepositorio()
         {
 
         }
 
-        public List<Produto> Obter()
+        public List<Produto> ObterTodos()
         {
             return contexto.Produtos.ToList();
         }

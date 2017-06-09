@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LocadoraCrescer.Infraestrutura.repoClientesitorios
+namespace LocadoraCrescer.Infraestrutura.Repositorios
 {
-    public class PacoterepoClientesitorio
+    public class PacoteRepositorio
     {
         Contexto contexto = new Contexto();
 
-        public PacoterepoClientesitorio()
+        public PacoteRepositorio()
         {
 
         }
 
-        public List<Pacote> Obter()
+        public List<Pacote> ObterTodos()
         {
             return contexto.Pacotes.ToList();
         }
