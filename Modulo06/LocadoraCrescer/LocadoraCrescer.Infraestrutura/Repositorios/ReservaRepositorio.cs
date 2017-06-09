@@ -14,10 +14,16 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
         }
 
 
-        public void Criar(Reserva reserva, int IdProduto, int IdPacote, List<int> opcionais)
+        public void Criar(DateTime Devolucao, string cpf, int IdProduto, int IdPacote, List<int> opcionais)
         {
+            Reserva reserva = new Reserva();
+            reserva.AtribuirDataReserva(reserva);
+            reserva.AtribuirDataDevolucaoPrevista(reserva, Devolucao);
+            var cliente = contexto.Clientes.SingleOrDefault(x => x.CPF.Equals(cpf));
+            reserva.AtribuirCliente(reserva, cliente);
             var produto = contexto.Produtos.FirstOrDefault(x => x.Id == IdProduto);
             produto.DiminuirEstoque(produto);
+            reserva.AtribuirProduto(reserva, produto);
 
             reserva.AtribuirProduto(reserva, produto);
             if (IdPacote >= 0)

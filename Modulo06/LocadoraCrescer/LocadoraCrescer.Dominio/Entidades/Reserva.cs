@@ -20,9 +20,24 @@ namespace LocadoraCrescer.Dominio.Entidades
         public Produto Produto { get; private set; }
         public List<Opcional> Opcionais { get; private set; }
 
-        protected Reserva()
+        public Reserva()
         {
 
+        }
+
+        public void AtribuirDataReserva(Reserva reserva)
+        {
+            reserva.DataReserva = DateTime.UtcNow;
+        }
+
+        public void AtribuirDataDevolucaoPrevista(Reserva reserva, DateTime devolucao)
+        {
+            reserva.DataDevolucaoPrevista = devolucao;
+        }
+
+        public void AtribuirCliente(Reserva reserva, Cliente cliente)
+        {
+            reserva.Cliente = cliente;
         }
 
         public void AtribuirProduto(Reserva reserva, Produto produto)
@@ -57,13 +72,6 @@ namespace LocadoraCrescer.Dominio.Entidades
         public void AtribuirStatus(Reserva reserva, Status status)
         {
             reserva.Status = status;
-        }
-
-        public Reserva(DateTime datareserva, DateTime datadevolucaoprevista, decimal valorprevisto)
-        {
-            DataReserva = datareserva;
-            DataDevolucaoPrevista = datadevolucaoprevista;
-            ValorPrevisto = valorprevisto;
         }
 
         public void RealizarDevolucao(Reserva reserva)

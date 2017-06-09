@@ -1,28 +1,22 @@
 app.factory('reservaService', function($http) {
 
-    let urlBase = 'http://localhost:54411/';
+    let urlBase = 'http://localhost:54411/api/reserva';
 
-    function getTodasAsAulas() {
-        return $http.get(urlBase + '/aula');
+    function getTodasAsReservas() {
+        return $http.get(urlBase);
     };
 
-    function getAulaPorId(id) {
-        return $http.get(urlBase + '/aula' + '/' + id);
+    function getReservaPorId(id) {
+        return $http.get(urlBase + "/" + id);
     };
 
-    function atualizar(aula) {
-        return $http.put(urlBase + '/aula' + '/' + aula.id, aula);
-    };
-
-    function criar(aula) {
-        aula.id = ++idAtual;
-        aulas.push(angular.copy(aula));
-    };
+    function criar(reservaModel) {
+        return $http.post(urlBase, reservaModel);
+    }
 
     return {
-        list: getTodasAsAulas,
-        findById: getAulaPorId,
-        update: atualizar,
-        create: criar
+        obterTodasAsReservas: getTodasAsReservas,
+        obterPorId: getReservaPorId,
+        criar: criar
     };
 });

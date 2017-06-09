@@ -1,5 +1,6 @@
 ﻿using LocadoraCrescer.Dominio.Entidades;
 using LocadoraCrescer.Infraestrutura.Repositorios;
+using LocadoraCrescer.WebApi.Models;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http;
@@ -18,15 +19,15 @@ namespace LocadoraCrescer.WebApi.Controllers
         }
 
         [HttpPost, Route("")]
-        public HttpResponseMessage Criar(Reserva reserva, int produto, int pacote, List<int> opcionais)
+        public HttpResponseMessage Criar(ReservaModel modelo)
         {
-            if (reserva == null || produto>=0)
+            if (modelo.Reserva == null || modelo.Produto>=0)
             {
                 return ResponderErro("Reserva inválida!");
             }
 
-            repo.Criar(reserva, produto, pacote, opcionais);
-            return ResponderOK(reserva);
+            repo.Criar(modelo.Reserva,modelo.Cliente, modelo.Produto, modelo.Pacote, modelo.Opcionais);
+            return ResponderOK(modelo);
         }
 
         [HttpGet, Route("")]

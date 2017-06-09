@@ -6,12 +6,12 @@ app.controller("LoginController", function($scope, authService) {
             .then(
                 function(response) {
                     console.log(response);
-                    alert('Login com sucesso!');
+                    swal("Sucesso!", "Funcionário Logado!", "success")
 
                 },
                 function(response) {
                     console.log(response);
-                    alert('Erro no Login!');
+                    sweetAlert("Oops...", "Alguma falha ocorreu!", "error");
                 });
     };
 
