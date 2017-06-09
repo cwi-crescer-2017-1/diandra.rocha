@@ -27,12 +27,10 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
         {
             var funcionario =  contexto.Funcionarios.SingleOrDefault(x => x.Email == email);
 
-            var permissoes = contexto.Funcionarios
+            string[] roles = contexto.Funcionarios
                 .Where(x => x.Email == funcionario.Email)
                 .SelectMany(x => x.Permissoes)
                 .Select(x => x.Nome).ToArray();
-
-            string[] roles = permissoes;
 
             funcionario.AtribuirPermissoes(roles);
 

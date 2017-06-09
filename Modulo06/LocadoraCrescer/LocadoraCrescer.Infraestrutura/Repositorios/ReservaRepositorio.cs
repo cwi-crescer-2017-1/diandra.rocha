@@ -13,6 +13,12 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
         {
         }
 
+       /* public void gerarRelatorio(DateTime dataEstipulada)
+        {
+            TimeSpan Menos30Dias = (dataEstipulada -30);
+            contexto.Reservas.Where(r => r.DataDevolucaoReal > DataMenos30Dias && r.DataDevolucaoReal < dataEstipulada);
+        }*/
+
 
         public void Criar(DateTime Devolucao, string cpf, int IdProduto, int IdPacote, List<int> opcionais)
         {
