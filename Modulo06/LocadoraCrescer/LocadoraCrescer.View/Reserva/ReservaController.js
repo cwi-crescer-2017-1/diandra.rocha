@@ -1,4 +1,6 @@
-app.controller("reservaController", function($scope, authService, reservaService) {
+app.controller("ReservaController", reservaController);
+
+function ReservaController($scope, authService, reservaService) {
 
     $scope.reservas = [];
     $scope.reserva = {};
@@ -19,4 +21,4 @@ app.controller("reservaController", function($scope, authService, reservaService
             });
         $scope.reserva = {};
     };
-});
+}

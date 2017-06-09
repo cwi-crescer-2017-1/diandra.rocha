@@ -11,24 +11,26 @@
 
         <div class="form-group">
             <label for="Produto"> Produto: </label>
-            <select name="Produto" multiple class="form-control" ng-model="reservaModel.Produto">>
-      <option ng-repeat="produto in produtos" ng-value="{{produto.id}}" >{{produto.Nome}}</option>
+            <select name="Produto" multiple class="form-control" ng-model="reservaModel.Produto">> 
+      <option ng-repeat="produto in produtos" ng-value="{{produto.id}}" >{{produto.Nome}}</option> 
     </select>
         </div>
 
         <div class="form-group">
             <label for="Pacote"> Pacote: </label>
-            <select name="Pacote" multiple class="form-control" ng-model="reservaModel.Pacote">>
-      <option ng-repeat="pacote in pacotes" ng-value="{{pacote.id}}" >{{pacote.Nome}}</option>
+            <select name="Pacote" multiple class="form-control" ng-model="reservaModel.Pacote">> 
+      <option ng-repeat="pacote in pacotes" ng-value="{{pacote.id}}" >{{pacote.Nome}}</option> 
     </select>
         </div>
 
         <div class="form-group">
+
             <label for="Opcional"> Pacote: </label>
-            <select name="Opcional" multiple class="form-control" ng-model="reservaModel.Opcional">>
-      <option ng-repeat="opcional in opcionais" ng-value="{{opcional.id}}" >{{opcional.Nome}}</option>
+            <select name="Opcional" multiple class="form-control" ng-model="reservaModel.Opcional">> 
+      <option ng-repeat="opcional in opcionais" ng-value="{{opcional.id}}" >{{opcional.Nome}}</option> 
     </select>
         </div>
+
 
         <button type="submit" class="btn btn-default">Confimar!</button>
 

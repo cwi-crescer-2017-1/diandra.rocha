@@ -8,21 +8,19 @@
         public int Numero { get; private set; }
         public string Cidade { get; private set; }
         public string Uf { get; private set; }
-        public Cliente Cliente { get; private set; }
 
         protected Endereco()
         {
 
         }
 
-        public Endereco(string cep, string rua, int numero, string cidade, string uf, Cliente cliente)
+        public Endereco(string cep, string rua, int numero, string cidade, string uf)
         {
             Cep = cep;
             Rua = rua;
             Numero = numero;
             Cidade = cidade;
             Uf = uf;
-            Cliente = cliente;
         }
 
     }

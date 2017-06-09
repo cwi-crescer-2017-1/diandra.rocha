@@ -1,11 +1,9 @@
 ﻿using LocadoraCrescer.Infraestrutura.Repositorios;
-using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
 
 namespace LocadoraCrescer.WebApi.Controllers
 {
-    [BasicAuthorization]
     [RoutePrefix("opcional")]
     public class OpcionalController : ControllerBasico
     {

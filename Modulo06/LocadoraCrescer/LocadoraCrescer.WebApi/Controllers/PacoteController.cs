@@ -5,7 +5,7 @@ using System.Web.Http;
 
 namespace LocadoraCrescer.WebApi.Controllers
 {
-    [BasicAuthorization]
+
     [RoutePrefix("pacote")]
     public class PacoteController : ControllerBasico
     {

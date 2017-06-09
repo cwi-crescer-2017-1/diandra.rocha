@@ -1,6 +1,6 @@
 app.factory('reservaService', function($http) {
 
-    let urlBase = 'http://localhost:54411/api/reserva';
+    let urlBase = 'http://localhost:49456/api/reserva';
 
     function getTodasAsReservas() {
         return $http.get(urlBase);

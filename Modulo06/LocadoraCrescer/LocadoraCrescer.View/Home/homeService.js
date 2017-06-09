@@ -1,6 +1,6 @@
 app.factory("homeService", function($http) {
 
-    let urlBaseProduto = "http://localhost:54411/api/produto";
+    let urlBaseProduto = "http://localhost:49456/api/produto";
 
     function getTodosOsProdutos() {
         return $http.get(urlBaseProduto);
@@ -10,7 +10,7 @@ app.factory("homeService", function($http) {
         return $http.get(urlBaseProduto + "/" + id);
     };
 
-    let urlBasePacote = "http://localhost:54411/api/pacote";
+    let urlBasePacote = "http://localhost:49456/api/pacote";
 
     function getTodosOsPacotes() {
         return $http.get(urlBasePacote);
@@ -20,7 +20,7 @@ app.factory("homeService", function($http) {
         return $http.get(urlBasePacote + "/" + id);
     };
 
-    let urlBaseOpcional = "http://localhost:54411/api/opcional";
+    let urlBaseOpcional = "http://localhost:49456/api/opcional";
 
     function getTodosOsOpcionais() {
         return $http.get(urlBaseOpcional);

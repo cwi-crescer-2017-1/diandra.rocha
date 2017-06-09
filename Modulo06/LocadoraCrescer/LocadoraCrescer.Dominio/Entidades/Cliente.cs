@@ -10,6 +10,7 @@ namespace LocadoraCrescer.Dominio.Entidades
         public string CPF { get; private set; }
         public DateTime DataNascimento { get; private set; }
         public Genero Genero { get; private set; }
+        public Endereco Endereco { get; private set; }
 
         protected Cliente()
         {
@@ -23,6 +24,11 @@ namespace LocadoraCrescer.Dominio.Entidades
             CPF = cpf;
             DataNascimento = datanascimento;
             Genero = Genero;
+        }
+
+        public void AtribuirEndereco(Endereco endereco)
+        {
+            Endereco = endereco;
         }
     }
 }

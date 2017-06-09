@@ -4,7 +4,6 @@ using System.Web.Http;
 
 namespace LocadoraCrescer.WebApi.Controllers
 {
-    [BasicAuthorization]
     [RoutePrefix("produto")]
     public class ProdutoController : ControllerBasico
     {
