@@ -20,6 +20,7 @@ namespace LocadoraCrescer.WebApi.Controllers
         public ClienteController()
         {
             repoCliente = new ClienteRespositorio();
+            repoEndereco = new EnderecoRepositorio();
         }
 
         [HttpPost, Route("")]

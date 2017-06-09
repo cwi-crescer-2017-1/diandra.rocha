@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraCrescer.Infraestrutura.Repositorios
 {
@@ -15,47 +13,34 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
         {
         }
 
-        public void CalcularValorFinal(Reserva reserva)
-        {
-            decimal ValorFinal = 0;
-            var resultado = Nullable.Compare(reserva.DataDevolucaoReal, reserva.DataDevolucaoPrevista);
-            double dias = reserva.DataDevolucaoReal.Value.Subtract(reserva.DataDevolucaoPrevista).TotalDays;
 
-            if (resultado > 0)
+        public void Criar(Reserva reserva, int IdProduto, int IdPacote, List<int> opcionais)
+        {
+            var produto = contexto.Produtos.FirstOrDefault(x => x.Id == IdProduto);
+
+            reserva.AtribuirProduto(reserva, produto);
+            if (IdPacote >= 0)
             {
-                reserva.AtribuirStatus(Status.Em_Atraso);
-                ValorFinal = reserva.ValorPrevisto * (decimal)dias;
+                var pacote = contexto.Pacotes.FirstOrDefault(x => x.Id == IdPacote);
+                reserva.AtribuirPacote(reserva, pacote);
             }
-            else
-            {
-                ValorFinal = reserva.ValorPrevisto;
-            }
-        }
-
-        public int CalcularDiasDeLocacao(Reserva reserva)
-        {
-            return (int)(reserva.DataDevolucaoReal.Value - reserva.DataReserva).TotalDays;
-        }
-
-        public void Criar(Reserva reserva, Produto produto, Pacote pacote, List<Opcional> opcionais)
-        {
-            reserva.AtribuirProduto(produto);
-
-            if(pacote !=null)
-            reserva.AtribuitPacote(pacote);
-
             if (opcionais.Count > 0)
-                reserva.AtribuirOpcionais(opcionais);
+            {
+                List<Opcional> lista = new List<Opcional>();
 
-            
+                foreach (int op in opcionais)
+                {
+                    lista = contexto.Opcionais.Where(x => x.Id == op).ToList();
+                }
+                reserva.AtribuirOpcionais(reserva, lista);
+
+            }
+            reserva.CalcularDiasDeLocacao(reserva);
+            reserva.CalcularValorPrevisto(reserva);
+            reserva.CalcularValorFinal(reserva);
 
             contexto.Reservas.Add(reserva);
             contexto.SaveChanges();
-        }
-
-        public void AtribuirAdicionais()
-        {
-
         }
 
         public List<Reserva> ObterTodos()

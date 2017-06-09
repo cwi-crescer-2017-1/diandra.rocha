@@ -16,7 +16,6 @@ namespace LocadoraCrescer.Infraestrutura
         public DbSet<Pacote> Pacotes { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Reserva> Reservas { get; set; }
-        public DbSet<ReservaOpcional> ReservaOpcionais { get; set; }
         public DbSet<Permissao> Permissoes { get; set; }
 
 
@@ -29,7 +28,6 @@ namespace LocadoraCrescer.Infraestrutura
             modelBuilder.Configurations.Add(new PacoteMap());
             modelBuilder.Configurations.Add(new ProdutoMap());
             modelBuilder.Configurations.Add(new ReservaMap());
-            modelBuilder.Configurations.Add(new ReservaOpcionalMap());
             modelBuilder.Configurations.Add(new PermissaoMap());
 
         }

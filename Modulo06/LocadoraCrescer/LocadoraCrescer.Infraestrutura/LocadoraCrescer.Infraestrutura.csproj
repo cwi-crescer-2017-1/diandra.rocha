@@ -57,7 +57,6 @@
     <Compile Include="Mappings\PermissaoMap.cs" />
     <Compile Include="Mappings\ProdutoMap.cs" />
     <Compile Include="Mappings\ReservaMap.cs" />
-    <Compile Include="Mappings\ReservaOpcionalMap.cs" />
     <Compile Include="Migrations\201706070546049_Tudo.cs" />
     <Compile Include="Migrations\201706070546049_Tudo.Designer.cs">
       <DependentUpon>201706070546049_Tudo.cs</DependentUpon>

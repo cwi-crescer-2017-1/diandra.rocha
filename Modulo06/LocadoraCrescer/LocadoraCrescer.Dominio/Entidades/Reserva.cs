@@ -25,59 +25,84 @@ namespace LocadoraCrescer.Dominio.Entidades
 
         }
 
-        public void AtribuirProduto(Produto produto)
+        public void AtribuirProduto(Reserva reserva, Produto produto)
         {
-            Produto = produto;
+            reserva.Produto = produto;
         }
 
-        public void AtribuitPacote(Pacote pacote)
+        public void AtribuirPacote(Reserva reserva,Pacote pacote)
         {
-            Pacote = pacote;
+            reserva.Pacote = pacote;
         }
-        public void AtribuirOpcionais(List<Opcional> opcionais)
+        public void AtribuirOpcionais(Reserva reserva, List<Opcional> opcionais)
         {
-            Opcionais = opcionais;
-        }
-
-        public void AtribuirStatus(Status status)
-        {
-            Status = status;
+            reserva.Opcionais = opcionais;
         }
 
-        public Reserva(DateTime datareserva, DateTime datadevolucaoprevista, decimal valorprevisto, int idCliente)
+        public void AtribuirStatus(Reserva reserva, Status status)
+        {
+            reserva.Status = status;
+        }
+
+        public Reserva(DateTime datareserva, DateTime datadevolucaoprevista, decimal valorprevisto)
         {
             DataReserva = datareserva;
             DataDevolucaoPrevista = datadevolucaoprevista;
             ValorPrevisto = valorprevisto;
         }
 
-        public void ValidarDataDevolucao(DateTime datadevolucao)
+        public void RealizarDevolucao(Reserva reserva)
         {
-            var resultado = Nullable.Compare(DataDevolucaoReal, DataDevolucaoPrevista);
-
-            if (resultado > 0)
-            {
-
-            }
+            reserva.DataDevolucaoReal = DateTime.UtcNow;
+            reserva.Status = Status.Finalizado;
         }
 
-        public void RealizarDevolucao()
-        {
-            DataDevolucaoReal = DateTime.UtcNow;
-            Status = Status.Finalizado;
-        }
-
-        public void CalcularValorPrevisto(Reserva Reserva)
+        public decimal CalcularValorPrevisto(Reserva reserva)
         {
             decimal ValorTotal = 0;
 
-            ValorTotal = Reserva.Produto.ValorDiaria + ValorTotal;
+            ValorTotal = (reserva.Produto.ValorDiaria* reserva.DiasDeReserva) + ValorTotal;
 
-            if (Reserva.Pacote !=null)
+            if (reserva.Pacote !=null)
             {
-                ValorTotal = ValorTotal + Reserva.Pacote.ValorDiaria;
+                ValorTotal = ValorTotal + (reserva.Pacote.ValorDiaria * reserva.DiasDeReserva);
+            }
+            if (reserva.Opcionais.Count > 0)
+            {
+                foreach(Opcional op in Opcionais)
+                {
+                    ValorTotal = (op.ValorDiaria * reserva.DiasDeReserva) + ValorTotal;
+                }
             }
 
+            return ValorTotal;
+
+        }
+
+        public decimal CalcularValorFinal(Reserva reserva)
+        {
+            decimal ValorFinal = 0;
+
+            var resultado = Nullable.Compare(reserva.DataDevolucaoReal, reserva.DataDevolucaoPrevista);
+            double dias = reserva.DataDevolucaoReal.Value.Subtract(reserva.DataDevolucaoPrevista).TotalDays;
+
+            if (resultado > 0)
+            {
+                reserva.AtribuirStatus(reserva, Status.Em_Atraso);
+                ValorFinal = reserva.ValorPrevisto * (decimal)dias;
+            }
+            else
+            {
+                ValorFinal = reserva.ValorPrevisto;
+            }
+
+            return ValorFinal;
+        }
+
+
+        public int CalcularDiasDeLocacao(Reserva reserva)
+        {
+            return (int)(reserva.DataDevolucaoReal.Value - reserva.DataReserva).TotalDays;
         }
     }
 }

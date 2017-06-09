@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,7 +59,6 @@
     <Compile Include="Entidades\Permissao.cs" />
     <Compile Include="Entidades\Produto.cs" />
     <Compile Include="Entidades\Reserva.cs" />
-    <Compile Include="Entidades\ReservaOpcional.cs" />
     <Compile Include="Entidades\Status.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
