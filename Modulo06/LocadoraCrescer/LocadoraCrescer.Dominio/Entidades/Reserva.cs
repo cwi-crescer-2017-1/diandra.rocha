@@ -12,6 +12,7 @@ namespace LocadoraCrescer.Dominio.Entidades
         public DateTime? DataDevolucaoReal { get; private set; }
         public decimal ValorPrevisto { get; private set; }
         public decimal? ValorFinal { get; private set; }
+        public int DiasDeReserva { get; private set; }
         [DefaultValue(Status.Em_Andamento)]
         public Status Status { get; private set; }
         public Cliente Cliente { get; private set; }
@@ -29,17 +30,18 @@ namespace LocadoraCrescer.Dominio.Entidades
             Produto = produto;
         }
 
-        public void AtribuirOpcionais(List<int> opcionais)
-        {
-            foreach(int id in opcionais)
-            {
-
-            }
-        }
-
         public void AtribuitPacote(Pacote pacote)
         {
             Pacote = pacote;
+        }
+        public void AtribuirOpcionais(List<Opcional> opcionais)
+        {
+            Opcionais = opcionais;
+        }
+
+        public void AtribuirStatus(Status status)
+        {
+            Status = status;
         }
 
         public Reserva(DateTime datareserva, DateTime datadevolucaoprevista, decimal valorprevisto, int idCliente)
@@ -51,7 +53,12 @@ namespace LocadoraCrescer.Dominio.Entidades
 
         public void ValidarDataDevolucao(DateTime datadevolucao)
         {
+            var resultado = Nullable.Compare(DataDevolucaoReal, DataDevolucaoPrevista);
 
+            if (resultado > 0)
+            {
+
+            }
         }
 
         public void RealizarDevolucao()
@@ -71,29 +78,6 @@ namespace LocadoraCrescer.Dominio.Entidades
                 ValorTotal = ValorTotal + Reserva.Pacote.ValorDiaria;
             }
 
-            if(Reserva.IdOpcionais != null)
-            {
-                foreach(int opcional in IdOpcionais)
-                {
-                    
-                }
-            }
-        }
-
-        public void CalcularValorFinal()
-        {
-            var resultado = Nullable.Compare(DataDevolucaoReal, DataDevolucaoPrevista);
-            double dias = DataDevolucaoReal.Value.Subtract(DataDevolucaoPrevista).TotalDays;
-
-            if (resultado > 0)
-            {
-                Status = Status.Em_Atraso;
-                ValorFinal = ValorPrevisto * (decimal)dias;
-            }
-            else
-            {
-                ValorFinal = ValorPrevisto;
-            }
         }
     }
 }

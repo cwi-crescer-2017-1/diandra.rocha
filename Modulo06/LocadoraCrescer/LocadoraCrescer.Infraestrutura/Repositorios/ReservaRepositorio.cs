@@ -15,8 +15,40 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
         {
         }
 
-        public void Criar(Reserva reserva)
+        public void CalcularValorFinal(Reserva reserva)
         {
+            decimal ValorFinal = 0;
+            var resultado = Nullable.Compare(reserva.DataDevolucaoReal, reserva.DataDevolucaoPrevista);
+            double dias = reserva.DataDevolucaoReal.Value.Subtract(reserva.DataDevolucaoPrevista).TotalDays;
+
+            if (resultado > 0)
+            {
+                reserva.AtribuirStatus(Status.Em_Atraso);
+                ValorFinal = reserva.ValorPrevisto * (decimal)dias;
+            }
+            else
+            {
+                ValorFinal = reserva.ValorPrevisto;
+            }
+        }
+
+        public int CalcularDiasDeLocacao(Reserva reserva)
+        {
+            return (int)(reserva.DataDevolucaoReal.Value - reserva.DataReserva).TotalDays;
+        }
+
+        public void Criar(Reserva reserva, Produto produto, Pacote pacote, List<Opcional> opcionais)
+        {
+            reserva.AtribuirProduto(produto);
+
+            if(pacote !=null)
+            reserva.AtribuitPacote(pacote);
+
+            if (opcionais.Count > 0)
+                reserva.AtribuirOpcionais(opcionais);
+
+            
+
             contexto.Reservas.Add(reserva);
             contexto.SaveChanges();
         }
