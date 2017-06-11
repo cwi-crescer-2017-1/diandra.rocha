@@ -23,9 +23,13 @@
             QuantidadeDisponivel = quantidadedisponivel;
         }
 
-        public void DiminuirEstoque(Produto produto)
+        public void DiminuirEstoque()
         {
-            produto.QuantidadeDisponivel = QuantidadeDisponivel - 1;
+            QuantidadeDisponivel = QuantidadeDisponivel - 1;
+        }
+        public void AumentarEstoque()
+        {
+            QuantidadeDisponivel = QuantidadeDisponivel +1;
         }
     }
 }

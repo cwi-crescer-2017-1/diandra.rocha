@@ -2,14 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraCrescer.Infraestrutura.Repositorios
 {
-    public class ProdutoRepositorio
+    public class ProdutoRepositorio : IDisposable
     {
         Contexto contexto = new Contexto();
+
         public ProdutoRepositorio()
         {
 
@@ -23,6 +22,11 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
         public Produto ObterPorId(int id)
         {
             return contexto.Produtos.FirstOrDefault(x => x.Id == id);
+        }
+
+        public void Dispose()
+        {
+            contexto.Dispose();
         }
     }
 }

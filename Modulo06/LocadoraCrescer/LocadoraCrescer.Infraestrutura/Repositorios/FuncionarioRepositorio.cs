@@ -1,10 +1,11 @@
 ﻿using LocadoraCrescer.Dominio.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace LocadoraCrescer.Infraestrutura.Repositorios
 {
-    public class FuncionarioRepositorio
+    public class FuncionarioRepositorio : IDisposable
     {
         Contexto contexto = new Contexto();
 
@@ -35,6 +36,11 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
             funcionario.AtribuirPermissoes(roles);
 
             return funcionario;
+        }
+
+        public void Dispose()
+        {
+            contexto.Dispose();
         }
     }
 }

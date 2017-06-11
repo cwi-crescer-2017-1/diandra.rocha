@@ -1,7 +1,5 @@
-﻿using LocadoraCrescer.Dominio.Entidades;
-using LocadoraCrescer.Infraestrutura.Repositorios;
+﻿using LocadoraCrescer.Infraestrutura.Repositorios;
 using LocadoraCrescer.WebApi.Models;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -12,22 +10,38 @@ namespace LocadoraCrescer.WebApi.Controllers
     public class ReservaController : ControllerBasico
     {
         readonly ReservaRepositorio repo;
+        public ReservaModel modelo;
 
         public ReservaController()
         {
+            modelo = new ReservaModel();
             repo = new ReservaRepositorio();
         }
 
         [HttpPost, Route("")]
         public HttpResponseMessage Criar(ReservaModel modelo)
         {
-            if (modelo.Produto>=0)
+            if (modelo.Produto<=0|| modelo.Cliente==null)
             {
                 return ResponderErro("Reserva inválida!");
             }
 
-            repo.Criar(modelo.Devolucao,modelo.Cliente, modelo.Produto, modelo.Pacote, modelo.Opcionais);
+            repo.Criar(modelo.Devolucao, modelo.Reserva, modelo.Cliente, modelo.Produto, modelo.Pacote, modelo.Opcionais);
             return ResponderOK(modelo);
+        }
+
+        [HttpPut, Route("{idreserva}")]
+        public HttpResponseMessage Devolver(int idreserva)
+        {
+            if (idreserva<0)
+            {
+                return ResponderErro("Id de reserva inválida!");
+            }
+
+            repo.RealizarDevolucao(idreserva);
+
+            return ResponderOK();
+
         }
 
         [HttpGet, Route("")]
@@ -52,6 +66,11 @@ namespace LocadoraCrescer.WebApi.Controllers
             }
 
             return ResponderOK(reserva);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            repo.Dispose();
         }
     }
 }

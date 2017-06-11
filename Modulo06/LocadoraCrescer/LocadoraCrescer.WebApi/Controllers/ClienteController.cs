@@ -1,10 +1,5 @@
-﻿using LocadoraCrescer.WebApi.Controllers;
-using LocadoraCrescer.Dominio.Entidades;
+﻿using LocadoraCrescer.Dominio.Entidades;
 using LocadoraCrescer.Infraestrutura.Repositorios;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -14,32 +9,31 @@ namespace LocadoraCrescer.WebApi.Controllers
     [RoutePrefix("api/cliente")]
     public class ClienteController : ControllerBasico
     {
-        readonly ClienteRespositorio repoCliente;
-        readonly EnderecoRepositorio repoEndereco;
+        readonly ClienteRespositorio repo;
 
         public ClienteController()
         {
-            repoCliente = new ClienteRespositorio();
-            repoEndereco = new EnderecoRepositorio();
+            repo = new ClienteRespositorio();
         }
 
         [HttpPost, Route("")]
         public HttpResponseMessage Criar(Cliente cliente)
         {
-            if (cliente == null)
+            if (!cliente.IsValid())
             {
-                return ResponderErro("Cliente nulo!");
+                cliente.Mensagens.Add("Cliente Nulo");
+                return ResponderErro(cliente.Mensagens);
             }
 
-            repoCliente.Criar(cliente);
+            repo.Criar(cliente);
             return ResponderOK(cliente);
         }
 
         [HttpGet, Route("")]
         public HttpResponseMessage Obter()
         {
-            var clientes = repoCliente.ObterTodos();
-            if (clientes.Count == 0)
+            var clientes = repo.ObterTodos();
+            if (clientes.Count == 0 )
             {
                 return ResponderErro("Lista de clientes vazia!");
             }
@@ -50,7 +44,8 @@ namespace LocadoraCrescer.WebApi.Controllers
         [HttpGet, Route("{cpf}")]
         public HttpResponseMessage ObterPorCPF(string cpf)
         {
-            var cliente = repoCliente.ObterPorCPF(cpf);
+            var cliente = repo.ObterPorCPF(cpf);
+
             if (cliente == null)
             {
                 return ResponderErro("Cliente Inexistente!");
@@ -59,29 +54,9 @@ namespace LocadoraCrescer.WebApi.Controllers
             return ResponderOK(cliente);
         }
 
-        [HttpPost, Route("endereco")]
-        public HttpResponseMessage CriarEndereco(Endereco endereco)
+        protected override void Dispose(bool disposing)
         {
-            if (endereco == null)
-            {
-                return ResponderErro("Endereço nulo!");
-            }
-
-            repoEndereco.Criar(endereco);
-            return ResponderOK(endereco);
-
-        }
-
-        [HttpGet, Route("cep")]
-        public HttpResponseMessage ObterPorCep(string cep)
-        {
-            if(cep == null)
-            {
-                return ResponderErro("Cep inexistente!");
-            }
-
-            var endereco = repoEndereco.ObterPorCep(cep);
-            return ResponderOK(endereco);
+            repo.Dispose();
         }
     }
 }

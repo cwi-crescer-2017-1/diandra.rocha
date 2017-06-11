@@ -1,12 +1,10 @@
 ﻿using LocadoraCrescer.Infraestrutura.Repositorios;
-using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
 
 namespace LocadoraCrescer.WebApi.Controllers
 {
-    [BasicAuthorization]
-    [RoutePrefix("pacote")]
+    [RoutePrefix("api/pacote")]
     public class PacoteController : ControllerBasico
     {
         readonly PacoteRepositorio repo;
@@ -39,6 +37,11 @@ namespace LocadoraCrescer.WebApi.Controllers
             }
 
             return ResponderOK(produto);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            repo.Dispose();
         }
     }
 }

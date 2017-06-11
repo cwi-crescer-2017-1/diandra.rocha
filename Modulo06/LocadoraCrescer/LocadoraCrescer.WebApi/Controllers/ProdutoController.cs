@@ -5,7 +5,7 @@ using System.Web.Http;
 namespace LocadoraCrescer.WebApi.Controllers
 {
     [BasicAuthorization]
-    [RoutePrefix("produto")]
+    [RoutePrefix("api/produto")]
     public class ProdutoController : ControllerBasico
     {
         readonly ProdutoRepositorio repo;
@@ -38,6 +38,11 @@ namespace LocadoraCrescer.WebApi.Controllers
             }
 
             return ResponderOK(pacote);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            repo.Dispose();
         }
     }
 }

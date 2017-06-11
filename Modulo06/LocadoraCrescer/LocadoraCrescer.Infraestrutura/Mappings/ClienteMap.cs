@@ -17,6 +17,7 @@ namespace LocadoraCrescer.Infraestrutura.Mappings
             Property(p => p.CPF).HasMaxLength(15).IsRequired();
             Property(p => p.DataNascimento).IsRequired();
             Property(p => p.Genero).IsRequired();
+            Property(p => p.Cep).IsRequired();
 
         }
     }

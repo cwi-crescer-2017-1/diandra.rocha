@@ -5,8 +5,7 @@ using System.Web.Http;
 
 namespace LocadoraCrescer.WebApi.Controllers
 {
-    [BasicAuthorization]
-    [RoutePrefix("opcional")]
+    [RoutePrefix("api/opcional")]
     public class OpcionalController : ControllerBasico
     {
         readonly OpcionalRepositorio repo;
@@ -39,6 +38,11 @@ namespace LocadoraCrescer.WebApi.Controllers
             }
 
             return ResponderOK(opcional);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            repo.Dispose();
         }
     }
 }

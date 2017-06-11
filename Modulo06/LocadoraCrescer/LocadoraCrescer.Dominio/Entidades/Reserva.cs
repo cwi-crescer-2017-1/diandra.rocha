@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace LocadoraCrescer.Dominio.Entidades
 {
-    public class Reserva
+    public class Reserva : EntidadeBasica
     {
         public int Id { get; private set; }
         public DateTime DataReserva { get; private set; }
@@ -25,107 +25,140 @@ namespace LocadoraCrescer.Dominio.Entidades
 
         }
 
-        public void AtribuirDataReserva(Reserva reserva)
+        public void AtribuirDataReserva(DateTime dataReserva)
         {
-            reserva.DataReserva = DateTime.UtcNow;
+            DataReserva = dataReserva;
         }
 
-        public void AtribuirDataDevolucaoPrevista(Reserva reserva, DateTime devolucao)
+        public void AtribuirDataDevolucaoPrevista(DateTime devolucao)
         {
-            reserva.DataDevolucaoPrevista = devolucao;
-        }
+            int resultado = devolucao.CompareTo(DateTime.UtcNow);
 
-        public void AtribuirCliente(Reserva reserva, Cliente cliente)
-        {
-            reserva.Cliente = cliente;
-        }
-
-        public void AtribuirProduto(Reserva reserva, Produto produto)
-        {
-            reserva.Produto = produto;
-        }
-
-        public void AtribuirPacote(Reserva reserva,Pacote pacote)
-        {
-            reserva.Pacote = pacote;
-        }
-        public void AtribuirOpcionais(Reserva reserva, List<Opcional> opcionais)
-        {
-            foreach(Opcional op in opcionais)
+            if (resultado < 0 || resultado == 0)
             {
-                if (op.Nome.Equals("Reboque") && reserva.Produto.Nome.Equals("Fiat Mobi"))
-                {
-                    return;
-                }
-                if (op.Nome.Equals("Rack") && reserva.Produto.Nome.Equals("Toyota Hilux"))
-                {
-                    return;
-                }
-                if(op.Nome.Equals("Cabo Bateria") && reserva.Produto.Nome != ("Volkswagem Kombi"))
-                {
-                    return;
-                }
+                DataDevolucaoPrevista = DateTime.UtcNow;
+                Mensagens.Add("Data inválida");
+                return;
             }
-            reserva.Opcionais = opcionais;
+            
+            DataDevolucaoPrevista = devolucao;
         }
 
-        public void AtribuirStatus(Reserva reserva, Status status)
+        public void AtribuirCliente(Cliente cliente)
         {
-            reserva.Status = status;
+            Cliente = cliente;
         }
 
-        public void RealizarDevolucao(Reserva reserva)
+        public void AtribuirProduto(Produto produto)
         {
-            reserva.DataDevolucaoReal = DateTime.UtcNow;
-            reserva.Status = Status.Finalizado;
-        }
-
-        public void CalcularValorPrevisto(Reserva reserva)
-        {
-            decimal ValorTotal = 0;
-
-            ValorTotal = (reserva.Produto.ValorDiaria* reserva.DiasDeReserva) + ValorTotal;
-
-            if (reserva.Pacote !=null)
+            if (produto.QuantidadeDisponivel <= 0)
             {
-                ValorTotal = ValorTotal + (reserva.Pacote.ValorDiaria * reserva.DiasDeReserva);
-            }
-            if (reserva.Opcionais.Count > 0)
-            {
-                foreach(Opcional op in Opcionais)
-                {
-                    ValorTotal = (op.ValorDiaria * reserva.DiasDeReserva) + ValorTotal;
-                }
+                Mensagens.Add("Produto sem unidades disponíveis");
+                return;
             }
 
-             reserva.ValorPrevisto = ValorTotal;
-
+            produto.DiminuirEstoque();
+            Produto = produto;
         }
 
-        public void CalcularValorFinal(Reserva reserva)
+        public void AtribuirPacote(Pacote pacote)
         {
-            decimal ValorFinal = 0;
+            Pacote = pacote;
+        }
 
-            var resultado = Nullable.Compare(reserva.DataDevolucaoReal, reserva.DataDevolucaoPrevista);
-            double dias = reserva.DataDevolucaoReal.Value.Subtract(reserva.DataDevolucaoPrevista).TotalDays;
+        public void AtribuirOpcionais(List<Opcional> opcionais)
+        {
+            var lista = new List<Opcional>();
+            foreach (Opcional op in opcionais)
+            {
+                if (op.Nome.Equals("Reboque") && Produto.Nome.Equals("Fiat Mobi"))
+                {
+                    Mensagens.Add("Reboque não está disponível para Fiat Mobi");
+                    return;
+                }
+                if (op.Nome.Equals("Rack") && Produto.Nome.Equals("Toyota Hilux"))
+                {
+                    Mensagens.Add("Rack não está disponível para Toyota Hilux");
+                    return;
+                }
+                if (op.Nome.Equals("Cabo Bateria") && Produto.Nome != ("Volkswagem Kombi"))
+                {
+                    Mensagens.Add("Cabo de Bateria está disponível apenas para Volkswagem Kombi");
+                    return;
+                }
+
+                if (op.QuantidadeDisponivel <= 0)
+                {
+                    Mensagens.Add("Opcional sem unidades disponíveis");
+                    return;
+                }
+
+                op.DiminuirEstoque();
+                lista.Add(op);
+
+            }
+            Opcionais = lista;
+        }
+
+        private void AtribuirStatus(Status status)
+        {
+            Status = status;
+        }
+
+        public void RealizarDevolucao()
+        {
+            DataDevolucaoReal = DateTime.UtcNow;
+            CalcularValorFinal();     
+        }
+
+        public void CalcularValorPrevisto()
+        {
+            ValorPrevisto = 0;
+
+            ValorPrevisto = (Produto.ValorDiaria * DiasDeReserva);
+
+            if (Pacote != null)
+            {
+                ValorPrevisto = ValorPrevisto + (Pacote.ValorDiaria * DiasDeReserva);
+            }
+
+            if (Opcionais != null)
+            {
+                foreach (Opcional op in Opcionais)
+                {
+                    ValorPrevisto = (op.ValorDiaria * DiasDeReserva) + ValorPrevisto;
+                }
+            }
+        }
+
+        public void CalcularValorFinal()
+        {
+             ValorFinal = ValorPrevisto;
+
+            var resultado = Nullable.Compare(DataDevolucaoReal, DataDevolucaoPrevista);
+            double dias = DataDevolucaoReal.Value.Subtract(DataDevolucaoPrevista).TotalDays;
 
             if (resultado > 0)
             {
-                reserva.AtribuirStatus(reserva, Status.Em_Atraso);
-                ValorFinal = reserva.ValorPrevisto * (decimal)dias;
-            }
-            else
-            {
-                ValorFinal = reserva.ValorPrevisto;
+                AtribuirStatus(Status.Em_Atraso);
+                ValorFinal = ValorPrevisto * (decimal)dias;
             }
 
-            reserva.ValorFinal = ValorFinal;
+            AtribuirStatus(Status.Finalizado);
         }
 
-
-        public void CalcularDiasDeLocacao(Reserva reserva)
+        public void CalcularDiasDeLocacao()
         {
-            reserva.DiasDeReserva = (int)(reserva.DataDevolucaoReal.Value - reserva.DataReserva).TotalDays;
+            DiasDeReserva = (int)(DataDevolucaoPrevista - DataReserva).TotalDays;
+        }
+
+        public override bool Validar()
+        {
+            if (Cliente==null){
+                Mensagens.Add("Cliente não pode ser nulo!");
+                return false;
+            }
+            return true;
         }
     }
 }

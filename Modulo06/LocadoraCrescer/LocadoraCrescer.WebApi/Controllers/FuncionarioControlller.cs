@@ -43,5 +43,10 @@ namespace LocadoraCrescer.WebApi.Controllers
 
             return ResponderOK(new { funcionario.Nome,funcionario.Email, funcionario.Permissoes });
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            repo.Dispose();
+        }
     }
 }

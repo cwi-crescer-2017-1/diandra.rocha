@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace LocadoraCrescer.Infraestrutura.Repositorios
 {
-    public class ReservaRepositorio
+    public class ReservaRepositorio : IDisposable
     {
         Contexto contexto = new Contexto();
 
@@ -13,50 +13,61 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
         {
         }
 
-       /* public void gerarRelatorio(DateTime dataEstipulada)
-        {
-            TimeSpan Menos30Dias = (dataEstipulada -30);
-            contexto.Reservas.Where(r => r.DataDevolucaoReal > DataMenos30Dias && r.DataDevolucaoReal < dataEstipulada);
-        }*/
-
-
-        public void Criar(DateTime Devolucao, string cpf, int IdProduto, int IdPacote, List<int> opcionais)
+        public void Criar(DateTime dataDevolucao, DateTime dataReserva, string cpf, int IdProduto, int IdPacote, List<int> opcionais)
         {
             Reserva reserva = new Reserva();
-            reserva.AtribuirDataReserva(reserva);
-            reserva.AtribuirDataDevolucaoPrevista(reserva, Devolucao);
-            var cliente = contexto.Clientes.SingleOrDefault(x => x.CPF.Equals(cpf));
-            reserva.AtribuirCliente(reserva, cliente);
-            var produto = contexto.Produtos.FirstOrDefault(x => x.Id == IdProduto);
-            produto.DiminuirEstoque(produto);
-            reserva.AtribuirProduto(reserva, produto);
 
-            reserva.AtribuirProduto(reserva, produto);
-            if (IdPacote >= 0)
+            reserva.AtribuirDataDevolucaoPrevista(dataDevolucao);
+            reserva.AtribuirDataReserva(dataReserva);
+
+            var cliente = contexto.Clientes.SingleOrDefault(x => x.CPF.Equals(cpf));
+            reserva.AtribuirCliente(cliente);
+
+            var produto = contexto.Produtos.SingleOrDefault(x => x.Id == IdProduto);
+            reserva.AtribuirProduto(produto);
+
+            if (IdPacote >= 2)
             {
-                var pacote = contexto.Pacotes.FirstOrDefault(x => x.Id == IdPacote);
-                reserva.AtribuirPacote(reserva, pacote);
+                var pacote = contexto.Pacotes.SingleOrDefault(x => x.Id == IdPacote);
+                reserva.AtribuirPacote(pacote);
 
             }
-            if (opcionais.Count > 0)
+            else
+            {
+                reserva.AtribuirPacote(null);
+            }
+
+            if (opcionais.Count >= 0)
             {
                 List<Opcional> lista = new List<Opcional>();
 
                 foreach (int op in opcionais)
                 {
                     var opcional = contexto.Opcionais.SingleOrDefault(x => x.Id == op);
-                    opcional.DiminuirEstoque(opcional);
                     lista.Add(opcional);
                 }
 
-                reserva.AtribuirOpcionais(reserva, lista);
+                reserva.AtribuirOpcionais(lista);
 
             }
-            reserva.CalcularDiasDeLocacao(reserva);
-            reserva.CalcularValorPrevisto(reserva);
-            reserva.CalcularValorFinal(reserva);
+            else
+            {
+                reserva.AtribuirOpcionais(null);
+            }
+
+            reserva.CalcularDiasDeLocacao();
+            reserva.CalcularValorPrevisto();
 
             contexto.Reservas.Add(reserva);
+            contexto.SaveChanges();
+        }
+
+        public void RealizarDevolucao(int idreserva)
+        {
+            var Reserva = contexto.Reservas.SingleOrDefault(x => x.Id == idreserva);
+
+            contexto.Entry(Reserva).State = System.Data.Entity.EntityState.Modified;
+            Reserva.RealizarDevolucao();
             contexto.SaveChanges();
         }
 
@@ -68,6 +79,11 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
         public Reserva ObterPorId(int id)
         {
             return contexto.Reservas.SingleOrDefault(x => x.Id == id);
+        }
+
+        public void Dispose()
+        {
+            contexto.Dispose();
         }
     }
 }

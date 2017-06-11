@@ -10,7 +10,6 @@ namespace LocadoraCrescer.Infraestrutura
         { }
 
         public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Opcional> Opcionais { get; set; }
         public DbSet<Pacote> Pacotes { get; set; }
@@ -22,7 +21,6 @@ namespace LocadoraCrescer.Infraestrutura
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new ClienteMap());
-            modelBuilder.Configurations.Add(new EnderecoMap());
             modelBuilder.Configurations.Add(new FuncionarioMap());
             modelBuilder.Configurations.Add(new OpcionalMap());
             modelBuilder.Configurations.Add(new PacoteMap());

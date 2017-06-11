@@ -1,10 +1,11 @@
 ﻿using LocadoraCrescer.Dominio.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace LocadoraCrescer.Infraestrutura.Repositorios
 {
-    public class ClienteRespositorio
+    public class ClienteRespositorio : IDisposable
     {
         Contexto contexto = new Contexto();
 
@@ -26,6 +27,11 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
         public Cliente ObterPorCPF(string cpf)
         {
             return contexto.Clientes.SingleOrDefault(x => x.CPF == cpf);
+        }
+
+        public void Dispose()
+        {
+            contexto.Dispose();
         }
 
     }
