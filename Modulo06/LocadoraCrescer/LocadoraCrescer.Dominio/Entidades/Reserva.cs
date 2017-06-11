@@ -51,7 +51,7 @@ namespace LocadoraCrescer.Dominio.Entidades
 
         public void AtribuirProduto(Produto produto)
         {
-            if (produto.QuantidadeDisponivel <= 0)
+            if (!produto.VerificarDisponibilidade())
             {
                 Mensagens.Add("Produto sem unidades disponíveis");
                 return;
@@ -74,23 +74,23 @@ namespace LocadoraCrescer.Dominio.Entidades
                 if (op.Nome.Equals("Reboque") && Produto.Nome.Equals("Fiat Mobi"))
                 {
                     Mensagens.Add("Reboque não está disponível para Fiat Mobi");
-                    return;
+                    continue;
                 }
                 if (op.Nome.Equals("Rack") && Produto.Nome.Equals("Toyota Hilux"))
                 {
                     Mensagens.Add("Rack não está disponível para Toyota Hilux");
-                    return;
+                    continue;
                 }
                 if (op.Nome.Equals("Cabo Bateria") && Produto.Nome != ("Volkswagem Kombi"))
                 {
                     Mensagens.Add("Cabo de Bateria está disponível apenas para Volkswagem Kombi");
-                    return;
+                    continue;
                 }
 
-                if (op.QuantidadeDisponivel <= 0)
+                if (op.VerificarDisponibilidade())
                 {
                     Mensagens.Add("Opcional sem unidades disponíveis");
-                    return;
+                    continue;
                 }
 
                 op.DiminuirEstoque();

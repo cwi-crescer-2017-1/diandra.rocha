@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace LocadoraCrescer.Dominio.Entidades
 {
@@ -9,6 +10,7 @@ namespace LocadoraCrescer.Dominio.Entidades
         public string Sobrenome { get; private set; }
         public string CPF { get; private set; }
         public DateTime DataNascimento { get; private set; }
+        [DefaultValue(Genero.NAO_INFORMADO)]
         public Genero Genero { get; private set; }
         public string Cep { get; private set; }
 
@@ -17,7 +19,7 @@ namespace LocadoraCrescer.Dominio.Entidades
 
         }
 
-        public Cliente(string nome, string sobrenome, string cpf, DateTime datanascimento, Genero genero, string cep)
+        public Cliente(string nome, string sobrenome, string cpf, DateTime datanascimento, int genero, string cep)
         {
             Nome = nome;
             Sobrenome = sobrenome;

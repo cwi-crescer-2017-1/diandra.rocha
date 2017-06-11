@@ -27,9 +27,15 @@
         {
             QuantidadeDisponivel = QuantidadeDisponivel - 1;
         }
+
         public void AumentarEstoque()
         {
             QuantidadeDisponivel = QuantidadeDisponivel +1;
+        }
+
+        public bool VerificarDisponibilidade()
+        {
+            return QuantidadeDisponivel > 0;
         }
     }
 }
