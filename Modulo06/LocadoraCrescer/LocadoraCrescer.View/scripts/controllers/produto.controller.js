@@ -1,4 +1,7 @@
-app.controller("HomeController", function($scope, authService, homeService) {
+locadora.controller('ProdutoController', function($scope, authConfig, authService, $location, produtoService) {
+    $scope.menu = 2;
+    $scope.usuario = authService.getUsuario();
+    $scope.logout = authService.logout;
 
     $scope.produtos = [];
     $scope.pacotes = [];
@@ -13,19 +16,19 @@ app.controller("HomeController", function($scope, authService, homeService) {
     }
 
     function ListarProdutos() {
-        homeService.getTodosOsProdutos().then(function(response) {
+        produtoService.getTodosOsProdutos().then(function(response) {
             $scope.produtos = response.data.dados;
         });
     }
 
     function ListarPacotes() {
-        homeService.getTodosOsPacotes().then(function(response) {
+        produtoService.getTodosOsPacotes().then(function(response) {
             $scope.pacotes = response.data.dados;
         });
     }
 
     function ListarOpcionais() {
-        homeService.getTodosOsOpcionais().then(function(response) {
+        produtoService.getTodosOsOpcionais().then(function(response) {
             $scope.opcionais = response.data.dados;
         });
     }
