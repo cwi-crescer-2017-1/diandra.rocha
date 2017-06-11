@@ -11,11 +11,6 @@ namespace LocadoraCrescer.Dominio.Entidades
             Mensagens = new List<string>();
         }
 
-        public void AdicionarMensagem(string mensagem)
-        {
-            Mensagens.Add(mensagem);
-        }
-
         public abstract bool Validar();
 
         public bool IsValid()

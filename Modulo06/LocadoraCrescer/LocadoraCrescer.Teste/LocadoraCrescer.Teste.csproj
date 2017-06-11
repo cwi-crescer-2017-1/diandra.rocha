@@ -48,6 +48,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FuncionarioTeste.cs" />
+    <Compile Include="OpcionalTeste.cs" />
+    <Compile Include="ProdutoTeste.cs" />
     <Compile Include="ReservaTeste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -146,7 +146,7 @@ namespace LocadoraCrescer.Teste
             Reserva.AtribuirDataReserva(dataReserva);
             Reserva.AtribuirDataDevolucaoPrevista(dataDevolucao);
 
-            var resultado = DateTime.UtcNow;
+            var resultado = DateTime.UtcNow.Date;
 
             Assert.AreEqual(resultado, Reserva.DataDevolucaoPrevista);
         }

@@ -12,7 +12,7 @@ namespace LocadoraCrescer.Dominio.Entidades
         public string Senha { get; private set; }
         public List<Permissao> Permissoes { get; private set; }
 
-        protected Funcionario()
+        public Funcionario()
         {
 
         }

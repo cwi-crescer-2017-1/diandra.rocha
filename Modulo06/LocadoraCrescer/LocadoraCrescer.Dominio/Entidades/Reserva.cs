@@ -32,11 +32,11 @@ namespace LocadoraCrescer.Dominio.Entidades
 
         public void AtribuirDataDevolucaoPrevista(DateTime devolucao)
         {
-            int resultado = devolucao.CompareTo(DateTime.UtcNow);
+            int resultado = devolucao.CompareTo(DateTime.UtcNow.Date);
 
             if (resultado < 0 || resultado == 0)
             {
-                DataDevolucaoPrevista = DateTime.UtcNow;
+                DataDevolucaoPrevista = DateTime.UtcNow.Date;
                 Mensagens.Add("Data inválida");
                 return;
             }
@@ -135,13 +135,13 @@ namespace LocadoraCrescer.Dominio.Entidades
         {
              ValorFinal = ValorPrevisto;
 
-            var resultado = Nullable.Compare(DataDevolucaoReal, DataDevolucaoPrevista);
-            double dias = DataDevolucaoReal.Value.Subtract(DataDevolucaoPrevista).TotalDays;
+            decimal dias = (decimal)DataDevolucaoReal.Value.Subtract(DataDevolucaoPrevista).TotalDays;
 
-            if (resultado > 0)
+            if (dias > 0)
             {
                 AtribuirStatus(Status.Em_Atraso);
-                ValorFinal = ValorPrevisto * (decimal)dias;
+                var calculoDeJuros = ((ValorPrevisto / 100) * 2) * dias;
+                ValorFinal = ValorFinal + calculoDeJuros;
             }
 
             AtribuirStatus(Status.Finalizado);
