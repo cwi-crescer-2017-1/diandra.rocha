@@ -1,0 +1,1 @@
+var locadora = angular.module('locadora', ['ngRoute', 'ngAnimate', 'toastr', 'auth', 'ngStorage', 'ui.bootstrap', 'angular-loading-bar', 'ngMask']);
