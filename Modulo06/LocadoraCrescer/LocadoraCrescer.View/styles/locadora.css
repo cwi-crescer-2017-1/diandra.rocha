@@ -1,0 +1,60 @@
+.background-white {
+    background-color: white;
+    color: black;
+    width: 500px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.img-logo {
+    width: 350px;
+    height: auto;
+    margin: 15px auto;
+    display: block;
+}
+
+.img-menu {
+    width: 195px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.no-padding {
+    padding: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.white-card {
+    background-color: whitesmoke;
+    color: black;
+    border-radius: 5px;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.card-image {
+    width: 150px;
+    height: 90px;
+    display: block;
+    margin: 0 auto;
+}
+
+.white-card:hover {
+    box-shadow: 0 14px 28px rgba(255, 255, 255, 0.25), 0 10px 10px rgba(255, 255, 255, 0.25);
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.h-180 {
+    height: 180px;
+    margin-bottom: 15px;
+}

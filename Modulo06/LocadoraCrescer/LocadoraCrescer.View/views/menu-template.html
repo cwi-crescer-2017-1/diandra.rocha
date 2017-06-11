@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <div class="navbar-brand no-padding">
+                <img class="img-menu" alt="logo" src="images/logo_menu.png">
+            </div>
+        </div>
+        <ul class="nav navbar-nav navbar-left">
+            <li ng-class="{'active': active === 1}"><a href="#!/reserva">Nova Reserva</a></li>
+            <li ng-class="{'active': active === 2}"><a href="#!/produto">Produtos Cadastrados</a></li>
+            <li ng-class="{'active': active === 3}"><a href="#!/cliente">Cadastrar Clientes</a></li>
+            <li ng-if="user.Permissoes[0].Nome==='Gerente'" ng-class="{'active': active === 4}"><a href="#">Relatório Mensal</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown active" uib-dropdown>
+                <p id="dropdown" class="navbar-text dropdown-toggle" uib-dropdown-toggle>
+                    <span class="glyphicon glyphicon-user mr-10"></span> {{user.Nome}} - {{user.Permissoes[0].Nome | uppercase }}
+                    <span class="caret"></span>
+                </p>
+                <ul class="dropdown-menu" aria-labelledby="dropdown" role="menu" uib-dropdown-menu>
+                    <li><a href="#" ng-click="logout()">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

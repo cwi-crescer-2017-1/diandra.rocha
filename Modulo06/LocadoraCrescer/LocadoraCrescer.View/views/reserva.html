@@ -1,0 +1,110 @@
+<menu active="menu" user="usuario" logout="logout" class="no-padding"></menu>
+
+<div class="col-md-8 col-md-offset-2">
+
+    <form name="reservaForm" novalidate>
+
+
+        <legend> Reserva</legend>
+
+        <hr>
+
+        <uib-accordion close-others="true">
+            <div uib-accordion-group class="panel-default" is-open="status.open">
+                <uib-accordion-heading>
+
+                    Cliente
+                    <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}">
+                    </i>
+                </uib-accordion-heading>
+
+                <div>
+
+                    <label for="cpf">Insira o CPF do cliente:</label>
+                    <input type="text" class="form-control" name="cpf" ng-model="clienteReserva.cpf">
+
+                    <div>
+                        <button type="button" ng-disabled="!clienteReserva.cpf" ng-click="buscar(clienteReserva) " class="btn btn-default btn-block">Buscar</button>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="nome"> Cliente: </label>
+                    <input type="text" disabled class="form-control" name="nome" ng-model="nomeCliente" required/>
+                </div>
+
+            </div>
+            <div uib-accordion-group class="panel-default" is-open="status.open2">
+                <uib-accordion-heading>
+                    Reserva
+                    <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open2, 'glyphicon-chevron-right': !status.open2}">
+                    </i>
+                </uib-accordion-heading>
+
+                <div class="form-group">
+                    <label for="reserva"> Data de Reserva: </label>
+                    <span ng-show="reservaForm.reserva.$error.required && clienteForm.$submitted">Campo Obrigatório</span>
+                    <input type="date" class="form-control" name="reserva" ng-model="reservaModel.reserva" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="devolucao"> Data de Devolução: </label>
+                    <span ng-show="reservaForm.devolucao.$error.required && clienteForm.$submitted">Campo Obrigatório</span>
+                    <input type="date" class="form-control" name="devolucao" ng-model="reservaModel.devolucao" />
+                </div>
+
+                <div class="form-group">
+                    <label for="produto"> Produto: </label>
+                    <span ng-show="reservaForm.produto.$error.required && clienteForm.$submitted">Campo Obrigatório</span>
+                    <select name="produto" class="form-control" ng-model="reservaModel.produto">
+      <option ng-repeat="produto in produtos" ng-value="{{produto.Id}}" >{{produto.Nome}}</option> 
+    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="pacote"> Pacote: </label>
+                    <select name="pacote" class="form-control" ng-model="reservaModel.pacote">> 
+      <option ng-repeat="pacote in pacotes" ng-value="{{pacote.Id}}" >{{pacote.Nome}}</option> 
+    </select>
+                </div>
+
+                <div class="form-group">
+
+                    <label for="opcional"> Opcional: </label>
+                    <select name="opcional" multiple class="form-control" ng-model="reservaModel.opcionais">
+      <option ng-repeat="opcional in opcionais" ng-value="{{opcional.Id}}" >{{opcional.Nome}}</option> 
+    </select>
+
+                    <div>
+                        <button type="submit" ng-click="confirmar(reservaModel)" ng-disabled="!reservaForm.$valid" class="btn btn-default btn-block">Confimar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div uib-accordion-group class="panel-default" is-open="status.open3">
+                <uib-accordion-heading>
+                    Devolução
+                    <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open3, 'glyphicon-chevron-right': !status.open3}">
+                    </i>
+                </uib-accordion-heading>
+                <div>
+
+                    <label for="idreserva">Insira o Id da Devolução:</label>
+                    <input type="number" class="form-control" name="idreserva" ng-model="reservaDevolucao.idreserva">
+
+                    <div>
+                        <button type="button" ng-disabled="!reservaDevolucao.idreserva" ng-click="buscarParaDevolver(reservaDevolucao)" class="btn btn-default btn-block">Devolver</button>
+                    </div>
+                </div>
+
+                <br>
+
+
+            </div>
+
+
+        </uib-accordion>
+
+    </form>

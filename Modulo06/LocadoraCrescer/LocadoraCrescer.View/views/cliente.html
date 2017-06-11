@@ -1,0 +1,56 @@
+<menu active="menu" user="usuario" logout="logout" class="no-padding"></menu>
+
+<div class="col-md-8 col-md-offset-2">
+
+    <form name="clienteForm" novalidate ng-submit="clienteForm.$valid && criar(cliente)">
+
+        <h3> Cadastrar Cliente </h3>
+
+        <hr>
+
+        <div class="form-group">
+            <label for="nome"> Nome: </label>
+            <span ng-show="clienteForm.nome.$error.required && clienteForm.$submitted">Campo Obrigatório</span>
+            <input type="text" class="form-control" name="nome" ng-model="cliente.nome" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="sobrenome"> Sobrenome: </label>
+            <span ng-show="clienteForm.sobrenome.$error.required && clienteForm.$submitted">Campo Obrigatório</span>
+            <input type="text" class="form-control" name="sobrenome" ng-model="cliente.sobrenome" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="cpf"> CPF: </label>
+            <span ng-show="clienteForm.cpf.$error.required && clienteForm.$submitted">Campo Obrigatório</span>
+            <input type="text" class="form-control" name="cpf" ng-model="cliente.cpf" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="dataNascimento"> Data de Nascimento: </label>
+            <span ng-show="reservaForm.dataNascimento.$error.required">Campo Obrigatório</span>
+            <input type="date" class="form-control" name="dataNascimento" ng-model="cliente.dataNascimento" />
+        </div>
+
+        <div class="form-group">
+
+            <label for="genero"> Gênero: </label>
+            <select name="genero" class="form-control" ng-model="cliente.genero">> 
+      <option ng-value="0" >Feminino</option> 
+      <option ng-value="1" >Masculino</option> 
+      <option ng-value="2" >Não informado</option> 
+    </select>
+        </div>
+
+        <div class="form-group">
+            <label for="cep"> Cep: </label>
+            <span ng-show="clienteForm.cep.$error.required && clienteForm.$submitted">Campo Obrigatório</span>
+            <input mask="99999-999" type="text" class="form-control" name="cep" ng-model="cliente.cep" placeholder="12345-678" required/>
+        </div>
+
+
+        <div>
+            <button type="submit" ng-disabled="!clienteForm.$valid" class="btn btn-default btn-block">Confimar!</button>
+        </div>
+
+    </form>

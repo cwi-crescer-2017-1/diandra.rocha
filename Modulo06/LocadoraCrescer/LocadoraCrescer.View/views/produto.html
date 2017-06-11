@@ -1,0 +1,44 @@
+<menu active="menu" user="usuario" logout="logout" class="no-padding"></menu>
+
+<div class="container-fluid">
+    <h3>Produtos</h3>
+    <hr>
+    <div class="col-md-3" ng-repeat="produto in produtos">
+        <div class="white-card">
+            <img class="card-image" ng-src="{{produto.URLFoto}}" />
+            <h4 class="text-center">{{produto.Nome}}</h4>
+            <strong>Descrição: </strong>
+            <p>{{produto.Descricao}}</p>
+            <strong>Valor Diária: </strong>
+            <p>{{produto.ValorDiaria | currency}}</p>
+            <strong>Quantidade em Estoque: </strong>
+            <p>{{produto.QuantidadeDisponivel}}</p>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mb-20">
+    <h3>Pacotes</h3>
+    <hr>
+    <div class="col-md-4" ng-repeat="pacote in pacotes">
+        <div class="white-card h-180">
+            <h4 class="text-center">{{pacote.Nome}}</h4>
+            <strong>Descrição: </strong>
+            <p>{{pacote.Descricao}}</p>
+            <strong>Valor Diária: </strong>
+            <p>{{pacote.ValorDiaria | currency}}</p>
+        </div>
+    </div>
+    <h3>Opcionais</h3>
+    <hr>
+    <div class="col-md-3" ng-repeat="opcional in opcionais">
+        <div class="white-card">
+            <h4 class="text-center">{{opcional.Nome}}</h4>
+            <strong>Descrição: </strong>
+            <p>{{opcional.Descricao}}</p>
+            <strong>Valor Diária: </strong>
+            <p>{{opcional.ValorDiaria | currency}}</p>
+            <strong>Quantidade em Estoque: </strong>
+            <p>{{opcional.QuantidadeDisponivel}}</p>
+        </div>
+    </div>
+</div>
