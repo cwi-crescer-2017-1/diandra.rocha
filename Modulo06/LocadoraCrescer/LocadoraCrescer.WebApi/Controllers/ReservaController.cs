@@ -21,13 +21,13 @@ namespace LocadoraCrescer.WebApi.Controllers
         [HttpPost, Route("")]
         public HttpResponseMessage Criar(ReservaModel modelo)
         {
-            if (modelo.Produto<=0|| modelo.Cliente==null)
-            {
-                return ResponderErro("Reserva inválida!");
-            }
+            var reserva = repo.Criar(modelo.Devolucao, modelo.Reserva, modelo.Cliente, modelo.Produto, modelo.Pacote, modelo.Opcionais);
 
-            repo.Criar(modelo.Devolucao, modelo.Reserva, modelo.Cliente, modelo.Produto, modelo.Pacote, modelo.Opcionais);
-            return ResponderOK(modelo);
+            if (!reserva.IsValid())
+            {
+                return ResponderErro(reserva.Mensagens);
+            } 
+            return ResponderOK(reserva);
         }
 
         [HttpPut, Route("{idreserva}")]
