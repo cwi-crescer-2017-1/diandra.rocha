@@ -13,7 +13,7 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
         {
         }
 
-        public void Criar(DateTime dataDevolucao, DateTime dataReserva, string cpf, int IdProduto, int IdPacote, List<int> opcionais)
+        public Reserva Criar(DateTime dataDevolucao, DateTime dataReserva, string cpf, int IdProduto, int IdPacote, List<int> opcionais)
         {
             Reserva reserva = new Reserva();
 
@@ -45,25 +45,34 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
 
             reserva.CalcularDiasDeLocacao();
             reserva.CalcularValorPrevisto();
+            reserva.Validar();
 
-            contexto.Reservas.Add(reserva);
-            contexto.SaveChanges();
+            if (reserva.IsValid())
+            {
+                contexto.Reservas.Add(reserva);
+                contexto.SaveChanges();
+
+            }
+
+            return reserva;
         }
 
         public void RealizarDevolucao(int idreserva)
         {
-            var Reserva = contexto.Reservas.SingleOrDefault(x => x.Id == idreserva);
+            var Reserva = contexto.Reservas.Include("Cliente").Include("Produto").Include("Pacote")
+                .Include("Opcionais").SingleOrDefault(x => x.Id == idreserva);
+
             Reserva.Produto.AumentarEstoque();
 
             foreach(Opcional op in Reserva.Opcionais)
             {
                 op.AumentarEstoque();
+                contexto.Entry(op).State = System.Data.Entity.EntityState.Modified;
             }
 
             contexto.Entry(Reserva).State = System.Data.Entity.EntityState.Modified;
             contexto.Entry(Reserva.Produto).State = System.Data.Entity.EntityState.Modified;
-            contexto.Entry(Reserva.Opcionais).State = System.Data.Entity.EntityState.Modified;
-
+            
             Reserva.RealizarDevolucao();
             contexto.SaveChanges();
         }
