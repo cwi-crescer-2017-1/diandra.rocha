@@ -6,16 +6,26 @@ locadora.factory('reservaService', function($http) {
         return $http.get(urlBase);
     };
 
-    function getReservaPorId(idreserva) {
-        return $http.put(urlBase + "/" + idreserva);
+    function devolver(idreserva) {
+        return $http.put(urlBase + '/' + idreserva);
     };
+
+    function getReservaPorId(idreserva) {
+        return $http.get(urlBase + '/detalhes/' + idreserva);
+    };
+
 
     function criar(reservaModel) {
         return $http.post(urlBase, reservaModel);
     }
 
+    function getRelatorioGeral(date) {
+        return $http.get(urlBase + '/relatorio?data=' + date)
+    }
+
     return {
         getTodasAsReservas: getTodasAsReservas,
+        devolver: devolver,
         getReservaPorId: getReservaPorId,
         criar: criar
     };

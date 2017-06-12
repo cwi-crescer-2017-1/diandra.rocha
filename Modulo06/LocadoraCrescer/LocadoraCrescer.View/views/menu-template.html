@@ -6,10 +6,11 @@
             </div>
         </div>
         <ul class="nav navbar-nav navbar-left">
-            <li ng-class="{'active': active === 1}"><a href="#!/reserva">Nova Reserva</a></li>
-            <li ng-class="{'active': active === 2}"><a href="#!/produto">Produtos Cadastrados</a></li>
-            <li ng-class="{'active': active === 3}"><a href="#!/cliente">Cadastrar Clientes</a></li>
-            <li ng-if="user.Permissoes[0].Nome==='Gerente'" ng-class="{'active': active === 4}"><a href="#">Relatório Mensal</a></li>
+            <li ng-class="{'active': active === 1}"><a href="#!/reserva">Reserva</a></li>
+            <li ng-class="{'active': active === 2}"><a href="#!/produto">Produtos</a></li>
+            <li ng-class="{'active': active === 3}"><a href="#!/cliente">Clientes</a></li>
+            <li ng-class="{'active': active === 4}"><a href="#!/relatorioAtraso">Relatório</a></li>
+            <li ng-if="user.Permissoes[0].Nome==='Gerente'" ng-class="{'active': active === 5}"><a href="#!/relatorioGeral">Relatório Geral</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown active" uib-dropdown>

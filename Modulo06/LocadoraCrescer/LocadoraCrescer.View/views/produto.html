@@ -38,7 +38,7 @@
             <strong>Valor Diária: </strong>
             <p>{{opcional.ValorDiaria | currency}}</p>
             <strong>Quantidade em Estoque: </strong>
-            <p>{{opcional.QuantidadeDisponivel}}</p>
+            <p>{{opcional.Nome==='Seguro'?'Sem Quantidade' : opcional.QuantidadeDisponivel}}</p>
         </div>
     </div>
 </div>

@@ -16,15 +16,20 @@ locadora.controller('ReservaController', function($scope, authService, $location
         reservaService.criar(reservaModel).then(function(response) {
                 var toast = toastr.success('Reserva cadastrada com sucesso', 'Locadora Crescer');
                 toastr.refreshTimer(toast, 2000);
-                reservaModel = {};
+                $scope.reservaModel = {};
+                $location.path('/reserva/' + response.data.dados.Id);
             },
 
             function(response) {
-                var toast = toastr.error('Erro ao cadastrar reserva!', 'Locadora Crescer');
-                toastr.refreshTimer(toast, 2000);
+                var mensagensDeErro = response.data.mensagens;
+                for (let i = 0; i < mensagensDeErro.length; i++) {
+                    var toast = toastr.error(mensagensDeErro[i], 'Locadora Crescer');
+                    toastr.refreshTimer(toast, 2000);
+                }
+
             });
 
-        $scope.reservaModel = {};
+
     };
 
     function buscar(clienteReserva) {
@@ -43,8 +48,8 @@ locadora.controller('ReservaController', function($scope, authService, $location
     }
 
     function buscarParaDevolver(reservaDevolucao) {
-        reservaService.getReservaPorId(reservaDevolucao.idreserva).then(function(response) {
-                var toast = toastr.success('Reserva encontrada com sucesso', 'Locadora Crescer');
+        reservaService.devolver(reservaDevolucao.idreserva).then(function(response) {
+                var toast = toastr.success('Reserva devolvida com sucesso', 'Locadora Crescer');
                 toastr.refreshTimer(toast, 2000);
             },
             function(response) {

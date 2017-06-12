@@ -1,0 +1,67 @@
+<menu active="menu" user="usuario" logout="logout" class="no-padding"></menu>
+<div class="container-fluid">
+    <div class="col-md-2">
+        <img class="img-menu" alt="logo" src="images/logo_menu.png">
+    </div>
+    <div class="col-md-8">
+        <h3 class="text-center">
+            Relatório de Reserva - Número: {{reserva.Id}} -
+            <span ng-if="reserva.Status === 0" class="label label-default">Em andamento</span>
+            <span ng-if="reserva.Status === 1" class="label label-default">Finalizado</span>
+            <span ng-if="reserva.Status === 2" class="label label-default">Em atraso</span>
+
+        </h3>
+    </div>
+</div>
+<hr>
+<div class="container-fluid">
+    <div class="white-card col-md-12 p-20">
+        <h4>Dados Cliente</h4>
+        <hr>
+        <div class="col-md-12">
+            <strong>Cliente: </strong>
+            <p>{{reserva.Cliente.Nome}} {{reserva.Cliente.Sobrenome}}</p>
+            <strong>CPF: </strong>
+            <p>{{reserva.Cliente.CPF}}</p>
+            <strong>Data de Nascimento: </strong>
+            <p>{{reserva.Cliente.DataNascimento | date:"dd/MM/yyyy"}}</p>
+        </div>
+        <h4>Produtos</h4>
+        <hr>
+        <div class="col-md-4">
+            <h4>Produto Principal: </h4>
+            <hr>
+            <h4>{{reserva.Produto.Nome}}</h4>
+            <strong>Valor Diária: </strong>
+            <p>{{reserva.Produto.ValorDiaria | currency}}</p>
+        </div>
+        <div class="col-md-4">
+            <h4>Pacote: </h4>
+            <hr>
+            <h4>{{reserva.Pacote.Nome}}</h4>
+            <strong>Valor Diária: </strong>
+            <p>{{reserva.Pacote.ValorDiaria | currency}}</p>
+        </div>
+        <div class="col-md-4">
+            <h4>Opcionais: </h4>
+            <hr>
+            <h4 ng-if="reserva.Opcionais.length === 0">Sem opcionais...</h4>
+            <div ng-repeat="opcional in reserva.Opcionais">
+                <h4>{{opcional.Nome}}</h4>
+                <strong>Valor Diária: </strong>
+                <p>{{opcional.ValorDiaria | currency}}</p>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-9">
+                <h4 class="text-right">Data Devolução: {{ reserva.DataDevolucaoPrevista | date:"dd/MM/yyyy" }}</h4>
+            </div>
+            <div class="col-md-3">
+                <h4 class="text-right">Total Pedido Previsto: {{reserva.ValorPrevisto | currency}}</h4>
+            </div>
+            <div class="col-md-3">
+                <h4 ng-if="reserva.Status===1" class="text-right">Total Pedido Real: {{reserva.ValorFinal | currency}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
