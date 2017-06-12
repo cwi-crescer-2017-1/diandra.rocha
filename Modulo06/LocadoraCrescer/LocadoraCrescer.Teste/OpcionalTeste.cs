@@ -23,5 +23,23 @@ namespace LocadoraCrescer.Teste
 
             Assert.AreEqual(9, op.QuantidadeDisponivel);
         }
+
+        [TestMethod]
+        public void OpcionalValidacaoDeEstoqueComEstoqueZero()
+        {
+            Opcional op = new Opcional("TesteOpcional", "TesteOpcional testando1", 59, 0);
+            var resultado = op.EstaDisponivel();
+
+            Assert.IsFalse(resultado);
+        }
+
+        [TestMethod]
+        public void OpcionalValidacaoDeEstoqueComEstoqueMaiorDoQueZero()
+        {
+            Opcional op = new Opcional("TesteOpcional", "TesteOpcional testando1", 59, 8);
+            var resultado = op.EstaDisponivel();
+
+            Assert.IsTrue(resultado);
+        }
     }
 }

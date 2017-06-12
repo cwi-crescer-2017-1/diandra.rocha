@@ -23,5 +23,23 @@ namespace LocadoraCrescer.Teste
 
             Assert.AreEqual(6, produto.QuantidadeDisponivel);
         }
+
+        [TestMethod]
+        public void ProdutoValidacaoDeEstoqueComEstoqueZero()
+        {
+            Produto produto = new Produto("Teste", "Teste testando", "Teste.png", 129, 0);
+            var resultado = produto.EstaDisponivel();
+
+            Assert.IsFalse(resultado);
+        }
+
+        [TestMethod]
+        public void ProdutoValidacaoDeEstoqueComEstoqueMaiorDoQueZero()
+        {
+            Produto produto = new Produto("Teste", "Teste testando", "Teste.png", 129, 5);
+            var resultado = produto.EstaDisponivel();
+
+            Assert.IsTrue(resultado);
+        }
     }
 }

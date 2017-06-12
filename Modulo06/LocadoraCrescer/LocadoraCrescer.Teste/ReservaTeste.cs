@@ -14,7 +14,7 @@ namespace LocadoraCrescer.Teste
             Produto produto = new Produto("Teste", "Teste testando", "Teste.png", 129, 5);
             Pacote pacote = new Pacote("TestePacote", "Teste testando pacote", 148);
             DateTime data = new DateTime(2000, 12, 19);
-            Cliente cliente = new Cliente("TesteCliente", "ClienteTeste", "999999-9", data, Genero.FEMININO, "93290-490");
+            Cliente cliente = new Cliente("TesteCliente", "ClienteTeste", "999999-9", data, 0, "93290-490");
 
             Reserva reserva = new Reserva();
 
@@ -32,7 +32,7 @@ namespace LocadoraCrescer.Teste
         {
             DateTime dataReserva = new DateTime(2017, 06, 10, 20, 52, 53);
             DateTime dataDevolucao = new DateTime(2017, 06, 15, 20, 52, 53);
-            int diasTotais = 5;
+            int diasTotais = 6;
 
             Reserva reserva = new Reserva();
 
@@ -74,7 +74,7 @@ namespace LocadoraCrescer.Teste
             Produto Produto = new Produto("Teste", "Teste testando", "Teste.png", 129, 5);
             Pacote Pacote = new Pacote("TestePacote", "Teste testando pacote", 148);
             DateTime Data = new DateTime(2000, 12, 19);
-            Cliente Cliente = new Cliente("TesteCliente", "ClienteTeste", "999999-9", Data, Genero.FEMININO, "93290-490");
+            Cliente Cliente = new Cliente("TesteCliente", "ClienteTeste", "999999-9", Data, 0, "93290-490");
             DateTime dataReserva = new DateTime(2017, 06, 10, 20, 52, 53);
             DateTime dataDevolucao = new DateTime(2017, 06, 15, 20, 52, 53);
 
@@ -99,12 +99,11 @@ namespace LocadoraCrescer.Teste
         public void ReservaCriadaValidaCorretamente()
         {
             Reserva Reserva = new Reserva();
+            Reserva.AtribuirCliente(null);
 
-            var resultado1 = Reserva.Validar();
             var resultado = Reserva.IsValid();
 
             Assert.IsFalse(resultado);
-            Assert.IsFalse(resultado1);
         }
 
         [TestMethod]
@@ -114,7 +113,7 @@ namespace LocadoraCrescer.Teste
             Produto Produto = new Produto("Teste", "Teste testando", "Teste.png", 129, 5);
             Pacote Pacote = new Pacote("TestePacote", "Teste testando pacote", 148);
             DateTime Data = new DateTime(2000, 12, 19);
-            Cliente Cliente = new Cliente("TesteCliente", "ClienteTeste", "999999-9", Data, Genero.FEMININO, "93290-490");
+            Cliente Cliente = new Cliente("TesteCliente", "ClienteTeste", "999999-9", Data, 0 , "93290-490");
             DateTime dataReserva = new DateTime(2017, 06, 11, 20, 52, 53);
             DateTime dataDevolucao = new DateTime(2017, 06, 19, 20, 52, 53);
 
