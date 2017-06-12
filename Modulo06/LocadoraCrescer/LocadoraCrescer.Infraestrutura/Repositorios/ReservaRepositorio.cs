@@ -40,7 +40,9 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
 
         public List<Reserva> GerarRelatorioAtrasos()
         {
-            return contexto.Reservas.Where(x => x.Status == Status.Em_Atraso).ToList();
+            return contexto.Reservas
+                .Include("Status")
+                .Where(x => x.Status == Status.Em_Atraso).ToList();
         }
 
         public Reserva Criar(DateTime dataDevolucao, DateTime dataReserva, string cpf, int IdProduto, int IdPacote, List<int> opcionais)
