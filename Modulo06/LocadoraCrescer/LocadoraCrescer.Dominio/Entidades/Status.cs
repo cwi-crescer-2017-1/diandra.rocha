@@ -1,7 +1,9 @@
 ﻿namespace LocadoraCrescer.Dominio.Entidades
 {
-    public enum Status
+    public enum Status : byte
     {
-        Em_Andamento, Finalizado, Em_Atraso
+        Em_Andamento = 0,
+        Finalizado = 1,
+        Em_Atraso = 2
     }
 }

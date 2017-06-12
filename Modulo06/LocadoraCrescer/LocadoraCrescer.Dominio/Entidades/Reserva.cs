@@ -40,18 +40,23 @@ namespace LocadoraCrescer.Dominio.Entidades
                 Mensagens.Add("Data inválida");
                 return;
             }
-            
+
             DataDevolucaoPrevista = devolucao;
         }
 
         public void AtribuirCliente(Cliente cliente)
         {
+            if (cliente == null)
+            {
+                Mensagens.Add("Cliente não pode ser nulo!");
+                return;
+            }
             Cliente = cliente;
         }
 
         public void AtribuirProduto(Produto produto)
         {
-            if (!produto.VerificarDisponibilidade())
+            if (!produto.EstaDisponivel())
             {
                 Mensagens.Add("Produto sem unidades disponíveis");
                 return;
@@ -87,7 +92,7 @@ namespace LocadoraCrescer.Dominio.Entidades
                     continue;
                 }
 
-                if (op.VerificarDisponibilidade())
+                if (!op.EstaDisponivel())
                 {
                     Mensagens.Add("Opcional sem unidades disponíveis");
                     continue;
@@ -108,14 +113,17 @@ namespace LocadoraCrescer.Dominio.Entidades
         public void RealizarDevolucao()
         {
             DataDevolucaoReal = DateTime.UtcNow;
-            CalcularValorFinal();     
+            CalcularValorFinal();
         }
 
         public void CalcularValorPrevisto()
         {
             ValorPrevisto = 0;
 
-            ValorPrevisto = (Produto.ValorDiaria * DiasDeReserva);
+            if(Produto != null)
+            {
+                ValorPrevisto = (Produto.ValorDiaria * DiasDeReserva);
+            }      
 
             if (Pacote != null)
             {
@@ -133,7 +141,7 @@ namespace LocadoraCrescer.Dominio.Entidades
 
         public void CalcularValorFinal()
         {
-             ValorFinal = ValorPrevisto;
+            ValorFinal = ValorPrevisto;
 
             decimal dias = (decimal)DataDevolucaoReal.Value.Subtract(DataDevolucaoPrevista).TotalDays;
 
@@ -149,15 +157,11 @@ namespace LocadoraCrescer.Dominio.Entidades
 
         public void CalcularDiasDeLocacao()
         {
-            DiasDeReserva = (int)(DataDevolucaoPrevista - DataReserva).TotalDays;
+            DiasDeReserva =1+ (int)(DataDevolucaoPrevista - DataReserva).TotalDays;
         }
 
         public override bool Validar()
         {
-            if (Cliente==null){
-                Mensagens.Add("Cliente não pode ser nulo!");
-                return false;
-            }
             return true;
         }
     }

@@ -33,7 +33,7 @@
             QuantidadeDisponivel = QuantidadeDisponivel +1;
         }
 
-        public bool VerificarDisponibilidade()
+        public bool EstaDisponivel()
         {
             return QuantidadeDisponivel > 0;
         }

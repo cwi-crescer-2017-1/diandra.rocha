@@ -37,7 +37,7 @@
             }
         }
 
-        public bool VerificarDisponibilidade()
+        public bool EstaDisponivel()
         {
             return QuantidadeDisponivel > 0;
         }
