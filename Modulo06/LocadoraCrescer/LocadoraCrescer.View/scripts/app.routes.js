@@ -13,9 +13,36 @@ locadora.config(function($routeProvider) {
                 }
             }
         })
+        .when('/reserva/:id', {
+            controller: 'ReservaDetalhesController',
+            templateUrl: 'views/reservaDetalhes.html',
+            resolve: {
+                autenticado: function(authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
+        })
         .when('/cliente', {
             controller: 'ClienteController',
             templateUrl: 'views/cliente.html',
+            resolve: {
+                autenticado: function(authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
+        })
+        .when('/relatorioGeral', {
+            controller: 'RelatorioGeralController',
+            templateUrl: 'views/relatorioGeral.html',
+            resolve: {
+                autenticado: function(authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
+        })
+        .when('/relatorioAtraso', {
+            controller: 'RelatorioAtrasoController',
+            templateUrl: 'views/relatorioAtraso.html',
             resolve: {
                 autenticado: function(authService) {
                     return authService.isAutenticadoPromise();

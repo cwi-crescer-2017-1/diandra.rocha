@@ -1,0 +1,34 @@
+<menu active="menu" user="usuario" logout="logout" class="no-padding"></menu>
+
+<div class="container-fluid">
+    <h3> Relatório de atraso nas reservas </h3>
+    <hr>
+    <h4 ng-if="reservasAtrasadas.length === 0">Não há reservas em atraso</h4>
+    <table ng-if="reservasAtrasadas.length > 0" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Data Reserva</th>
+                <th>Data Devolução Prevista</th>
+                <th>Data Devolução Real</th>
+                <th>Valor Previsto</th>
+                <th>Valor Final</th>
+                <th>Dias de Reserva</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="reserva in reservasAtrasadas">
+                <th scope="row">{{reserva.Id}}</th>
+                <td>{{reserva.Cliente.Nome}}</td>
+                <td>{{reserva.DataReserva | date:"dd/MM/yyyy"}}</td>
+                <td>{{reserva.DataDevolucaoPrevista | date:"dd/MM/yyyy"}}</td>
+                <td>{{reserva.DataDevolucaoReal | date:"dd/MM/yyyy"}}</td>
+                <td>{{reserva.ValorPrevisto | currency}}</td>
+                <td>{{reserva.ValorFinal | currency}}</td>
+                <td>{{reserva.DiasDeReserva}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,66 @@
+<menu active="menu" user="usuario" logout="logout" class="no-padding"></menu>
+
+<div class="container-fluid">
+    <h3> Relatório Geral </h3>
+    <hr>
+
+    <uib-accordion close-others="true">
+        <div uib-accordion-group class="panel-default" is-open="status.open">
+            <uib-accordion-heading>
+
+                Data Relatório
+                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}">
+                    </i>
+            </uib-accordion-heading>
+
+            <div>
+
+                <label for="data">Insira a data:</label>
+                <input type="date" class="form-control" name="data" ng-model="dataRelatorio.data">
+
+                <div>
+                    <button type="button" ng-disabled="!dataRelatorio.data" ng-click="buscarRelatorioGeral(dataRelatorio.data) " class="btn btn-default btn-block">Buscar</button>
+                </div>
+            </div>
+        </div>
+
+    </uib-accordion>
+
+    <h4 ng-if="reservasRelatorio.length === 0">Não há reservas a listar</h4>
+    <table ng-if="reservasRelatorio.length > 0" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Data Reserva</th>
+                <th>Data Devolução Prevista</th>
+                <th>Data Devolução Real</th>
+                <th>Valor Previsto</th>
+                <th>Valor Final</th>
+                <th>Dias de Reserva</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="reserva in reservasRelatorio">
+                <th scope="row">{{reserva.Id}}</th>
+                <td>{{reserva.Cliente.Nome}}</td>
+                <td>{{reserva.DataReserva | date:"dd/MM/yyyy"}}</td>
+                <td>{{reserva.DataDevolucaoPrevista | date:"dd/MM/yyyy"}}</td>
+                <td>{{reserva.DataDevolucaoReal | date:"dd/MM/yyyy"}}</td>
+                <td>{{reserva.ValorPrevisto | currency}}</td>
+                <td>{{reserva.ValorFinal | currency}}</td>
+                <td>{{reserva.DiasDeReserva}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="col-md-12" ng-if="reservasRelatorio.length > 0">
+        <div class="col-md-8">
+            <h3 class="text-right"> Valor Total : {{relatorioValorTotal | currency}} </h3>
+        </div>
+        <div class="col-md-4">
+            <h3 class="text-right">Quantidade de Reservas: {{quantidadeTotal}}</h3>
+        </div>
+    </div>
+
+</div>
