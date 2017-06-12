@@ -1,5 +1,6 @@
 ﻿using LocadoraCrescer.Infraestrutura.Repositorios;
 using LocadoraCrescer.WebApi.Models;
+using System;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -56,9 +57,24 @@ namespace LocadoraCrescer.WebApi.Controllers
             return ResponderOK(reservas);
         }
 
-        [HttpGet, Route("{id}")]
-        public HttpResponseMessage ObterPorId(int id)
+        [HttpGet, Route("relatorio"), BasicAuthorization(Roles = "Gerente")]
+        public HttpResponseMessage ObterRelatorioGeral(DateTime data)
         {
+            var resultado = repo.GerarRelatorioGeral(data);
+            return ResponderOK(resultado);
+        }
+
+
+        [HttpGet, Route("atraso")]
+        public HttpResponseMessage ObterRelatorioAtrasos()
+        {
+            return ResponderOK(repo.GerarRelatorioAtrasos());
+        }
+
+
+        [HttpGet, Route("detalhes/{id}")]
+        public HttpResponseMessage ObterPorId(int id)
+       {
             var reserva = repo.ObterPorId(id);
             if(reserva == null)
             {

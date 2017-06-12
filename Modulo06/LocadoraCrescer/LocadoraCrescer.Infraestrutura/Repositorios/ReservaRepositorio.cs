@@ -13,6 +13,36 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
         {
         }
 
+        public dynamic GerarRelatorioGeral(DateTime data)
+        {
+            decimal valor = 0;
+            var dataMenos30Dias = data.AddDays(-30);
+
+            var lista = contexto.Reservas
+                .Include("Cliente")
+                .Include("Produto")
+                .Include("Pacote")
+                .Include("Opcionais")
+                .Where(r => r.DataDevolucaoReal > dataMenos30Dias && r.DataDevolucaoReal < data 
+                && r.Status == Status.Finalizado).ToList();
+
+            valor = lista.Sum(a => a.ValorFinal.Value);
+
+            var retorno = new
+            {
+                Lista = lista,
+                Resultado = valor,
+                QuantidadeTotal = lista.Count()
+            };
+            return retorno;
+
+        }
+
+        public List<Reserva> GerarRelatorioAtrasos()
+        {
+            return contexto.Reservas.Where(x => x.Status == Status.Em_Atraso).ToList();
+        }
+
         public Reserva Criar(DateTime dataDevolucao, DateTime dataReserva, string cpf, int IdProduto, int IdPacote, List<int> opcionais)
         {
             Reserva reserva = new Reserva();
@@ -23,12 +53,9 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
             var cliente = contexto.Clientes.SingleOrDefault(x => x.CPF.Equals(cpf));
             reserva.AtribuirCliente(cliente);
 
-            var produto = contexto.Produtos.SingleOrDefault(x => x.Id == IdProduto);
-            reserva.AtribuirProduto(produto);
-
             var pacote = contexto.Pacotes.SingleOrDefault(x => x.Id == IdPacote);
             reserva.AtribuirPacote(pacote);
-       
+
             if (opcionais.Count >= 0)
             {
                 List<Opcional> lista = new List<Opcional>();
@@ -43,9 +70,11 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
 
             }
 
+            var produto = contexto.Produtos.SingleOrDefault(x => x.Id == IdProduto);
+            reserva.AtribuirProduto(produto);
+
             reserva.CalcularDiasDeLocacao();
             reserva.CalcularValorPrevisto();
-            reserva.Validar();
 
             if (reserva.IsValid())
             {
@@ -64,7 +93,7 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
 
             Reserva.Produto.AumentarEstoque();
 
-            foreach(Opcional op in Reserva.Opcionais)
+            foreach (Opcional op in Reserva.Opcionais)
             {
                 op.AumentarEstoque();
                 contexto.Entry(op).State = System.Data.Entity.EntityState.Modified;
@@ -72,7 +101,7 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
 
             contexto.Entry(Reserva).State = System.Data.Entity.EntityState.Modified;
             contexto.Entry(Reserva.Produto).State = System.Data.Entity.EntityState.Modified;
-            
+
             Reserva.RealizarDevolucao();
             contexto.SaveChanges();
         }
@@ -84,7 +113,12 @@ namespace LocadoraCrescer.Infraestrutura.Repositorios
 
         public Reserva ObterPorId(int id)
         {
-            return contexto.Reservas.SingleOrDefault(x => x.Id == id);
+            return contexto.Reservas
+                .Include("Cliente")
+                .Include("Produto")
+                .Include("Pacote")
+                .Include("Opcionais")
+                .SingleOrDefault(x => x.Id == id);
         }
 
         public void Dispose()

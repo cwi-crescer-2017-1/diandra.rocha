@@ -72,6 +72,10 @@
     <Compile Include="Migrations\201706100808001_AlterarTabelaEndereco.Designer.cs">
       <DependentUpon>201706100808001_AlterarTabelaEndereco.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706112354407_MigracaoUpdate.cs" />
+    <Compile Include="Migrations\201706112354407_MigracaoUpdate.Designer.cs">
+      <DependentUpon>201706112354407_MigracaoUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\ClienteRespositorio.cs" />
@@ -103,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706100808001_AlterarTabelaEndereco.resx">
       <DependentUpon>201706100808001_AlterarTabelaEndereco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706112354407_MigracaoUpdate.resx">
+      <DependentUpon>201706112354407_MigracaoUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
