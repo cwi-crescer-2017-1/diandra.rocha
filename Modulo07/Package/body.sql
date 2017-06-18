@@ -1,32 +1,36 @@
 CREATE OR REPLACE PACKAGE BODY PCK_AULA03 AS
 
+FUNCTION ENCONTRARMINIMO RETURN NUMBER IS
+MENORID NUMBER;
+BEGIN
+SELECT MIN(IDCIDADE) INTO MENORID FROM CIDADE GROUP  BY NOME, UF HAVING COUNT(1) >1;
+RETURN MENORID;
+END;
+
 PROCEDURE ATUALIZAR_CIDADES IS
 
+    CURSOR CIDADES IS
+        SELECT NOME, UF
+        FROM CIDADE GROUP  BY NOME, UF HAVING COUNT(1) >1;
+
+     CURSOR CLIENTES(PNOMECIDADE IN VARCHAR2, PUF IN VARCHAR2) IS
+       SELECT  CLI.IDCLIENTE, CLI.IDCIDADE
+       FROM   CLIENTE CLI INNER JOIN CIDADE CID ON CID.IDCIDADE = CLI.IDCIDADE
+       WHERE  CID.NOME = PNOMECIDADE AND CID.UF = PUF;
+     
 BEGIN
-
- procedure SELECIONAR_REPETIDOS as
- BEGIN
-       select Nome, UF
-       from   Cidade
-       group  by Nome, UF
-       having count(1) >1;
-       
-    end SELECIONAR_REPETIDOS;
-    
-    
-PROCEDURE SELECIONAR_CLIENTES(pNome in varchar2,
-                     pUF   in varchar2) as
-                     BEGIN
-     select cli.IDCliente,
-            cli.Nome as Nome_Cliente,
-            cid.Nome as Nome_Cidade,
-            cid.UF
-     from   Cliente cli
-      inner join Cidade cid on cid.IDCidade = cli.IDCidade
-     where  cid.Nome = pNome
-     and    cid.UF   = pUF;
-     END SELECIONAR_CIDADES;
-
-end SELECIONAR_CIDADES;
-
+     
+    FOR AUX IN CIDADES LOOP             
+         FOR AUX2 IN CLIENTES(AUX.NOME, AUX.UF) LOOP 
+         
+             UPDATE CLIENTE SET IDCIDADE = ENCONTRARMINIMO();
+             
+         END LOOP;
+            
+            DELETE FROM CIDADE WHERE AUX.NOME = CIDADE.NOME
+            AND  AUX.UF = CIDADE.UF AND ENCONTRARMINIMO() != CIDADE.IDCIDADE;
+            
+    END LOOP;
+  
+     END;
 END;
