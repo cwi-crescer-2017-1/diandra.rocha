@@ -295,3 +295,4 @@ __pycache__/
 
 # End of https://www.gitignore.io/api/visualstudio
 /Modulo08/Aula01/target/
+/Modulo08/Aula01/nbproject/
