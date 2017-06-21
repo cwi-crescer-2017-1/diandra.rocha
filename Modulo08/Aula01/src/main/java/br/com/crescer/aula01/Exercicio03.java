@@ -24,7 +24,7 @@ public class Exercicio03 {
          
          
          String dataEntrada = "";
-         System.out.println("Informe a data de nascimento");
+         System.out.println("Informe a data:");
          dataEntrada = in.next();
          System.out.println("Informe dias a adicionar:");
          int adicionar = in.nextInt();
