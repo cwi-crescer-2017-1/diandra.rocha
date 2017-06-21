@@ -1,7 +1,6 @@
 package br.com.crescer.aula01;
 
 import br.com.crescer.aula01.CalendarUtils.DiaSemana;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import org.junit.Test;
