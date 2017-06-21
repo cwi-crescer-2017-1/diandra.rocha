@@ -51,7 +51,7 @@ public class Lista01Parte02 implements CalendarUtils{
         int diferencaEmDias = periodo.getDays();
         String diferencaDias = " e " + Math.abs(diferencaEmDias) + " dia(s)";
 
-        int diferencaEmMes = periodo.getMonths()-1;
+        int diferencaEmMes = periodo.getMonths();
         String diferencaMeses = ", " + Math.abs(diferencaEmMes) + " mês (s)";
 
         int diferencaEmAnos = periodo.getYears();

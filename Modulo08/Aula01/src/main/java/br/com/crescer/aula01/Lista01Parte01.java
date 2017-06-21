@@ -11,11 +11,18 @@ public class Lista01Parte01 implements StringUtils {
     
     @Override
     public boolean isEmpty(String string){
+        
+        if(string==null|| string==" "){
+            return true;
+        }
+        normalize(string);
         return string.isEmpty();
     }
     
     @Override
     public String inverter (String string){
+        normalize(string);
+        string.toUpperCase();
         StringBuilder entrada = new StringBuilder();
         entrada.append(string);
         return entrada.reverse().toString();
@@ -40,7 +47,7 @@ public class Lista01Parte01 implements StringUtils {
     @Override
     public boolean isPalindromo(String string){
         normalize(string);
-        
+        string.toUpperCase();
         String invertida = inverter(string);
         
         return invertida.equals(string);
