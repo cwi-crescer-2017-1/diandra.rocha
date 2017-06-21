@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  *
@@ -16,26 +17,26 @@ public class Lista01Parte03 implements Parcelator{
     @Override
     public Map<String, BigDecimal> calcular (BigDecimal valorParcelar, int numeroParcelas, double taxaJuros, Date dataPrimeiroVencimento){
           
-        Map<String, BigDecimal> mapa = new HashMap<String, BigDecimal>();     
-        BigDecimal valor = valorParcelar.divide(BigDecimal.valueOf(numeroParcelas));
+        Map<String, BigDecimal> mapa = new TreeMap<String, BigDecimal>();     
+        BigDecimal valor = valorParcelar.divide(BigDecimal.valueOf(numeroParcelas)).setScale(2, BigDecimal.ROUND_HALF_UP);
         
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         
         Calendar c = Calendar.getInstance();
         c.setTime(dataPrimeiroVencimento);
         
-        BigDecimal taxa = BigDecimal.valueOf(taxaJuros);
-        BigDecimal valorTaxa = valorParcelar.divide(BigDecimal.valueOf(100)).multiply(taxa);
-        BigDecimal valorFinal = valor.add(valorTaxa);
-        valorFinal.setScale(1, BigDecimal.ROUND_CEILING);
+        BigDecimal taxa = BigDecimal.valueOf(taxaJuros).setScale(2, BigDecimal.ROUND_HALF_UP);
+        BigDecimal valorTaxa = valorParcelar.divide(BigDecimal.valueOf(100)).multiply(taxa).setScale(2, BigDecimal.ROUND_HALF_UP);
+        BigDecimal valorFinal = valor.add(valorTaxa).setScale(2, BigDecimal.ROUND_HALF_UP);
+        valorFinal.setScale(2, BigDecimal.ROUND_HALF_UP);
         
          
         
-        for(int i=0; i<=numeroParcelas; i++){
+        for(int i=0; i<numeroParcelas; i++){
             
             String data = formato.format(c.getTime());
             mapa.put(data, valorFinal);
-            c.add(Calendar.MONTH, i);
+            c.add(Calendar.MONTH, 1);
             
         }
         
