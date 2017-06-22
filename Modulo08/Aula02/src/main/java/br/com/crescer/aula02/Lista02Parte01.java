@@ -1,11 +1,9 @@
 package br.com.crescer.aula02;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.nio.file.Files;
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 /**
  *
@@ -55,38 +53,20 @@ public class Lista02Parte01 implements FileUtils {
 
     @Override
     public boolean mv(String in, String out) {
-
-        InputStream aux1;
-        OutputStream aux2;
-
+        
         try {
-            File toFile = new File(in);
-            File fromFile = new File(out);
-
-            if (!fromFile.exists()) {
-                if (!fromFile.getParentFile().exists()) {
-                    fromFile.getParentFile().mkdir();
-                }
+           File entrada = new File(in);
+            File saida = new File(out);                
+            
+            if(entrada.isDirectory() || saida.isDirectory()){
+                throw new IOException("Arquivo é um diretório");
             }
-            fromFile.createNewFile();
-
-            aux1 = new FileInputStream(in);
-            aux2 = new FileOutputStream(out);
-
-            byte[] buffer = new byte[1024];
-            int length;
-
-            while ((length = aux1.read(buffer)) > 0) {
-
-                aux2.write(buffer, 0, length);
-            }
-
-            if (in.equals(out)) {
-                toFile.delete();
+            
+            if (entrada.exists()) {
+                Files.move(entrada.toPath(), saida.toPath(), REPLACE_EXISTING);
                 return true;
-            } else {
-                return false;
             }
+            return false;
 
         } catch (Exception e) {
             e.getMessage();

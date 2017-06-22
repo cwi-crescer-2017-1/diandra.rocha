@@ -1,7 +1,6 @@
 package br.com.crescer.aula02;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
