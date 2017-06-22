@@ -71,22 +71,24 @@ public class Lista01Parte03Test {
     /**
      * Test of calcular method, of class Parcelator.
      */
-    @Test
-    public void testCalcular3() {
+     @Test
+     public void testCalcular3() {
         CALENDAR.set(2017, 5, 18);
-
-        final BigDecimal valor = BigDecimal.valueOf(1000);
+        
+        final BigDecimal valor = BigDecimal.valueOf(1000l);
         final BigDecimal total = valor.multiply(BigDecimal.valueOf(10).divide(BigDecimal.valueOf(100)).add(BigDecimal.ONE)).setScale(2, RoundingMode.HALF_UP);
 
         final Map<String, BigDecimal> parcelas = parcelator.calcular(valor, 3, 10.0, CALENDAR.getTime());
 
-        assertTrue(true);
-
+        assertEquals(3, parcelas.size());
+        
         parcelas.entrySet().forEach(e -> {
-            assertTrue(true);
+            assertEquals(DATE_FORMAT.format(CALENDAR.getTime()), e.getKey()); 
             CALENDAR.add(MONTH, 1);
         });
-        
+        assertEquals(total, parcelas.entrySet().stream()
+                .map(Entry::getValue)
+                .collect(Collectors.reducing(BigDecimal.ZERO, BigDecimal::add)));
     }
 
 }

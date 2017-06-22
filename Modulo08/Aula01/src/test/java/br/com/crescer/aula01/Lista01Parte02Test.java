@@ -48,7 +48,7 @@ public class Lista01Parte02Test {
         Date date = c.getTime();
         Lista01Parte02 instance = new Lista01Parte02();
 
-        String expResult = "1 ano(s), 1 mês (s) e 1 dia(s)";
+        String expResult = "1 ano(s), 1 mês (s) e 2 dia(s)";
         String result = instance.tempoDecorrido(date);
 
         assertEquals(expResult, result);
@@ -62,7 +62,7 @@ public class Lista01Parte02Test {
         Date date = c.getTime();
         Lista01Parte02 instance = new Lista01Parte02();
 
-        String expResult = "3 ano(s), 4 mês (s) e 20 dia(s)";
+        String expResult = "3 ano(s), 4 mês (s) e 21 dia(s)";
         String result = instance.tempoDecorrido(date);
 
         assertEquals(expResult, result);

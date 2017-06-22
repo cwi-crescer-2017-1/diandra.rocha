@@ -21,8 +21,10 @@ public class Lista01Parte01 implements StringUtils {
     
     @Override
     public String inverter (String string){
+               
+        string = string.toLowerCase();
         normalize(string);
-        string.toUpperCase();
+        
         StringBuilder entrada = new StringBuilder();
         entrada.append(string);
         return entrada.reverse().toString();
@@ -30,7 +32,7 @@ public class Lista01Parte01 implements StringUtils {
     
     @Override
     public int contaVogais(String string){
-        normalize(string);
+        string = normalize(string);
         int contador = 0;
         char [] arrayDeLetras;
         
@@ -46,8 +48,9 @@ public class Lista01Parte01 implements StringUtils {
     
     @Override
     public boolean isPalindromo(String string){
-        normalize(string);
-        string.toUpperCase();
+        string = normalize(string);
+        string = string.toLowerCase();
+        
         String invertida = inverter(string);
         
         return invertida.equals(string);

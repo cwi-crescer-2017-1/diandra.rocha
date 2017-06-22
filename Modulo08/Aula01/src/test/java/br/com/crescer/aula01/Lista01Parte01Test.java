@@ -128,6 +128,8 @@ public class Lista01Parte01Test {
     @org.junit.Test
     public void testIsPalindromo2() {
         assertTrue(stringUtils.isPalindromo("ovo"));
+        assertTrue(stringUtils.isPalindromo("Ame a Ema"));
+        assertFalse(stringUtils.isPalindromo("A sogra má e amargosa"));
         assertFalse(stringUtils.isPalindromo("uva"));
         assertFalse(stringUtils.isPalindromo("Ame a Emo"));
     }
