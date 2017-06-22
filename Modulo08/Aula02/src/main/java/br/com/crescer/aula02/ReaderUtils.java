@@ -5,6 +5,6 @@ package br.com.crescer.aula02;
  */
 public interface ReaderUtils {
     
-    String read(String string);
+    String read(String string) throws Exception;
     
 }

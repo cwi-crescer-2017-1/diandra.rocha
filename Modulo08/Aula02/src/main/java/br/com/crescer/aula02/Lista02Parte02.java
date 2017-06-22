@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.Reader;
 
 /**
@@ -12,22 +13,23 @@ import java.io.Reader;
  */
 public class Lista02Parte02 implements ReaderUtils {
 
-    public String read(String string) {
+    @Override
+    public String read(String string) throws Exception{
         try {
             final File file = new File(string);
             final Reader reader = new FileReader(file);
             final BufferedReader bufferReader = new BufferedReader(reader);
             
-            if(!file.isFile()){
-                new Exception("Não é arquivo .txt");
+            if(file.isFile() == false){
+                throw new Exception("Não é arquivo .txt");
+            }else{
+                return bufferReader.readLine();
             }
             
-            return bufferReader.toString();
-                    
         } catch (FileNotFoundException e) {
             return e.getMessage();
-        }
-        
+        } catch (IOException ex) {
+            return ex.getMessage();
+        }   
     }
-
 }

@@ -4,6 +4,6 @@ package br.com.crescer.aula02;
  */
 public interface WriterUtils {
 
-    void write(String file, String conteudo);
+    void write(String file, String conteudo) throws Exception;
 
 }

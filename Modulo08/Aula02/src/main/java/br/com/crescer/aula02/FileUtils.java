@@ -6,7 +6,7 @@ public interface FileUtils {
 
     boolean mk(String string);
 
-    boolean rm(String string);
+    boolean rm(String string) throws Exception;
 
     String ls(String string);
 
