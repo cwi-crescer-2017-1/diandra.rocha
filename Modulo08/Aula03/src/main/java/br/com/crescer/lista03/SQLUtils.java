@@ -1,6 +1,7 @@
 package br.com.crescer.lista03;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * @author carloshenrique
@@ -13,6 +14,6 @@ public interface SQLUtils {
     
     void importCSV(File file);
     
-    File importCSV(String query);
+    File exportCSV(String query) throws IOException;
 
 }
