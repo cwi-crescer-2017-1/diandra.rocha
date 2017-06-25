@@ -3,6 +3,7 @@ package br.com.crescer.aula04;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -51,7 +52,7 @@ public class Video implements Serializable{
     @Column(name="DATA_LANCAMENTO", nullable=true)
     private Date data_lancamento;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_GENERO")
     private Genero genero;
 

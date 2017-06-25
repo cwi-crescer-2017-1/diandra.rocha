@@ -1,5 +1,6 @@
 package br.com.crescer.aula04;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -19,7 +20,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="CLIENTE")
-public class Cliente {
+public class Cliente implements Serializable{
     
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_CLIENTE")
