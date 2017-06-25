@@ -1,5 +1,6 @@
 package br.com.crescer.aula04;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -18,12 +19,12 @@ import javax.persistence.TemporalType;
  */
 
 @Entity
-@Table(name="CLIENTE")
-public class Cliente {
-    
+@Table(name = "FUNCIONARIO")
+public class Funcionario implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_CLIENTE")
-    @SequenceGenerator(name = "SEQ_CLIENTE", sequenceName = "SEQ_CLIENTE")   
+    @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_FUNCIONARIO")
+    @SequenceGenerator(name = "SEQ_FUNCIONARIO", sequenceName = "SEQ_FUNCIONARIO")    
     @Basic(optional = false)
     @Column(name = "ID")
     private long id;
@@ -89,10 +90,6 @@ public class Cliente {
         return nome;
     }
 
-    public String getCidade() {
-        return cidade;
-    }
-
     public String getBairro() {
         return bairro;
     }
@@ -145,10 +142,6 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
     public void setBairro(String bairro) {
         this.bairro = bairro;
     }
@@ -191,5 +184,13 @@ public class Cliente {
 
     public void setNascimento(Date nascimento) {
         this.nascimento = nascimento;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 }
