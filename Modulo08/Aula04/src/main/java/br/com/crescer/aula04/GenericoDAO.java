@@ -3,7 +3,6 @@ package br.com.crescer.aula04;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -33,6 +32,8 @@ public abstract class GenericoDAO<Entity, ID> implements CrudDAO<Entity, ID> {
         
         entityManager.getTransaction().commit();
         
+        sessao.close();
+         
         return ent;
 
     }
@@ -47,6 +48,8 @@ public abstract class GenericoDAO<Entity, ID> implements CrudDAO<Entity, ID> {
         sessao.delete(ent);
         
         entityManager.getTransaction().commit();
+        
+        sessao.close();
 
     }
     
@@ -56,6 +59,8 @@ public abstract class GenericoDAO<Entity, ID> implements CrudDAO<Entity, ID> {
         final Session sessao = entityManager.unwrap(Session.class);
         
         List<Entity> retorno = sessao.createCriteria(classe).list();
+        
+        sessao.close();
         
         return retorno;
 
@@ -68,7 +73,8 @@ public abstract class GenericoDAO<Entity, ID> implements CrudDAO<Entity, ID> {
         
         Entity retorno = (Entity) sessao.load(classe, (Serializable) id);
         
+        sessao.close();
+         
         return retorno;
-
     }
 }
