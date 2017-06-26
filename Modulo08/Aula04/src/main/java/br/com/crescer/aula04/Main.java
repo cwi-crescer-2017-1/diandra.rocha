@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.crescer.aula04;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -16,7 +10,7 @@ import java.util.List;
  */
 public class Main {
     
-    public void TesteCliente(){
+    public static void TesteCliente(){
         Cliente cliente = new Cliente();
         cliente.setBairro("Jardim Planalto");
         cliente.setCPF("123456789");
@@ -53,7 +47,7 @@ public class Main {
         dao.remove(cliente);
         }
     
-    public void TesteFuncionario(){
+    public static void TesteFuncionario(){
         Funcionario funf = new Funcionario();
         funf.setBairro("Teste");
         funf.setCPF("123456789");
@@ -88,9 +82,9 @@ public class Main {
         dao.remove(funf);
     }
     
-    public void TesteGenero(){
+    public static void TesteGenero(){
         Genero genero = new Genero();
-        genero.setDescricao("teste teste teste");
+        genero.setDescricao("Me ferrei em matemática");
         
         GeneroDAO dao = new GeneroDAO();
         
@@ -107,24 +101,75 @@ public class Main {
         
     }
     
-    public void TesteLocacao(){
+    public static void TesteLocacao(){
         Cliente cliente = new Cliente();
         Funcionario funf = new Funcionario();
         Video video = new Video();
+        GregorianCalendar c = new GregorianCalendar(2017, 06, 30);
+
+        Date date = c.getTime();
         
         Locacao loca = new Locacao();
         loca.setValor_total(142.33);
         loca.setCliente(cliente);
         loca.setFuncionario(funf);
         loca.setVideo(video);
+        loca.setData_devolucao(date);
+        
+        LocacaoDAO dao = new LocacaoDAO();
+        
+        dao.save(loca);
+        Locacao encontrado = dao.loadById(1l);
+        
+        System.out.println(encontrado.getValor_total() + " "
+                + " " + encontrado.getCliente().getId() + " "
+                + " " +encontrado.getFuncionario().getId() + " "
+                + " " + encontrado.getVideo().getId());
+        
+        List<Locacao> locacoes = dao.findAll();
+        for(Locacao lo: locacoes){
+            System.out.println(lo.getValor_total());
+        }
+        
+        dao.remove(loca);
+    }
+    
+    public static void TesteVideo(){
+        Video video = new Video();
+        video.setValor(19.30);
+        video.setDuracao("143min");
+        video.setNome("A noite dos mortos em matemática");
+        video.setQuantidade_estoque(5);
+        GregorianCalendar c = new GregorianCalendar(2017, 06, 26);
+
+        Date date = c.getTime();
+        video.setData_lancamento(date);
+        Genero genero = new Genero();
+        video.setGenero(genero);
+        
+        VideoDAO dao = new VideoDAO();
+        
+        dao.save(video);
+        Video encontrado = dao.loadById(1l);
+        
+        System.out.println(encontrado.getNome() + " " + encontrado.getGenero().getId());
+        
+        List<Video> videos = dao.findAll();
+        for(Video vi: videos){
+            System.out.println(vi.getNome());
+        }
+        
+        dao.remove(video);
     }
     
     
     public static void Main(String [] args){
-        
-        
-        
-        
+  
+        TesteCliente();
+        TesteFuncionario();
+        TesteGenero();
+        TesteVideo();
+        TesteLocacao();
         
     }
 }
