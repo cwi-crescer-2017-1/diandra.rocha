@@ -37,7 +37,7 @@ public class Lista03 implements SQLUtils {
                     try (final PreparedStatement preparedStatement
                             = Conexao.getConexao().prepareStatement(query)) {
 
-                        preparedStatement.executeQuery();
+                        preparedStatement.executeUpdate();
 
                     } catch (final SQLException e) {
                         System.err.format("SQLException: %s", e);
