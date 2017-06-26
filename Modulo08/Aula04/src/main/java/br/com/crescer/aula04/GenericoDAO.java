@@ -2,6 +2,7 @@ package br.com.crescer.aula04;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.EntityManager;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -12,64 +13,62 @@ import org.hibernate.Transaction;
  */
 public abstract class GenericoDAO<Entity, ID> implements CrudDAO<Entity, ID> {
     
+    private final EntityManager entityManager;
     private static Session sessao;
     private Transaction transacao;
     private Class<Entity> classe;
     
-    public GenericoDAO(Class<Entity> classe){
+    public GenericoDAO(Class<Entity> classe, EntityManager entityManager){
         this.classe = classe;
+        this.entityManager = entityManager;
     }
     
     @Override
     public Entity save ( Entity ent ) {
-            sessao = Conexao.getSession();
-            transacao = sessao.beginTransaction();
-            
-            sessao.save(ent);
-            sessao.flush();
-            transacao.commit();
-            
-            sessao.close();
-            return ent;
+        final Session sessao = entityManager.unwrap(Session.class);
+        
+        entityManager.getTransaction().begin();
+        
+        sessao.saveOrUpdate(ent);
+        
+        entityManager.getTransaction().commit();
+        
+        return ent;
+
     }
     
     @Override
     public void remove(Entity ent){
         
-            sessao = Conexao.getSession();
-            transacao = sessao.beginTransaction();
-            
-            sessao.delete(ent);
-            sessao.flush();
-            transacao.commit();
-            
-            sessao.close();
+        final Session sessao = entityManager.unwrap(Session.class);
+        
+        entityManager.getTransaction().begin();
+        
+        sessao.delete(ent);
+        
+        entityManager.getTransaction().commit();
+
     }
     
     @Override
     public List findAll() {
-        sessao = Conexao.getSession();
         
-        List objts;
-        objts = null;
+        final Session sessao = entityManager.unwrap(Session.class);
         
-        Criteria selectAll = sessao.createCriteria(classe);
-        objts = selectAll.list();
+        List<Entity> retorno = sessao.createCriteria(classe).list();
         
-        sessao.close();
-        return objts;
+        return retorno;
+
     }
     
     @Override
      public Entity loadById(ID id) {
- 
-        sessao = Conexao.getSession();
+
+        final Session sessao = entityManager.unwrap(Session.class);
         
         Entity retorno = (Entity) sessao.load(classe, (Serializable) id);
-
-        sessao.flush();
-        sessao.close();
         
         return retorno;
+
     }
 }

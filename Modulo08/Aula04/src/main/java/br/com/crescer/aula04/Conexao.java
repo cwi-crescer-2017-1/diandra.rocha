@@ -25,6 +25,7 @@ public class Conexao {
             e.printStackTrace();
 
         } finally {
+            entityManager.close();
             factory.close();
         }
 

@@ -3,6 +3,9 @@ package br.com.crescer.aula04;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -10,7 +13,7 @@ import java.util.List;
  */
 public class Main {
     
-    public static void TesteCliente(){
+    public static void TesteCliente(EntityManager entityManager){
         Cliente cliente = new Cliente();
         cliente.setBairro("Jardim Planalto");
         cliente.setCPF("123456789");
@@ -31,7 +34,7 @@ public class Main {
         cliente.setSalario(1090.90);
         cliente.setTelefone("40028922");
         
-        ClienteDAO dao = new ClienteDAO();
+        ClienteDAO dao = new ClienteDAO(entityManager);
         
         dao.save(cliente);
         Cliente encontrado = dao.loadById(1l);
@@ -47,7 +50,7 @@ public class Main {
         dao.remove(cliente);
         }
     
-    public static void TesteFuncionario(){
+    public static void TesteFuncionario(EntityManager entityManager){
         Funcionario funf = new Funcionario();
         funf.setBairro("Teste");
         funf.setCPF("123456789");
@@ -68,7 +71,7 @@ public class Main {
         funf.setSalario(1090.90);
         funf.setTelefone("40028922");
         
-        FuncionarioDAO dao = new FuncionarioDAO();
+        FuncionarioDAO dao = new FuncionarioDAO(entityManager);
         
         dao.save(funf);
         Funcionario encontrado = dao.loadById(1l);
@@ -82,11 +85,11 @@ public class Main {
         dao.remove(funf);
     }
     
-    public static void TesteGenero(){
+    public static void TesteGenero(EntityManager entityManager){
         Genero genero = new Genero();
         genero.setDescricao("Me ferrei em matemática");
         
-        GeneroDAO dao = new GeneroDAO();
+        GeneroDAO dao = new GeneroDAO(entityManager);
         
         dao.save(genero);
         Genero encontrado = dao.loadById(1l);
@@ -101,7 +104,7 @@ public class Main {
         
     }
     
-    public static void TesteLocacao(){
+    public static void TesteLocacao(EntityManager entityManager){
         Cliente cliente = new Cliente();
         Funcionario funf = new Funcionario();
         Video video = new Video();
@@ -116,7 +119,7 @@ public class Main {
         loca.setVideo(video);
         loca.setData_devolucao(date);
         
-        LocacaoDAO dao = new LocacaoDAO();
+        LocacaoDAO dao = new LocacaoDAO(entityManager);
         
         dao.save(loca);
         Locacao encontrado = dao.loadById(1l);
@@ -134,7 +137,7 @@ public class Main {
         dao.remove(loca);
     }
     
-    public static void TesteVideo(){
+    public static void TesteVideo(EntityManager entityManager){
         Video video = new Video();
         video.setValor(19.30);
         video.setDuracao("143min");
@@ -147,7 +150,7 @@ public class Main {
         Genero genero = new Genero();
         video.setGenero(genero);
         
-        VideoDAO dao = new VideoDAO();
+        VideoDAO dao = new VideoDAO(entityManager);
         
         dao.save(video);
         Video encontrado = dao.loadById(1l);
@@ -165,11 +168,18 @@ public class Main {
     
     public static void Main(String [] args){
   
-        TesteCliente();
-        TesteFuncionario();
-        TesteGenero();
-        TesteVideo();
-        TesteLocacao();
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("CRESCER");
+        EntityManager entityManager = factory.createEntityManager();
+        
+        TesteCliente(entityManager);
+        TesteFuncionario(entityManager);
+        TesteGenero(entityManager);
+        TesteVideo(entityManager);
+        TesteLocacao(entityManager);
+        
+        
+        entityManager.close();
+        factory.close();
         
     }
 }

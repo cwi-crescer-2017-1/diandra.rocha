@@ -20,7 +20,7 @@ public class Genero implements Serializable {
     
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_GENERO")
-    @SequenceGenerator(name = "SEQ_GENERO", sequenceName = "SEQ_GENERO")    
+    @SequenceGenerator(name = "SEQ_GENERO", sequenceName = "SEQ_GENERO", allocationSize = 1)    
     @Basic(optional = false)
     @Column(name = "ID")
     private long id;
