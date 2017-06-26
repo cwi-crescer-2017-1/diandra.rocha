@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name="CLIENTE")
 public class Cliente implements Serializable{
-    
+      
     @Id
     @GeneratedValue(strategy = SEQUENCE, generator = "SEQ_CLIENTE")
     @SequenceGenerator(name = "SEQ_CLIENTE", sequenceName = "SEQ_CLIENTE")   

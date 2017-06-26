@@ -15,5 +15,5 @@ public interface CrudDAO<Entity, ID> {
 
     Entity loadById(ID id);
 
-    List<Entity> findAll(Entity ent); 
+    List<Entity> findAll(); 
 }

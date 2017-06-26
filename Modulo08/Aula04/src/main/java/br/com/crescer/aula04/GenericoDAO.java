@@ -1,5 +1,6 @@
 package br.com.crescer.aula04;
 
+import java.io.Serializable;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -15,6 +16,9 @@ public abstract class GenericoDAO<Entity, ID> implements CrudDAO<Entity, ID> {
     private Transaction transacao;
     private Class<Entity> classe;
     
+    public GenericoDAO(Class<Entity> classe){
+        this.classe = classe;
+    }
     
     @Override
     public Entity save ( Entity ent ) {
@@ -43,13 +47,13 @@ public abstract class GenericoDAO<Entity, ID> implements CrudDAO<Entity, ID> {
     }
     
     @Override
-    public List findAll(Entity ent) {
+    public List findAll() {
         sessao = Conexao.getSession();
         
         List objts;
         objts = null;
         
-        Criteria selectAll = sessao.createCriteria(ent.getClass());
+        Criteria selectAll = sessao.createCriteria(classe);
         objts = selectAll.list();
         
         sessao.close();
@@ -61,7 +65,7 @@ public abstract class GenericoDAO<Entity, ID> implements CrudDAO<Entity, ID> {
  
         sessao = Conexao.getSession();
         
-        Entity retorno = (Entity) sessao.load(classe, id.getClass());
+        Entity retorno = (Entity) sessao.load(classe, (Serializable) id);
 
         sessao.flush();
         sessao.close();
