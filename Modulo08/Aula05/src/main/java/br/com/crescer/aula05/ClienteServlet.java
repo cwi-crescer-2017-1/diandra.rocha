@@ -6,7 +6,6 @@
 package br.com.crescer.aula05;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +20,7 @@ public class ClienteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int parametro = request.getParameter("parametro");
+        /*int parametro = (int) request.getParameter("parametro");
         String resultado = "";
         
         switch(parametro){
@@ -33,12 +32,11 @@ public class ClienteServlet extends HttpServlet {
             break;
         }
         
-         request.setAttribute("resultado", resultado);
+         request.setAttribute("resultado", resultado);*/
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
     }
 }
