@@ -21,4 +21,5 @@ public interface UsuarioRepositorio extends CrudRepository<Usuario, Long> {
   @Override
   Usuario save(Usuario user);
   
+  
 }

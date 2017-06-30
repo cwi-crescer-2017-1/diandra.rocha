@@ -31,4 +31,8 @@ public class UsuarioService {
         return repo.save(user);
     }
     
+    public Usuario obterUsuario (long id){
+        return repo.findOne(id);
+    }
+    
 }
