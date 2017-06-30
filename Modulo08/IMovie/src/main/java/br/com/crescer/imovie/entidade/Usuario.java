@@ -1,7 +1,6 @@
 package br.com.crescer.imovie.entidade;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -40,7 +39,7 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "IDUSUARIO")
-    private BigDecimal idusuario;
+    private long idusuario;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="E-mail inválido")//if the field contains email address consider using this annotation to enforce field validation
     
     @Basic(optional = false)
@@ -85,11 +84,11 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
-    public Usuario(BigDecimal idusuario) {
+    public Usuario(long idusuario) {
         this.idusuario = idusuario;
     }
 
-    public Usuario(BigDecimal idusuario, String email, String senha, String nome, String sexo, Date datanascimento) {
+    public Usuario(long idusuario, String email, String senha, String nome, String sexo, Date datanascimento) {
         this.idusuario = idusuario;
         this.email = email;
         this.senha = senha;
@@ -98,11 +97,11 @@ public class Usuario implements Serializable {
         this.datanascimento = datanascimento;
     }
 
-    public BigDecimal getIdusuario() {
+    public long getIdusuario() {
         return idusuario;
     }
 
-    public void setIdusuario(BigDecimal idusuario) {
+    public void setIdusuario(long idusuario) {
         this.idusuario = idusuario;
     }
 
@@ -168,26 +167,6 @@ public class Usuario implements Serializable {
 
     public void setAmizadesPendentes(Set<Amizade> amizadesPendentes) {
         this.amizadesPendentes = amizadesPendentes;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idusuario != null ? idusuario.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Usuario)) {
-            return false;
-        }
-        Usuario other = (Usuario) object;
-        if ((this.idusuario == null && other.idusuario != null) || (this.idusuario != null && !this.idusuario.equals(other.idusuario))) {
-            return false;
-        }
-        return true;
     }
 
     @Override

@@ -1,8 +1,8 @@
 package br.com.crescer.imovie.seguranca;
 
-import java.util.ArrayList;
-import java.util.List;
-import org.springframework.security.core.GrantedAuthority;
+import br.com.crescer.imovie.entidade.Usuario;
+import br.com.crescer.imovie.servico.UsuarioService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,12 +14,21 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SocialUserDetailsService implements UserDetailsService {
+    
+    @Autowired
+    UsuarioService user;
+    
+    
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario u = ....findOneByUsernam(usuario) 
-        final List<GrantedAuthority> grants = new ArrayList<>();
-        return new User(u.getUserName(), u.getPass(), grants);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Usuario u =  user.encontrarUsuario(email);
+        
+        if (u == null) {
+            throw new UsernameNotFoundException(String.format("Não encontrado um usuário com esse e-mail %s", email));
+        }
+        
+        return new User( u.getEmail() , u.getSenha() ,null);
     }
 
 }
