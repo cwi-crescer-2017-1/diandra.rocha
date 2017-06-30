@@ -17,8 +17,6 @@ public class SocialUserDetailsService implements UserDetailsService {
     
     @Autowired
     UsuarioService user;
-    
-    
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
