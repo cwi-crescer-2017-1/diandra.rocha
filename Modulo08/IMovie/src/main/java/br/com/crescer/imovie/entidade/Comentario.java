@@ -94,7 +94,7 @@ public class Comentario implements Serializable {
     public void setDatacomentario(Date datacomentario) {
         this.datacomentario = datacomentario;
     }
-
+    
     public Post getIdpost() {
         return idpost;
     }

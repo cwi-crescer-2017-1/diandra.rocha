@@ -22,4 +22,6 @@ public interface UsuarioRepositorio extends CrudRepository<Usuario, Long> {
   Usuario save(Usuario user);
   
   
+  
+  
 }

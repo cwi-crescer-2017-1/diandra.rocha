@@ -1,28 +1,21 @@
--- Gerado por Oracle SQL Developer Data Modeler 4.2.0.932
---   em:        2017-06-30 02:13:30 BRT
---   site:      Oracle Database 11g
---   tipo:      Oracle Database 11g
-
-
-
 CREATE TABLE amizade (
     idamizade          INTEGER NOT NULL,
     idusuarioenviou    INTEGER NOT NULL,
     idusuariorecebeu   INTEGER NOT NULL,
     status             VARCHAR2(50) NOT NULL
 );
-
+ALTER TABLE amizade ADD CONSTRAINT amizade_uc UNIQUE (idusuarioenviou, idusuariorecebeu);
 ALTER TABLE amizade ADD CONSTRAINT amizade_pk PRIMARY KEY ( idamizade );
 
 CREATE TABLE comentario (
-    idcomentario     VARCHAR2(255) NOT NULL,
+    idcomentario     INTEGER NOT NULL,
     conteudo         VARCHAR2(500) NOT NULL,
     datacomentario   DATE NOT NULL,
     idusuario        INTEGER NOT NULL,
     idpost           INTEGER NOT NULL
 );
 
-ALTER TABLE comentario ADD CONSTRAINT comentario_pk PRIMARY KEY ( idcomentario,idpost );
+ALTER TABLE comentario ADD CONSTRAINT comentario_pk PRIMARY KEY ( idcomentario );
 
 CREATE TABLE curtida (
     idcurtida   INTEGER NOT NULL,
@@ -138,47 +131,3 @@ BEGIN
     :new.idusuario := usuario_idusuario_seq.nextval;
 END;
 /
-
-
-
--- Relatório do Resumo do Oracle SQL Developer Data Modeler: 
--- 
--- CREATE TABLE                             5
--- CREATE INDEX                             0
--- ALTER TABLE                             12
--- CREATE VIEW                              0
--- ALTER VIEW                               0
--- CREATE PACKAGE                           0
--- CREATE PACKAGE BODY                      0
--- CREATE PROCEDURE                         0
--- CREATE FUNCTION                          0
--- CREATE TRIGGER                           5
--- ALTER TRIGGER                            0
--- CREATE COLLECTION TYPE                   0
--- CREATE STRUCTURED TYPE                   0
--- CREATE STRUCTURED TYPE BODY              0
--- CREATE CLUSTER                           0
--- CREATE CONTEXT                           0
--- CREATE DATABASE                          0
--- CREATE DIMENSION                         0
--- CREATE DIRECTORY                         0
--- CREATE DISK GROUP                        0
--- CREATE ROLE                              0
--- CREATE ROLLBACK SEGMENT                  0
--- CREATE SEQUENCE                          5
--- CREATE MATERIALIZED VIEW                 0
--- CREATE SYNONYM                           0
--- CREATE TABLESPACE                        0
--- CREATE USER                              0
--- 
--- DROP TABLESPACE                          0
--- DROP DATABASE                            0
--- 
--- REDACTION POLICY                         0
--- 
--- ORDS DROP SCHEMA                         0
--- ORDS ENABLE SCHEMA                       0
--- ORDS ENABLE OBJECT                       0
--- 
--- ERRORS                                   0
--- WARNINGS                                 0
