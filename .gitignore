@@ -293,6 +293,52 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.war
+*.ear
+*.sar
+*.class
+# Maven 
+target/
+# IntelliJ project files 
+*.iml
+*.iws
+*.ipr
+.idea/
+# eclipse project file
+.settings/
+.classpath
+.project
+# NetBeans specific
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+# OS
+.DS_Store
+# Misc
+*.swp
+release.properties
+pom.xml.releaseBackup
+pom.xml.ta
+
 # End of https://www.gitignore.io/api/visualstudio
 /Modulo08/Aula01/target/
 /Modulo08/Aula01/nbproject/
