@@ -52,4 +52,9 @@ public class PostController {
     public void deletarPost(@PathVariable long id){
         service.excluir(id);
     }
+    
+    @GetMapping("/post/{id}")
+    public Post obterTodo(@PathVariable long id){
+        return service.buscarPorId(id);
+    }
 }

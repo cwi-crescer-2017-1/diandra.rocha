@@ -30,7 +30,7 @@ public class Curtida implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "IDCURTIDA")
-    private BigDecimal idcurtida;
+    private long idcurtida;
     
     @JoinColumn(name = "IDPOST", referencedColumnName = "IDPOST")
     @ManyToOne(optional = false)
@@ -43,15 +43,16 @@ public class Curtida implements Serializable {
     public Curtida() {
     }
 
-    public Curtida(BigDecimal idcurtida) {
-        this.idcurtida = idcurtida;
+    public Curtida(Usuario user, Post post) {
+        this.idusuario = user;
+        this.idpost = post;
     }
 
-    public BigDecimal getIdcurtida() {
+    public long getIdcurtida() {
         return idcurtida;
     }
 
-    public void setIdcurtida(BigDecimal idcurtida) {
+    public void setIdcurtida(long idcurtida) {
         this.idcurtida = idcurtida;
     }
 
@@ -69,24 +70,6 @@ public class Curtida implements Serializable {
 
     public void setIdusuario(Usuario idusuario) {
         this.idusuario = idusuario;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Curtida)) {
-            return false;
-        }
-        Curtida other = (Curtida) object;
-        if ((this.idcurtida == null && other.idcurtida != null) || (this.idcurtida != null && !this.idcurtida.equals(other.idcurtida))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "br.com.crescer.imovie.entidade.Curtida[ idcurtida=" + idcurtida + " ]";
     }
     
 }

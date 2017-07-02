@@ -1,7 +1,6 @@
 package br.com.crescer.imovie.entidade;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -36,7 +35,7 @@ public class Comentario implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "IDCOMENTARIO")
-    private BigDecimal idcomentario;
+    private long idcomentario;
     
     @Basic(optional = false)
     @NotNull
@@ -61,21 +60,16 @@ public class Comentario implements Serializable {
     public Comentario() {
     }
 
-    public Comentario(BigDecimal idcomentario) {
-        this.idcomentario = idcomentario;
-    }
-
-    public Comentario(BigDecimal idcomentario, String conteudo, Date datacomentario) {
-        this.idcomentario = idcomentario;
+    public Comentario(String conteudo, Date datacomentario) {
         this.conteudo = conteudo;
         this.datacomentario = datacomentario;
     }
 
-    public BigDecimal getIdcomentario() {
+    public long getIdcomentario() {
         return idcomentario;
     }
 
-    public void setIdcomentario(BigDecimal idcomentario) {
+    public void setIdcomentario(long idcomentario) {
         this.idcomentario = idcomentario;
     }
 
@@ -109,24 +103,5 @@ public class Comentario implements Serializable {
 
     public void setIdusuario(Usuario idusuario) {
         this.idusuario = idusuario;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Comentario)) {
-            return false;
-        }
-        Comentario other = (Comentario) object;
-        if ((this.idcomentario == null && other.idcomentario != null) || (this.idcomentario != null && !this.idcomentario.equals(other.idcomentario))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "br.com.crescer.imovie.entidade.Comentario[ idcomentario=" + idcomentario + " ]";
-    }
-    
+    }   
 }

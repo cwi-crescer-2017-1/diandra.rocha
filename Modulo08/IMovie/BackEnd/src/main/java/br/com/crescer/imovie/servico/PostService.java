@@ -41,5 +41,9 @@ public class PostService {
     public Post buscar(long id) {
         return repo.findOne(id);
     }
+    
+    public Post buscarPorId(long id){
+        return repo.findOne(id);
+    }
 
 }

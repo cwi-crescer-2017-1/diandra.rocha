@@ -1,7 +1,6 @@
 package br.com.crescer.imovie.entidade;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -40,7 +39,7 @@ public class Post implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "IDPOST")
-    private BigDecimal idpost;
+    private long idpost;
     
     @Basic(optional = false)
     @NotNull
@@ -64,31 +63,26 @@ public class Post implements Serializable {
     @ManyToOne(optional = false)
     private Usuario idusuario;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idpost")
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Comentario> comentarioSet;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idpost")
+    @OneToMany(cascade = CascadeType.ALL)
     private Set<Curtida> curtidaSet;
 
     public Post() {
     }
 
-    public Post(BigDecimal idpost) {
-        this.idpost = idpost;
-    }
-
-    public Post(BigDecimal idpost, String conteudo, Date datapost, String urlfoto) {
-        this.idpost = idpost;
+    public Post(String conteudo, Date datapost, String urlfoto) {
         this.conteudo = conteudo;
         this.datapost = datapost;
         this.urlfoto = urlfoto;
     }
 
-    public BigDecimal getIdpost() {
+    public long getIdpost() {
         return idpost;
     }
 
-    public void setIdpost(BigDecimal idpost) {
+    public void setIdpost(long idpost) {
         this.idpost = idpost;
     }
 
@@ -138,24 +132,6 @@ public class Post implements Serializable {
 
     public void setCurtidaSet(Set<Curtida> curtidaSet) {
         this.curtidaSet = curtidaSet;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Post)) {
-            return false;
-        }
-        Post other = (Post) object;
-        if ((this.idpost == null && other.idpost != null) || (this.idpost != null && !this.idpost.equals(other.idpost))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "br.com.crescer.imovie.entidade.Post[ idpost=" + idpost + " ]";
     }
     
 }

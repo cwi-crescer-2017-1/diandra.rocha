@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -75,21 +76,16 @@ public class Usuario implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idusuario")
     private Set<Post> postSet;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idusuarioenviou")
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Usuario> amizades;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idusuariorecebeu")
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Usuario> amizadesPendentes;
 
     public Usuario() {
     }
 
-    public Usuario(long idusuario) {
-        this.idusuario = idusuario;
-    }
-
-    public Usuario(long idusuario, String email, String senha, String nome, String sexo, Date datanascimento) {
-        this.idusuario = idusuario;
+    public Usuario(String email, String senha, String nome, String sexo, Date datanascimento) {
         this.email = email;
         this.senha = senha;
         this.nome = nome;
@@ -168,10 +164,4 @@ public class Usuario implements Serializable {
     public void setAmizadesPendentes(Set<Usuario> amizadesPendentes) {
         this.amizadesPendentes = amizadesPendentes;
     }
-
-    @Override
-    public String toString() {
-        return "br.com.crescer.imovie.entidade.Usuario[ idusuario=" + idusuario + " ]";
-    }
-    
 }

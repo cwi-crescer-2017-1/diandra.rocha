@@ -12,7 +12,7 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface ComentarioRepositorio extends CrudRepository<Comentario, Long> {
 
-  Page<Comentario> findByPostOrderByDataComentarioDesc(Post post, Pageable pageable);
+  Page<Comentario> findByPostOrderByDatacomentarioDesc(Post post, Pageable pageable);
     
   @Override
   Comentario save(Comentario comentario);
