@@ -1,0 +1,10 @@
+br\com\crescer\imovie\servico\UsuarioService.class
+br\com\crescer\imovie\entidade\Comentario.class
+br\com\crescer\imovie\repositorio\UsuarioRepositorio.class
+br\com\crescer\imovie\seguranca\SocialWebSecurityConfig.class
+br\com\crescer\imovie\entidade\Usuario.class
+br\com\crescer\imovie\seguranca\SocialUserDetailsService.class
+br\com\crescer\imovie\entidade\Curtida.class
+br\com\crescer\imovie\Run.class
+br\com\crescer\imovie\entidade\Amizade.class
+br\com\crescer\imovie\entidade\Post.class
