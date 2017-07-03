@@ -2,8 +2,8 @@ imovie.factory('cadastroService', function($http) {
 
     let urlBase = 'http://localhost:9090/api';
 
-    function cadastrar(usuario) {
-        return $http.post(urlBase + '/cadastro', usuario);
+    function cadastrar(novoUsuario) {
+        return $http.post(urlBase + '/cadastro', novoUsuario);
     };
 
     return {

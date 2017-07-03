@@ -44,6 +44,15 @@ imovie.config(function($routeProvider) {
                 }
             }
         })
+        .when('/perfilDetalhes', {
+            controller: 'PerfilDetalhesController',
+            templateUrl: 'views/perfilDetalhes.html',
+            resolve: {
+                autenticado: function(authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
+        })
         .otherwise({
             redirectTo: '/login'
         });
