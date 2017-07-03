@@ -19,27 +19,27 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class UsuarioController {
-    
+
     @Autowired
     UsuarioService service;
-    
+
     @Autowired
     ComponenteService componente;
-    
+
     @GetMapping(value = "/todosusuarios")
-    public List<Usuario> listarTodos(){
+    public List<Usuario> listarTodos() {
         return service.listar();
     }
-    
+
     @GetMapping(value = "usuario/{id}")
-    public Usuario gerPorId(@PathVariable long id){
+    public Usuario gerPorId(@PathVariable long id) {
         return service.obterUsuario(id);
     }
-    
+
     @GetMapping(value = "/amigos")
-    public Set<Usuario> geTodosOsUsuario(){
-       Usuario user = componente.getUserSession();
-       return user.getAmizades();
+    public Set<Usuario> geTodosOsUsuario() {
+        Usuario user = componente.getUserSession();
+        return user.getAmizades();
     }
 
     @DeleteMapping(value = "/excluiramigo/{Id}")
@@ -47,31 +47,28 @@ public class UsuarioController {
         Usuario user = componente.getUserSession();
         service.removerAmigo(user, id);
     }
-    
+
     @PutMapping(value = "/atualizarusuario")
     public void updateUsuario(@RequestBody Usuario usuario) throws Exception {
-        if(usuario.getEmail() != null){
-            throw new Exception("Email não pode ser alterado");
-        }
         service.salvar(usuario);
     }
-    
+
     @GetMapping(value = "/convidar/{id}")
-    public void enviarSolicitacao(@PathVariable long id) throws Exception{
-    Usuario usuarioSolicitante = componente.getUserSession();
-    service.enviarSolicitacao(usuarioSolicitante, id);
+    public void enviarSolicitacao(@PathVariable long id) throws Exception {
+        Usuario usuarioSolicitante = componente.getUserSession();
+        service.enviarSolicitacao(usuarioSolicitante, id);
     }
-    
+
     @GetMapping(value = "/aceitar/{id}")
-    public void aceitarSolicitacao(@PathVariable long id){
-    Usuario usuarioQueAceita = componente.getUserSession();
-    service.aceitarSolicitacao(usuarioQueAceita, id);
+    public void aceitarSolicitacao(@PathVariable long id) {
+        Usuario usuarioQueAceita = componente.getUserSession();
+        service.aceitarSolicitacao(usuarioQueAceita, id);
     }
 
     @DeleteMapping(value = "/excluirusuario")
-    public void deletarUsuario(){
+    public void deletarUsuario() {
         Usuario user = componente.getUserSession();
         service.exluir(user);
     }
-    
+
 }
