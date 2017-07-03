@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Diandra Rocha
  */
-@RestController(value = "/usuario")
+@RestController
 public class UsuarioController {
     
     @Autowired
@@ -26,12 +26,12 @@ public class UsuarioController {
     @Autowired
     ComponenteService componente;
     
-    @GetMapping
+    @GetMapping(value = "/todosusuarios")
     public List<Usuario> listarTodos(){
         return service.listar();
     }
     
-    @GetMapping(value = "{id}")
+    @GetMapping(value = "usuario/{id}")
     public Usuario gerPorId(@PathVariable long id){
         return service.obterUsuario(id);
     }
@@ -48,7 +48,7 @@ public class UsuarioController {
         service.removerAmigo(user, id);
     }
     
-    @PutMapping(value = "/atualizar")
+    @PutMapping(value = "/atualizarusuario")
     public void updateUsuario(@RequestBody Usuario usuario) throws Exception {
         if(usuario.getEmail() != null){
             throw new Exception("Email não pode ser alterado");

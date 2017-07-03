@@ -5,6 +5,7 @@ import br.com.crescer.imovie.entidade.Post;
 import br.com.crescer.imovie.entidade.Usuario;
 import br.com.crescer.imovie.repositorio.ComentarioRepositorio;
 import br.com.crescer.imovie.repositorio.PostRepositorio;
+import br.com.crescer.imovie.repositorio.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +21,8 @@ public class ComentarioService {
     @Autowired
     ComentarioRepositorio repo;
     @Autowired
+    UsuarioRepositorio repo3;
+    @Autowired
     PostRepositorio repo2; //Gambi Design Pattern
     
     public Page<Comentario> listarComentarios(long id, Pageable pageable){
@@ -28,8 +31,9 @@ public class ComentarioService {
     }
         
     public Comentario salvar(Post post, Usuario user, Comentario comentario){
-        comentario.setIdpost(post);
-        comentario.setIdusuario(user);
+        
+        comentario.setIdpost(repo2.findOne(post.getIdpost()));
+        comentario.setIdusuario(repo3.findOne(user.getIdusuario()));
         return repo.save(comentario);
     }
     

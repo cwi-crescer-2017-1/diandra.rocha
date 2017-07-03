@@ -7,12 +7,15 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,11 +30,14 @@ import javax.validation.constraints.Size;
 @Table(name = "POST")
 public class Post implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+     private static final String SEQ_NAME = "SEQ_POST";
     
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy = SEQUENCE, generator = SEQ_NAME)
+    @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)
     @Column(name = "IDPOST")
     private long idpost;
     
@@ -66,11 +72,10 @@ public class Post implements Serializable {
     public Post() {
     }
 
-    public Post(String conteudo, Date datapost, String urlfoto, Usuario idusuario) {
+    public Post(String conteudo, Date datapost, String urlfoto) {
         this.conteudo = conteudo;
         this.datapost = datapost;
         this.urlfoto = urlfoto;
-        this.idusuario = idusuario;
     }
 
     public long getIdpost() {

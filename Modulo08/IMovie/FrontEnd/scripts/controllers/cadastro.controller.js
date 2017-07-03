@@ -2,6 +2,8 @@ imovie.controller('CadastroController', function($scope, authService, $location,
 
     $scope.novoUsuario = {};
 
+    $scope.confirmar = confirmar;
+
     function confirmar(novoUsuario) {
         cadastroService.cadastrar(novoUsuario).then(function(response) {
                 var toast = toastr.success('Usuário cadastrado com sucesso', 'Imovie');

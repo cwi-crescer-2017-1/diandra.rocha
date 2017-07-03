@@ -5,7 +5,6 @@ import br.com.crescer.imovie.entidade.Usuario;
 import br.com.crescer.imovie.servico.ComponenteService;
 import br.com.crescer.imovie.servico.PostService;
 import br.com.crescer.imovie.servico.UsuarioService;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

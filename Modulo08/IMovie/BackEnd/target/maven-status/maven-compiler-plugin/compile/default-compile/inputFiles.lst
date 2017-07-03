@@ -1,22 +1,22 @@
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\seguranca\SocialRoles.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\repositorio\PostRepositorio.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\repositorio\ComentarioRepositorio.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\entidade\Post.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\servico\CurtidaService.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\controller\PostController.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\controller\CurtidaController.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\Run.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\controller\UsuarioController.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\entidade\Curtida.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\servico\ComentarioService.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\seguranca\SocialWebSecurityConfig.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\repositorio\CurtidaRepositorio.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\repositorio\UsuarioRepositorio.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\servico\ComponenteService.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\servico\PostService.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\entidade\Comentario.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\servico\UsuarioService.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\seguranca\SocialUserDetailsService.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\controller\ComentarioController.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\controller\LoginController.java
-C:\Users\Diandra Rocha\Desktop\CWI\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\entidade\Usuario.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\seguranca\SocialWebSecurityConfig.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\controller\CurtidaController.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\entidade\Curtida.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\seguranca\SocialRoles.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\servico\PostService.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\entidade\Post.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\repositorio\CurtidaRepositorio.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\repositorio\ComentarioRepositorio.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\Run.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\seguranca\SocialUserDetailsService.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\controller\PostController.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\entidade\Usuario.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\servico\CurtidaService.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\servico\ComponenteService.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\controller\LoginController.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\entidade\Comentario.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\repositorio\UsuarioRepositorio.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\servico\UsuarioService.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\repositorio\PostRepositorio.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\servico\ComentarioService.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\controller\UsuarioController.java
+C:\Users\diandra.rocha\Documents\diandra.rocha\Modulo08\IMovie\BackEnd\src\main\java\br\com\crescer\imovie\controller\ComentarioController.java

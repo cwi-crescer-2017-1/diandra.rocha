@@ -1,7 +1,12 @@
 imovie.controller('DashboardController', function($scope, authConfig, authService, toastr, $location, postService, usuarioService) {
+    $scope.menu = 3;
+    $scope.usuario = authService.getUsuario();
+    $scope.logout = authService.logout;
 
     $scope.comentarios = [];
     $scope.posts = [];
+
+    buscarPosts();
 
     function buscarPosts() {
         postService.feed().then(function(response) {

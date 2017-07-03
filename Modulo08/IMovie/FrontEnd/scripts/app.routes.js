@@ -26,15 +26,6 @@ imovie.config(function($routeProvider) {
                 }
             }
         })
-        .when('/postPorId/:id', {
-            controller: 'PostPorIdController',
-            templateUrl: 'views/postPorId.html',
-            resolve: {
-                autenticado: function(authService) {
-                    return authService.isAutenticadoPromise();
-                }
-            }
-        })
         .when('/usuarios', {
             controller: 'UsuariosController',
             templateUrl: 'views/usuarios.html',

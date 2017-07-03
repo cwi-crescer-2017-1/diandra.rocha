@@ -1,9 +1,9 @@
 imovie.factory('usuarioService', function($http) {
 
-    let urlBase = 'http://localhost:9090/api/usuario';
+    let urlBase = 'http://localhost:9090/api';
 
     function listarTodos() {
-        return $http.get(urlBase);
+        return $http.get(urlBase + "/todosusuarios");
     };
 
     function listarAmigosDoUsuario() {
@@ -15,7 +15,7 @@ imovie.factory('usuarioService', function($http) {
     }
 
     function atualizarPerfil(usuario) {
-        return $http.put(urlBase + '/atualizar', usuario);
+        return $http.put(urlBase + '/atualizarusuario', usuario);
     }
 
     function convidarAmigo(id) {

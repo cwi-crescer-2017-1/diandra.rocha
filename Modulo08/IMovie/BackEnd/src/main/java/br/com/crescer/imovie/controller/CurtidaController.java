@@ -30,7 +30,7 @@ public class CurtidaController {
     ComponenteService componente;
   
     
-    @GetMapping(value = "/curtir/{ID}")
+    @GetMapping(value = "/curtir/{id}")
     public Curtida adicionarCurtida(@PathVariable long id){
         Usuario curtidor = componente.getUserSession();
         Post curtido = serviceP.buscar(id);
@@ -40,7 +40,7 @@ public class CurtidaController {
         
     }
     
-    @DeleteMapping(value = "/descurtir/{ID}")
+    @DeleteMapping(value = "/descurtir/{id}")
     public void retirarCurtida(@PathVariable long id){
         Usuario user = componente.getUserSession();
         Curtida excluir = service.encontrarPorUsuario(user);
