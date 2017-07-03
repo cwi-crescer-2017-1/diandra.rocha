@@ -1,0 +1,1 @@
+var imovie = angular.module('imovie', ['ngRoute', 'ngAnimate', 'toastr', 'auth', 'ngStorage', 'ui.bootstrap', 'angular-loading-bar']);

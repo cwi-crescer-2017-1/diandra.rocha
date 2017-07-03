@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <img class="img-logo" src="images/logo.png" alt="logo">
+    <div class="container background-white">
+        <form name="loginForm" ng-submit="loginForm.$valid && login(usuario)">
+            <div class="form-group">
+                <label>E-mail: </label>
+                <input type="email" class="form-control" name="email" ng-model="usuario.email" placeholder="Informe seu e-mail" required>
+            </div>
+            <div class="form-group">
+                <label>Senha: </label>
+                <input type="password" class="form-control" name="senha" ng-model="usuario.senha" placeholder="Informe sua senha" required>
+            </div>
+            <button type="submit" class="btn btn-default btn-block" ng-disabled="!loginForm.$valid">Acesse sua conta!</button>
+        </form>
+    </div>
+</div>

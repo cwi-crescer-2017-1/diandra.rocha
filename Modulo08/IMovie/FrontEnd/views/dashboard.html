@@ -1,0 +1,29 @@
+<menu active="menu" user="usuario" logout="logout" class="no-padding"></menu>
+
+<div class="container-fluid">
+    <h3>Produtos</h3>
+    <hr>
+    <div class="col-md-8 col-md-offset-2" ng-repeat="post in posts">
+        <div class="white-card">
+            <img class="card-image" ng-src="{{post.urlfoto}}" />
+            <h4 class="text-center">{{usuario.nome}}</h4>
+            <p>{{post.conteudo}}</p>
+            <strong>Data: </strong>
+            <p>{{post.datapost}}</p>
+        </div>
+    </div>
+
+    <div class="container-fluid mb-20">
+        <h3>Comentarios</h3>
+        <hr>
+        <div class="col-md-8 col-md-offset-2" ng-repeat="comentario in comentarios">
+            <div class="white-card h-180">
+                <h4 class="text-center">{{comentario.idusuario.nome}}</h4>
+                <p>{{comentario.conteudo}}</p>
+                <strong>Data: </strong>
+                <p>{{comentario.datacomentario}}</p>
+            </div>
+        </div>
+
+    </div>
+</div>

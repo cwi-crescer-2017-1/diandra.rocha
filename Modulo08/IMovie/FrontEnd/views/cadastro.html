@@ -1,0 +1,44 @@
+<div class="col-md-8 col-md-offset-2">
+
+    <form name="novoUserForm" novalidate>
+
+
+        <legend> Cadastro</legend>
+
+        <hr>
+
+        <div class="form-group">
+            <label for="nome"> Email: </label>
+            <span ng-show="novoUserForm.email.$error.required && novoUserForm.$submitted">Campo Obrigatório</span>
+            <input type="email" class="form-control" name="nome" ng-model="novoUsuario.email" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="senha"> Senha: </label>
+            <span ng-show="novoUserForm.senha.$error.required && novoUserForm.$submitted">Campo Obrigatório</span>
+            <input type="password" class="form-control" name="senha" ng-model="novoUsuario.senha" />
+        </div>
+
+        <div class="form-group">
+            <label for="nome"> Nome: </label>
+            <span ng-show="novoUserForm.nome.$error.required && novoUserForm.$submitted">Campo Obrigatório</span>
+            <input type="text" class="form-control" name="nome" ng-model="novoUsuario.nome" />
+        </div>
+
+        <div class="form-group">
+            <label for="sexo"> Sexo: </label>
+            <span ng-show="novoUserForm.sexo.$error.required && novoUserForm.$submitted">Campo Obrigatório</span>
+            <input type="text" class="form-control" name="sexo" ng-model="novoUsuario.sexo" />
+        </div>
+
+        <div class="form-group">
+            <label for="datanascimento"> Nome: </label>
+            <span ng-show="novoUserForm.datanascimento.$error.required && novoUserForm.$submitted">Campo Obrigatório</span>
+            <input type="date" class="form-control" name="datanascimento" ng-model="novoUsuario.datanascimento" />
+        </div>
+
+        <div>
+            <button type="submit" ng-click="confirmar(novoUsuario)" ng-disabled="!novoUserForm.$valid" class="btn btn-default btn-block">Confimar</button>
+        </div>
+    </form>
+</div>
