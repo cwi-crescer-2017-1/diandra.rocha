@@ -25,12 +25,6 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "POST")
-@NamedQueries({
-    @NamedQuery(name = "Post.findAll", query = "SELECT p FROM Post p"),
-    @NamedQuery(name = "Post.findByIdpost", query = "SELECT p FROM Post p WHERE p.idpost = :idpost"),
-    @NamedQuery(name = "Post.findByConteudo", query = "SELECT p FROM Post p WHERE p.conteudo = :conteudo"),
-    @NamedQuery(name = "Post.findByDatapost", query = "SELECT p FROM Post p WHERE p.datapost = :datapost"),
-    @NamedQuery(name = "Post.findByUrlfoto", query = "SELECT p FROM Post p WHERE p.urlfoto = :urlfoto")})
 public class Post implements Serializable {
 
     private static final long serialVersionUID = 1L;

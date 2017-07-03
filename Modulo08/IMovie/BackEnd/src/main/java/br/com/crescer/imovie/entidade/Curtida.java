@@ -19,9 +19,6 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "CURTIDA")
-@NamedQueries({
-    @NamedQuery(name = "Curtida.findAll", query = "SELECT c FROM Curtida c"),
-    @NamedQuery(name = "Curtida.findByIdcurtida", query = "SELECT c FROM Curtida c WHERE c.idcurtida = :idcurtida")})
 public class Curtida implements Serializable {
 
     private static final long serialVersionUID = 1L;

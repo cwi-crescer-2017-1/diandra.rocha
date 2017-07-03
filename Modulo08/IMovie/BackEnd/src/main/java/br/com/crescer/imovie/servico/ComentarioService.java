@@ -5,15 +5,16 @@ import br.com.crescer.imovie.entidade.Post;
 import br.com.crescer.imovie.entidade.Usuario;
 import br.com.crescer.imovie.repositorio.ComentarioRepositorio;
 import br.com.crescer.imovie.repositorio.PostRepositorio;
-import java.awt.print.Pageable;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Diandra Rocha
  */
+@Service
 public class ComentarioService {
     
     @Autowired
@@ -23,7 +24,7 @@ public class ComentarioService {
     
     public Page<Comentario> listarComentarios(long id, Pageable pageable){
         Post encontrar = repo2.findOne(id);
-        return repo.findByPostOrderByDatacomentarioDesc(encontrar, pageable);
+        return repo.findByIdpostOrderByDatacomentarioDesc(encontrar, pageable);
     }
         
     public Comentario salvar(Post post, Usuario user, Comentario comentario){

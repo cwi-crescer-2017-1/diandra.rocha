@@ -33,7 +33,7 @@ public class UsuarioService{
             throw new Exception("Usuário inválido");
         }
         
-        if(user.getIdusuario() < 0){
+        if(user.getIdusuario() == 0){
             user.setSenha(cript.encode(user.getSenha()));
         }
  

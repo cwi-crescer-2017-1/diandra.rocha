@@ -6,11 +6,13 @@ import br.com.crescer.imovie.entidade.Usuario;
 import br.com.crescer.imovie.repositorio.CurtidaRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Diandra Rocha
  */
+@Service
 public class CurtidaService {
     
     @Autowired

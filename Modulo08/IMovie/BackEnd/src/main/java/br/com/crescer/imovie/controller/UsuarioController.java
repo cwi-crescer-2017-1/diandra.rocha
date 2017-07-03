@@ -36,11 +36,6 @@ public class UsuarioController {
         return service.obterUsuario(id);
     }
     
-    @GetMapping(value = "/usuarioAtual")
-    public Usuario getUsuarioAtual(){
-        return componente.getUserSession();
-    }
-    
     @GetMapping(value = "/amigos")
     public Set<Usuario> geTodosOsUsuario(){
        Usuario user = componente.getUserSession();
@@ -73,7 +68,7 @@ public class UsuarioController {
     service.aceitarSolicitacao(usuarioQueAceita, id);
     }
 
-    @DeleteMapping(value = "/excluiusuario/")
+    @DeleteMapping(value = "/excluirusuario")
     public void deletarUsuario(){
         Usuario user = componente.getUserSession();
         service.exluir(user);

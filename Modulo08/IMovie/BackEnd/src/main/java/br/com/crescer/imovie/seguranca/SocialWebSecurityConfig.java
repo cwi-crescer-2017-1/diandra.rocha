@@ -43,7 +43,8 @@ public class SocialWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity webSecurity) throws Exception {
         webSecurity.ignoring()
-                .antMatchers(POST, "/home");
+                .antMatchers(POST, "/cadastro");
+                
     }
 
   @Bean

@@ -7,11 +7,12 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,61 +25,55 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "USUARIO")
-@NamedQueries({
-    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
-    @NamedQuery(name = "Usuario.findByIdusuario", query = "SELECT u FROM Usuario u WHERE u.idusuario = :idusuario"),
-    @NamedQuery(name = "Usuario.findByEmail", query = "SELECT u FROM Usuario u WHERE u.email = :email"),
-    @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha"),
-    @NamedQuery(name = "Usuario.findByNome", query = "SELECT u FROM Usuario u WHERE u.nome = :nome"),
-    @NamedQuery(name = "Usuario.findBySexo", query = "SELECT u FROM Usuario u WHERE u.sexo = :sexo"),
-    @NamedQuery(name = "Usuario.findByDatanascimento", query = "SELECT u FROM Usuario u WHERE u.datanascimento = :datanascimento")})
 public class Usuario implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final String SEQ_NAME = "SEQ_USER";
     
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy = SEQUENCE, generator = SEQ_NAME)
+    @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)
     @Column(name = "IDUSUARIO")
     private long idusuario;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="E-mail inválido")//if the field contains email address consider using this annotation to enforce field validation
-    
+
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "EMAIL")
     private String email;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 500)
     @Column(name = "SENHA")
     private String senha;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "NOME")
     private String nome;
-    
+
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2)
     @Column(name = "SEXO")
     private String sexo;
-    
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATANASCIMENTO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date datanascimento;
-    
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idusuario")
     private Set<Post> postSet;
-    
+
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Usuario> amizades;
-    
+
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Usuario> amizadesPendentes;
 

@@ -26,7 +26,7 @@ public class SocialUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException(String.format("Não encontrado um usuário com esse e-mail %s", email));
         }
         
-        return new User( u.getEmail() , u.getSenha() ,null);
+        return new User( u.getEmail() , u.getSenha(), SocialRoles.valuesToList() );
     }
 
 }

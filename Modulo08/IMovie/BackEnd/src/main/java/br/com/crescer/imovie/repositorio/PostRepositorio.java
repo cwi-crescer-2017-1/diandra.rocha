@@ -2,9 +2,9 @@ package br.com.crescer.imovie.repositorio;
 
 import br.com.crescer.imovie.entidade.Post;
 import br.com.crescer.imovie.entidade.Usuario;
-import java.awt.print.Pageable;
 import java.util.Set;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
@@ -13,9 +13,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 public interface PostRepositorio extends PagingAndSortingRepository<Post, Long> {
     
-  Page<Post> findById(long id, Pageable pageable);
-  
-  Page<Post> findByIdUsuario(Usuario user, Pageable pageable);
+    
+  Page<Post> findByIdusuario(Usuario idusuario, Pageable p);
   
   @Override
   Post findOne(Long id); 
@@ -23,7 +22,7 @@ public interface PostRepositorio extends PagingAndSortingRepository<Post, Long> 
   @Override 
   Post save(Post post);
   
-  Page<Post> findByUsuarioOrderByDataPostDesc(Set<Usuario> usuario, Pageable pageable);
+  Page<Post> findByIdusuarioInOrderByDatapostDesc(Set<Usuario> usuario, Pageable pageable);
   
   @Override 
   void delete(Post post);

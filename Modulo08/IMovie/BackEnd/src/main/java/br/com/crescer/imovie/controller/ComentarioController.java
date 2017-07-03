@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Diandra Rocha
  */
-@RestController(value="/comentario")
+@RestController
 public class ComentarioController {
     
     @Autowired
@@ -27,7 +27,7 @@ public class ComentarioController {
     @Autowired
     ComponenteService componente;
     
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/descomentar/{id}")
     public void deletarComentario(@PathVariable long id){
         Comentario excluir = service.buscarPorId(id);
         service.excluir(excluir);

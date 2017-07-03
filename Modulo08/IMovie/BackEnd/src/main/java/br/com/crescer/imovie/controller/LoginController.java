@@ -3,6 +3,7 @@ package br.com.crescer.imovie.controller;
 import br.com.crescer.imovie.entidade.Usuario;
 import br.com.crescer.imovie.servico.ComponenteService;
 import br.com.crescer.imovie.servico.UsuarioService;
+import java.util.HashMap;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,16 +18,22 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/home")
+@RequestMapping
 public class LoginController {
     
    @Autowired
     private UsuarioService service;
+   @Autowired
     private ComponenteService componente;
     
     @GetMapping("/login")
-    public Usuario getUsuario() {
-        return componente.getUserSession();
+    public HashMap<String, Usuario> getUsuario() {
+        
+        HashMap<String, Usuario> hash = new HashMap();
+        Usuario user =  componente.getUserSession();
+        hash.put("dados", user);
+        
+       return hash;
     }
 
     @PostMapping("/cadastro")
