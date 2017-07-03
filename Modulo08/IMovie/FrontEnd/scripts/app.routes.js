@@ -35,6 +35,15 @@ imovie.config(function($routeProvider) {
                 }
             }
         })
+        .when('/amigos', {
+            controller: 'AmigosController',
+            templateUrl: 'views/amigos.html',
+            resolve: {
+                autenticado: function(authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
+        })
         .otherwise({
             redirectTo: '/login'
         });
