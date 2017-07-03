@@ -3,6 +3,7 @@ package br.com.crescer.imovie.servico;
 import br.com.crescer.imovie.entidade.Post;
 import br.com.crescer.imovie.entidade.Usuario;
 import br.com.crescer.imovie.repositorio.PostRepositorio;
+import br.com.crescer.imovie.repositorio.UsuarioRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,8 @@ public class PostService {
 
     @Autowired
     PostRepositorio repo;
+    @Autowired
+    UsuarioRepositorio repo2;
 
     public Page<Post> feedAlheio(Usuario user, Pageable p) {
         return repo.findByIdusuario(user, p);
@@ -31,7 +34,9 @@ public class PostService {
         return repo.findByIdusuario(user, p);
     }
 
-    public Post salvar(Post post) {
+    public Post salvar(Post post, Usuario user) {
+        Usuario usuario = repo2.findByEmail(user.getEmail());
+        post.setIdusuario(usuario);
         return repo.save(post);
     }
 

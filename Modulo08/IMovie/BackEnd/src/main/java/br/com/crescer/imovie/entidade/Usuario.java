@@ -1,5 +1,6 @@
 package br.com.crescer.imovie.entidade;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -68,12 +69,15 @@ public class Usuario implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date datanascimento;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idusuario")
     private Set<Post> postSet;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Usuario> amizades;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Usuario> amizadesPendentes;
 

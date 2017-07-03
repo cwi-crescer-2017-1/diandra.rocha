@@ -7,8 +7,8 @@ imovie.controller('DashboardController', function($scope, authConfig, authServic
         postService.feed().then(function(response) {
                 var toast = toastr.success('Feed carregado com sucesso', 'Imovie');
                 toastr.refreshTimer(toast, 2000);
-                $scope.posts = response.data;
-                $scope.comentarios = response.data;
+                $scope.posts = response.data.content;
+                $scope.comentarios = response.data.content;
             },
 
             function(response) {

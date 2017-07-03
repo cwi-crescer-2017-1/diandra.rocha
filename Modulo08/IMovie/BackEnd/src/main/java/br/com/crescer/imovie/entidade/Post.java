@@ -66,10 +66,11 @@ public class Post implements Serializable {
     public Post() {
     }
 
-    public Post(String conteudo, Date datapost, String urlfoto) {
+    public Post(String conteudo, Date datapost, String urlfoto, Usuario idusuario) {
         this.conteudo = conteudo;
         this.datapost = datapost;
         this.urlfoto = urlfoto;
+        this.idusuario = idusuario;
     }
 
     public long getIdpost() {

@@ -5,6 +5,7 @@ import br.com.crescer.imovie.entidade.Usuario;
 import br.com.crescer.imovie.servico.ComponenteService;
 import br.com.crescer.imovie.servico.PostService;
 import br.com.crescer.imovie.servico.UsuarioService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,6 +29,7 @@ public class PostController {
     ComponenteService componente;
     @Autowired
     UsuarioService service1;
+    
 
     @GetMapping(value = "/feed/{id}")
     public Page<Post> feedAlheio(@PathVariable long id, Pageable p) {
@@ -49,7 +51,8 @@ public class PostController {
     
     @PostMapping(value = "/salvarpost")
     public Post salvarPost(@RequestBody Post post){
-        return service.salvar(post);
+        
+        return service.salvar(post, componente.getUserSession());
     }
     
     @DeleteMapping(value = "/deletarpost/{id}")
