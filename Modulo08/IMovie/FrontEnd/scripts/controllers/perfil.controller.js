@@ -50,7 +50,6 @@ imovie.controller('PerfilController', function($scope, authConfig, authService, 
     }
 
     function atualizarPerfil(usuario) {
-        usuario.senha = usuario.senha;
         usuarioService.atualizarPerfil(usuario).then(function(response) {
                 var toast = toastr.success('Usuário alterado com sucesso', 'Imovie');
                 toastr.refreshTimer(toast, 2000);

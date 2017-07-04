@@ -12,6 +12,10 @@ body {
     display: none;
 }
 
+.email {
+    display: none;
+}
+
 .post {
     display: table;
     margin: 0 auto;

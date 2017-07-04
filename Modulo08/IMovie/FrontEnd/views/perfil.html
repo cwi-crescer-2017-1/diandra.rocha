@@ -96,7 +96,7 @@
                 <div class="form-group">
                     <label for="email"> Email: </label>
                     <span ng-show="alterarUsuario.email.$error.required && alterarUsuario.$submitted">Campo Obrigatório</span>
-                    <input type="email" class="form-control" name="email" ng-model="usuario.email" required/>
+                    <input type="email" class="form-control email" name="email" ng-model="usuario.email" required/>
                 </div>
 
                 <div class="form-group senha">
@@ -124,7 +124,7 @@
                 </div>
 
                 <div>
-                    <button type="submit" ng-submit="atualizarPerfil(usuario)" ng-disabled="!novoUserForm.$valid" class="btn btn-default btn-block">Alterar</button>
+                    <button type="submit" ng-click="atualizarPerfil(usuario)" class="btn btn-default btn-block">Alterar</button>
                 </div>
         </div>
 

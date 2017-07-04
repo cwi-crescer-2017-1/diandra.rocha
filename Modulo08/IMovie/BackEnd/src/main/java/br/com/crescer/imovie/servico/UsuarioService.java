@@ -33,15 +33,9 @@ public class UsuarioService {
             throw new Exception("Usuário inválido");
         }
 
-        if (user.getIdusuario() != 0) {
-            Usuario usuario = repo.findByEmail(user.getEmail());
-            if (usuario != null) {
-                throw new Exception("Email já existente na base de dados");
-            }
-
-        } else {
+        if (user.getIdusuario() == 0) {
             user.setSenha(cript.encode(user.getSenha()));
-            
+
         }
         return repo.save(user);
 
@@ -97,8 +91,8 @@ public class UsuarioService {
         repo.save(user);
         repo.save(remover);
     }
-    
-    public Set<Usuario> obterPendentes(Usuario user){
+
+    public Set<Usuario> obterPendentes(Usuario user) {
         return repo.findOne(user.getIdusuario()).getAmizadesPendentes();
     }
 
