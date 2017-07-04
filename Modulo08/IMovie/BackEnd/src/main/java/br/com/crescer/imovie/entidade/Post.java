@@ -1,6 +1,7 @@
 package br.com.crescer.imovie.entidade;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.Basic;
@@ -12,8 +13,6 @@ import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -53,12 +52,6 @@ public class Post implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date datapost;
     
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "URLFOTO")
-    private String urlfoto;
-    
     @JoinColumn(name = "IDUSUARIO", referencedColumnName = "IDUSUARIO")
     @ManyToOne(optional = false)
     private Usuario idusuario;
@@ -72,10 +65,8 @@ public class Post implements Serializable {
     public Post() {
     }
 
-    public Post(String conteudo, String urlfoto) {
+    public Post(String conteudo) {
         this.conteudo = conteudo;
-        this.datapost = new Date();
-        this.urlfoto = urlfoto;
     }
 
     public long getIdpost() {
@@ -100,14 +91,6 @@ public class Post implements Serializable {
 
     public void setDatapost(Date datapost) {
         this.datapost = datapost;
-    }
-
-    public String getUrlfoto() {
-        return urlfoto;
-    }
-
-    public void setUrlfoto(String urlfoto) {
-        this.urlfoto = urlfoto;
     }
 
     public Usuario getIdusuario() {

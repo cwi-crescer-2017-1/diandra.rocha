@@ -1,5 +1,6 @@
 package br.com.crescer.imovie.controller;
 
+import br.com.crescer.imovie.entidade.Post;
 import br.com.crescer.imovie.entidade.Usuario;
 import br.com.crescer.imovie.servico.ComponenteService;
 import br.com.crescer.imovie.servico.UsuarioService;
@@ -69,6 +70,11 @@ public class UsuarioController {
     public void deletarUsuario() {
         Usuario user = componente.getUserSession();
         service.exluir(user);
+    }
+    
+    @GetMapping("/solicitacoes")
+    public Set<Usuario> obterPendentes(){
+        return service.obterPendentes(componente.getUserSession());
     }
 
 }

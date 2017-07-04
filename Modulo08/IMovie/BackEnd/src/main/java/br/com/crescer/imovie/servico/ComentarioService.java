@@ -6,7 +6,7 @@ import br.com.crescer.imovie.entidade.Usuario;
 import br.com.crescer.imovie.repositorio.ComentarioRepositorio;
 import br.com.crescer.imovie.repositorio.PostRepositorio;
 import br.com.crescer.imovie.repositorio.UsuarioRepositorio;
-import java.util.List;
+import java.util.Date;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -36,7 +36,7 @@ public class ComentarioService {
         Post postagem = repo2.findOne(post.getIdpost());
         comentario.setIdpost(postagem);
         comentario.setIdusuario(repo3.findOne(user.getIdusuario()));
-        
+        comentario.setDatacomentario(new Date());
         repo2.save(postagem);
         return repo.save(comentario);
     }

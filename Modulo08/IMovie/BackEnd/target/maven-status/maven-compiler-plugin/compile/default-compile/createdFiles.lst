@@ -1,6 +1,7 @@
 br\com\crescer\imovie\repositorio\CurtidaRepositorio.class
 br\com\crescer\imovie\controller\LoginController.class
 br\com\crescer\imovie\repositorio\PostRepositorio.class
+br\com\crescer\imovie\seguranca\SocialRoles.class
 br\com\crescer\imovie\servico\PostService.class
 br\com\crescer\imovie\servico\UsuarioService.class
 br\com\crescer\imovie\controller\UsuarioController.class

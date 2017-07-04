@@ -4,7 +4,22 @@ imovie.controller('PerfilController', function($scope, authConfig, authService, 
     $scope.logout = authService.logout;
 
     $scope.aceitarAmigo = aceitarAmigo;
+    $scope.solicitacoes = [];
     buscarFeed();
+    listarSolicitacoes();
+
+    function listarSolicitacoes() {
+        usuarioService.listarSolicitacoes().then(function(response) {
+                var toast = toastr.success('Solicitações carregadas com sucesso', 'Imovie');
+                toastr.refreshTimer(toast, 2000);
+                $scope.solicitacoes = response.data;
+            },
+
+            function(response) {
+                var toast = toastr.error('Solicitações não carregadas', 'Imovie');
+                toastr.refreshTimer(toast, 2000);
+            });
+    }
 
     function buscarFeed() {
         postService.meuFeed().then(function(response) {
@@ -32,8 +47,9 @@ imovie.controller('PerfilController', function($scope, authConfig, authService, 
             });
     }
 
-    function atualizarPerfil(id) {
-        usuarioService.atualizarPerfil(id).then(function(response) {
+    function atualizarPerfil(usuario) {
+        usuario.senha = usuario.senha;
+        usuarioService.atualizarPerfil(usuario).then(function(response) {
                 var toast = toastr.success('Usuário alterado com sucesso', 'Imovie');
                 toastr.refreshTimer(toast, 2000);
                 $scope.usuario = response.data.usuario;

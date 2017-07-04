@@ -1,7 +1,6 @@
 package br.com.crescer.imovie.servico;
 
 import br.com.crescer.imovie.entidade.Usuario;
-import br.com.crescer.imovie.handler.HandlerException;
 import br.com.crescer.imovie.repositorio.UsuarioRepositorio;
 import java.util.List;
 import java.util.Set;
@@ -97,6 +96,10 @@ public class UsuarioService {
 
         repo.save(user);
         repo.save(remover);
+    }
+    
+    public Set<Usuario> obterPendentes(Usuario user){
+        return repo.findOne(user.getIdusuario()).getAmizadesPendentes();
     }
 
 }

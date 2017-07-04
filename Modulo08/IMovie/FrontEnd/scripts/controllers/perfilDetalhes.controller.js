@@ -1,4 +1,4 @@
-imoveis.controller('PerfilDetalhesController', function($scope, authService, $location, toastr, usuarioService, postService, $routeParams) {
+imovie.controller('PerfilDetalhesController', function($scope, authService, $location, toastr, usuarioService, postService, $routeParams) {
     $scope.usuario = authService.getUsuario();
     $scope.logout = authService.logout;
 
@@ -20,6 +20,4 @@ imoveis.controller('PerfilDetalhesController', function($scope, authService, $lo
             $scope.postsUsuario = response.data.content;
         })
     }
-
-
 });

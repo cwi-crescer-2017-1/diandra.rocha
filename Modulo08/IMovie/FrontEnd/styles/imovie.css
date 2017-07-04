@@ -1,13 +1,11 @@
+.navbar-default {
+    background: black;
+}
+
 body {
     background-image: url("/images/background.jpg");
-}
-
-table table-hover {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-.navbar-default {
-    background: rgba(255, 255, 255, 0.25);
+    background-size: cover;
+    background-position: center;
 }
 
 .post {

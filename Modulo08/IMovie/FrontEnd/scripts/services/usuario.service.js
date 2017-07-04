@@ -15,7 +15,7 @@ imovie.factory('usuarioService', function($http) {
     }
 
     function obterPorId(id) {
-        return $http.ger(urlBase + '/usuario/' + id);
+        return $http.get(urlBase + '/usuario/' + id);
     }
 
     function atualizarPerfil(usuario) {
@@ -30,6 +30,10 @@ imovie.factory('usuarioService', function($http) {
         return $http.get(urlBase + '/aceitar/' + id);
     }
 
+    function listarSolicitacoes() {
+        return $http.get(urlBase + "/solicitacoes");
+    }
+
     function excluirConta() {
         return $http.delete(urlBase + '/excluirusuario');
     }
@@ -42,6 +46,7 @@ imovie.factory('usuarioService', function($http) {
         convidarAmigo: convidarAmigo,
         aceitarAmigo: aceitarAmigo,
         excluirConta: excluirConta,
-        obterPorId: obterPorId
+        obterPorId: obterPorId,
+        listarSolicitacoes: listarSolicitacoes
     };
 });

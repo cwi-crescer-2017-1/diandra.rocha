@@ -68,7 +68,6 @@ public class Comentario implements Serializable {
 
     public Comentario(String conteudo){
         this.conteudo = conteudo;
-        this.datacomentario = new Date();
     }
 
     public long getIdcomentario() {

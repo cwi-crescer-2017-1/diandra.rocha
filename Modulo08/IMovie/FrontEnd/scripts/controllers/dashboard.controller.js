@@ -7,6 +7,12 @@ imovie.controller('DashboardController', function($scope, authConfig, authServic
     $scope.posts = [];
     $scope.likes = 0;
     $scope.novoPost = {};
+    $scope.salvar = salvar;
+    $scope.curtir = curtir;
+    $scope.descurtir = descurtir;
+    $scope.comentar = comentar;
+    $scope.descomentar = descomentar;
+
 
     buscarPosts();
 
@@ -16,7 +22,7 @@ imovie.controller('DashboardController', function($scope, authConfig, authServic
                 toastr.refreshTimer(toast, 2000);
                 $scope.posts = response.data.content;
                 $scope.comentarios = response.data.content;
-                $scope.likes = response.data.content.lentgh();
+                $scope.likes = response.data.content.length;
             },
 
             function(response) {
@@ -30,6 +36,7 @@ imovie.controller('DashboardController', function($scope, authConfig, authServic
                 var toast = toastr.success('Post postado com sucesso', 'Imovie');
                 toastr.refreshTimer(toast, 2000);
                 buscarPosts();
+                $scope.novoPost = {};
             },
 
             function(response) {

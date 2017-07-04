@@ -1,7 +1,7 @@
 <menu active="menu" user="usuario" logout="logout" class="no-padding"></menu>
 
 <div class="container-fluid">
-    <div class="col-md-8 perfil">
+    <div class="col-md-8">
         <div class="container" style="margin-top: 20px; margin-bottom: 20px;">
             <div class="row panel">
                 <div class="col-md-8  col-xs-12">
@@ -20,7 +20,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -37,97 +36,95 @@
                     </i>
         </uib-accordion-heading>
 
-        <div class="col-md-8" ng-repeat="post in posts">
+
+        <div class="col-md-8" ng-repeat="post in posts" style="margin-top:20px;">
             <div class="white-card">
-                <img class="card-image" ng-src="{{post.urlfoto}}" />
                 <h4 class="text-center">{{post.idusuario.nome}}</h4>
                 <p>{{post.conteudo}}</p>
                 <strong>Data: </strong>
-                <p>{{post.datapost}}</p>
+                <p>{{post.datapost | date:"dd/MM/yyyy"}}</p>
                 <hr>
             </div>
         </div>
+    </div>
 
-        <div uib-accordion-group class="panel-default" is-open="status.open2">
-            <uib-accordion-heading>
-                Solicitações
-                <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open2, 'glyphicon-chevron-right': !status.open2}">
+    <div uib-accordion-group class="panel-default" is-open="status.open2">
+        <uib-accordion-heading>
+            Solicitações
+            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open2, 'glyphicon-chevron-right': !status.open2}">
                     </i>
-            </uib-accordion-heading>
-            <div class="col-md-11">
-                <div style="margin-top: 50px;">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>Email</th>
-                                <th>Sexo</th>
-                                <th>Aceitar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="solicitacao in solicitacoes | orderBy:'nome'">
-                                <th scope="row">{{solicitacao.nome}}</th>
-                                <td>{{solicitacao.sexo}}</td>
-                                <td>{{solicitacao.email}}</td>
-                                <td><button class="btn btn-default btn-block" ng-click="aceitarAmigo(solicitacao.idusuario)">Aceitar</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        </uib-accordion-heading>
+
+        <div class="col-md-11">
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Sexo</th>
+                            <th>Aceitar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="solicitacao in solicitacoes | orderBy:'nome'">
+                            <th scope="row">{{solicitacao.nome}}</th>
+                            <td>{{solicitacao.sexo}}</td>
+                            <td>{{solicitacao.email}}</td>
+                            <td><button class="btn btn-default btn-block" ng-click="aceitarAmigo(solicitacao.idusuario)">Aceitar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
+        </div>
+    </div>
 
-
-            <div uib-accordion-group class="panel-default" is-open="status.open2">
-                <uib-accordion-heading>
-                    Alterar
-                    <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open2, 'glyphicon-chevron-right': !status.open2}">
+    <div uib-accordion-group class="panel-default" is-open="status.open3">
+        <uib-accordion-heading>
+            Alterar
+            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open3, 'glyphicon-chevron-right': !status.open3}">
                     </i>
-                </uib-accordion-heading>
+        </uib-accordion-heading>
 
-                <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2">
 
-                    <form name="alterarUsuario" novalidate>
+            <form name="alterarUsuario" novalidate>
 
 
-                        <legend> Alterar</legend>
+                <legend> Alterar</legend>
 
-                        <hr>
+                <hr>
 
-                        <div class="form-group">
-                            <label for="email"> Email: </label>
-                            <span ng-show="alterarUsuario.email.$error.required && alterarUsuario.$submitted">Campo Obrigatório</span>
-                            <input type="email" class="form-control" name="email" ng-model="usuario.email" required/>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="senha"> Senha: </label>
-                            <span ng-show="alterarUsuario.senha.$error.required && alterarUsuario.$submitted">Campo Obrigatório</span>
-                            <input type="password" class="form-control" name="senha" ng-model="usuario.senha" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="nome"> Nome: </label>
-                            <span ng-show="alterarUsuario.nome.$error.required && alterarUsuario.$submitted">Campo Obrigatório</span>
-                            <input type="text" class="form-control" name="nome" ng-model="usuario.nome" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="sexo"> Sexo: </label>
-                            <span ng-show="alterarUsuario.sexo.$error.required && alterarUsuario.$submitted">Campo Obrigatório</span>
-                            <input type="text" class="form-control" name="sexo" ng-model="usuario.sexo" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="datanascimento"> Data de Nascimento: </label>
-                            <span ng-show="alterarUsuario.datanascimento.$error.required && alterarUsuario.$submitted">Campo Obrigatório</span>
-                            <input type="date" class="form-control" name="datanascimento" ng-model="usuario.datanascimento" />
-                        </div>
-
-                        <div>
-                            <button type="submit" ng-click="atualizarPerfil(usuario)" ng-disabled="!novoUserForm.$valid" class="btn btn-default btn-block">Alterar</button>
-                        </div>
-                    </form>
+                <div class="form-group">
+                    <label for="email"> Email: </label>
+                    <span ng-show="alterarUsuario.email.$error.required && alterarUsuario.$submitted">Campo Obrigatório</span>
+                    <input type="email" class="form-control" name="email" ng-model="usuario.email" required/>
                 </div>
+
+                <div class="form-group">
+                    <label for="nome"> Nome: </label>
+                    <span ng-show="alterarUsuario.nome.$error.required && alterarUsuario.$submitted">Campo Obrigatório</span>
+                    <input type="text" class="form-control" name="nome" ng-model="usuario.nome" />
+                </div>
+
+                <div class="form-group">
+                    <label for="sexo"> Sexo: </label>
+                    <span ng-show="alterarUsuario.sexo.$error.required && alterarUsuario.$submitted">Campo Obrigatório</span>
+                    <input type="text" class="form-control" name="sexo" ng-model="usuario.sexo" />
+                </div>
+
+                <div class="form-group">
+                    <label for="datanascimento"> Data de Nascimento: </label>
+                    <span ng-show="alterarUsuario.datanascimento.$error.required && alterarUsuario.$submitted">Campo Obrigatório</span>
+                    <input type="date" class="form-control" name="datanascimento" ng-model="usuario.datanascimento" />
+                </div>
+
+                <div>
+                    <button type="submit" ng-click="atualizarPerfil(usuario)" ng-disabled="!novoUserForm.$valid" class="btn btn-default btn-block">Alterar</button>
+                </div>
+        </div>
+
+    </div>
+
 
 </uib-accordion>

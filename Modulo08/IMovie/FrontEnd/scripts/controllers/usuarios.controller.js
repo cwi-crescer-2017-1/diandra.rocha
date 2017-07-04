@@ -6,6 +6,7 @@ imovie.controller('UsuariosController', function($scope, authConfig, authService
     $scope.usuarios = [];
     $scope.amigosDoUsuario = [];
     $scope.convidarAmigo = convidarAmigo;
+    $scope.estaNaListaDeAmigos = estaNaListaDeAmigos;
 
     buscarTodos();
     listarAmigosDoUsuario();
@@ -49,7 +50,7 @@ imovie.controller('UsuariosController', function($scope, authConfig, authService
     }
 
     function estaNaListaDeAmigos(id) {
-
+        return $scope.amigosDoUsuario.some(e => e.idusuario === id);
     }
 
 });

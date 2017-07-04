@@ -4,7 +4,7 @@ import br.com.crescer.imovie.entidade.Post;
 import br.com.crescer.imovie.entidade.Usuario;
 import br.com.crescer.imovie.repositorio.PostRepositorio;
 import br.com.crescer.imovie.repositorio.UsuarioRepositorio;
-import java.util.List;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,6 +37,7 @@ public class PostService {
     public Post salvar(Post post, Usuario user) {
         Usuario usuario = repo2.findByEmail(user.getEmail());
         post.setIdusuario(usuario);
+        post.setDatapost(new Date());
         return repo.save(post);
     }
 
