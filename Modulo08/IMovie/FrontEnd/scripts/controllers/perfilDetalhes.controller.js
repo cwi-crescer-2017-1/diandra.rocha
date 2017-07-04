@@ -5,18 +5,19 @@ imovie.controller('PerfilDetalhesController', function($scope, authService, $loc
     $scope.usuarioBuscar = {};
     $scope.postsUsuario = [];
 
-    var id = parseFloat($routeParams.id);
+    var ID = parseInt($routeParams.idusuario);
 
-    obterPorId(id);
+    obterPorId(ID);
+    buscarFeed(ID);
 
-    function obterPorId(id) {
-        usuarioService.obterPorId(id).then(function(response) {
+    function obterPorId(ID) {
+        usuarioService.obterPorId(ID).then(function(response) {
             $scope.usuarioBuscar = response.data;
         })
     }
 
-    function buscarFeed(id) {
-        postService.feedAlheio(id).then(function(response) {
+    function buscarFeed(ID) {
+        postService.feedAlheio(ID).then(function(response) {
             $scope.postsUsuario = response.data.content;
         })
     }

@@ -1,5 +1,6 @@
 package br.com.crescer.imovie.entidade;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
@@ -56,9 +57,11 @@ public class Post implements Serializable {
     @ManyToOne(optional = false)
     private Usuario idusuario;
     
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Comentario> comentarioSet;
     
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Curtida> curtidaSet;
 
