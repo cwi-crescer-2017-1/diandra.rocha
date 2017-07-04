@@ -28,9 +28,8 @@
             <h4 class="text-center">{{post.idusuario.nome}}</h4>
             <p>{{post.conteudo}}</p>
             <strong>Data: </strong>
-            <p>{{post.datapost}}</p>
+            <p>{{post.datapost| date:"dd/MM/yyyy"}}</p>
         </div>
-        <hr>
         <div>
             <input type="text" name="conteudo" ng-model="novoComentario.conteudo" required/>
             <button class="btn btn-default" ng-click="comentar(post.idpost, novoComentario)">Comentar</button>

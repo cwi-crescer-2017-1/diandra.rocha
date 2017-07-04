@@ -53,6 +53,7 @@ imovie.controller('UsuariosController', function($scope, authConfig, authService
         usuarioService.convidarAmigo(id).then(function(response) {
                 var toast = toastr.success('Usuário convidado com sucesso', 'Imovie');
                 toastr.refreshTimer(toast, 2000);
+                buscarTodos();
             },
 
             function(response) {
