@@ -5,6 +5,8 @@ imovie.controller('DashboardController', function($scope, authConfig, authServic
 
     $scope.comentarios = [];
     $scope.posts = [];
+    $scope.likes = 0;
+    $scope.novoPost = {};
 
     buscarPosts();
 
@@ -14,10 +16,24 @@ imovie.controller('DashboardController', function($scope, authConfig, authServic
                 toastr.refreshTimer(toast, 2000);
                 $scope.posts = response.data.content;
                 $scope.comentarios = response.data.content;
+                $scope.likes = response.data.content.lentgh();
             },
 
             function(response) {
                 var toast = toastr.error('Feed não carregado', 'Imovie');
+                toastr.refreshTimer(toast, 2000);
+            });
+    };
+
+    function salvar(novoPost) {
+        postService.salvarPost(novoPost).then(function(response) {
+                var toast = toastr.success('Post postado com sucesso', 'Imovie');
+                toastr.refreshTimer(toast, 2000);
+                buscarPosts();
+            },
+
+            function(response) {
+                var toast = toastr.error('Post não postado', 'Imovie');
                 toastr.refreshTimer(toast, 2000);
             });
     };

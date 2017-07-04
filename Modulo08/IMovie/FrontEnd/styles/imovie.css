@@ -2,8 +2,26 @@ body {
     background-image: url("/images/background.jpg");
 }
 
+table table-hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.navbar-default {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.post {
+    display: table;
+    margin: 0 auto;
+}
+
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(255, 255, 255, 0.25);
+}
+
 .background-white {
-    background-color: white;
     color: black;
     width: 500px;
     padding: 20px;
@@ -11,7 +29,7 @@ body {
 }
 
 .img-logo {
-    width: 350px;
+    width: 270px;
     height: auto;
     margin: 15px auto;
     display: block;

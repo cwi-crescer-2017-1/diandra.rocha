@@ -44,7 +44,7 @@ imovie.config(function($routeProvider) {
                 }
             }
         })
-        .when('/perfilDetalhes', {
+        .when('/perfilDetalhes/:idusuario', {
             controller: 'PerfilDetalhesController',
             templateUrl: 'views/perfilDetalhes.html',
             resolve: {

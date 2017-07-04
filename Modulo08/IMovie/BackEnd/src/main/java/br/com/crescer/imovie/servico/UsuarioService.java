@@ -1,6 +1,7 @@
 package br.com.crescer.imovie.servico;
 
 import br.com.crescer.imovie.entidade.Usuario;
+import br.com.crescer.imovie.handler.HandlerException;
 import br.com.crescer.imovie.repositorio.UsuarioRepositorio;
 import java.util.List;
 import java.util.Set;
@@ -38,11 +39,12 @@ public class UsuarioService {
             if (usuario != null) {
                 throw new Exception("Email já existente na base de dados");
             }
-            return repo.save(user);
+
         } else {
             user.setSenha(cript.encode(user.getSenha()));
-            return repo.save(user);
+            
         }
+        return repo.save(user);
 
     }
 

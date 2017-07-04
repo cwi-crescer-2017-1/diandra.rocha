@@ -66,9 +66,9 @@ public class Comentario implements Serializable {
     public Comentario() {
     }
 
-    public Comentario(String conteudo, Date datacomentario) {
+    public Comentario(String conteudo){
         this.conteudo = conteudo;
-        this.datacomentario = datacomentario;
+        this.datacomentario = new Date();
     }
 
     public long getIdcomentario() {

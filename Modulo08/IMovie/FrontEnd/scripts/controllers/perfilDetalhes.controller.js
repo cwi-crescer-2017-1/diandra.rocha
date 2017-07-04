@@ -3,6 +3,7 @@ imoveis.controller('PerfilDetalhesController', function($scope, authService, $lo
     $scope.logout = authService.logout;
 
     $scope.usuarioBuscar = {};
+    $scope.postsUsuario = [];
 
     var id = parseInt($routeParams.id);
 
@@ -11,6 +12,12 @@ imoveis.controller('PerfilDetalhesController', function($scope, authService, $lo
     function obterPorId(id) {
         usuarioService.obterPorId(id).then(function(response) {
             $scope.usuarioBuscar = response.data;
+        })
+    }
+
+    function buscarFeed(id) {
+        postService.feedAlheio(id).then(function(response) {
+            $scope.postsUsuario = response.data.content;
         })
     }
 

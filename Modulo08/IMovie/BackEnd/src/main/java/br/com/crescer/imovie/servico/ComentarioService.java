@@ -6,6 +6,8 @@ import br.com.crescer.imovie.entidade.Usuario;
 import br.com.crescer.imovie.repositorio.ComentarioRepositorio;
 import br.com.crescer.imovie.repositorio.PostRepositorio;
 import br.com.crescer.imovie.repositorio.UsuarioRepositorio;
+import java.util.List;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,13 +33,20 @@ public class ComentarioService {
     }
         
     public Comentario salvar(Post post, Usuario user, Comentario comentario){
-        
-        comentario.setIdpost(repo2.findOne(post.getIdpost()));
+        Post postagem = repo2.findOne(post.getIdpost());
+        comentario.setIdpost(postagem);
         comentario.setIdusuario(repo3.findOne(user.getIdusuario()));
+        
+        repo2.save(postagem);
         return repo.save(comentario);
     }
     
     public void excluir(Comentario comentario){
+        long id = comentario.getIdpost().getIdpost();
+        Post postagem = repo2.findOne(id);
+        Set<Comentario> comentarios = postagem.getComentarioSet();
+        comentarios.remove(comentario);
+        
         repo.delete(comentario);
     }
     

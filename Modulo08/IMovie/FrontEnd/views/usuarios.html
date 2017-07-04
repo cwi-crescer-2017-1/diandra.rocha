@@ -16,7 +16,8 @@
                     <th scope="row">{{usuario.nome}}</th>
                     <td>{{usuario.sexo}}</td>
                     <td>{{usuario.email}}</td>
-                    <td><button class="btn btn-primary" ng-click="convidarAmigo(usuario.idusuario)">Adicionar</button></td>
+                    <td><button class="btn btn-default btn-block" ng-click="convidarAmigo(usuario.idusuario)">Adicionar</button></td>
+                    <td><a class="btn btn-default btn-block" role="button" href="#!/perfilDetalhes/{{amigo.idusuario}}">Ver Perfil</a></td>
                 </tr>
             </tbody>
         </table>

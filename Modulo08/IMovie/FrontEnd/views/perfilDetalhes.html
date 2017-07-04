@@ -1,0 +1,41 @@
+<menu active="menu" user="usuario" logout="logout" class="no-padding"></menu>
+
+<div class="container-fluid">
+    <div class="col-md-8 perfil">
+        <div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="row panel">
+                <div class="col-md-8  col-xs-12">
+                    <div class="header">
+                        <h1>{{usuarioBuscar.nome}}</h1>
+                        <ul>
+                            <li>
+                                {{usuarioBuscar.datanascimento | date:"dd/MM/yyyy"}}
+                            </li>
+                            <li>
+                                {{usuarioBuscar.sexo}}
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid">
+
+    <h3>Feed de {{usuarioBuscar.nome}}</h3>
+    <hr>
+    <div class="col-md-8" ng-repeat="post in postsUsuario">
+        <div class="white-card">
+            <img class="card-image" ng-src="{{post.urlfoto}}" />
+            <h4 class="text-center">{{post.idusuario.nome}}</h4>
+            <p>{{post.conteudo}}</p>
+            <strong>Data: </strong>
+            <p>{{post.datapost}}</p>
+            <hr>
+        </div>
+    </div>
+</div>

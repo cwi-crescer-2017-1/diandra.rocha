@@ -1,5 +1,22 @@
 <menu active="menu" user="usuario" logout="logout" class="no-padding"></menu>
 
+<div class="container-fluid">
+    <div class="col-md-8 post">
+        <form name="novoPost" novalidate>
+            <legend> Post</legend>
+
+            <hr>
+
+            <div class="form-group">
+                <label for="conteudo"> Conteúdo: </label>
+                <span ng-show="novoPost.conteudo.$error.required && novoPost.$submitted">Campo Obrigatório</span>
+                <input type="text" class="form-control" name="conteudo" ng-model="novoPost.conteudo" required/>
+            </div>
+            <button class="btn btn-primary" ng-click="salvar(novoPost)">Postar</button>
+
+        </form>
+    </div>
+</div>
 
 <div class="container-fluid">
     <h3>Posts</h3>

@@ -1,6 +1,6 @@
 <menu active="menu" user="usuario" logout="logout" class="no-padding"></menu>
 
-<div class="col-md-11">
+<div class="col-md-10">
     <div style="margin-top: 50px;">
         <table class="table table-hover">
             <thead>
@@ -17,8 +17,8 @@
                     <th scope="row">{{amigo.nome}}</th>
                     <td>{{amigo.sexo}}</td>
                     <td>{{amigo.email}}</td>
-                    <td><button class="btn btn-primary" ng-click="convidarAmigo(usuario.idusuario)">Excluir</button></td>
-                    <td><button class="btn btn-primary" ng-click="convidarAmigo(usuario.idusuario)">Ver Perfil</button></td>
+                    <td><button class="btn btn-default btn-block" ng-click="removerAmigo(amigo.idusuario)">Excluir</button></td>
+                    <td><a class="btn btn-default btn-block" role="button" href="#!/perfilDetalhes/{{amigo.idusuario}}">Ver Perfil</a></td>
                 </tr>
             </tbody>
         </table>

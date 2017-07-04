@@ -35,7 +35,8 @@ public class CurtidaController {
         Usuario curtidor = componente.getUserSession();
         Post curtido = serviceP.buscar(id);
         Curtida curtida = new Curtida(curtidor, curtido);
-        service.salvar(curtida);
+        
+        service.salvar(curtida, curtido, curtidor);
         return curtida;
         
     }

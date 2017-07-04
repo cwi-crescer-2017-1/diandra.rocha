@@ -4,6 +4,7 @@ imovie.controller('AmigosController', function($scope, authConfig, authService, 
     $scope.logout = authService.logout;
 
     $scope.amigos = [];
+    $scope.removerAmigo = removerAmigo;
     listarAmigosDoUsuario();
 
     function listarAmigosDoUsuario() {
@@ -19,5 +20,16 @@ imovie.controller('AmigosController', function($scope, authConfig, authService, 
             });
     };
 
+    function removerAmigo(id) {
+        usuarioService.excluirAmigo(id).then(function(response) {
+                var toast = toastr.success('Usuário removido com sucesso', 'Imovie');
+                toastr.refreshTimer(toast, 2000);
+                listarAmigosDoUsuario();
+            },
 
+            function(response) {
+                var toast = toastr.error('Usuário não removido', 'Imovie');
+                toastr.refreshTimer(toast, 2000);
+            });
+    }
 });

@@ -72,9 +72,9 @@ public class Post implements Serializable {
     public Post() {
     }
 
-    public Post(String conteudo, Date datapost, String urlfoto) {
+    public Post(String conteudo, String urlfoto) {
         this.conteudo = conteudo;
-        this.datapost = datapost;
+        this.datapost = new Date();
         this.urlfoto = urlfoto;
     }
 

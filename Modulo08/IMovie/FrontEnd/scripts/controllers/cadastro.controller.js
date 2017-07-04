@@ -1,7 +1,6 @@
 imovie.controller('CadastroController', function($scope, authService, $location, toastr, cadastroService) {
 
     $scope.novoUsuario = {};
-
     $scope.confirmar = confirmar;
 
     function confirmar(novoUsuario) {
