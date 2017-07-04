@@ -29,6 +29,7 @@
             <p>{{post.conteudo}}</p>
             <strong>Data: </strong>
             <p>{{post.datapost}}</p>
+            <strong>Curtidas: {{getNumeroCurtidas(post.ispost)}}</strong>
         </div>
         <hr>
         <div>
@@ -38,6 +39,7 @@
         <hr>
         <div>
             <button class="btn btn-default" ng-click="curtir(post.idpost)">Curtir</button>
+            <button class="btn btn-default" ng-click="descurtir(post.idpost)">Descurtir</button>
         </div>
     </div>
 

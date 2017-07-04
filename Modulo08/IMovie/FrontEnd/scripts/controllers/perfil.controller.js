@@ -3,7 +3,9 @@ imovie.controller('PerfilController', function($scope, authConfig, authService, 
     $scope.usuario = authService.getUsuario();
     $scope.logout = authService.logout;
 
+    $scope.atualizarPerfil = atualizarPerfil;
     $scope.aceitarAmigo = aceitarAmigo;
+    $scope.deletarPost = deletarPost;
     $scope.solicitacoes = [];
     buscarFeed();
     listarSolicitacoes();
@@ -61,10 +63,15 @@ imovie.controller('PerfilController', function($scope, authConfig, authService, 
             });
     }
 
-
     function deletarPost(id) {
+        usuarioService.deletarPost(id).then(function(response) {
+                var toast = toastr.success('Post deletado com sucesso', 'Imovie');
+                toastr.refreshTimer(toast, 2000);
+            },
 
+            function(response) {
+                var toast = toastr.error('Post não deletado', 'Imovie');
+                toastr.refreshTimer(toast, 2000);
+            });
     }
-
-
 });

@@ -7,15 +7,27 @@ imovie.controller('UsuariosController', function($scope, authConfig, authService
     $scope.amigosDoUsuario = [];
     $scope.convidarAmigo = convidarAmigo;
     $scope.estaNaListaDeAmigos = estaNaListaDeAmigos;
+    $scope.pendentesDeUsuario = [];
+    $scope.estaNaListaDePendentes = estaNaListaDePendentes;
 
     buscarTodos();
     listarAmigosDoUsuario();
+    listarPendentesDoUsuario();
 
     function listarAmigosDoUsuario() {
         usuarioService.listarAmigosDoUsuario().then(function(response) {
-                var toast = toastr.success('Amigos carregados com sucesso', 'Imovie');
-                toastr.refreshTimer(toast, 2000);
                 $scope.amigosDoUsuario = response.data;
+            },
+
+            function(response) {
+                var toast = toastr.error('Amigos não carregados', 'Imovie');
+                toastr.refreshTimer(toast, 2000);
+            });
+    };
+
+    function listarPendentesDoUsuario() {
+        usuarioService.listarSolicitacoes().then(function(response) {
+                $scope.pendentesDeUsuario = response.data;
             },
 
             function(response) {
@@ -51,6 +63,10 @@ imovie.controller('UsuariosController', function($scope, authConfig, authService
 
     function estaNaListaDeAmigos(id) {
         return $scope.amigosDoUsuario.some(e => e.idusuario === id);
+    }
+
+    function estaNaListaDePendentes(id) {
+        return $scope.pendentesDeUsuario.some(e => e.idusuario === id);
     }
 
 });

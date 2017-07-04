@@ -1,10 +1,12 @@
 package br.com.crescer.imovie.controller;
 
 import br.com.crescer.imovie.entidade.Post;
+import br.com.crescer.imovie.entidade.Comentario;
 import br.com.crescer.imovie.entidade.Usuario;
 import br.com.crescer.imovie.servico.ComponenteService;
 import br.com.crescer.imovie.servico.PostService;
 import br.com.crescer.imovie.servico.UsuarioService;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -46,6 +48,16 @@ public class PostController {
     public Page<Post> feed(Pageable p) {
         Usuario user = componente.getUserSession();
         return service.meuFeed(user, p);
+    }
+    
+    @GetMapping(value="/curtidas/{id}")
+    public int obterCurtidas(@PathVariable long id){
+        return service.getCurtidas(id);
+    }
+    
+    @GetMapping(value="/comentariospost/{id}")
+    public Set<Comentario> obterComentarios(@PathVariable long id){
+        return service.getComentarios(id);
     }
     
     @PostMapping(value = "/salvarpost")

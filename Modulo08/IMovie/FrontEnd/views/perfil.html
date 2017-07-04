@@ -89,8 +89,6 @@
         <div class="col-md-8 col-md-offset-2">
 
             <form name="alterarUsuario" novalidate>
-
-
                 <legend> Alterar</legend>
 
                 <hr>
@@ -120,7 +118,7 @@
                 </div>
 
                 <div>
-                    <button type="submit" ng-click="atualizarPerfil(usuario)" ng-disabled="!novoUserForm.$valid" class="btn btn-default btn-block">Alterar</button>
+                    <button type="submit" ng-submit="atualizarPerfil(usuario)" ng-disabled="!novoUserForm.$valid" class="btn btn-default btn-block">Alterar</button>
                 </div>
         </div>
 

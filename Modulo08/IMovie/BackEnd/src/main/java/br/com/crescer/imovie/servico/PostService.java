@@ -1,10 +1,12 @@
 package br.com.crescer.imovie.servico;
 
+import br.com.crescer.imovie.entidade.Comentario;
 import br.com.crescer.imovie.entidade.Post;
 import br.com.crescer.imovie.entidade.Usuario;
 import br.com.crescer.imovie.repositorio.PostRepositorio;
 import br.com.crescer.imovie.repositorio.UsuarioRepositorio;
 import java.util.Date;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +34,16 @@ public class PostService {
 
     public Page<Post> meuFeed(Usuario user,Pageable p) {
         return repo.findByIdusuario(user, p);
+    }
+    
+    public int getCurtidas(long id){
+        Post post = repo.findOne(id);
+        return post.getCurtidaSet().size();
+    }
+    
+    public Set<Comentario> getComentarios(long id){
+        Post post = repo.findOne(id);
+        return post.getComentarioSet();
     }
 
     public Post salvar(Post post, Usuario user) {

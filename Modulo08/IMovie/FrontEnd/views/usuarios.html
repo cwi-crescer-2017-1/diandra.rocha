@@ -22,12 +22,15 @@
                     <th scope="row">{{membro.nome}}</th>
                     <td>{{membro.sexo}}</td>
                     <td>{{membro.email}}</td>
-                    <td ng-if="!estaNaListaDeAmigos(membro.idusuario)"><button class="btn btn-default btn-block" ng-click="convidarAmigo(membro.idusuario)">Adicionar</button></td>
+                    <td ng-if="!estaNaListaDeAmigos(membro.idusuario) || !estaNaListaDePendentes(membro.idusuario)"><button class="btn btn-default btn-block" ng-click="convidarAmigo(membro.idusuario)">Adicionar</button></td>
                     <td ng-if="estaNaListaDeAmigos(membro.idusuario)">
                         <span> Já são amigos </span>
                     </td>
+                    <td ng-if="estaNaListaDePendentes(membro.idusuario)">
+                        <span> Solicitado </span>
+                    </td>
                     <td>
-                        <a class="btn btn-default btn-block" role="button" href="#!/perfilDetalhes/" +{{membro.idusuario}}+ ">Ver Perfil</a></td>
+                        <a class="btn btn-default btn-block" role="button" href="#!/perfilDetalhes/{{membro.idusuario}}">Ver Perfil</a></td>
                 </tr>
             </tbody>
         </table>

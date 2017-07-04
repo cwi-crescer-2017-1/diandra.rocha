@@ -36,19 +36,18 @@ public class CurtidaService {
     }
     
     public Curtida salvar(Curtida curtida, Post curtido, Usuario curtidor){
-        Post postagem = repo2.findOne(curtido.getIdpost());
-        curtida.setIdpost(postagem);
+        curtido.getCurtidaSet().add(curtida);
+        curtida.setIdpost(curtido);
         curtida.setIdusuario(repo3.findOne(curtidor.getIdusuario()));
         
-        repo2.save(postagem);
+        repo2.save(curtido);
         return repo.save(curtida);
     }
     
     public void excluir(Curtida curtida){
         long id = curtida.getIdpost().getIdpost();
         Post postagem = repo2.findOne(id);
-        Set<Curtida> curtidas = postagem.getCurtidaSet();
-        curtidas.remove(curtida);
+        postagem.getCurtidaSet().remove(curtida);
         
         repo2.save(postagem);
         repo.delete(curtida);

@@ -3,26 +3,34 @@ imovie.controller('DashboardController', function($scope, authConfig, authServic
     $scope.usuario = authService.getUsuario();
     $scope.logout = authService.logout;
 
-    $scope.comentarios = [];
     $scope.posts = [];
-    $scope.likes = 0;
     $scope.novoPost = {};
     $scope.salvar = salvar;
     $scope.curtir = curtir;
     $scope.descurtir = descurtir;
     $scope.comentar = comentar;
     $scope.descomentar = descomentar;
+    $scope.getNumeroCurtidas = getNumeroCurtidas;
 
 
     buscarPosts();
+
+    function getNumeroCurtidas(id) {
+        postService.obterCurtidas().then(function(response) {
+                $scope.curtidasPost = response.data;
+            },
+
+            function(response) {
+                var toast = toastr.error('Curtidas não carregadas', 'Imovie');
+                toastr.refreshTimer(toast, 2000);
+            });
+    }
 
     function buscarPosts() {
         postService.feed().then(function(response) {
                 var toast = toastr.success('Feed carregado com sucesso', 'Imovie');
                 toastr.refreshTimer(toast, 2000);
                 $scope.posts = response.data.content;
-                $scope.comentarios = response.data.content;
-                $scope.likes = response.data.content.length;
             },
 
             function(response) {

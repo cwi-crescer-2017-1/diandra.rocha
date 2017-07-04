@@ -5,7 +5,7 @@ imovie.controller('PerfilDetalhesController', function($scope, authService, $loc
     $scope.usuarioBuscar = {};
     $scope.postsUsuario = [];
 
-    var id = parseInt($routeParams.id);
+    var id = parseFloat($routeParams.id);
 
     obterPorId(id);
 

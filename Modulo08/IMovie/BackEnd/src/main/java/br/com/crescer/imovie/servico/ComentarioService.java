@@ -37,6 +37,7 @@ public class ComentarioService {
         comentario.setIdpost(postagem);
         comentario.setIdusuario(repo3.findOne(user.getIdusuario()));
         comentario.setDatacomentario(new Date());
+        postagem.getComentarioSet().add(comentario);
         repo2.save(postagem);
         return repo.save(comentario);
     }
@@ -44,9 +45,9 @@ public class ComentarioService {
     public void excluir(Comentario comentario){
         long id = comentario.getIdpost().getIdpost();
         Post postagem = repo2.findOne(id);
-        Set<Comentario> comentarios = postagem.getComentarioSet();
-        comentarios.remove(comentario);
+        postagem.getComentarioSet().remove(comentario);
         
+        repo2.save(postagem);
         repo.delete(comentario);
     }
     

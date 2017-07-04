@@ -26,12 +26,22 @@ imovie.factory('postService', function($http) {
         return $http.get(urlBase + '/post/' + id);
     }
 
+    function obterCurtidas(id) {
+        return $http.get(urlBase + '/curtidas/' + id)
+    }
+
+    function obterComentarios(id) {
+        return $http.get(urlBase + '/comentariospost/' + id)
+    }
+
     return {
         feedAlheio: feedAlheio,
         feed: feed,
         meuFeed: meuFeed,
         salvarPost: salvarPost,
         deletarPost: deletarPost,
-        buscarPorId: buscarPorId
+        buscarPorId: buscarPorId,
+        obterCurtidas: obterCurtidas,
+        obterComentarios: obterComentarios
     };
 });
