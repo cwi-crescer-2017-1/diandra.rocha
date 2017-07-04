@@ -43,7 +43,7 @@ public class UsuarioController {
         return user.getAmizades();
     }
 
-    @DeleteMapping(value = "/excluiramigo/{Id}")
+    @DeleteMapping(value = "/excluiramigo/{id}")
     public void deletarAmigo(@PathVariable long id) {
         Usuario user = componente.getUserSession();
         service.removerAmigo(user, id);
